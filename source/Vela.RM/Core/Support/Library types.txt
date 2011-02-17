@@ -1,0 +1,8 @@
+﻿String 					string 				represents unicode-enabled strings 
+Array<T> 				List<T>				physical container of items indexed by number
+List<T> 				List<T>				container of items, implied order, non-unique membership
+Set<T> 					HashSet<T>			container of items, no order, unique membership
+Hash<T, U:Comparable>	Dictionary<U, T>	a table of values of any type T, keyed by values of any basic comparable type U, typically String or Integer, but may be more complex types, e.g. a coded term type.
+Interval<T> 			?					Intervals with open or closed upper and lower bounds.
+UUID					Guid				Model of the DCE Universal Unique Identifier or UUID which takes the form of hexadecimal integers separated by hyphens, following the pattern 8-4-4-4-12 as defined by the Open Group, CDE 1.1 Remote Procedure Call specification, Appendix A. Also known as a GUID.
+INTERNET_ID				Uri					Model of a reverse internet domain, as used to uniquely identify an internet domain. In the form of a dot-separated string in the reverse order of a domain name. Regular expression: [a-zA-Z]([a-zA-Z0-9-]*[a-zA-Z0-9])?(\.[a-zA-Z]([a-zA-Z0-9-]*[a-zA-Z0-9]))*
