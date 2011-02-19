@@ -74,6 +74,7 @@
     <Compile Include="Core\DataTypes\QuantityPackage\Amount.cs" />
     <Compile Include="Core\DataTypes\QuantityPackage\Count.cs" />
     <Compile Include="Core\DataTypes\QuantityPackage\Interval.cs" />
+    <Compile Include="Core\DataTypes\QuantityPackage\MagnitudeStatus.cs" />
     <Compile Include="Core\DataTypes\QuantityPackage\Ordered.cs" />
     <Compile Include="Core\DataTypes\QuantityPackage\Ordinal.cs" />
     <Compile Include="Core\DataTypes\QuantityPackage\Proportion.cs" />

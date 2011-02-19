@@ -26,6 +26,6 @@ namespace Vela.RM.Core.DataTypes.QuantityPackage
 		/// If not present, meaning is “=”.
 		///</summary>
 		[OpenEhrName("magnitude_status")]
-		public string MagnitudeStatus { get; set; }
+		public MagnitudeStatus MagnitudeStatus { get; set; }
 	}
 }
