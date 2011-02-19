@@ -47,7 +47,7 @@ namespace Vela.RM.Core.DataTypes.QuantityPackage
 		/// <param name="value"></param>
 		/// <returns></returns>
 		[OpenEhrName("valid_percentage")]
-		public bool IsValidPercentage(double value)
+		public static bool IsValidPercentage(double value)
 		{
 			return value >= 0 & value <= 100;
 		}

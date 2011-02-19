@@ -54,8 +54,10 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Core\DataTypes\QuantityPackage\AmountTests.cs" />
     <Compile Include="Core\DataTypes\QuantityPackage\IntervalTests.cs" />
     <Compile Include="Core\DataTypes\QuantityPackage\OrderedTests.cs" />
+    <Compile Include="Core\DataTypes\QuantityPackage\OrdinalTests.cs" />
     <Compile Include="Core\DataTypes\QuantityPackage\ReferenceRangeTests.cs" />
     <Compile Include="Core\DataTypes\TextPackage\ParagraphTests.cs" />
     <Compile Include="Core\DataTypes\TextPackage\TerminologyMappingTests.cs" />
