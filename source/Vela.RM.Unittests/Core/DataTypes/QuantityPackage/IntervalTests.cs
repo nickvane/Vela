@@ -14,41 +14,24 @@ namespace Vela.RM.Unittests.Core.DataTypes.QuantityPackage
 			Assert.IsTrue(interval.IsUpperUnbounded);
 			Assert.IsFalse(interval.IsLowerIncluded);
 			Assert.IsFalse(interval.IsUpperIncluded);
-			Assert.IsTrue(interval.HasElement(new OrderedTest(5)));
-			Assert.IsTrue(interval.HasElement(new OrderedTest(1)));
+			Assert.IsTrue(interval.HasElement(new OrderedTest(){Value = 5}));
+			Assert.IsTrue(interval.HasElement(new OrderedTest() { Value = 1 }));
 
 			interval.IsLowerIncluded = true;
 			interval.IsUpperIncluded = true;
 			Assert.IsFalse(interval.IsLowerIncluded);
 			Assert.IsFalse(interval.IsUpperIncluded);
-			interval.Lower = new OrderedTest(2);
-			interval.Upper = new OrderedTest(4);
+			interval.Lower = new OrderedTest() { Value = 2 };
+			interval.Upper = new OrderedTest() { Value = 4 };
 			Assert.IsTrue(interval.IsLowerIncluded);
 			Assert.IsTrue(interval.IsUpperIncluded);
-			Assert.IsTrue(interval.HasElement(new OrderedTest(2)));
-			Assert.IsTrue(interval.HasElement(new OrderedTest(4)));
+			Assert.IsTrue(interval.HasElement(new OrderedTest() { Value = 2 }));
+			Assert.IsTrue(interval.HasElement(new OrderedTest() { Value = 4 }));
 
 			interval.IsLowerIncluded = false;
 			interval.IsUpperIncluded = false;
-			Assert.IsFalse(interval.HasElement(new OrderedTest(2)));
-			Assert.IsFalse(interval.HasElement(new OrderedTest(4)));
-		}
-	}
-
-	public class OrderedTest : Ordered<OrderedTest>
-	{
-		public int Value;
-
-		public OrderedTest(int value)
-		{
-			Value = value;
-		}
-
-		public override int CompareTo(OrderedTest other)
-		{
-			if (Value == other.Value) return 0;
-			if (Value < other.Value) return -1;
-			return 1;
+			Assert.IsFalse(interval.HasElement(new OrderedTest() { Value = 2 }));
+			Assert.IsFalse(interval.HasElement(new OrderedTest() { Value = 4 }));
 		}
 	}
 }
