@@ -55,6 +55,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Core\DataTypes\QuantityPackage\AmountTests.cs" />
+    <Compile Include="Core\DataTypes\QuantityPackage\CountTests.cs" />
     <Compile Include="Core\DataTypes\QuantityPackage\QuantityTests.cs" />
     <Compile Include="Core\DataTypes\QuantityPackage\IntervalTests.cs" />
     <Compile Include="Core\DataTypes\QuantityPackage\OrderedTests.cs" />
