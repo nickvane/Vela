@@ -11,7 +11,7 @@ namespace Vela.RM.Core.DataTypes.QuantityPackage
 	/// </summary>
 	/// <typeparam name="T"></typeparam>
 	[Serializable, OpenEhrName("REFERENCE_RANGE<T:DV_ORDERED>")]
-	public class ReferenceRange<T> where T : Ordered
+	public class ReferenceRange<T> where T : Ordered<T>
 	{
 		private Interval<T> _range;
 

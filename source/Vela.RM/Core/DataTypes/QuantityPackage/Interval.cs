@@ -12,7 +12,7 @@ namespace Vela.RM.Core.DataTypes.QuantityPackage
 	/// </summary>
 	/// <typeparam name="T"></typeparam>
 	[Serializable, OpenEhrName("DV_INTERVAL<T : DV_ORDERED>")]
-	public class Interval<T> : DataValue where T : Ordered
+	public class Interval<T> : DataValue where T : Ordered<T>
 	{
 		private bool _isLowerIncluded;
 		private bool _isUpperIncluded;
