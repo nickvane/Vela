@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 using Vela.RM.Core.DataTypes.TextPackage;
 using Vela.RM.Core.Support;
 
@@ -12,10 +11,9 @@ namespace Vela.RM.Core.DataTypes.QuantityPackage
 	/// USE: Used for recording any clinical datum which is customarily recorded using symbolic values. Example: the results on a urinalysis strip, e.g. {neg, trace, +, ++, +++} are used for leucocytes, protein, nitrites etc; for non-haemolysed blood {neg, trace, moderate}; for haemolysed blood {neg, trace, small, moderate, large}.
 	/// </summary>
 	[Serializable, OpenEhrName("DV_ORDINAL")]
-	public class Ordinal : Ordered, IEquatable<Ordinal>
+	public class Ordinal : Ordered<Ordinal>
 	{
 		private ReferenceRange<Ordinal> _limits;
-		private IList<ReferenceRange<Ordinal>> _otherReferenceRanges;
 
 		/// <summary>
 		/// Value in ordered enumeration of values. Any integer value can be used.
@@ -41,67 +39,37 @@ namespace Vela.RM.Core.DataTypes.QuantityPackage
 		/// limits of the ordinal enumeration, to allow comparison of an ordinal value to its limits.
 		/// </summary>
 		[OpenEhrName("limits")]
-		public ReferenceRange<Ordinal> Limits
+		public ReferenceRange<Ordinal> GetLimits()
 		{
-			get
-			{
-				return _limits ?? (_limits = new ReferenceRange<Ordinal>());
-			}
+			return _limits ?? (_limits = new ReferenceRange<Ordinal>());
+			//TODO: find out how limits are implemented
 		}
 
-		public static bool operator <(Ordinal left, Ordinal right)
+		/// <summary>
+		/// True if symbols come from same vocabulary, assuming the vocabulary is a subset or value range, e.g. “urine:protein”.
+		/// </summary>
+		/// <param name="other"></param>
+		/// <returns></returns>
+		[OpenEhrName("is_strictly_comparable_to")]
+		public override bool IsStrictlyComparableTo(Ordinal other)
 		{
-			return left.Value < right.Value;
+			if (other == null) return false;
+			//TODO: this implementation might not be correct according to the summary.
+			return Symbol == other.Symbol;
 		}
 
-		public static bool operator >(Ordinal left, Ordinal right)
+		/// <summary>
+		/// Compares the current object with another object of the same type.
+		/// </summary>
+		/// <returns>
+		/// A value that indicates the relative order of the objects being compared. The return value has the following meanings: Value Meaning Less than zero This object is less than the <paramref name="other"/> parameter.Zero This object is equal to <paramref name="other"/>. Greater than zero This object is greater than <paramref name="other"/>. 
+		/// </returns>
+		/// <param name="other">An object to compare with this object.</param>
+		public override int CompareTo(Ordinal other)
 		{
-			return left.Value > right.Value;
-		}
-
-		public static bool operator ==(Ordinal left, Ordinal right)
-		{
-			return Equals(left, right);
-		}
-
-		public static bool operator !=(Ordinal left, Ordinal right)
-		{
-			return !Equals(left, right);
-		}
-
-		public static bool operator <=(Ordinal left, Ordinal right)
-		{
-			return left.Value <= right.Value;
-		}
-
-		public static bool operator >=(Ordinal left, Ordinal right)
-		{
-			return left.Value >= right.Value;
-		}
-
-		public override bool Equals(object obj)
-		{
-			if (ReferenceEquals(null, obj)) return false;
-			if (ReferenceEquals(this, obj)) return true;
-			return Equals(obj as Ordinal);
-		}
-
-		public bool Equals(Ordinal other)
-		{
-			if (ReferenceEquals(null, other)) return false;
-			if (ReferenceEquals(this, other)) return true;
-			return base.Equals(other) && other.Value == Value;
-		}
-
-		public override int GetHashCode()
-		{
-			unchecked
-			{
-				int result = base.GetHashCode();
-				result = (result * 397) ^ Value;
-				result = (result * 397) ^ (Symbol != null ? Symbol.GetHashCode() : 0);
-				return result;
-			}
+			if (Value == other.Value) return 0;
+			if (Value < other.Value) return -1;
+			return 1;
 		}
 	}
 }

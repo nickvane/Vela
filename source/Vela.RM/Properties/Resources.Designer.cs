@@ -115,11 +115,29 @@ namespace Vela.RM.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to &apos;{0}&apos; is not a valid integer value for &apos;{1}&apos;.
+        /// </summary>
+        internal static string InvalidIntegerValue {
+            get {
+                return ResourceManager.GetString("InvalidIntegerValue", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to &apos;{0}&apos; is not a valid objectversionid.
         /// </summary>
         internal static string InvalidObjectVersionId {
             get {
                 return ResourceManager.GetString("InvalidObjectVersionId", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to &apos;{0}&apos; is not a valid precision.
+        /// </summary>
+        internal static string InvalidPrecision {
+            get {
+                return ResourceManager.GetString("InvalidPrecision", resourceCulture);
             }
         }
         
@@ -147,6 +165,15 @@ namespace Vela.RM.Properties {
         internal static string InvalidVersionId {
             get {
                 return ResourceManager.GetString("InvalidVersionId", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to &apos;{0}&apos; is a readonly property.
+        /// </summary>
+        internal static string NotSupportedReadOnlyProperty {
+            get {
+                return ResourceManager.GetString("NotSupportedReadOnlyProperty", resourceCulture);
             }
         }
     }

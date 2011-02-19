@@ -20,5 +20,7 @@ namespace Vela.RM.Core.DataTypes.TextPackage
 			get;
 			set;
 		}
+
+		//TODO: implement Equals
 	}
 }
