@@ -38,7 +38,7 @@ namespace Vela.RM.Core.DataTypes.QuantityPackage
 		[OpenEhrName("accuracy_unknown")]
 		public bool IsAccuracyUnknown()
 		{
-			return _isAccuracySet;
+			return !_isAccuracySet;
 		}
 
 		/// <summary>
