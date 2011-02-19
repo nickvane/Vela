@@ -25,7 +25,11 @@ namespace Vela.RM.Core.DataTypes.QuantityPackage
 		[OpenEhrName("magnitude")]
 		public override double Magnitude
 		{
-			get { return Numerator/Denominator; }
+			get
+			{
+				if (Denominator == 0) return 0;
+				return Numerator/Denominator;
+			}
 			set { throw new NotSupportedException(string.Format(Resources.NotSupportedReadOnlyProperty, "Magnitude")); }
 		}
 
@@ -69,21 +73,6 @@ namespace Vela.RM.Core.DataTypes.QuantityPackage
 		public bool IsIntegral()
 		{
 			return Precision == 0;
-		}
-
-		/// <summary>
-		/// Indicates whether the current object is equal to another object of the same type.
-		/// </summary>
-		/// <returns>
-		/// true if the current object is equal to the <paramref name="other"/> parameter; otherwise, false.
-		/// </returns>
-		/// <param name="other">An object to compare with this object.</param>
-		public override bool Equals(Proportion other)
-		{
-			if (ReferenceEquals(null, other)) return false;
-			if (ReferenceEquals(this, other)) return true;
-			if (!IsStrictlyComparableTo(other)) return false;
-			return Magnitude == other.Magnitude && Denominator == other.Denominator && Numerator == other.Numerator;
 		}
 
 		/// <summary>

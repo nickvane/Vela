@@ -41,9 +41,9 @@ namespace Vela.RM.Core.DataTypes.QuantityPackage
 		/// True if precision = 0; quantity represents an integral number.
 		/// </summary>
 		[OpenEhrName("is_integral")]
-		public bool IsIntegral
+		public bool IsIntegral()
 		{
-			get { return Precision == 0; }
+			return Precision == 0; 
 		}
 
 		/// <summary>
