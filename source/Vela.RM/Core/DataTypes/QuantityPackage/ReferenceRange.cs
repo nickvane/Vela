@@ -6,7 +6,7 @@ using Vela.RM.Core.Support.Helper;
 namespace Vela.RM.Core.DataTypes.QuantityPackage
 {
 	/// <summary>
-	/// Defines a named range to  be associated with any <see cref="Ordered"/> datum. Each such range is particular to the patient and context, e.g. sex, age, and any other factor which affects ranges.
+	/// Defines a named range to  be associated with any Ordered datum. Each such range is particular to the patient and context, e.g. sex, age, and any other factor which affects ranges.
 	/// May be used to represent normal, therapeutic, dangerous, critical etc ranges.
 	/// </summary>
 	/// <typeparam name="T"></typeparam>
@@ -37,7 +37,6 @@ namespace Vela.RM.Core.DataTypes.QuantityPackage
 			}
 			set
 			{
-				Assertion.WhenNull(value);
 				_range = value;
 			}
 		}
