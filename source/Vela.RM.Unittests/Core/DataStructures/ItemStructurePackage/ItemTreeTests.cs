@@ -1,0 +1,36 @@
+﻿using System;
+using System.Collections.Generic;
+using NUnit.Framework;
+using Vela.RM.Core.DataStructures.ItemStructurePackage;
+using Text = Vela.RM.Core.DataTypes.TextPackage.Text;
+
+namespace Vela.RM.Unittests.Core.DataStructures.ItemStructurePackage
+{
+	[TestFixture]
+	public class WhenUsingItemTree
+	{
+		[Test]
+		public void DefaulPropertiesAndFunctionsShouldWork()
+		{
+			var tree = new ItemTree();
+			Assert.IsNotNull(tree.Items);
+			tree.Items = new List<ItemList>();
+		}
+
+		[Test]
+		[ExpectedException(typeof(NotImplementedException))]
+		public void HasElementAtPathShouldThrowException()
+		{
+			var tree = new ItemTree();
+			var hasElement = tree.HasElementAtPath("");
+		}
+
+		[Test]
+		[ExpectedException(typeof(NotImplementedException))]
+		public void GetElementAtPathShouldThrowException()
+		{
+			var tree = new ItemTree();
+			var element = tree.GetElementAtPath("");
+		}
+	}
+}

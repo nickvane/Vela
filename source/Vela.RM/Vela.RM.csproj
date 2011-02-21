@@ -62,13 +62,24 @@
     <Compile Include="..\Global\GlobalAssemblyInfo.cs">
       <Link>Properties\GlobalAssemblyInfo.cs</Link>
     </Compile>
+    <Compile Include="Core\DataStructures\HistoryPackage\Event.cs" />
+    <Compile Include="Core\DataStructures\HistoryPackage\History.cs" />
+    <Compile Include="Core\DataStructures\HistoryPackage\IntervalEvent.cs" />
+    <Compile Include="Core\DataStructures\HistoryPackage\PointEvent.cs" />
     <Compile Include="Core\DataStructures\ItemStructurePackage\ItemList.cs" />
     <Compile Include="Core\DataStructures\ItemStructurePackage\ItemSingle.cs" />
     <Compile Include="Core\DataStructures\ItemStructurePackage\ItemStructure.cs" />
     <Compile Include="Core\DataStructures\ItemStructurePackage\ItemTable.cs" />
+    <Compile Include="Core\DataStructures\ItemStructurePackage\ItemTree.cs" />
     <Compile Include="Core\DataStructures\RepresentationPackage\Cluster.cs" />
     <Compile Include="Core\DataStructures\RepresentationPackage\Element.cs" />
     <Compile Include="Core\DataStructures\RepresentationPackage\Item.cs" />
+    <Compile Include="Core\DataTypes\DateTimePackage\Date.cs" />
+    <Compile Include="Core\DataTypes\DateTimePackage\DateTime.cs" />
+    <Compile Include="Core\DataTypes\DateTimePackage\Duration.cs" />
+    <Compile Include="Core\DataTypes\DateTimePackage\Temporal.cs" />
+    <Compile Include="Core\DataTypes\DateTimePackage\Time.cs" />
+    <Compile Include="Core\DataTypes\TimeSpecificationPackage\TimeSpecification.cs" />
     <Compile Include="Patterns\Common\ArchetypedPackage\Archetyped.cs" />
     <Compile Include="Patterns\Common\ArchetypedPackage\FeederAudit.cs" />
     <Compile Include="Patterns\Common\ArchetypedPackage\FeederAuditDetails.cs" />
@@ -137,7 +148,9 @@
     <Compile Include="Core\Support\TerminologyPackage\ITerminologyAccess.cs" />
     <Compile Include="Core\Support\TerminologyPackage\OpenEhrCodeSetIdentifiers.cs" />
     <Compile Include="Core\Support\TerminologyPackage\OpenEhrTerminologyGroupIdentifiers.cs" />
-    <Compile Include="Core\Support\TerminologyPackage\TerminologyService.cs" />
+    <Compile Include="Core\Support\TerminologyPackage\ITerminologyService.cs" />
+    <Compile Include="Patterns\Common\ChangeControlPackage\IVersionedObjectService.cs" />
+    <Compile Include="Patterns\Common\ChangeControlPackage\VersionedObject.cs" />
     <Compile Include="Patterns\Common\GenericPackage\PartyIdentified.cs" />
     <Compile Include="Patterns\Common\GenericPackage\PartyProxy.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

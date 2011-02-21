@@ -11,6 +11,11 @@ namespace Vela.RM.Core.DataTypes.TextPackage
 	[Serializable, OpenEhrName("DV_CODED_TEXT")]
 	public class CodedText : Text
 	{
+		public CodedText(string value) : base(value)
+		{
+			
+		}
+
 		///<summary>
 		/// The term which the ‘value’ attribute is the textual rendition (i.e. rubric) of.
 		///</summary>
@@ -20,7 +25,5 @@ namespace Vela.RM.Core.DataTypes.TextPackage
 			get;
 			set;
 		}
-
-		//TODO: implement Equals
 	}
 }

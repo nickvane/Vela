@@ -8,7 +8,7 @@ namespace Vela.RM.Unittests.Core.DataTypes.TextPackage
 		[Test]
 		public void MappingsShouldReturnEmptyList()
 		{
-			var text = new RM.Core.DataTypes.TextPackage.Text();
+			var text = new RM.Core.DataTypes.TextPackage.Text("");
 			Assert.NotNull(text.Mappings);
 		}
 	}
