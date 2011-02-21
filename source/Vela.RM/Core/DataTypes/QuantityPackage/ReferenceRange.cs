@@ -1,7 +1,6 @@
 ﻿using System;
 using Vela.RM.Core.DataTypes.TextPackage;
 using Vela.RM.Core.Support;
-using Vela.RM.Core.Support.Helper;
 
 namespace Vela.RM.Core.DataTypes.QuantityPackage
 {

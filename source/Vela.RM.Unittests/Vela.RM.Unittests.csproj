@@ -54,6 +54,15 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Core\DataStructures\HistoryPackage\HistoryTests.cs" />
+    <Compile Include="Core\DataStructures\HistoryPackage\IntervalEventTests.cs" />
+    <Compile Include="Core\DataStructures\ItemStructurePackage\ItemTreeTests.cs" />
+    <Compile Include="Core\DataStructures\ItemStructurePackage\ItemListTests.cs" />
+    <Compile Include="Core\DataStructures\RepresentationPackage\ElementTests.cs" />
+    <Compile Include="Core\DataTypes\DateTimePackage\TimeTests.cs" />
+    <Compile Include="Core\DataTypes\DateTimePackage\DurationTests.cs" />
+    <Compile Include="Core\DataTypes\DateTimePackage\DateTimeTests.cs" />
+    <Compile Include="Core\DataTypes\DateTimePackage\DateTests.cs" />
     <Compile Include="Core\DataTypes\QuantityPackage\AmountTests.cs" />
     <Compile Include="Core\DataTypes\QuantityPackage\AbsoluteQuantityTests.cs" />
     <Compile Include="Core\DataTypes\QuantityPackage\ProportionTests.cs" />
@@ -63,6 +72,7 @@
     <Compile Include="Core\DataTypes\QuantityPackage\OrderedTests.cs" />
     <Compile Include="Core\DataTypes\QuantityPackage\OrdinalTests.cs" />
     <Compile Include="Core\DataTypes\QuantityPackage\ReferenceRangeTests.cs" />
+    <Compile Include="Core\DataTypes\TextPackage\CodedTextTests.cs" />
     <Compile Include="Core\DataTypes\TextPackage\ParagraphTests.cs" />
     <Compile Include="Core\DataTypes\TextPackage\TerminologyMappingTests.cs" />
     <Compile Include="Core\DataTypes\TextPackage\TextTests.cs" />
@@ -88,6 +98,7 @@
     <Compile Include="Core\Support\IdentificationPackage\ObjectIdTests.cs" />
     <Compile Include="Core\Support\TerminologyPackage\OpenEhrCodeSetIdentifiersTests.cs" />
     <Compile Include="Core\Support\TerminologyPackage\OpenEhrTerminologyGroupIdentifiersTests.cs" />
+    <Compile Include="Patterns\Common\ArchetypedPackage\LocatableTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ResourcesTests.cs" />
   </ItemGroup>
@@ -98,10 +109,9 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Core\DataStructures\" />
     <Folder Include="Core\Support\AssumedTypes\" />
     <Folder Include="Domain\" />
-    <Folder Include="Patterns\Common\" />
+    <Folder Include="Patterns\Common\ChangeControlPackage\" />
     <Folder Include="Patterns\Security\" />
   </ItemGroup>
   <ItemGroup>

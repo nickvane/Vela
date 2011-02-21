@@ -15,6 +15,15 @@ namespace Vela.RM.Core.DataTypes.TextPackage
 		private IList<TerminologyMapping> _mappings;
 
 		/// <summary>
+		/// 
+		/// </summary>
+		/// <param name="value">Displayable rendition of the item, regardless of its underlying structure. For DV_CODED_TEXT, this is the rubric of the complete term as provided by the terminology service. No carriage returns, line feeds, or other non-printing characters permitted.</param>
+		public Text(string value)
+		{
+			Value = value;
+		}
+
+		/// <summary>
 		/// Displayable rendition of the item, regardless of its underlying structure. For DV_CODED_TEXT, this is the rubric of the complete term as provided by the terminology service. No carriage returns, line feeds, or other non-printing characters permitted.
 		/// </summary>
 		[OpenEhrName("value")]

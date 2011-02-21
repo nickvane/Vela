@@ -1,6 +1,6 @@
 ﻿using System;
-using System.Linq;
 using System.Collections.Generic;
+using System.Linq;
 using Vela.RM.Core.DataStructures.RepresentationPackage;
 using Vela.RM.Core.DataTypes.TextPackage;
 using Vela.RM.Core.Support;
@@ -22,11 +22,16 @@ namespace Vela.RM.Core.DataStructures.ItemStructurePackage
 		/// Physical representation of the list.
 		/// </summary>
 		[OpenEhrName("items")]
-		public IList<Element> Items { get
+		public IList<Element> Items
 		{
-			return _items ?? (_items = new List<Element>());
-		}
-			set { _items = value; }
+			get
+			{
+				return _items ?? (_items = new List<Element>());
+			}
+			set
+			{
+				_items = value;
+			}
 		}
 
 		/// <summary>
@@ -36,7 +41,8 @@ namespace Vela.RM.Core.DataStructures.ItemStructurePackage
 		[OpenEhrName("names")]
 		public IList<Text> GetNames()
 		{
-			return (from e in Items select e.Name).ToList();
+			return (from e in Items
+					select e.Name).ToList();
 		}
 
 		/// <summary>
@@ -44,9 +50,11 @@ namespace Vela.RM.Core.DataStructures.ItemStructurePackage
 		/// </summary>
 		/// <returns></returns>
 		[OpenEhrName("named_item")]
-		public Element GetNamedItem(string path)
+		public Element GetNamedItem(string name)
 		{
-			return (from e in Items where e.Name.Value == path select e).First();
+			return (from e in Items
+					where e.Name.Value == name
+					select e).FirstOrDefault();
 		}
 	}
 }

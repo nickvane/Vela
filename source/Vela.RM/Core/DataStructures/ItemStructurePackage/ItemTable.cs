@@ -19,7 +19,11 @@ namespace Vela.RM.Core.DataStructures.ItemStructurePackage
 		/// Physical representation of the table as a list of Clusters, each containing the data of one row of the table.
 		/// </summary>
 		[OpenEhrName("rows")]
-		public List<Cluster> Rows { get; set; }
+		public IList<Cluster> Rows
+		{
+			get;
+			set;
+		}
 
 		//TODO: add functions from specification
 	}
