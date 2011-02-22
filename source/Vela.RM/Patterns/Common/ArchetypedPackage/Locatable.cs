@@ -11,7 +11,7 @@ namespace Vela.RM.Patterns.Common.ArchetypedPackage
 	///</summary>
 	[Serializable]
 	[OpenEhrName("LOCATABLE")]
-	public abstract class Locatable : IPathable
+	public abstract class Locatable : Pathable
 	{
 		///<summary>
 		/// Runtime name of this fragment, used to build runtime paths. This is the term provided via a clinical application or batch process to name this EHR construct: its retention in the EHR faithfully preserves the original label by which this entry was known to end users.
@@ -75,7 +75,7 @@ namespace Vela.RM.Patterns.Common.ArchetypedPackage
 		/// Parent of this node in compositional hierarchy.
 		///</summary>
 		[OpenEhrName("parent")]
-		public IPathable Parent { get; set; }
+		public Pathable Parent { get; set; }
 
 		///<summary>
 		/// The path to an item relative to the root of this archetyped structure.
@@ -83,7 +83,7 @@ namespace Vela.RM.Patterns.Common.ArchetypedPackage
 		///<param name="item"></param>
 		///<returns></returns>
 		[OpenEhrName("path_of_item")]
-		public string GetPathOfItem(IPathable item)
+		public string GetPathOfItem(Pathable item)
 		{
 			throw new NotImplementedException();
 		}

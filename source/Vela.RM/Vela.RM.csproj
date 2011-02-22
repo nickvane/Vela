@@ -80,12 +80,33 @@
     <Compile Include="Core\DataTypes\DateTimePackage\Temporal.cs" />
     <Compile Include="Core\DataTypes\DateTimePackage\Time.cs" />
     <Compile Include="Core\DataTypes\TimeSpecificationPackage\TimeSpecification.cs" />
+    <Compile Include="Domain\Composition\CompositionPackage\Composition.cs" />
+    <Compile Include="Domain\Composition\CompositionPackage\EventContext.cs" />
+    <Compile Include="Domain\Composition\CompositionPackage\ContentPackage\ContentItem.cs" />
+    <Compile Include="Domain\Composition\CompositionPackage\ContentPackage\EntryPackage\Action.cs" />
+    <Compile Include="Domain\Composition\CompositionPackage\ContentPackage\EntryPackage\Activity.cs" />
+    <Compile Include="Domain\Composition\CompositionPackage\ContentPackage\EntryPackage\AdminEntry.cs" />
+    <Compile Include="Domain\Composition\CompositionPackage\ContentPackage\EntryPackage\CareEntry.cs" />
+    <Compile Include="Domain\Composition\CompositionPackage\ContentPackage\EntryPackage\Entry.cs" />
+    <Compile Include="Domain\Composition\CompositionPackage\ContentPackage\EntryPackage\Evaluation.cs" />
+    <Compile Include="Domain\Composition\CompositionPackage\ContentPackage\EntryPackage\Instruction.cs" />
+    <Compile Include="Domain\Composition\CompositionPackage\ContentPackage\EntryPackage\InstructionDetails.cs" />
+    <Compile Include="Domain\Composition\CompositionPackage\ContentPackage\EntryPackage\IsmTransition.cs" />
+    <Compile Include="Domain\Composition\CompositionPackage\ContentPackage\EntryPackage\Observation.cs" />
+    <Compile Include="Domain\Composition\CompositionPackage\ContentPackage\NavigationPackage\Section.cs" />
+    <Compile Include="Domain\Ehr\EhrPackage\EhrAccess.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Domain\Ehr\EhrPackage\EhrStatus.cs" />
+    <Compile Include="Domain\Ehr\EhrPackage\VersionedComposition.cs" />
+    <Compile Include="Domain\Ehr\EhrPackage\VersionedEhrAccess.cs" />
+    <Compile Include="Domain\Ehr\EhrPackage\VersionedEhrStatus.cs" />
     <Compile Include="Patterns\Common\ArchetypedPackage\Archetyped.cs" />
     <Compile Include="Patterns\Common\ArchetypedPackage\FeederAudit.cs" />
     <Compile Include="Patterns\Common\ArchetypedPackage\FeederAuditDetails.cs" />
     <Compile Include="Patterns\Common\ArchetypedPackage\Link.cs" />
     <Compile Include="Patterns\Common\ArchetypedPackage\Locatable.cs" />
-    <Compile Include="Patterns\Common\ArchetypedPackage\IPathable.cs" />
+    <Compile Include="Patterns\Common\ArchetypedPackage\Pathable.cs" />
     <Compile Include="Core\DataStructures\DataStructure.cs" />
     <Compile Include="Core\DataTypes\BasicPackage\Boolean.cs" />
     <Compile Include="Core\DataTypes\BasicPackage\DataValue.cs" />
@@ -170,6 +191,7 @@
     <Compile Include="Patterns\Common\ResourcePackage\ResourceDescription.cs" />
     <Compile Include="Patterns\Common\ResourcePackage\ResourceDescriptionItem.cs" />
     <Compile Include="Patterns\Common\ResourcePackage\TranslationDetails.cs" />
+    <Compile Include="Patterns\Security\AccessControlPackage\AccessControlSettings.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -179,8 +201,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Core\Support\AssumedTypes\" />
-    <Folder Include="Domain\" />
-    <Folder Include="Patterns\Security\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Core\Support\Library types.txt" />
