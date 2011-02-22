@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using Vela.RM.Core.DataTypes.QuantityPackage;
 using Vela.RM.Core.DataTypes.TextPackage;
 using Vela.RM.Core.Support;
 using Vela.RM.Patterns.Common.GenericPackage;
@@ -12,6 +13,8 @@ namespace Vela.RM.Patterns.Common.ResourcePackage
 	[OpenEhrName("AUTHORED_RESOURCE")]
 	public abstract class AuthoredResource
 	{
+		private IDictionary<string, TranslationDetails> _translations;
+
 		///<summary>
 		/// Language in which this resource was initially authored. Although there is no language primacy of resources overall, the language of original authoring is required to ensure natural language translations can preserve quality. 
 		/// Language is relevant in both the description and ontology sections.
@@ -23,7 +26,11 @@ namespace Vela.RM.Patterns.Common.ResourcePackage
 		/// List of details for each natural translation made of this resource, keyed by language. For each translation listed here, there must be corresponding sections in all language-dependent parts of the resource. The original_language does not appear in this list.
 		///</summary>
 		[OpenEhrName("translations")]
-		public IDictionary<string, TranslationDetails> Translations { get; set; }
+		public IDictionary<string, TranslationDetails> Translations
+		{
+			get { return _translations ?? (_translations = new Dictionary<string, TranslationDetails>()); }
+			set { _translations = value; }
+		}
 
 		///<summary>
 		/// Description and lifecycle information of the resource.
@@ -50,7 +57,8 @@ namespace Vela.RM.Patterns.Common.ResourcePackage
 		[OpenEhrName("current_revision")]
 		public string GetCurrentRevision()
 		{
-			return !IsControlled ? string.Empty : RevisionHistory.GetMostRecentVersion();
+			if (!IsControlled | RevisionHistory == null) return string.Empty;
+			return RevisionHistory.GetMostRecentVersion();
 		}
 
 		/// <summary>
@@ -61,7 +69,7 @@ namespace Vela.RM.Patterns.Common.ResourcePackage
 		public HashSet<string> GetAvailableLanguages()
 		{
 			var languages = new HashSet<string>();
-			languages.Add(OriginalLanguage.CodeString);
+			if (OriginalLanguage != null) languages.Add(OriginalLanguage.CodeString);
 			languages.UnionWith(from t in Translations select t.Key);
 			return languages;
 		}
