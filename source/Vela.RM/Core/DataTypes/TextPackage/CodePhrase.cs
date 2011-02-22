@@ -14,8 +14,17 @@ namespace Vela.RM.Core.DataTypes.TextPackage
 		/// <summary>
 		/// Identifier of the distinct terminology from which the code_string (or its elements) was extracted.
 		/// </summary>
+		/// <param name="codeString"></param>
+		public CodePhrase(string codeString)
+		{
+			CodeString = codeString;
+		}
+
+		/// <summary>
+		/// Identifier of the distinct terminology from which the code_string (or its elements) was extracted.
+		/// </summary>
 		[OpenEhrName("code_string")]
-		public virtual string CodeString
+		public string CodeString
 		{
 			get;
 			set;
@@ -24,7 +33,7 @@ namespace Vela.RM.Core.DataTypes.TextPackage
 		/// The key used by the terminology service to identify a concept or coordination of concepts. This string is most likely parsable inside the terminology service, but nothing can be assumed about its syntax outside that context.
 		/// </summary>
 		[OpenEhrName("terminology_id")]
-		public virtual TerminologyId TerminologyId
+		public TerminologyId TerminologyId
 		{
 			get;
 			set;
