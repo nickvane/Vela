@@ -11,10 +11,22 @@ namespace Vela.RM.Core.DataStructures.RepresentationPackage
 	[OpenEhrName("CLUSTER")]
 	public class Cluster : Item
 	{
+		private IList<Item> _items;
+
 		/// <summary>
 		/// Ordered list of items - <see cref="Cluster"/> or <see cref="Cluster"/> objects - under this <see cref="Element"/>.
 		/// </summary>
 		[OpenEhrName("items")]
-		public IList<Item> Items { get; set; }
+		public IList<Item> Items
+		{
+			get
+			{
+				return _items ?? (_items = new List<Item>());
+			}
+			set
+			{
+				_items = value;
+			}
+		}
 	}
 }

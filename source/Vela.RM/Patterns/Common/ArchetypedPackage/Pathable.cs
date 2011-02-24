@@ -22,10 +22,7 @@ namespace Vela.RM.Patterns.Common.ArchetypedPackage
 		///<param name="item"></param>
 		///<returns></returns>
 		[OpenEhrName("path_of_item")]
-		public string GetPathOfItem(Pathable item)
-		{
-			throw new NotImplementedException();
-		}
+		public abstract string GetPathOfItem(Pathable item);
 
 		///<summary>
 		/// The item at a path (relative to this item); only valid for unique paths, i.e. paths that resolve to a single item.
@@ -33,10 +30,7 @@ namespace Vela.RM.Patterns.Common.ArchetypedPackage
 		///<param name="path"></param>
 		///<returns></returns>
 		[OpenEhrName("item_at_path")]
-		public object GetItemAtPath(string path)
-		{
-			throw new NotImplementedException();
-		}
+		public abstract object GetItemAtPath(string path);
 
 		///<summary>
 		/// List of items corresponding to a non-unique path.
@@ -44,10 +38,7 @@ namespace Vela.RM.Patterns.Common.ArchetypedPackage
 		///<param name="path"></param>
 		///<returns></returns>
 		[OpenEhrName("items_at_path")]
-		public List<Object> GetItemsAtPath(string path)
-		{
-			throw new NotImplementedException();
-		}
+		public abstract List<Object> GetItemsAtPath(string path);
 
 		///<summary>
 		/// True if the path exists in the data with respect to the current item.
@@ -55,10 +46,7 @@ namespace Vela.RM.Patterns.Common.ArchetypedPackage
 		///<param name="path"></param>
 		///<returns></returns>
 		[OpenEhrName("path_exists")]
-		public bool DoesPathExists(string path)
-		{
-			throw new NotImplementedException();
-		}
+		public abstract bool DoesPathExists(string path);
 
 		///<summary>
 		/// True if the path corresponds to a single item in the data.
@@ -66,9 +54,6 @@ namespace Vela.RM.Patterns.Common.ArchetypedPackage
 		///<param name="path"></param>
 		///<returns></returns>
 		[OpenEhrName("path_unique")]
-		public bool IsPathUnique(string path)
-		{
-			throw new NotImplementedException();
-		}
+		public abstract bool IsPathUnique(string path);
 	}
 }
