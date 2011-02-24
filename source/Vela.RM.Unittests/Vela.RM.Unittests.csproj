@@ -56,8 +56,10 @@
   <ItemGroup>
     <Compile Include="Core\DataStructures\HistoryPackage\HistoryTests.cs" />
     <Compile Include="Core\DataStructures\HistoryPackage\IntervalEventTests.cs" />
+    <Compile Include="Core\DataStructures\ItemStructurePackage\ItemTableTests.cs" />
     <Compile Include="Core\DataStructures\ItemStructurePackage\ItemTreeTests.cs" />
     <Compile Include="Core\DataStructures\ItemStructurePackage\ItemListTests.cs" />
+    <Compile Include="Core\DataStructures\RepresentationPackage\ClusterTests.cs" />
     <Compile Include="Core\DataStructures\RepresentationPackage\ElementTests.cs" />
     <Compile Include="Core\DataTypes\DateTimePackage\TimeTests.cs" />
     <Compile Include="Core\DataTypes\DateTimePackage\DurationTests.cs" />
@@ -98,6 +100,8 @@
     <Compile Include="Core\Support\IdentificationPackage\ObjectIdTests.cs" />
     <Compile Include="Core\Support\TerminologyPackage\OpenEhrCodeSetIdentifiersTests.cs" />
     <Compile Include="Core\Support\TerminologyPackage\OpenEhrTerminologyGroupIdentifiersTests.cs" />
+    <Compile Include="Domain\Composition\CompositionPackage\CompositionTests.cs" />
+    <Compile Include="Domain\Composition\CompositionPackage\ContentPackage\EntryPackage\EntryTests.cs" />
     <Compile Include="Patterns\Common\ArchetypedPackage\LocatableTests.cs" />
     <Compile Include="Patterns\Common\ChangeControlPackage\OriginalVersionTests.cs" />
     <Compile Include="Patterns\Common\ChangeControlPackage\VersionTests.cs" />
@@ -114,7 +118,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Core\Support\AssumedTypes\" />
-    <Folder Include="Domain\" />
     <Folder Include="Patterns\Security\" />
   </ItemGroup>
   <ItemGroup>

@@ -16,6 +16,15 @@ namespace Vela.RM.Core.DataTypes.QuantityPackage
 		private ReferenceRange<Ordinal> _limits;
 
 		/// <summary>
+		/// 
+		/// </summary>
+		/// <param name="value">Value in ordered enumeration of values. Any integer value can be used.</param>
+		public Ordinal(int value)
+		{
+			Value = value;
+		}
+
+		/// <summary>
 		/// Value in ordered enumeration of values. Any integer value can be used.
 		/// </summary>
 		[OpenEhrName("value")]

@@ -13,6 +13,8 @@ namespace Vela.RM.Patterns.Common.ArchetypedPackage
 	[OpenEhrName("LOCATABLE")]
 	public abstract class Locatable : Pathable
 	{
+		private string _pathSeparator = "/";
+
 		///<summary>
 		/// Runtime name of this fragment, used to build runtime paths. This is the term provided via a clinical application or batch process to name this EHR construct: its retention in the EHR faithfully preserves the original label by which this entry was known to end users.
 		///</summary>
@@ -68,22 +70,14 @@ namespace Vela.RM.Patterns.Common.ArchetypedPackage
 		{
 			get { throw new NotImplementedException(); }
 		}
-
-		#region IPathable Members
-
-		///<summary>
-		/// Parent of this node in compositional hierarchy.
-		///</summary>
-		[OpenEhrName("parent")]
-		public Pathable Parent { get; set; }
-
+		
 		///<summary>
 		/// The path to an item relative to the root of this archetyped structure.
 		///</summary>
 		///<param name="item"></param>
 		///<returns></returns>
 		[OpenEhrName("path_of_item")]
-		public string GetPathOfItem(Pathable item)
+		public override string GetPathOfItem(Pathable item)
 		{
 			throw new NotImplementedException();
 		}
@@ -94,8 +88,10 @@ namespace Vela.RM.Patterns.Common.ArchetypedPackage
 		///<param name="path"></param>
 		///<returns></returns>
 		[OpenEhrName("item_at_path")]
-		public object GetItemAtPath(string path)
+		public override object GetItemAtPath(string path)
 		{
+			if (string.IsNullOrEmpty(path)) return null;
+			if (path == _pathSeparator) return this;
 			throw new NotImplementedException();
 		}
 
@@ -105,7 +101,7 @@ namespace Vela.RM.Patterns.Common.ArchetypedPackage
 		///<param name="path"></param>
 		///<returns></returns>
 		[OpenEhrName("items_at_path")]
-		public List<object> GetItemsAtPath(string path)
+		public override List<object> GetItemsAtPath(string path)
 		{
 			throw new NotImplementedException();
 		}
@@ -116,7 +112,7 @@ namespace Vela.RM.Patterns.Common.ArchetypedPackage
 		///<param name="path"></param>
 		///<returns></returns>
 		[OpenEhrName("path_exists")]
-		public bool DoesPathExists(string path)
+		public override bool DoesPathExists(string path)
 		{
 			throw new NotImplementedException();
 		}
@@ -127,11 +123,9 @@ namespace Vela.RM.Patterns.Common.ArchetypedPackage
 		///<param name="path"></param>
 		///<returns></returns>
 		[OpenEhrName("path_unique")]
-		public bool IsPathUnique(string path)
+		public override bool IsPathUnique(string path)
 		{
 			throw new NotImplementedException();
 		}
-
-		#endregion
 	}
 }

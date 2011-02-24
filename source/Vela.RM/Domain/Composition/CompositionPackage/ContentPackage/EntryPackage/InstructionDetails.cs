@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using Vela.RM.Core.DataStructures.ItemStructurePackage;
 using Vela.RM.Core.Support;
 using Vela.RM.Core.Support.IdentificationPackage;
@@ -34,5 +35,55 @@ namespace Vela.RM.Domain.Composition.CompositionPackage.ContentPackage.EntryPack
 		/// </summary>
 		[OpenEhrName("wf_details")]
 		public ItemStructure WorkflowDetails { get; set; }
+
+		///<summary>
+		/// The path to an item relative to the root of this archetyped structure.
+		///</summary>
+		///<param name="item"></param>
+		///<returns></returns>
+		public override string GetPathOfItem(Pathable item)
+		{
+			throw new NotImplementedException();
+		}
+
+		///<summary>
+		/// The item at a path (relative to this item); only valid for unique paths, i.e. paths that resolve to a single item.
+		///</summary>
+		///<param name="path"></param>
+		///<returns></returns>
+		public override object GetItemAtPath(string path)
+		{
+			throw new NotImplementedException();
+		}
+
+		///<summary>
+		/// List of items corresponding to a non-unique path.
+		///</summary>
+		///<param name="path"></param>
+		///<returns></returns>
+		public override List<object> GetItemsAtPath(string path)
+		{
+			throw new NotImplementedException();
+		}
+
+		///<summary>
+		/// True if the path exists in the data with respect to the current item.
+		///</summary>
+		///<param name="path"></param>
+		///<returns></returns>
+		public override bool DoesPathExists(string path)
+		{
+			throw new NotImplementedException();
+		}
+
+		///<summary>
+		/// True if the path corresponds to a single item in the data.
+		///</summary>
+		///<param name="path"></param>
+		///<returns></returns>
+		public override bool IsPathUnique(string path)
+		{
+			throw new NotImplementedException();
+		}
 	}
 }
