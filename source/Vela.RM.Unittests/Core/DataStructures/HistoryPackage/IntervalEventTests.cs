@@ -2,7 +2,7 @@
 using NUnit.Framework;
 using Vela.RM.Core.DataStructures.HistoryPackage;
 
-namespace Vela.RM.Unittests.Core.DataStructures.HistoryPackage
+namespace Vela.RM.UnitTests.Core.DataStructures.HistoryPackage
 {
 	[TestFixture]
 	public class WhenUsingIntervalEvent

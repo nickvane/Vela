@@ -4,7 +4,7 @@ using Vela.RM.Core.DataTypes.TextPackage;
 using Vela.RM.Core.Support.IdentificationPackage;
 using Vela.RM.Patterns.Common.ChangeControlPackage;
 
-namespace Vela.RM.Unittests.Patterns.Common.ChangeControlPackage
+namespace Vela.RM.UnitTests.Patterns.Common.ChangeControlPackage
 {
 	[TestFixture]
 	public class WhenUsingVersion

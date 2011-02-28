@@ -2,7 +2,7 @@
 using Vela.RM.Core.DataStructures.ItemStructurePackage;
 using Vela.RM.Core.Support;
 
-namespace Vela.RM.Domain.Composition.CompositionPackage.ContentPackage.EntryPackage
+namespace Vela.RM.Domain.Compositions.CompositionPackage.ContentPackage.EntryPackage
 {
 	/// <summary>
 	/// Entry subtype for administrative information, i.e. information about setting up the clinical process, but not itself clinically relevant. Archetypes will define contained information.

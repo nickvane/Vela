@@ -76,27 +76,26 @@
     <Compile Include="Core\DataTypes\DateTimePackage\Temporal.cs" />
     <Compile Include="Core\DataTypes\DateTimePackage\Time.cs" />
     <Compile Include="Core\DataTypes\TimeSpecificationPackage\TimeSpecification.cs" />
-    <Compile Include="Domain\Composition\CompositionPackage\Composition.cs" />
-    <Compile Include="Domain\Composition\CompositionPackage\EventContext.cs" />
-    <Compile Include="Domain\Composition\CompositionPackage\ContentPackage\ContentItem.cs" />
-    <Compile Include="Domain\Composition\CompositionPackage\ContentPackage\EntryPackage\Action.cs" />
-    <Compile Include="Domain\Composition\CompositionPackage\ContentPackage\EntryPackage\Activity.cs" />
-    <Compile Include="Domain\Composition\CompositionPackage\ContentPackage\EntryPackage\AdminEntry.cs" />
-    <Compile Include="Domain\Composition\CompositionPackage\ContentPackage\EntryPackage\CareEntry.cs" />
-    <Compile Include="Domain\Composition\CompositionPackage\ContentPackage\EntryPackage\Entry.cs" />
-    <Compile Include="Domain\Composition\CompositionPackage\ContentPackage\EntryPackage\Evaluation.cs" />
-    <Compile Include="Domain\Composition\CompositionPackage\ContentPackage\EntryPackage\Instruction.cs" />
-    <Compile Include="Domain\Composition\CompositionPackage\ContentPackage\EntryPackage\InstructionDetails.cs" />
-    <Compile Include="Domain\Composition\CompositionPackage\ContentPackage\EntryPackage\IsmTransition.cs" />
-    <Compile Include="Domain\Composition\CompositionPackage\ContentPackage\EntryPackage\Observation.cs" />
-    <Compile Include="Domain\Composition\CompositionPackage\ContentPackage\NavigationPackage\Section.cs" />
-    <Compile Include="Domain\Ehr\EhrPackage\EhrAccess.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="Domain\Ehr\EhrPackage\EhrStatus.cs" />
+    <Compile Include="Domain\Compositions\CompositionPackage\Composition.cs" />
+    <Compile Include="Domain\Compositions\CompositionPackage\EventContext.cs" />
+    <Compile Include="Domain\Compositions\CompositionPackage\ContentPackage\ContentItem.cs" />
+    <Compile Include="Domain\Compositions\CompositionPackage\ContentPackage\EntryPackage\Action.cs" />
+    <Compile Include="Domain\Compositions\CompositionPackage\ContentPackage\EntryPackage\Activity.cs" />
+    <Compile Include="Domain\Compositions\CompositionPackage\ContentPackage\EntryPackage\AdminEntry.cs" />
+    <Compile Include="Domain\Compositions\CompositionPackage\ContentPackage\EntryPackage\CareEntry.cs" />
+    <Compile Include="Domain\Compositions\CompositionPackage\ContentPackage\EntryPackage\Entry.cs" />
+    <Compile Include="Domain\Compositions\CompositionPackage\ContentPackage\EntryPackage\Evaluation.cs" />
+    <Compile Include="Domain\Compositions\CompositionPackage\ContentPackage\EntryPackage\Instruction.cs" />
+    <Compile Include="Domain\Compositions\CompositionPackage\ContentPackage\EntryPackage\InstructionDetails.cs" />
+    <Compile Include="Domain\Compositions\CompositionPackage\ContentPackage\EntryPackage\IsmTransition.cs" />
+    <Compile Include="Domain\Compositions\CompositionPackage\ContentPackage\EntryPackage\Observation.cs" />
+    <Compile Include="Domain\Compositions\CompositionPackage\ContentPackage\NavigationPackage\Section.cs" />
     <Compile Include="Domain\Ehr\EhrPackage\VersionedComposition.cs" />
-    <Compile Include="Domain\Ehr\EhrPackage\VersionedEhrAccess.cs" />
-    <Compile Include="Domain\Ehr\EhrPackage\VersionedEhrStatus.cs" />
+    <Compile Include="Domain\Entities\CompositionVersion.cs" />
+    <Compile Include="Domain\Repositories\ICompositionVersionRepository.cs" />
+    <Compile Include="Domain\Specifications\VersionsFromTrunk.cs" />
+    <Compile Include="Domain\Specifications\VersionsForVersionedCompositionId.cs" />
+    <Compile Include="Domain\Specifications\VersionWithVersionId.cs" />
     <Compile Include="Patterns\Common\ArchetypedPackage\Archetyped.cs" />
     <Compile Include="Patterns\Common\ArchetypedPackage\FeederAudit.cs" />
     <Compile Include="Patterns\Common\ArchetypedPackage\FeederAuditDetails.cs" />
@@ -207,6 +206,12 @@
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
     </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Vela.Common\Vela.Common.csproj">
+      <Project>{D03FD7DB-3886-4D57-A01D-2F01C6CFE02C}</Project>
+      <Name>Vela.Common</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.Targets" />
 </Project>

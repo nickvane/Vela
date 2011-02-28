@@ -2,7 +2,7 @@
 using Vela.RM.Core.DataStructures.ItemStructurePackage;
 using Vela.RM.Core.Support;
 
-namespace Vela.RM.Domain.Composition.CompositionPackage.ContentPackage.EntryPackage
+namespace Vela.RM.Domain.Compositions.CompositionPackage.ContentPackage.EntryPackage
 {
 	/// <summary>
 	/// Used to record a clinical action that has been performed, which may have been ad hoc, or due to the execution of an Activity in an Instruction workflow. Every Action corresponds to a careflow step of some kind or another.

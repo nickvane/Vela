@@ -144,7 +144,7 @@ namespace Vela.Common.Dal.RavenDb
 			return GetQuery(specification).SingleOrDefault();
 		}
 
-		private IQueryable<T> GetQuery(Specification<T> specification)
+		protected IQueryable<T> GetQuery(Specification<T> specification)
 		{
 			return DocumentSession.Query<T>()
 				// .Customize(x => x.WaitForNonStaleResultsAsOfNow())

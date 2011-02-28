@@ -5,7 +5,7 @@ using Vela.RM.Core.DataTypes.TextPackage;
 using Vela.RM.Patterns.Common.GenericPackage;
 using Vela.RM.Patterns.Common.ResourcePackage;
 
-namespace Vela.RM.Unittests.Patterns.Common.ResourcePackage
+namespace Vela.RM.UnitTests.Patterns.Common.ResourcePackage
 {
 	[TestFixture]
 	public class WhenUsingAuthoredResource

@@ -1,6 +1,6 @@
 ﻿using NUnit.Framework;
 
-namespace Vela.RM.Unittests
+namespace Vela.RM.UnitTests
 {
 	[TestFixture]
 	public class WhenUsingResources

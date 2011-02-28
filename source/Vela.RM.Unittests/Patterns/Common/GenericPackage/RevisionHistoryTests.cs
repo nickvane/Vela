@@ -2,7 +2,7 @@
 using NUnit.Framework;
 using Vela.RM.Patterns.Common.GenericPackage;
 
-namespace Vela.RM.Unittests.Patterns.Common.GenericPackage
+namespace Vela.RM.UnitTests.Patterns.Common.GenericPackage
 {
 	[TestFixture]
 	public class WhenUsingRevisionHistory

@@ -2,7 +2,7 @@
 using NUnit.Framework;
 using Vela.RM.Core.Support.Helper;
 
-namespace Vela.RM.Unittests.Core.Support.Helper
+namespace Vela.RM.UnitTests.Core.Support.Helper
 {
 	[TestFixture]
 	public class WhenUsingICustomAttributeProviderExtensionMethods

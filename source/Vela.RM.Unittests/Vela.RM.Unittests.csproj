@@ -5,8 +5,8 @@
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">x86</Platform>
     <OutputType>Library</OutputType>
-    <RootNamespace>Vela.RM.Unittests</RootNamespace>
-    <AssemblyName>Vela.RM.Unittests</AssemblyName>
+    <RootNamespace>Vela.RM.UnitTests</RootNamespace>
+    <AssemblyName>Vela.RM.UnitTests</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <TargetFrameworkProfile>Client</TargetFrameworkProfile>
     <AppDesignerFolder>Properties</AppDesignerFolder>

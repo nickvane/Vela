@@ -9,6 +9,8 @@ namespace Vela.RM.Core.Support.IdentificationPackage
 	[Serializable, OpenEhrName("UID")]
 	public abstract class Uid
 	{
+		protected Uid(){}
+
 		protected Uid(string value)
 		{
 			Assertion.WhenNull(value);

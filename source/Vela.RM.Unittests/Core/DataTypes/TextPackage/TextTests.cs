@@ -1,6 +1,6 @@
 ﻿using NUnit.Framework;
 
-namespace Vela.RM.Unittests.Core.DataTypes.TextPackage
+namespace Vela.RM.UnitTests.Core.DataTypes.TextPackage
 {
 	[TestFixture]
 	public class WhenUsingText

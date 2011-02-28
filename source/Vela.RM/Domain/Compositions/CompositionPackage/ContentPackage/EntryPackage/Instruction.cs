@@ -5,7 +5,7 @@ using Vela.RM.Core.DataTypes.TextPackage;
 using Vela.RM.Core.Support;
 using DateTime = Vela.RM.Core.DataTypes.DateTimePackage.DateTime;
 
-namespace Vela.RM.Domain.Composition.CompositionPackage.ContentPackage.EntryPackage
+namespace Vela.RM.Domain.Compositions.CompositionPackage.ContentPackage.EntryPackage
 {
 	/// <summary>
 	/// Used to specify actions in the future. Enables simple and complex specifications to be expressed, including in a fully-computable workflow form.

@@ -11,6 +11,10 @@ namespace Vela.RM.Core.Support.IdentificationPackage
 	{
 		private string _value;
 
+		protected ObjectId() : base()
+		{
+		}
+
 		protected ObjectId(string value)
 			: base(value)
 		{

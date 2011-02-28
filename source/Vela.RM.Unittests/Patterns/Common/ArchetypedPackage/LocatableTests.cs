@@ -2,7 +2,7 @@
 using NUnit.Framework;
 using Vela.RM.Patterns.Common.ArchetypedPackage;
 
-namespace Vela.RM.Unittests.Patterns.Common.ArchetypedPackage
+namespace Vela.RM.UnitTests.Patterns.Common.ArchetypedPackage
 {
 	[TestFixture]
 	public class WhenUsingLocatableAsBaseclass

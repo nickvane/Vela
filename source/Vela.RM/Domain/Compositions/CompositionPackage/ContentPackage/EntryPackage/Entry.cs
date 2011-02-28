@@ -3,9 +3,10 @@ using System.Collections.Generic;
 using Vela.RM.Core.DataTypes.TextPackage;
 using Vela.RM.Core.Support;
 using Vela.RM.Core.Support.IdentificationPackage;
+using Vela.RM.Domain.Compositions.CompositionPackage.ContentPackage;
 using Vela.RM.Patterns.Common.GenericPackage;
 
-namespace Vela.RM.Domain.Composition.CompositionPackage.ContentPackage.EntryPackage
+namespace Vela.RM.Domain.Compositions.CompositionPackage.ContentPackage.EntryPackage
 {
 	/// <summary>
 	/// The abstract parent of all <see cref="Entry"/> subtypes. An <see cref="Entry"/> is the root of a logical item of “hard” clinical information created in the “clinical statement” context, within a clinical session. There can be numerous such contexts in a clinical session. Observations and other Entry types only ever document information captured/created in the event documented by the enclosing Composition. 

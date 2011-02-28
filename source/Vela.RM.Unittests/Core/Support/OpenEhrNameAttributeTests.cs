@@ -3,7 +3,7 @@ using NUnit.Framework;
 using Vela.RM.Core.Support;
 using Vela.RM.Core.Support.Helper;
 
-namespace Vela.RM.Unittests.Core.Support
+namespace Vela.RM.UnitTests.Core.Support
 {
 	[TestFixture]
 	public class WhenUsingOpenEhrNameAttribute

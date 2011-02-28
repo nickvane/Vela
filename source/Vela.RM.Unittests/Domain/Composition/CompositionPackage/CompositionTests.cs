@@ -1,6 +1,6 @@
 ﻿using NUnit.Framework;
 
-namespace Vela.RM.Unittests.Domain.Composition.CompositionPackage
+namespace Vela.RM.UnitTests.Domain.Composition.CompositionPackage
 {
 	[TestFixture]
 	public class CompositionTests
@@ -9,7 +9,7 @@ namespace Vela.RM.Unittests.Domain.Composition.CompositionPackage
 		[ExpectedException]
 		public void IsPersistentThrowsException()
 		{
-			var composition = new Vela.RM.Domain.Composition.CompositionPackage.Composition();
+			var composition = new RM.Domain.Compositions.CompositionPackage.Composition();
 			var isPersistent = composition.IsPersistent();
 		}
 	}

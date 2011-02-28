@@ -1,7 +1,7 @@
 ﻿using NUnit.Framework;
 using Vela.RM.Core.Support.TerminologyPackage;
 
-namespace Vela.RM.Unittests.Core.Support.TerminologyPackage
+namespace Vela.RM.UnitTests.Core.Support.TerminologyPackage
 {
 	[TestFixture]
 	public class WhenUsingCodeSetIdentifiers

@@ -1,9 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using Vela.RM.Core.Support;
-using Vela.RM.Domain.Composition.CompositionPackage.ContentPackage.EntryPackage;
+using Vela.RM.Domain.Compositions.CompositionPackage.ContentPackage.EntryPackage;
+using Vela.RM.Domain.Compositions.CompositionPackage.ContentPackage;
 
-namespace Vela.RM.Domain.Composition.CompositionPackage.ContentPackage.NavigationPackage
+namespace Vela.RM.Domain.Compositions.CompositionPackage.ContentPackage.NavigationPackage
 {
 	/// <summary>
 	/// Represents a heading in a heading structure, or “section tree”.
