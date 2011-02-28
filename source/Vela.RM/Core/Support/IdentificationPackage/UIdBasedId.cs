@@ -9,6 +9,8 @@ namespace Vela.RM.Core.Support.IdentificationPackage
 	[Serializable, OpenEhrName("UID_BASED_ID")]
 	public abstract class UIdBasedId : ObjectId
 	{
+		protected UIdBasedId() : base() {}
+
 		protected UIdBasedId(string value)
 			: base(value)
 		{

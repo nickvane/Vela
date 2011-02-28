@@ -2,7 +2,7 @@
 using Vela.RM.Core.Support;
 using Vela.RM.Patterns.Common.ArchetypedPackage;
 
-namespace Vela.RM.Domain.Composition.CompositionPackage.ContentPackage
+namespace Vela.RM.Domain.Compositions.CompositionPackage.ContentPackage
 {
 	/// <summary>
 	/// Abstract ancestor of all concrete content types.

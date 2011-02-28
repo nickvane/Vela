@@ -1,7 +1,7 @@
 ﻿using NUnit.Framework;
 using Vela.RM.Core.DataTypes.QuantityPackage;
 
-namespace Vela.RM.Unittests.Core.DataTypes.QuantityPackage
+namespace Vela.RM.UnitTests.Core.DataTypes.QuantityPackage
 {
 	[TestFixture]
 	public class WhenUsingOrdinal

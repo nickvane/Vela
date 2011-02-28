@@ -4,7 +4,7 @@ using Vela.RM.Core.DataTypes.Encapsulatedpackage;
 using Vela.RM.Core.Support;
 using Vela.RM.Patterns.Common.ArchetypedPackage;
 
-namespace Vela.RM.Domain.Composition.CompositionPackage.ContentPackage.EntryPackage
+namespace Vela.RM.Domain.Compositions.CompositionPackage.ContentPackage.EntryPackage
 {
 	/// <summary>
 	/// Defines a single activity within an Instruction, such as a medication administration.

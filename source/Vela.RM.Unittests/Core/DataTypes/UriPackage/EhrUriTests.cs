@@ -2,7 +2,7 @@
 using NUnit.Framework;
 using Vela.RM.Core.DataTypes.UriPackage;
 
-namespace Vela.RM.Unittests.Core.DataTypes.UriPackage
+namespace Vela.RM.UnitTests.Core.DataTypes.UriPackage
 {
 	[TestFixture]
 	public class WhenUsingEhrUri

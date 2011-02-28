@@ -3,7 +3,7 @@ using NUnit.Framework;
 using Vela.RM.Core.DataTypes.QuantityPackage;
 using Vela.RM.Core.Support.MeasurementPackage;
 
-namespace Vela.RM.Unittests.Core.DataTypes.QuantityPackage
+namespace Vela.RM.UnitTests.Core.DataTypes.QuantityPackage
 {
 	[TestFixture]
 	public class WhenUsingQuantity

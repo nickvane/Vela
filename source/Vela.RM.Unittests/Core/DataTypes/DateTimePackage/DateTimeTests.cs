@@ -3,7 +3,7 @@ using NUnit.Framework;
 using Vela.RM.Core.DataTypes.DateTimePackage;
 using DateTime = Vela.RM.Core.DataTypes.DateTimePackage.DateTime;
 
-namespace Vela.RM.Unittests.Core.DataTypes.DateTimePackage
+namespace Vela.RM.UnitTests.Core.DataTypes.DateTimePackage
 {
 	[TestFixture]
 	public class WhenUsingDateTime

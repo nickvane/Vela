@@ -5,7 +5,7 @@ using Vela.RM.Core.Support;
 using Vela.RM.Core.Support.IdentificationPackage;
 using Vela.RM.Patterns.Common.ArchetypedPackage;
 
-namespace Vela.RM.Domain.Composition.CompositionPackage.ContentPackage.EntryPackage
+namespace Vela.RM.Domain.Compositions.CompositionPackage.ContentPackage.EntryPackage
 {
 	/// <summary>
 	/// Used to record details of the Instruction causing an Action.

@@ -16,5 +16,10 @@ namespace Vela.RM.Core.Support.IdentificationPackage
 			: base(value)
 		{
 		}
+
+		public HierObjectId() : base()
+		{
+			
+		}
 	}
 }

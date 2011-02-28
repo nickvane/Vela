@@ -2,7 +2,7 @@
 using NUnit.Framework;
 using Vela.RM.Core.DataStructures.RepresentationPackage;
 
-namespace Vela.RM.Unittests.Core.DataStructures.RepresentationPackage
+namespace Vela.RM.UnitTests.Core.DataStructures.RepresentationPackage
 {
 	[TestFixture]
 	public class WhenUsingElement

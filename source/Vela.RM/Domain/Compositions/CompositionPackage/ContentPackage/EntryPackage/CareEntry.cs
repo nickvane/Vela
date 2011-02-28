@@ -3,7 +3,7 @@ using Vela.RM.Core.DataStructures.ItemStructurePackage;
 using Vela.RM.Core.Support;
 using Vela.RM.Core.Support.IdentificationPackage;
 
-namespace Vela.RM.Domain.Composition.CompositionPackage.ContentPackage.EntryPackage
+namespace Vela.RM.Domain.Compositions.CompositionPackage.ContentPackage.EntryPackage
 {
 	/// <summary>
 	/// The abstract parent of all clinical <see cref="CareEntry"/> subtypes. A <see cref="Entry"/> defines protocol and guideline attributes for all clinical Entry subtypes.

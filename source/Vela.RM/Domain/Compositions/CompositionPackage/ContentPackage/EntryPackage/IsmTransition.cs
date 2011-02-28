@@ -4,7 +4,7 @@ using Vela.RM.Core.DataTypes.TextPackage;
 using Vela.RM.Core.Support;
 using Vela.RM.Patterns.Common.ArchetypedPackage;
 
-namespace Vela.RM.Domain.Composition.CompositionPackage.ContentPackage.EntryPackage
+namespace Vela.RM.Domain.Compositions.CompositionPackage.ContentPackage.EntryPackage
 {
 	/// <summary>
 	/// Model of a transition in the Instruction State machine, caused by a careflow step. The attributes document the careflow step as well as the ISM transition.

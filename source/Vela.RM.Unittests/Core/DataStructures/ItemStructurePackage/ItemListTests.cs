@@ -4,7 +4,7 @@ using Vela.RM.Core.DataStructures.ItemStructurePackage;
 using Vela.RM.Core.DataStructures.RepresentationPackage;
 using Text = Vela.RM.Core.DataTypes.TextPackage.Text;
 
-namespace Vela.RM.Unittests.Core.DataStructures.ItemStructurePackage
+namespace Vela.RM.UnitTests.Core.DataStructures.ItemStructurePackage
 {
 	[TestFixture]
 	public class WhenUsingItemList

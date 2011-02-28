@@ -1,7 +1,7 @@
 ﻿using NUnit.Framework;
-using Vela.RM.Domain.Composition.CompositionPackage.ContentPackage.EntryPackage;
+using Vela.RM.Domain.Compositions.CompositionPackage.ContentPackage.EntryPackage;
 
-namespace Vela.RM.Unittests.Domain.Composition.CompositionPackage.ContentPackage.EntryPackage
+namespace Vela.RM.UnitTests.Domain.Composition.CompositionPackage.ContentPackage.EntryPackage
 {
 	[TestFixture]
 	public class EntryTests

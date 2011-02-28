@@ -2,7 +2,7 @@
 using Vela.RM.Core.DataStructures.ItemStructurePackage;
 using Vela.RM.Core.Support;
 
-namespace Vela.RM.Domain.Composition.CompositionPackage.ContentPackage.EntryPackage
+namespace Vela.RM.Domain.Compositions.CompositionPackage.ContentPackage.EntryPackage
 {
 	/// <summary>
 	/// Entry type for evaluation statements.

@@ -3,11 +3,17 @@ Microsoft Visual Studio Solution File, Format Version 11.00
 # Visual Studio 2010
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Vela.RM", "Vela.RM\Vela.RM.csproj", "{4690F71C-79B4-4636-92A7-5FB39D7253B5}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Vela.RM.Unittests", "Vela.RM.Unittests\Vela.RM.Unittests.csproj", "{44B60792-2324-49FF-8694-68C807DBFE97}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Vela.RM.UnitTests", "Vela.RM.Unittests\Vela.RM.UnitTests.csproj", "{44B60792-2324-49FF-8694-68C807DBFE97}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Vela.Common", "Vela.Common\Vela.Common.csproj", "{D03FD7DB-3886-4D57-A01D-2F01C6CFE02C}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Vela.Common.UnitTests", "Vela.Common.UnitTests\Vela.Common.UnitTests.csproj", "{D960283C-5D48-4899-BDED-067B22B64993}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Vela.RM.Dal", "Vela.RM.Dal\Vela.RM.Dal.csproj", "{8DA8DA12-B183-4038-A983-BB1C32705925}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "UnitTests", "UnitTests", "{D753BA55-26AD-41B9-8855-19D5E8792E0D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Vela.RM.Dal.UnitTests", "Vela.RM.Dal.UnitTests\Vela.RM.Dal.UnitTests.csproj", "{D8B61F1C-7406-4D75-8DEB-016BEFDE1B02}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -59,8 +65,33 @@ Global
 		{D960283C-5D48-4899-BDED-067B22B64993}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
 		{D960283C-5D48-4899-BDED-067B22B64993}.Release|Mixed Platforms.Build.0 = Release|Any CPU
 		{D960283C-5D48-4899-BDED-067B22B64993}.Release|x86.ActiveCfg = Release|Any CPU
+		{8DA8DA12-B183-4038-A983-BB1C32705925}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8DA8DA12-B183-4038-A983-BB1C32705925}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8DA8DA12-B183-4038-A983-BB1C32705925}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{8DA8DA12-B183-4038-A983-BB1C32705925}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{8DA8DA12-B183-4038-A983-BB1C32705925}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{8DA8DA12-B183-4038-A983-BB1C32705925}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8DA8DA12-B183-4038-A983-BB1C32705925}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8DA8DA12-B183-4038-A983-BB1C32705925}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{8DA8DA12-B183-4038-A983-BB1C32705925}.Release|Mixed Platforms.Build.0 = Release|Any CPU
+		{8DA8DA12-B183-4038-A983-BB1C32705925}.Release|x86.ActiveCfg = Release|Any CPU
+		{D8B61F1C-7406-4D75-8DEB-016BEFDE1B02}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D8B61F1C-7406-4D75-8DEB-016BEFDE1B02}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D8B61F1C-7406-4D75-8DEB-016BEFDE1B02}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{D8B61F1C-7406-4D75-8DEB-016BEFDE1B02}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{D8B61F1C-7406-4D75-8DEB-016BEFDE1B02}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{D8B61F1C-7406-4D75-8DEB-016BEFDE1B02}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D8B61F1C-7406-4D75-8DEB-016BEFDE1B02}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D8B61F1C-7406-4D75-8DEB-016BEFDE1B02}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{D8B61F1C-7406-4D75-8DEB-016BEFDE1B02}.Release|Mixed Platforms.Build.0 = Release|Any CPU
+		{D8B61F1C-7406-4D75-8DEB-016BEFDE1B02}.Release|x86.ActiveCfg = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{D960283C-5D48-4899-BDED-067B22B64993} = {D753BA55-26AD-41B9-8855-19D5E8792E0D}
+		{44B60792-2324-49FF-8694-68C807DBFE97} = {D753BA55-26AD-41B9-8855-19D5E8792E0D}
+		{D8B61F1C-7406-4D75-8DEB-016BEFDE1B02} = {D753BA55-26AD-41B9-8855-19D5E8792E0D}
 	EndGlobalSection
 EndGlobal

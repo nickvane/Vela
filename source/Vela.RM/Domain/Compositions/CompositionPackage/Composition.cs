@@ -2,12 +2,12 @@
 using System.Collections.Generic;
 using Vela.RM.Core.DataTypes.TextPackage;
 using Vela.RM.Core.Support;
-using Vela.RM.Domain.Composition.CompositionPackage.ContentPackage;
+using Vela.RM.Domain.Compositions.CompositionPackage.ContentPackage;
 using Vela.RM.Domain.Ehr.EhrPackage;
 using Vela.RM.Patterns.Common.ArchetypedPackage;
 using Vela.RM.Patterns.Common.GenericPackage;
 
-namespace Vela.RM.Domain.Composition.CompositionPackage
+namespace Vela.RM.Domain.Compositions.CompositionPackage
 {
 	/// <summary>
 	/// One version in a <see cref="VersionedComposition"/>. A composition is considered the unit of modification of the record, the unit of transmission in record extracts, and the unit of attestation by authorising clinicians. In this latter sense, it may be considered equivalent to a signed document.
