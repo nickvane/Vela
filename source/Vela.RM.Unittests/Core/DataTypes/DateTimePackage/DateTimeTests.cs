@@ -48,11 +48,15 @@ namespace Vela.RM.UnitTests.Core.DataTypes.DateTimePackage
 		}
 
 		[Test]
-		[ExpectedException(typeof(NotImplementedException))]
-		public void CompareToShouldThrowException()
+		public void CompareShouldWork()
 		{
-			var date = new DateTime();
-			date.CompareTo(null);
+			var date1 = new DateTime { Value = "20110220" };
+			var date2 = new DateTime { Value = "20110320" };
+			var date3 = new DateTime { Value = "20110220" };
+
+			Assert.IsTrue(date1 == date3);
+			Assert.IsTrue(date2 > date1);
+			Assert.IsTrue(date3 < date2);
 		}
 	}
 }

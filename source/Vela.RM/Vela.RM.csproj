@@ -48,6 +48,9 @@
     <CheckForOverflowUnderflow>False</CheckForOverflowUnderflow>
     <DefineConstants>TRACE</DefineConstants>
   </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x86'">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Core">
@@ -195,6 +198,9 @@
     <Folder Include="Core\Support\AssumedTypes\" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="..\Global\key.snk">
+      <Link>key.snk</Link>
+    </None>
     <None Include="Core\Support\Library types.txt" />
     <None Include="Domain\CompositionVersion.cd" />
   </ItemGroup>

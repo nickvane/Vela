@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using Vela.RM.Core.Support;
 using Vela.RM.Properties;
 
@@ -74,7 +75,11 @@ namespace Vela.RM.Core.DataTypes.DateTimePackage
 		/// <param name="other">An object to compare with this object.</param>
 		public override int CompareTo(DateTime other)
 		{
-			throw new NotImplementedException();
+			if (Value == other.Value) return 0;
+			var sorted = new List<string> {other.Value, Value};
+			sorted.Sort();
+			if (sorted[0] == Value) return -1;
+			return 1;
 		}
 	}
 }
