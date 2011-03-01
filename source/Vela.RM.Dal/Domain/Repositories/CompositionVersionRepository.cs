@@ -2,6 +2,7 @@
 using System.Linq;
 using Raven.Client;
 using Vela.Common.Dal.RavenDb;
+using Vela.RM.Domain.Compositions.CompositionPackage;
 using Vela.RM.Domain.Entities;
 using Vela.RM.Domain.Repositories;
 using Vela.RM.Domain.Specifications;
@@ -53,7 +54,7 @@ namespace Vela.RM.Dal.Domain.Repositories
 		public bool IsOriginalVersion(string versionId)
 		{
 			var compositionVersion = GetVersion(versionId);
-			return compositionVersion != null && compositionVersion.Version.GetType().IsAssignableFrom(typeof (OriginalVersion<CompositionVersion>));
+			return compositionVersion != null && compositionVersion.Version.GetType().IsAssignableFrom(typeof (OriginalVersion<Composition>));
 		}
 
 		/// <summary>
@@ -65,7 +66,7 @@ namespace Vela.RM.Dal.Domain.Repositories
 		{
 			return
 				GetQuery(new VersionsForVersionedCompositionId(versionedCompositionId)).OrderByDescending
-					(v => v.Version.CommitAudit.TimeCommitted).SingleOrDefault();
+					(v => v.Version.CommitAudit.TimeCommitted).FirstOrDefault();
 		}
 
 		/// <summary>
@@ -77,7 +78,7 @@ namespace Vela.RM.Dal.Domain.Repositories
 		{
 			return
 				GetQuery(new VersionsForVersionedCompositionId(versionedCompositionId) && new VersionsFromTrunk()).OrderByDescending
-					(v => v.Version.CommitAudit.TimeCommitted).SingleOrDefault();
+					(v => v.Version.CommitAudit.TimeCommitted).FirstOrDefault();
 		}
 	}
 }
