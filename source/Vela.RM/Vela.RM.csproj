@@ -134,8 +134,6 @@
     </Compile>
     <Compile Include="Core\DataTypes\UriPackage\EhrUri.cs" />
     <Compile Include="Core\DataTypes\UriPackage\Uri.cs" />
-    <Compile Include="Core\Support\Helper\Assertion.cs" />
-    <Compile Include="Core\Support\Helper\Attributes.cs" />
     <Compile Include="Core\Support\IdentificationPackage\AccessGroupRef.cs" />
     <Compile Include="Core\Support\IdentificationPackage\ArchetypeId.cs" />
     <Compile Include="Core\Support\IdentificationPackage\GenericId.cs" />
@@ -167,7 +165,6 @@
     <Compile Include="Core\Support\TerminologyPackage\ITerminologyService.cs" />
     <Compile Include="Patterns\Common\ChangeControlPackage\Contribution.cs" />
     <Compile Include="Patterns\Common\ChangeControlPackage\ImportedVersion.cs" />
-    <Compile Include="Patterns\Common\ChangeControlPackage\IVersionedObjectService.cs" />
     <Compile Include="Patterns\Common\ChangeControlPackage\OriginalVersion.cs" />
     <Compile Include="Patterns\Common\ChangeControlPackage\Version.cs" />
     <Compile Include="Patterns\Common\ChangeControlPackage\VersionedObject.cs" />
@@ -199,6 +196,7 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Core\Support\Library types.txt" />
+    <None Include="Domain\CompositionVersion.cd" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Properties\Resources.resx">

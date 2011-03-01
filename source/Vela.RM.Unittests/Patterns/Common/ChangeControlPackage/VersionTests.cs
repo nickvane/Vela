@@ -30,7 +30,7 @@ namespace Vela.RM.UnitTests.Patterns.Common.ChangeControlPackage
 		public void CanonicalFormShouldThrowException()
 		{
 			var version = new OriginalVersion<string>();
-			var result = version.CanonicalForm();
+			var result = version.GetCanonicalForm();
 		}
 	}
 

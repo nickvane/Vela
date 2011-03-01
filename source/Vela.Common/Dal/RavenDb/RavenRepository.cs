@@ -4,20 +4,34 @@ using System.Collections.Generic;
 using System.Linq;
 using Raven.Client;
 using Vela.Common.Dal.LinqSpecs;
+using Vela.Common.Helper;
 
 namespace Vela.Common.Dal.RavenDb
 {
 	public class RavenRepository<T> : IRepository<T> where T : class, IDocument
 	{
-		public RavenRepository(IDocumentSession session)
+		private IQueryable<T> _collection;
+
+		public RavenRepository(IDocumentSession session, IQueryable<T> collection)
 		{
+			Assertion.WhenNull(session);
 			DocumentSession = session;
+			_collection = collection;
 		}
 
 		/// <summary>
 		/// 
 		/// </summary>
-		public IDocumentSession DocumentSession { get; set; }
+		protected IDocumentSession DocumentSession { get; set; }
+
+		/// <summary>
+		/// 
+		/// </summary>
+		public IQueryable<T> Collection
+		{
+			get { return _collection ?? DocumentSession.Query<T>(); }
+			set { _collection = value; }
+		}
 
 		/// <summary>
 		/// Gets the entity with the specified id.
@@ -25,11 +39,10 @@ namespace Vela.Common.Dal.RavenDb
 		/// <returns>Found object from the database, or an empty(default) one if not found.</returns>
 		public T this[string id]
 		{
-			get
-			{
-				return string.IsNullOrEmpty(id) ? null : DocumentSession.Load<T>(id);
-			}
+			get { return string.IsNullOrEmpty(id) ? null : DocumentSession.Load<T>(id); }
 		}
+
+		#region IRepository<T> Members
 
 		/// <summary>
 		/// Returns an enumerator that iterates through the collection.
@@ -40,7 +53,7 @@ namespace Vela.Common.Dal.RavenDb
 		/// <filterpriority>1</filterpriority>
 		public IEnumerator<T> GetEnumerator()
 		{
-			throw new NotImplementedException();
+			return Collection.Take(1000).GetEnumerator();
 		}
 
 		/// <summary>
@@ -69,7 +82,7 @@ namespace Vela.Common.Dal.RavenDb
 		/// </summary>
 		public void Clear()
 		{
-			throw new NotImplementedException();
+			throw new NotSupportedException();
 		}
 
 		/// <summary>
@@ -81,6 +94,7 @@ namespace Vela.Common.Dal.RavenDb
 		/// <param name="item">The object to locate in the <see cref="T:System.Collections.Generic.ICollection`1"/>.</param>
 		public bool Contains(T item)
 		{
+			if (item == null) return false;
 			return this[item.Id] != null;
 		}
 
@@ -90,7 +104,7 @@ namespace Vela.Common.Dal.RavenDb
 		/// <param name="array">The one-dimensional <see cref="T:System.Array"/> that is the destination of the elements copied from <see cref="T:System.Collections.Generic.ICollection`1"/>. The <see cref="T:System.Array"/> must have zero-based indexing.</param><param name="arrayIndex">The zero-based index in <paramref name="array"/> at which copying begins.</param><exception cref="T:System.ArgumentNullException"><paramref name="array"/> is null.</exception><exception cref="T:System.ArgumentOutOfRangeException"><paramref name="arrayIndex"/> is less than 0.</exception><exception cref="T:System.ArgumentException"><paramref name="array"/> is multidimensional.-or-The number of elements in the source <see cref="T:System.Collections.Generic.ICollection`1"/> is greater than the available space from <paramref name="arrayIndex"/> to the end of the destination <paramref name="array"/>.-or-Type <paramref name="T"/> cannot be cast automatically to the type of the destination <paramref name="array"/>.</exception>
 		public void CopyTo(T[] array, int arrayIndex)
 		{
-			throw new NotImplementedException();
+			throw new NotSupportedException();
 		}
 
 		/// <summary>
@@ -112,7 +126,12 @@ namespace Vela.Common.Dal.RavenDb
 		/// <returns>
 		/// The number of elements contained in the <see cref="T:System.Collections.Generic.ICollection`1"/>.
 		/// </returns>
-		public int Count { get { return DocumentSession.Query<T>().Count(); } 
+		public int Count
+		{
+			get
+			{
+				return Collection.Count();
+			}
 			private set { throw new NotImplementedException(); }
 		}
 
@@ -122,7 +141,12 @@ namespace Vela.Common.Dal.RavenDb
 		/// <returns>
 		/// true if the <see cref="T:System.Collections.Generic.ICollection`1"/> is read-only; otherwise, false.
 		/// </returns>
-		public bool IsReadOnly { get { return false; } }
+		public bool IsReadOnly
+		{
+			get { return false; }
+		}
+
+		#endregion
 
 		///<summary>
 		/// Find all by specification
@@ -146,9 +170,7 @@ namespace Vela.Common.Dal.RavenDb
 
 		protected IQueryable<T> GetQuery(Specification<T> specification)
 		{
-			return DocumentSession.Query<T>()
-				// .Customize(x => x.WaitForNonStaleResultsAsOfNow())
-				.Where(specification.IsSatisfiedBy());
+			return Collection.Where(specification.IsSatisfiedBy());
 		}
 	}
 }

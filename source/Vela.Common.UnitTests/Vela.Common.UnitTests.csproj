@@ -34,11 +34,33 @@
     <Reference Include="nunit.framework">
       <HintPath>..\..\lib\NUnit\nunit.framework.dll</HintPath>
     </Reference>
+    <Reference Include="Raven.Client.Lightweight">
+      <HintPath>..\..\lib\RavenDB\Client\Raven.Client.Lightweight.dll</HintPath>
+    </Reference>
+    <Reference Include="Rhino.Mocks">
+      <HintPath>..\..\Lib\RhinoMocks\Rhino.Mocks.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Dal\DocumentScopeTests.cs" />
+    <Compile Include="Dal\RavenDb\RavenRepositoryTests.cs" />
+    <Compile Include="Helper\AssertionTests.cs" />
+    <Compile Include="Helper\AttributesTests.cs" />
+    <Compile Include="LinqSpecs\AdHocSpecificationFixture.cs" />
+    <Compile Include="LinqSpecs\BooleanOperators\AndSpecificationFixture.cs" />
+    <Compile Include="LinqSpecs\BooleanOperators\NegateSpecificationFixture.cs" />
+    <Compile Include="LinqSpecs\BooleanOperators\OrSpecificationFixture.cs" />
+    <Compile Include="LinqSpecs\DomainSample\SampleRepository.cs" />
+    <Compile Include="LinqSpecs\OtherSamples.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Vela.Common\Vela.Common.csproj">
+      <Project>{D03FD7DB-3886-4D57-A01D-2F01C6CFE02C}</Project>
+      <Name>Vela.Common</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

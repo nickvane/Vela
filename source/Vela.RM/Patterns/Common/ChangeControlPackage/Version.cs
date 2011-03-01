@@ -81,7 +81,7 @@ namespace Vela.RM.Patterns.Common.ChangeControlPackage
 		///</summary>
 		///<returns></returns>
 		[OpenEhrName("canonical_form")]
-		public string CanonicalForm()
+		public string GetCanonicalForm()
 		{
 			throw new NotImplementedException();
 		}

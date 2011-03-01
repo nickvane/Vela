@@ -80,8 +80,6 @@
     <Compile Include="Core\DataTypes\TextPackage\TextTests.cs" />
     <Compile Include="Core\DataTypes\UriPackage\EhrUriTests.cs" />
     <Compile Include="Core\DataTypes\UriPackage\UriTests.cs" />
-    <Compile Include="Core\Support\Helper\AssertionTests.cs" />
-    <Compile Include="Core\Support\Helper\AttributesTests.cs" />
     <Compile Include="Core\Support\IdentificationPackage\ArchetypeIdTests.cs" />
     <Compile Include="Core\Support\IdentificationPackage\IsoOIdTests.cs" />
     <Compile Include="Core\Support\IdentificationPackage\LocatableRefTests.cs" />
@@ -100,8 +98,16 @@
     <Compile Include="Core\Support\IdentificationPackage\ObjectIdTests.cs" />
     <Compile Include="Core\Support\TerminologyPackage\OpenEhrCodeSetIdentifiersTests.cs" />
     <Compile Include="Core\Support\TerminologyPackage\OpenEhrTerminologyGroupIdentifiersTests.cs" />
-    <Compile Include="Domain\Composition\CompositionPackage\CompositionTests.cs" />
-    <Compile Include="Domain\Composition\CompositionPackage\ContentPackage\EntryPackage\EntryTests.cs" />
+    <Compile Include="Domain\Compositions\CompositionPackage\CompositionTests.cs" />
+    <Compile Include="Domain\Compositions\CompositionPackage\ContentPackage\EntryPackage\EntryTests.cs" />
+    <Compile Include="Domain\Compositions\CompositionPackage\ContentPackage\EntryPackage\InstructionDetailsTests.cs" />
+    <Compile Include="Domain\Compositions\CompositionPackage\ContentPackage\EntryPackage\IsmTransitionTests.cs" />
+    <Compile Include="Domain\Compositions\CompositionPackage\EventContextTests.cs" />
+    <Compile Include="Domain\Ehr\EhrPackage\VersionedCompositionTests.cs" />
+    <Compile Include="Domain\Entities\CompositionVersionTests.cs" />
+    <Compile Include="Domain\Specifications\VersionsForVersionedCompositionIdTests.cs" />
+    <Compile Include="Domain\Specifications\VersionsFromTrunkTests.cs" />
+    <Compile Include="Domain\Specifications\VersionWithVersionIdTests.cs" />
     <Compile Include="Patterns\Common\ArchetypedPackage\LocatableTests.cs" />
     <Compile Include="Patterns\Common\ChangeControlPackage\OriginalVersionTests.cs" />
     <Compile Include="Patterns\Common\ChangeControlPackage\VersionTests.cs" />
@@ -111,6 +117,10 @@
     <Compile Include="ResourcesTests.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Vela.Common\Vela.Common.csproj">
+      <Project>{D03FD7DB-3886-4D57-A01D-2F01C6CFE02C}</Project>
+      <Name>Vela.Common</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Vela.RM\Vela.RM.csproj">
       <Project>{4690F71C-79B4-4636-92A7-5FB39D7253B5}</Project>
       <Name>Vela.RM</Name>
