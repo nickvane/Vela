@@ -1,7 +1,5 @@
 ﻿using System;
-using Vela.Common.Dal.RavenDb;
 using Vela.RM.Core.Support;
-using Vela.RM.Core.Support.IdentificationPackage;
 using Vela.RM.Patterns.Common.ChangeControlPackage;
 
 namespace Vela.RM.Domain.Ehr.EhrPackage
@@ -11,7 +9,7 @@ namespace Vela.RM.Domain.Ehr.EhrPackage
 	/// </summary>
 	[Serializable]
 	[OpenEhrName("VERSIONED_COMPOSITION")]
-	public class VersionedComposition : VersionedObject<Compositions.CompositionPackage.Composition>, IDocument
+	public class VersionedComposition : VersionedObject<Compositions.CompositionPackage.Composition>
 	{
 		/// <summary>
 		/// Indicates whether this composition set is persistent; derived from first version.
@@ -20,23 +18,6 @@ namespace Vela.RM.Domain.Ehr.EhrPackage
 		public bool IsPersistent()
 		{
 			throw new NotImplementedException();
-		}
-
-		/// <summary>
-		/// Implementation of IDocument. Maps to Uid.Value
-		/// </summary>
-		public virtual string Id
-		{
-			get
-			{
-				if (Uid == null) Uid = new HierObjectId();
-				return Uid.Value;
-			}
-			set
-			{
-				if (Uid == null) Uid = new HierObjectId();
-				Uid.Value = value;
-			}
 		}
 	}
 }

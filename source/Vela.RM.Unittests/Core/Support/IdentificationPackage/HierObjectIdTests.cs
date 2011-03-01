@@ -11,6 +11,7 @@ namespace Vela.RM.UnitTests.Core.Support.IdentificationPackage
 		public void ShouldConstructWithoutExceptions()
 		{
 			new HierObjectId(Guid.NewGuid().ToString());
+			new HierObjectId();
 		}
 	}
 }

@@ -11,7 +11,7 @@ namespace Vela.RM.Dal.Domain.Repositories
 {
 	public class CompositionVersionRepository : RavenRepository<CompositionVersion>, ICompositionVersionRepository
 	{
-		public CompositionVersionRepository(IDocumentSession session) : base(session)
+		public CompositionVersionRepository(IDocumentSession session, IQueryable<CompositionVersion> collection) : base(session, collection)
 		{
 		}
 
@@ -42,7 +42,7 @@ namespace Vela.RM.Dal.Domain.Repositories
 		/// <returns></returns>
 		public CompositionVersion GetVersion(string versionId)
 		{
-			return FindOne(new VersionWithVersionId(versionId));
+			return this[versionId];
 		}
 
 		///<summary>
@@ -52,7 +52,7 @@ namespace Vela.RM.Dal.Domain.Repositories
 		/// <returns></returns>
 		public bool IsOriginalVersion(string versionId)
 		{
-			CompositionVersion compositionVersion = GetVersion(versionId);
+			var compositionVersion = GetVersion(versionId);
 			return compositionVersion != null && compositionVersion.Version.GetType().IsAssignableFrom(typeof (OriginalVersion<CompositionVersion>));
 		}
 

@@ -1,7 +1,7 @@
 ﻿using System.Linq;
 using NUnit.Framework;
+using Vela.Common.Helper;
 using Vela.RM.Core.Support;
-using Vela.RM.Core.Support.Helper;
 
 namespace Vela.RM.UnitTests.Core.Support
 {

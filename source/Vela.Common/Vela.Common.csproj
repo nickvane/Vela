@@ -61,6 +61,8 @@
     <Compile Include="Dal\RavenDb\IRepository.cs" />
     <Compile Include="Dal\DocumentSessionScope.cs" />
     <Compile Include="Dal\RavenDb\RavenRepository.cs" />
+    <Compile Include="Helper\Assertion.cs" />
+    <Compile Include="Helper\Attributes.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

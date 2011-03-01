@@ -36,7 +36,9 @@ namespace Vela.RM.UnitTests.Patterns.Common.ArchetypedPackage
 		public void GetItemAtPathShouldThrowException()
 		{
 			var locatable = new LocatableTest();
-			var result = locatable.GetItemAtPath("");
+			Assert.IsNull(locatable.GetItemAtPath(""));
+			Assert.AreEqual(locatable, locatable.GetItemAtPath("/"));
+			var result = locatable.GetItemAtPath("foo");
 		}
 
 		[Test]

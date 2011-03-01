@@ -1,5 +1,5 @@
 ﻿using System;
-using Vela.RM.Core.Support.Helper;
+using Vela.Common.Helper;
 using Vela.RM.Properties;
 
 namespace Vela.RM.Core.Support.IdentificationPackage
