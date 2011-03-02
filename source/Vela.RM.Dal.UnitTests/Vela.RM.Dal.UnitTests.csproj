@@ -44,6 +44,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Domain\Repositories\CompositionVersionRepositoryTests.cs" />
+    <Compile Include="Domain\Repositories\EhrStatusRepositoryTests.cs" />
+    <Compile Include="Domain\Repositories\EhrRootRepositoryTests.cs" />
+    <Compile Include="Domain\Repositories\EhrAccessVersionRepositoryTests.cs" />
+    <Compile Include="Domain\Repositories\GenericVersionRepositoryTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

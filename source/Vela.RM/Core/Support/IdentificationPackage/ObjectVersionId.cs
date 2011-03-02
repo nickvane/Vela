@@ -77,7 +77,7 @@ namespace Vela.RM.Core.Support.IdentificationPackage
 		{
 			get
 			{
-				return VersionTreeId.IsBranch;
+				return VersionTreeId != null && VersionTreeId.IsBranch;
 			}
 		}
 	}

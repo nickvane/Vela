@@ -10,7 +10,7 @@ using DateTime = Vela.RM.Core.DataTypes.DateTimePackage.DateTime;
 namespace Vela.RM.Domain.Compositions.CompositionPackage
 {
 	/// <summary>
-	/// Documents the context information of a healthcare event involving the subject of care and the health system. The context information recorded here are independent of the attributes recorded in the version audit, which document the “system interaction” context, i.e. the context of a user interacting with the health record system. Healthcare events include patient contacts, and any other business activity, such as pathology investigations which take place on behalf of the patient.
+	/// Collection the context information of a healthcare event involving the subject of care and the health system. The context information recorded here are independent of the attributes recorded in the version audit, which document the “system interaction” context, i.e. the context of a user interacting with the health record system. Healthcare events include patient contacts, and any other business activity, such as pathology investigations which take place on behalf of the patient.
 	/// </summary>
 	[Serializable]
 	[OpenEhrName("EVENT_CONTEXT")]

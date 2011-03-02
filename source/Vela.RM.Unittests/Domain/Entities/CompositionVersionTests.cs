@@ -1,4 +1,5 @@
-﻿using NUnit.Framework;
+﻿using System;
+using NUnit.Framework;
 using Vela.RM.Core.Support.IdentificationPackage;
 using Vela.RM.Domain.Compositions.CompositionPackage;
 using Vela.RM.Domain.Entities;
@@ -29,6 +30,14 @@ namespace Vela.RM.UnitTests.Domain.Entities
 			Assert.AreEqual(uid1, compositionVersion.Id);
 			compositionVersion.Id = uid2;
 			Assert.AreEqual(uid2, compositionVersion.Id);
+		}
+
+		[Test]
+		[ExpectedException(typeof(NotImplementedException))]
+		public void IsPersistenThrowsException()
+		{
+			var v = new CompositionVersion();
+			var p = v.IsPersistent();
 		}
 	}
 }

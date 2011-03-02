@@ -48,12 +48,6 @@
     <Compile Include="Dal\RavenDb\RavenRepositoryTests.cs" />
     <Compile Include="Helper\AssertionTests.cs" />
     <Compile Include="Helper\AttributesTests.cs" />
-    <Compile Include="LinqSpecs\AdHocSpecificationFixture.cs" />
-    <Compile Include="LinqSpecs\BooleanOperators\AndSpecificationFixture.cs" />
-    <Compile Include="LinqSpecs\BooleanOperators\NegateSpecificationFixture.cs" />
-    <Compile Include="LinqSpecs\BooleanOperators\OrSpecificationFixture.cs" />
-    <Compile Include="LinqSpecs\DomainSample\SampleRepository.cs" />
-    <Compile Include="LinqSpecs\OtherSamples.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
