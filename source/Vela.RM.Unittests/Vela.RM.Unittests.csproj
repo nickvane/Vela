@@ -106,11 +106,9 @@
     <Compile Include="Domain\Compositions\CompositionPackage\ContentPackage\EntryPackage\InstructionDetailsTests.cs" />
     <Compile Include="Domain\Compositions\CompositionPackage\ContentPackage\EntryPackage\IsmTransitionTests.cs" />
     <Compile Include="Domain\Compositions\CompositionPackage\EventContextTests.cs" />
-    <Compile Include="Domain\Ehr\EhrPackage\VersionedCompositionTests.cs" />
+    <Compile Include="Domain\Ehr\EhrPackage\EhrAccessTests.cs" />
+    <Compile Include="Domain\Ehr\EhrPackage\EhrRootTests.cs" />
     <Compile Include="Domain\Entities\CompositionVersionTests.cs" />
-    <Compile Include="Domain\Specifications\VersionsForVersionedCompositionIdTests.cs" />
-    <Compile Include="Domain\Specifications\VersionsFromTrunkTests.cs" />
-    <Compile Include="Domain\Specifications\VersionWithVersionIdTests.cs" />
     <Compile Include="Patterns\Common\ArchetypedPackage\LocatableTests.cs" />
     <Compile Include="Patterns\Common\ChangeControlPackage\OriginalVersionTests.cs" />
     <Compile Include="Patterns\Common\ChangeControlPackage\VersionTests.cs" />

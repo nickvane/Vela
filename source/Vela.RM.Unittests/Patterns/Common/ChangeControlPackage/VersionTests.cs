@@ -18,11 +18,10 @@ namespace Vela.RM.UnitTests.Patterns.Common.ChangeControlPackage
 		}
 
 		[Test]
-		[ExpectedException(typeof(NotImplementedException))]
 		public void IsBranchShouldThrowException()
 		{
 			var version = new OriginalVersion<string>();
-			var result = version.IsBranch();
+			Assert.IsFalse(version.IsBranch);
 		}
 
 		[Test]

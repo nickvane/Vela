@@ -49,6 +49,10 @@
       <Link>Properties\GlobalAssemblyInfo.cs</Link>
     </Compile>
     <Compile Include="Domain\Repositories\CompositionVersionRepository.cs" />
+    <Compile Include="Domain\Repositories\EhrAccessVersionRepository.cs" />
+    <Compile Include="Domain\Repositories\EhrRootRepository.cs" />
+    <Compile Include="Domain\Repositories\EhrStatusVersionRepository.cs" />
+    <Compile Include="Domain\Repositories\GenericVersionRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

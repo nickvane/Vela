@@ -7,7 +7,7 @@ using Vela.RM.Patterns.Common.GenericPackage;
 namespace Vela.RM.Patterns.Common.ChangeControlPackage
 {
 	///<summary>
-	/// Documents a contribution of one or more versions added to a change-controlled repository.
+	/// Collection a contribution of one or more versions added to a change-controlled repository.
 	///</summary>
 	[Serializable, OpenEhrName("CONTRIBUTION")]
 	public class Contribution

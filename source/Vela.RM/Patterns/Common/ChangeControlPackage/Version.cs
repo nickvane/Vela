@@ -71,9 +71,12 @@ namespace Vela.RM.Patterns.Common.ChangeControlPackage
 		///</summary>
 		///<returns></returns>
 		[OpenEhrName("is_branch")]
-		public bool IsBranch()
+		public bool IsBranch
 		{
-			throw new NotImplementedException();
+			get
+			{
+				return Uid != null && Uid.IsBranch;
+			}
 		}
 
 		///<summary>

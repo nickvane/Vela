@@ -5,14 +5,14 @@ using Vela.RM.Domain.Ehr.EhrPackage;
 namespace Vela.RM.UnitTests.Domain.Ehr.EhrPackage
 {
 	[TestFixture]
-	public class WhenUsingVersionedComposition
+	public class WhenUsingEhrAccess
 	{
 		[Test]
 		[ExpectedException(typeof(NotImplementedException))]
-		public void IsPersistenThrowsException()
+		public void GetSchemeShouldThrowException()
 		{
-			var v = new VersionedComposition();
-			var p = v.IsPersistent();
+			var access = new EhrAccess();
+			var scheme = access.GetScheme();
 		}
 	}
 }

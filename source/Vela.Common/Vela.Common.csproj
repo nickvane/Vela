@@ -55,11 +55,6 @@
     <Compile Include="..\Global\GlobalAssemblyInfo.cs">
       <Link>Properties\GlobalAssemblyInfo.cs</Link>
     </Compile>
-    <Compile Include="Dal\LinqSpecs\AdHocSpecification.cs" />
-    <Compile Include="Dal\LinqSpecs\AndSpecification.cs" />
-    <Compile Include="Dal\LinqSpecs\NegateSpecification.cs" />
-    <Compile Include="Dal\LinqSpecs\OrSpecification.cs" />
-    <Compile Include="Dal\LinqSpecs\Specification.cs" />
     <Compile Include="Dal\RavenDb\IDocument.cs" />
     <Compile Include="Dal\RavenDb\IRepository.cs" />
     <Compile Include="Dal\DocumentSessionScope.cs" />
