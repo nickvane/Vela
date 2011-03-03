@@ -1,4 +1,4 @@
-﻿namespace Vela.Common.Dal.RavenDb
+﻿namespace Vela.Common.Dal.RavenDB
 {
 	public interface IDocument
 	{

@@ -18,12 +18,12 @@
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
     <OutputPath>..\bin\</OutputPath>
-    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DefineConstants>TRACE;DEBUG</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <UseVSHostingProcess>false</UseVSHostingProcess>
     <RunCodeAnalysis>true</RunCodeAnalysis>
-    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+    <CodeAnalysisRuleSet>..\..\build\CodeAnalysisRules.ruleset</CodeAnalysisRuleSet>
     <CodeAnalysisIgnoreGeneratedCode>false</CodeAnalysisIgnoreGeneratedCode>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
@@ -35,7 +35,7 @@
     <WarningLevel>4</WarningLevel>
     <UseVSHostingProcess>false</UseVSHostingProcess>
     <RunCodeAnalysis>true</RunCodeAnalysis>
-    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+    <CodeAnalysisRuleSet>..\..\build\CodeAnalysisRules.ruleset</CodeAnalysisRuleSet>
     <CodeAnalysisIgnoreGeneratedCode>false</CodeAnalysisIgnoreGeneratedCode>
   </PropertyGroup>
   <PropertyGroup>
@@ -55,10 +55,11 @@
     <Compile Include="..\Global\GlobalAssemblyInfo.cs">
       <Link>Properties\GlobalAssemblyInfo.cs</Link>
     </Compile>
-    <Compile Include="Dal\RavenDb\IDocument.cs" />
-    <Compile Include="Dal\RavenDb\IRepository.cs" />
+    <Compile Include="Dal\RavenDB\IDocument.cs" />
+    <Compile Include="Dal\RavenDB\IRavenRepository.cs" />
     <Compile Include="Dal\DocumentSessionScope.cs" />
-    <Compile Include="Dal\RavenDb\RavenRepository.cs" />
+    <Compile Include="Dal\RavenDB\RavenRepository.cs" />
+    <Compile Include="GlobalSuppressions.cs" />
     <Compile Include="Helper\Assertion.cs" />
     <Compile Include="Helper\Attributes.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

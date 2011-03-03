@@ -2,9 +2,9 @@
 using Raven.Client;
 using Vela.Common.Helper;
 
-namespace Vela.Common.Dal.RavenDb
+namespace Vela.Common.Dal.RavenDB
 {
-	public class RavenRepository<T> : IRepository<T> where T : class, IDocument
+	public class RavenRepository<T> : IRavenRepository<T> where T : class, IDocument
 	{
 		private readonly IQueryable<T> _collection;
 
