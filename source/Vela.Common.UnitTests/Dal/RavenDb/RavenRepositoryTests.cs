@@ -4,7 +4,7 @@ using NUnit.Framework;
 using Raven.Client;
 using Raven.Client.Linq;
 using Rhino.Mocks;
-using Vela.Common.Dal.RavenDb;
+using Vela.Common.Dal.RavenDB;
 
 namespace Vela.Common.UnitTests.Dal.RavenDb
 {

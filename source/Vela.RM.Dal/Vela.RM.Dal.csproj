@@ -21,6 +21,9 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <RunCodeAnalysis>true</RunCodeAnalysis>
+    <CodeAnalysisIgnoreGeneratedCode>false</CodeAnalysisIgnoreGeneratedCode>
+    <CodeAnalysisRuleSet>..\..\build\CodeAnalysisRules.ruleset</CodeAnalysisRuleSet>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -29,6 +32,9 @@
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <CodeAnalysisIgnoreGeneratedCode>false</CodeAnalysisIgnoreGeneratedCode>
+    <RunCodeAnalysis>true</RunCodeAnalysis>
+    <CodeAnalysisRuleSet>..\..\build\CodeAnalysisRules.ruleset</CodeAnalysisRuleSet>
   </PropertyGroup>
   <PropertyGroup>
     <SignAssembly>true</SignAssembly>
@@ -48,11 +54,12 @@
     <Compile Include="..\Global\GlobalAssemblyInfo.cs">
       <Link>Properties\GlobalAssemblyInfo.cs</Link>
     </Compile>
-    <Compile Include="Domain\Repositories\CompositionVersionRepository.cs" />
-    <Compile Include="Domain\Repositories\EhrAccessVersionRepository.cs" />
-    <Compile Include="Domain\Repositories\EhrRootRepository.cs" />
-    <Compile Include="Domain\Repositories\EhrStatusVersionRepository.cs" />
-    <Compile Include="Domain\Repositories\GenericVersionRepository.cs" />
+    <Compile Include="Repositories\CompositionVersionRepository.cs" />
+    <Compile Include="Repositories\FolderVersionRepository.cs" />
+    <Compile Include="Repositories\EhrAccessVersionRepository.cs" />
+    <Compile Include="Repositories\EhrRootRepository.cs" />
+    <Compile Include="Repositories\EhrStatusVersionRepository.cs" />
+    <Compile Include="Repositories\GenericVersionRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -60,15 +67,20 @@
       <Project>{D03FD7DB-3886-4D57-A01D-2F01C6CFE02C}</Project>
       <Name>Vela.Common</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Vela.RM\Vela.RM.csproj">
+    <ProjectReference Include="..\Vela.RM.Core\Vela.RM.Core.csproj">
+      <Project>{5B5BA21C-223B-409F-8291-87368BD5E5E6}</Project>
+      <Name>Vela.RM.Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Vela.RM.Domain\Vela.RM.Domain.csproj">
       <Project>{4690F71C-79B4-4636-92A7-5FB39D7253B5}</Project>
-      <Name>Vela.RM</Name>
+      <Name>Vela.RM.Domain</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <None Include="..\Global\key.snk">
       <Link>key.snk</Link>
     </None>
+    <None Include="CompositionVersionRepository.cd" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

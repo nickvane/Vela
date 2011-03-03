@@ -43,11 +43,12 @@
     <Reference Include="Microsoft.CSharp" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Domain\Repositories\CompositionVersionRepositoryTests.cs" />
-    <Compile Include="Domain\Repositories\EhrStatusRepositoryTests.cs" />
-    <Compile Include="Domain\Repositories\EhrRootRepositoryTests.cs" />
-    <Compile Include="Domain\Repositories\EhrAccessVersionRepositoryTests.cs" />
-    <Compile Include="Domain\Repositories\GenericVersionRepositoryTests.cs" />
+    <Compile Include="Repositories\CompositionVersionRepositoryTests.cs" />
+    <Compile Include="Repositories\FolderVersionRepositoryTests.cs" />
+    <Compile Include="Repositories\EhrStatusRepositoryTests.cs" />
+    <Compile Include="Repositories\EhrRootRepositoryTests.cs" />
+    <Compile Include="Repositories\EhrAccessVersionRepositoryTests.cs" />
+    <Compile Include="Repositories\GenericVersionRepositoryTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -55,13 +56,17 @@
       <Project>{D03FD7DB-3886-4D57-A01D-2F01C6CFE02C}</Project>
       <Name>Vela.Common</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Vela.RM.Core\Vela.RM.Core.csproj">
+      <Project>{5B5BA21C-223B-409F-8291-87368BD5E5E6}</Project>
+      <Name>Vela.RM.Core</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Vela.RM.Dal\Vela.RM.Dal.csproj">
       <Project>{8DA8DA12-B183-4038-A983-BB1C32705925}</Project>
       <Name>Vela.RM.Dal</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Vela.RM\Vela.RM.csproj">
+    <ProjectReference Include="..\Vela.RM.Domain\Vela.RM.Domain.csproj">
       <Project>{4690F71C-79B4-4636-92A7-5FB39D7253B5}</Project>
-      <Name>Vela.RM</Name>
+      <Name>Vela.RM.Domain</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

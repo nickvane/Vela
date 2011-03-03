@@ -1,0 +1,45 @@
+﻿using System;
+using System.Collections.Generic;
+using Vela.RM.Core.Support;
+
+namespace Vela.AM.ConstraintModel
+{
+	/// <summary>
+	/// Concrete model of constraint on a single-valued attribute node. The meaning of the inherited children attribute is that they are alternatives.
+	/// </summary>
+	[System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Naming", "CA1711:IdentifiersShouldNotHaveIncorrectSuffix"), OpenEhrName("C_SINGLE_ATTRIBUTE")]
+	public class SingleAttribute: ConstraintAttribute
+	{
+		/// <summary>
+		/// True if constraints represented by other are narrower than this node. Note: not easily evaluatable for CONSTRAINT_REF nodes.
+		/// </summary>
+		/// <param name="other"></param>
+		/// <returns></returns>
+		public override bool IsSubsetOf(ArchetypeConstraint other)
+		{
+			throw new NotImplementedException();
+		}
+
+		/// <summary>
+		/// True if this node (and all its sub-nodes) is a valid archetype node for its type. This function should be implemented by each subtype to perform semantic validation of itself, and then call the is_valid function in any subparts, and generate the result appropriately.
+		/// </summary>
+		/// <returns></returns>
+		public override bool IsValid()
+		{
+			throw new NotImplementedException();
+		}
+
+		/// <summary>
+		/// List of alternative constraints for the single child of this attribute within the data.
+		/// </summary>
+		/// <returns></returns>
+		[OpenEhrName("alternatives")]
+		public IList<ConstraintObject> Alternatives
+		{
+			get
+			{
+				throw new NotImplementedException();
+			}
+		}
+	}
+}

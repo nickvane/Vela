@@ -11,37 +11,37 @@ namespace Vela.Common.Helper
 		/// <summary>
 		/// Asserts when a condition is false.
 		/// </summary>
-		/// <param name="paramName">The parameter name.</param>
+		/// <param name="parameterName">The parameter name.</param>
 		/// <param name="condition">The condition result.</param>
 		/// <exception cref="System.ArgumentException">If <code>condition</code> is false.</exception>
-		public static void WhenFalse(string paramName, bool condition)
+		public static void WhenFalse(string parameterName, bool condition)
 		{
 			if (!condition)
-				throw new ArgumentException(paramName);
+				throw new ArgumentException(parameterName);
 		}
 
 		/// <summary>
 		/// Asserts when a condition is true.
 		/// </summary>
-		/// <param name="paramName">The parameter name.</param>
+		/// <param name="parameterName">The parameter name.</param>
 		/// <param name="condition">The condition result.</param>
 		/// <exception cref="System.ArgumentException">If <code>condition</code> is true.</exception>
-		public static void WhenTrue(string paramName, bool condition)
+		public static void WhenTrue(string parameterName, bool condition)
 		{
 			if (condition)
-				throw new ArgumentException(paramName);
+				throw new ArgumentException(parameterName);
 		}
 
 		/// <summary>
 		/// Asserts that <code>value</code> is not null.
 		/// </summary>
-		/// <param name="paramName">The name of the parameter to assert.</param>
+		/// <param name="parameterName">The name of the parameter to assert.</param>
 		/// <param name="value">The value to test.</param>
 		/// <exception cref="System.ArgumentNullException">If <code>value</code> is null.</exception>
-		public static void WhenNull(string paramName, object value)
+		public static void WhenNull(string parameterName, object value)
 		{
 			if (value == null)
-				throw new ArgumentNullException(paramName);
+				throw new ArgumentNullException(parameterName);
 		}
 
 		/// <summary>
@@ -52,17 +52,17 @@ namespace Vela.Common.Helper
 		public static void WhenNull(object value)
 		{
 			if (value == null)
-				throw new ArgumentNullException();
+				throw new ArgumentNullException("value");
 		}
 
 		/// <summary>
 		/// Asserts that <code>value</code> is not empty.
 		/// </summary>
-		/// <param name="paramName">The parameter name.</param>
+		/// <param name="parameterName">The parameter name.</param>
 		/// <param name="value">The value to test.</param>
-		public static void WhenEmpty(string paramName, string value)
+		public static void WhenEmpty(string parameterName, string value)
 		{
-			WhenEmpty(paramName, value, false);
+			WhenEmpty(parameterName, value, false);
 		}
 
 		/// <summary>
@@ -87,13 +87,13 @@ namespace Vela.Common.Helper
 		/// <summary>
 		/// Asserts that <code>value</code> is not empty.
 		/// </summary>
-		/// <param name="paramName">The parameter name.</param>
+		/// <param name="parameterName">The parameter name.</param>
 		/// <param name="value">The value to test.</param>
 		/// <param name="trim">Whether to trim the string before checking it.</param>
-		public static void WhenEmpty(string paramName, string value, bool trim)
+		public static void WhenEmpty(string parameterName, string value, bool trim)
 		{
 			if (string.IsNullOrEmpty(value) || (trim && string.IsNullOrWhiteSpace(value))) 
-				throw new ArgumentException(paramName);
+				throw new ArgumentException(parameterName);
 		}
 	}
 }
