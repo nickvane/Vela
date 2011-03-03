@@ -70,7 +70,7 @@ namespace Vela.AM.Archetypes
 		/// Root node of this archetype
 		/// </summary>
 		[OpenEhrName("definition")]
-		public ComplexObject Definition
+		public CComplexObject Definition
 		{
 			get;
 			set;

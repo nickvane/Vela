@@ -52,18 +52,28 @@
       <Link>Properties\GlobalAssemblyInfo.cs</Link>
     </Compile>
     <Compile Include="Archetypes\Archetype.cs" />
+    <Compile Include="Archetypes\ValidityKind.cs" />
     <Compile Include="Assertions\Assertion.cs" />
+    <Compile Include="Assertions\AssertionVariable.cs" />
+    <Compile Include="Assertions\ExprItem.cs" />
+    <Compile Include="Assertions\ExprLeaf.cs" />
+    <Compile Include="Assertions\ExprOperator.cs" />
+    <Compile Include="Assertions\OperatorKind.cs" />
     <Compile Include="ConstraintModel\ArchetypeConstraint.cs" />
-    <Compile Include="ConstraintModel\ComplexObject.cs" />
-    <Compile Include="ConstraintModel\ConstraintAttribute.cs" />
-    <Compile Include="ConstraintModel\ConstraintObject.cs" />
-    <Compile Include="ConstraintModel\DefinedObject.cs" />
-    <Compile Include="ConstraintModel\DomainType.cs" />
-    <Compile Include="ConstraintModel\MultipleAttribute.cs" />
-    <Compile Include="ConstraintModel\PrimitiveObject.cs" />
-    <Compile Include="ConstraintModel\ReferenceObject.cs" />
-    <Compile Include="ConstraintModel\SingleAttribute.cs" />
+    <Compile Include="ConstraintModel\Cardinality.cs" />
+    <Compile Include="ConstraintModel\CAttribute.cs" />
+    <Compile Include="ConstraintModel\CComplexObject.cs" />
+    <Compile Include="ConstraintModel\CDefinedObject.cs" />
+    <Compile Include="ConstraintModel\CDomainType.cs" />
+    <Compile Include="ConstraintModel\CMultipleAttribute.cs" />
+    <Compile Include="ConstraintModel\CObject.cs" />
+    <Compile Include="ConstraintModel\CPrimitiveObject.cs" />
+    <Compile Include="ConstraintModel\CSingleAttribute.cs" />
     <Compile Include="Ontologies\ArchetypeOntology.cs" />
+    <Compile Include="Primitives\CBoolean.cs" />
+    <Compile Include="Primitives\CInteger.cs" />
+    <Compile Include="Primitives\CPrimitive.cs" />
+    <Compile Include="Primitives\CString.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -77,9 +87,7 @@
       <Name>Vela.RM.Core</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Primitives\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

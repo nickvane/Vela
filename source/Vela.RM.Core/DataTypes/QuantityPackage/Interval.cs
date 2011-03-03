@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using Vela.RM.Core.DataTypes.BasicPackage;
 using Vela.RM.Core.Support;
 
@@ -12,7 +13,7 @@ namespace Vela.RM.Core.DataTypes.QuantityPackage
 	/// </summary>
 	/// <typeparam name="T"></typeparam>
 	[Serializable, OpenEhrName("DV_INTERVAL<T : DV_ORDERED>")]
-	public class Interval<T> : DataValue where T : Ordered<T>
+	public class Interval<T> : DataValue where T : IComparable<T>, IEquatable<T>
 	{
 		private bool _isLowerIncluded;
 		private bool _isUpperIncluded;
@@ -42,7 +43,7 @@ namespace Vela.RM.Core.DataTypes.QuantityPackage
 		{
 			get
 			{
-				return Lower == null;
+				return EqualityComparer<T>.Default.Equals(Lower, default(T));
 			}
 		}
 
@@ -53,7 +54,7 @@ namespace Vela.RM.Core.DataTypes.QuantityPackage
 		{
 			get
 			{
-				return Upper == null;
+				return EqualityComparer<T>.Default.Equals(Upper, default(T));
 			}
 		}
 
@@ -64,7 +65,7 @@ namespace Vela.RM.Core.DataTypes.QuantityPackage
 		{
 			get
 			{
-				return Lower != null && _isLowerIncluded;
+				return !IsLowerUnbounded && _isLowerIncluded;
 			}
 			set
 			{
@@ -79,7 +80,7 @@ namespace Vela.RM.Core.DataTypes.QuantityPackage
 		{
 			get
 			{
-				return Upper != null && _isUpperIncluded;
+				return !IsUpperUnbounded && _isUpperIncluded;
 			}
 			set
 			{
@@ -92,8 +93,14 @@ namespace Vela.RM.Core.DataTypes.QuantityPackage
 		/// </summary>
 		public bool HasElement(T element)
 		{
-			return (IsLowerUnbounded || ((IsLowerIncluded && element >= Lower) || element > Lower)) &&
-				   (IsUpperUnbounded || ((IsUpperIncluded && element <= Upper || element < Upper)));
+			if ((typeof(object).IsAssignableFrom(typeof(T))) && !typeof(ValueType).IsAssignableFrom(typeof(T)))
+			{
+				if ((object)element == null) return false;
+			}
+
+			return (IsLowerUnbounded || ((IsLowerIncluded && element.CompareTo(Lower) >= 0) || element.CompareTo(Lower) > 0)) &&
+				   (IsUpperUnbounded || ((IsUpperIncluded && element.CompareTo(Upper) <= 0 || element.CompareTo(Upper) < 0)));
+			
 		}
 	}
 }

@@ -18,7 +18,7 @@ namespace Vela.AM.ConstraintModel
 		public abstract bool IsSubsetOf(ArchetypeConstraint other);
 
 		/// <summary>
-		/// True if this node (and all its sub-nodes) is a valid archetype node for its type. This function should be implemented by each subtype to perform semantic validation of itself, and then call the is_valid function in any subparts, and generate the result appropriately.
+		/// True if this node (and all its sub-nodes) is a valid archetype node for its type. This function should be implemented by each subtype to perform semantic validation of itself, and then call the is_valid function in any subparts, and generate the result appropriately
 		/// </summary>
 		/// <returns></returns>
 		[OpenEhrName("is_valid")]
@@ -29,12 +29,9 @@ namespace Vela.AM.ConstraintModel
 		/// </summary>
 		/// <returns></returns>
 		[OpenEhrName("path")]
-		public string Path
+		public string GetPath()
 		{
-			get
-			{
-				throw new NotImplementedException();
-			}
+			throw new NotImplementedException();
 		}
 
 		/// <summary>
@@ -42,8 +39,8 @@ namespace Vela.AM.ConstraintModel
 		/// </summary>
 		/// <param name="path"></param>
 		/// <returns></returns>
-		[OpenEhrName("path")]
-		public string HasPath(string path)
+		[OpenEhrName("has_path")]
+		public bool HasPath(string path)
 		{
 			throw new NotImplementedException();
 		}
