@@ -12,6 +12,7 @@ namespace Vela.RM.Core.UnitTests
 			Properties.Resources.Culture = culture;
 
 			var resources = new Properties.Resources();
+			Assert.IsNotNullOrEmpty(Properties.Resources.InvalidVersionId);
 		}
 	}
 }

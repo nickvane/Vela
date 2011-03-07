@@ -1,0 +1,171 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<archetype xmlns="http://schemas.openehr.org/v1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <archetype_id>
+    <value>openEHR-EHR-EVALUATION.clinical_synopsis.v1</value>
+  </archetype_id>
+  <concept>at0000</concept>
+  <original_language>
+    <code_string>en</code_string>
+    <terminology_id>
+      <value>ISO_639-1</value>
+    </terminology_id>
+  </original_language>
+  <is_controlled>false</is_controlled>
+  <description>
+    <original_author id="email">sam.heard@oceaninformatics.com</original_author>
+    <original_author id="date">9/01/2007</original_author>
+    <original_author id="name">Sam Heard</original_author>
+    <original_author id="organisation">Ocean Informatics, Australia</original_author>
+    <other_contributors>Koray Atalag, University of Auckland, New Zealand</other_contributors>
+    <other_contributors>Marco Borges, P2D, Brazil</other_contributors>
+    <other_contributors>Rong Chen, Cambio Healthcare Systems, Sweden</other_contributors>
+    <other_contributors>Stephen Chu, NeHTA, Australia</other_contributors>
+    <other_contributors>Tamsin Cockayne, Australia</other_contributors>
+    <other_contributors>Paul Donaldson, Nursing Informatics Australia, Australia</other_contributors>
+    <other_contributors>Shahla Foozonkhah, Ocean Informatics, Australia</other_contributors>
+    <other_contributors>Sam Heard, Ocean Informatics, Australia</other_contributors>
+    <other_contributors>Evelyn Hovenga, EJSH Consulting, Australia</other_contributors>
+    <other_contributors>Eugene Igras, IRIS Systems, Inc., Canada</other_contributors>
+    <other_contributors>Shinji Kobayashi, Ehime University, Japan</other_contributors>
+    <other_contributors>Robert Legan, NEHTA, Australia</other_contributors>
+    <other_contributors>Heather Leslie, Ocean Informatics, Australia</other_contributors>
+    <other_contributors>Rikard Lovstrom, Swedish Medical Association, Sweden</other_contributors>
+    <other_contributors>Rohan Martin, Ambulance Victoria, Australia</other_contributors>
+    <other_contributors>Ian McNicoll, Ocean Informatics, United Kingdom</other_contributors>
+    <other_contributors>Jeroen Meintjens, Medisch Centrum Alkmaar, Netherlands</other_contributors>
+    <other_contributors>Arturo Romero, SESCAM, Spain</other_contributors>
+    <lifecycle_state>Initial</lifecycle_state>
+    <details>
+      <language>
+        <code_string>en</code_string>
+        <terminology_id>
+          <value>ISO_639-1</value>
+        </terminology_id>
+      </language>
+      <purpose>To manually synthesise and record a narrative summary about a patient, from the perspective of a healthcare provider.</purpose>
+      <keywords>summary</keywords>
+      <keywords>conclusion</keywords>
+      <keywords>outline</keywords>
+      <keywords>precis</keywords>
+      <keywords>abstract</keywords>
+      <keywords>assessment</keywords>
+      <keywords>synopsis</keywords>
+      <keywords>epicrisis</keywords>
+      <keywords>comment</keywords>
+      <keywords>note</keywords>
+      <use>Use to record a narrative, summary view of the patient's health.  This unstructured summary may include identified health issues; health care provided; associated interpretation; patient understanding; and enable communication about some of the softer, more subjective aspects of the patient’s experience and journey. Most commonly this summary is likely to be related to a specific health event such as a specific consultation or hospital admission, but may also be used to summarise the patient's health experience over varying time periods. 
+In practice, Clinical Synopsis is a meta observation that will complement the existing structured clinical record, allowing for expression of subtle, subjective or interpretive information about the patient that might not otherwise be obvious through structured data alone, providing balance and context to the EHR record.  
+For example, a Clinical Synopsis can communicate a succinct summary of the patient's hospital admission as one component of a comprehensive and structured Discharge Summary document.</use>
+      <misuse>Not to be used to record specific and structured health information. For example, detailed information about Problems, Diagnoses, and Test Results should be recorded using the specific relevant archetypes EVALUATION.problem, EVALUATION.problem-diagnosis, and laboratory or radiology results in OBSERVATIONs. The Clinical Synopsis may convey some critical and selected numerical results from these structured details when judged important for completeness of the Synopsis but is NOT the primary recording site for them.
+The term “Clinical Synopsis” can sometimes refer to complex and comprehensive documents, such as a Discharge Summary or a Report. In openEHR these documents should be represented as aggregations of constrained archetypes, that is, a Discharge Summary template or a Report template, comprising a number of separate archetypes, of which this Clinical Synopsis archetype may be one.</misuse>
+      <copyright>copyright (c) 2011 openEHR Foundation</copyright>
+    </details>
+    <resource_package_uri />
+    <other_details id="MD5-CAM-1.0.1">B041122D5126B0CB2AAF2CB616FD8941</other_details>
+    <other_details id="references">Clinical Synopsis (Data Specifications) Version 1.0 [Internet]. Sydney, Australia: National E-Health Transition Authority; 2007 Jun 29 [cited 2009 Oct 12]; Available at http://www.nehta.gov.au/DGL/Resources/Downloads/Clinical%20Synopsis%20v1.0.pdf</other_details>
+  </description>
+  <definition>
+    <rm_type_name>EVALUATION</rm_type_name>
+    <occurrences>
+      <upper_included>true</upper_included>
+      <lower_included>true</lower_included>
+      <upper_unbounded>false</upper_unbounded>
+      <lower_unbounded>false</lower_unbounded>
+      <upper>1</upper>
+      <lower>1</lower>
+    </occurrences>
+    <node_id>at0000</node_id>
+    <attributes xsi:type="C_SINGLE_ATTRIBUTE">
+      <existence>
+        <lower_unbounded>false</lower_unbounded>
+        <upper_unbounded>false</upper_unbounded>
+        <lower>1</lower>
+        <upper>1</upper>
+      </existence>
+      <rm_attribute_name>data</rm_attribute_name>
+      <children xsi:type="C_COMPLEX_OBJECT">
+        <rm_type_name>ITEM_TREE</rm_type_name>
+        <occurrences>
+          <upper_included>true</upper_included>
+          <lower_included>true</lower_included>
+          <upper_unbounded>false</upper_unbounded>
+          <lower_unbounded>false</lower_unbounded>
+          <upper>1</upper>
+          <lower>1</lower>
+        </occurrences>
+        <node_id>at0001</node_id>
+        <attributes xsi:type="C_MULTIPLE_ATTRIBUTE">
+          <existence>
+            <lower_unbounded>false</lower_unbounded>
+            <upper_unbounded>false</upper_unbounded>
+            <lower>1</lower>
+            <upper>1</upper>
+          </existence>
+          <rm_attribute_name>items</rm_attribute_name>
+          <children xsi:type="C_COMPLEX_OBJECT">
+            <rm_type_name>ELEMENT</rm_type_name>
+            <occurrences>
+              <upper_included>true</upper_included>
+              <lower_included>true</lower_included>
+              <upper_unbounded>false</upper_unbounded>
+              <lower_unbounded>false</lower_unbounded>
+              <upper>1</upper>
+              <lower>1</lower>
+            </occurrences>
+            <node_id>at0002</node_id>
+            <attributes xsi:type="C_SINGLE_ATTRIBUTE">
+              <existence>
+                <lower_unbounded>false</lower_unbounded>
+                <upper_unbounded>false</upper_unbounded>
+                <lower>1</lower>
+                <upper>1</upper>
+              </existence>
+              <rm_attribute_name>value</rm_attribute_name>
+              <children xsi:type="C_COMPLEX_OBJECT">
+                <any_allowed>true</any_allowed>
+                <rm_type_name>DV_TEXT</rm_type_name>
+                <occurrences>
+                  <upper_included>true</upper_included>
+                  <lower_included>true</lower_included>
+                  <upper_unbounded>false</upper_unbounded>
+                  <lower_unbounded>false</lower_unbounded>
+                  <upper>1</upper>
+                  <lower>1</lower>
+                </occurrences>
+                <node_id />
+              </children>
+            </attributes>
+          </children>
+          <cardinality>
+            <is_ordered>true</is_ordered>
+            <is_unique>false</is_unique>
+            <interval>
+              <upper_included>false</upper_included>
+              <lower_included>true</lower_included>
+              <upper_unbounded>true</upper_unbounded>
+              <lower_unbounded>false</lower_unbounded>
+              <lower>1</lower>
+            </interval>
+          </cardinality>
+        </attributes>
+      </children>
+    </attributes>
+  </definition>
+  <ontology>
+    <term_definitions language="en">
+      <items code="at0000">
+        <items id="text">Clinical Synopsis</items>
+        <items id="description">Narrative summary or overview about a patient, specifically from the perspective of a healthcare provider, and with or without associated interpretations.</items>
+      </items>
+      <items code="at0001">
+        <items id="text">List</items>
+        <items id="description">@ internal @</items>
+      </items>
+      <items code="at0002">
+        <items id="text">Synopsis</items>
+        <items id="description">The summary, assessment, conclusions or evaluation of the clinical findings.</items>
+      </items>
+    </term_definitions>
+  </ontology>
+</archetype>
+

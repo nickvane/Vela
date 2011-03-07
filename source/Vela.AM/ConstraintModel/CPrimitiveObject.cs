@@ -1,17 +1,20 @@
 ﻿using System;
 using Vela.AM.Primitives;
+using Vela.RM.Core.Support;
 
 namespace Vela.AM.ConstraintModel
 {
 	/// <summary>
 	/// Constraint on a primitive type.
 	/// </summary>
+	[OpenEhrName("C_PRIMITIVE_OBJECT")]
 	public class CPrimitiveObject : CDefinedObject
 	{
 		/// <summary>
 		/// Object actually defining the constraint.
 		/// </summary>
 		/// <returns></returns>
+		[OpenEhrName("item")]
 		public CPrimitive<object> GetItem()
 		{
 			throw new NotImplementedException();

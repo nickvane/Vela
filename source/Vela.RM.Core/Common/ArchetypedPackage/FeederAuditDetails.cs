@@ -29,7 +29,6 @@ namespace Vela.RM.Core.Common.ArchetypedPackage
 		[OpenEhrName("location")]
 		public PartyIdentified Location { get; set; }
 
-		//TODO: check if this needs to be DV_DATE_TIME class or if it can be System.DateTime
 		/// <summary>
 		/// Time of handling the item. For an originating system, this will be time of creation, for an intermediate feeder system, this will be a time of accession or other time of handling, where available.
 		/// </summary>

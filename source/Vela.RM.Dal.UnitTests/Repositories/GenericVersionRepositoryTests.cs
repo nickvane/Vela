@@ -10,7 +10,6 @@ using Vela.RM.Core.Common.GenericPackage;
 using Vela.RM.Core.Support.IdentificationPackage;
 using Vela.RM.Dal.Repositories;
 using Vela.RM.Domain.Entities;
-using DateTime = Vela.RM.Core.DataTypes.DateTimePackage.DateTime;
 
 namespace Vela.RM.Dal.UnitTests.Repositories
 {
@@ -34,10 +33,7 @@ namespace Vela.RM.Dal.UnitTests.Repositories
 			              				          		Uid = new ObjectVersionId(Id6),
 														CommitAudit = new AuditDetails()
 														              	{
-														              		TimeCommitted = new DateTime()
-														              		                	{
-														              		                		Value = "20110301"
-														              		                	}
+														              		TimeCommitted = new DateTime(2011, 3,1)
 														              	}
 			              				          	}
 			              			},
@@ -49,10 +45,7 @@ namespace Vela.RM.Dal.UnitTests.Repositories
 			              				          		Uid = new ObjectVersionId(Id7),
 														CommitAudit = new AuditDetails()
 														              	{
-														              		TimeCommitted = new DateTime()
-														              		                	{
-														              		                		Value = "20101224"
-														              		                	}
+														              		TimeCommitted = new DateTime(2010,12,24)
 														              	}
 			              				          	}
 			              			},
@@ -64,10 +57,7 @@ namespace Vela.RM.Dal.UnitTests.Repositories
 			              				          		Uid = new ObjectVersionId(Id8),
 														CommitAudit = new AuditDetails()
 														              	{
-														              		TimeCommitted = new DateTime()
-														              		                	{
-														              		                		Value = "20110215"
-														              		                	}
+														              		TimeCommitted = new DateTime(2011,2,15)
 														              	}
 			              				          	}
 			              			},
@@ -79,10 +69,7 @@ namespace Vela.RM.Dal.UnitTests.Repositories
 			              				          		Uid = new ObjectVersionId(Id9),
 														CommitAudit = new AuditDetails()
 														              	{
-														              		TimeCommitted = new DateTime()
-														              		                	{
-														              		                		Value = "20100501"
-														              		                	}
+														              		TimeCommitted = new DateTime(2010,5,1)
 														              	}
 			              				          	}
 			              			},
@@ -94,10 +81,7 @@ namespace Vela.RM.Dal.UnitTests.Repositories
 			              				          		Uid = new ObjectVersionId(Id10),
 														CommitAudit = new AuditDetails()
 														              	{
-														              		TimeCommitted = new DateTime()
-														              		                	{
-														              		                		Value = "20110225"
-														              		                	}
+														              		TimeCommitted = new DateTime(2011,2,25)
 														              	}
 			              				          	}
 			              			},

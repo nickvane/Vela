@@ -12,6 +12,10 @@ namespace Vela.RM.Core.Common.ResourcePackage
 	[OpenEhrName("RESOURCE_DESCRIPTION_ITEM")]
 	public class ResourceDescriptionItem
 	{
+		private IList<string> _keywords;
+		private IDictionary<string, string> _otherDetails;
+		private IDictionary<string, string> _originalResourceUri;
+
 		/// <summary>
 		/// The localised language in which the items in this description item are written. Coded from openEHR Code Set “languages”.
 		/// </summary>
@@ -28,7 +32,7 @@ namespace Vela.RM.Core.Common.ResourcePackage
 		/// Keywords which characterise this resource, used e.g. for indexing and searching.
 		/// </summary>
 		[OpenEhrName("keywords")]
-		public IList<string> Keywords { get; set; }
+		public IList<string> Keywords { get { return _keywords ?? (_keywords = new List<string>()); } }
 
 		/// <summary>
 		/// Description of the uses of the resource, i.e. contexts in which it could be used.
@@ -52,12 +56,12 @@ namespace Vela.RM.Core.Common.ResourcePackage
 		/// URIs of original clinical document(s) or description of which resource is a formalisation, in the language of this description item; keyed by meaning.
 		/// </summary>
 		[OpenEhrName("original_resource_uri")]
-		public IDictionary<string, string> OriginalResourceUri { get; set; }
+		public IDictionary<string, string> OriginalResourceUri { get { return _originalResourceUri ?? (_originalResourceUri = new Dictionary<string, string>()); } }
 
 		/// <summary>
 		/// Additional language-senstive resource metadata, as a list of name/value pairs.
 		/// </summary>
 		[OpenEhrName("other_details")]
-		public IDictionary<string, string> OtherDetails { get; set; }
+		public IDictionary<string, string> OtherDetails { get { return _otherDetails ?? (_otherDetails = new Dictionary<string, string>()); } }
 	}
 }

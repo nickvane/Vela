@@ -1,0 +1,664 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<archetype xmlns="http://schemas.openehr.org/v1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <archetype_id>
+    <value>openEHR-EHR-OBSERVATION.body_mass_index.v1</value>
+  </archetype_id>
+  <concept>at0000</concept>
+  <original_language>
+    <code_string>en</code_string>
+    <terminology_id>
+      <value>ISO_639-1</value>
+    </terminology_id>
+  </original_language>
+  <is_controlled>false</is_controlled>
+  <description>
+    <original_author id="email">sam.heard@oceaninformatics.com</original_author>
+    <original_author id="date">22/03/2006</original_author>
+    <original_author id="name">Sam Heard</original_author>
+    <original_author id="organisation">Ocean Informatics</original_author>
+    <other_contributors>Marja Buur, Medisch Centrum Alkmaar, Netherlands</other_contributors>
+    <other_contributors>Rong Chen, Cambio Healthcare Systems, Sweden</other_contributors>
+    <other_contributors>Angela de Zwart, Orion Health, New Zealand</other_contributors>
+    <other_contributors>Paul Donaldson, Nursing Informatics Australia, Australia</other_contributors>
+    <other_contributors>Sebastian Garde, Ocean Informatics, Germany</other_contributors>
+    <other_contributors>Heather Grain, Llewelyn Grain Informatics, Australia</other_contributors>
+    <other_contributors>Anne Harbison, CPCER, Australia</other_contributors>
+    <other_contributors>Sam Heard, Ocean Informatics, Australia</other_contributors>
+    <other_contributors>Andrew James, University of Toronto, Canada</other_contributors>
+    <other_contributors>Shinji Kobayashi, Ehime University, Japan</other_contributors>
+    <other_contributors>Heather Leslie, Ocean Informatics, Australia (Editor)</other_contributors>
+    <other_contributors>Rikard Lovstrom, Swedish Medical Association, Sweden</other_contributors>
+    <other_contributors>Ian McNicoll, Ocean Informatics, United Kingdom</other_contributors>
+    <other_contributors>Jeroen Meintjens, Medisch Centrum Alkmaar, Netherlands</other_contributors>
+    <other_contributors>Arturo Romero, SESCAM, Spain</other_contributors>
+    <other_contributors>Soon Ghee Yap, Singapore Health Services Pte Ltd, Singapore</other_contributors>
+    <lifecycle_state>Published</lifecycle_state>
+    <details>
+      <language>
+        <code_string>en</code_string>
+        <terminology_id>
+          <value>ISO_639-1</value>
+        </terminology_id>
+      </language>
+      <purpose>To record the Body Mass Index (BMI) of a person.
+Body Mass Index is a calculated ratio describing how an individual's body weight relates to the weight that is regarded as normal, or desirable, for the individual's height.</purpose>
+      <keywords>obesity</keywords>
+      <keywords>index</keywords>
+      <keywords>body mass</keywords>
+      <keywords>BMI</keywords>
+      <keywords>anorexia</keywords>
+      <keywords>Quetelet</keywords>
+      <keywords>malnutrition</keywords>
+      <keywords>failure to thrive</keywords>
+      <keywords>bulimia</keywords>
+      <use>Use to record the Body Mass Index of both adults and children.  
+Use to enter the Body Mass Index either manually (ie calculated and directly entered by the clinician), or automatically (ie calculation and entry is done automatically by a software application, based on separate height and weight measurements).
+Formulas: Body Mass Index is commonly calculated as weight (kg) / [height (m) squared]. This is the assumed formula unless otherwise specified in the Formula element within Protocol. Alternatively estimate Body Mass Index using pounds and inches: weight (lb) / [height (in) squared] x 703 (with ounces (oz) and fractions changed to decimal values).
+In some situations the Body Mass Index formula is corrected eg for use in amputees - this specific formula can be recorded as part of the protocol.  Alternatively the common Body Mass Index calculation can be used with amputees and similar injuries or disabilities if using adjusted height and/or adjusted weight, as appropriate, rather than actual height and weight.   See openEHR-EHR-OBSERVATION.height-adjusted and openEHR-EHR-OBSERVATION.body_weight-adjusted.
+See WHO reference re adjusting height/length for Body Mass Index in paediatrics. 
+In children and teens, BMI needs to be assessed using age-related reference charts.</use>
+      <misuse>Not intended to record information regarding Body Mass Index percentiles - these will be recorded in separate archetypes.</misuse>
+      <copyright>copyright (c) 2011 openEHR Foundation</copyright>
+    </details>
+    <details>
+      <language>
+        <code_string>nl</code_string>
+        <terminology_id>
+          <value>ISO_639-1</value>
+        </terminology_id>
+      </language>
+      <purpose>Het registreren van de Body Mass Index (BMI) van een persoon.
+De Body Mass Index is een berekening hoe het lichaamsgewicht van een persoon zich verhoudt tot het normale gewicht, of gewenste gewicht, t.o.v. de  lengte van de persoon.</purpose>
+      <keywords>obesitas</keywords>
+      <keywords>indexbody mass</keywords>
+      <keywords>BMI</keywords>
+      <keywords>anorexia</keywords>
+      <keywords>Quetelet</keywords>
+      <keywords>ondervoeding</keywords>
+      <keywords>onvermogen op gewicht te blijven, onvermogen om te groeien</keywords>
+      <keywords>boulimia</keywords>
+      <use>Wordt gebruikt voor het registreren van de Body Mass Index van zowel volwassenen als kinderen. 
+Wordt gebruikt door de Body Mass Index of manueel (d.w.z. berekend en direct ingevoerd door de clinicus), of automatisch (d.w.z. dat de berekening en invoer automatisch door een software applicatie, gebaseerd op afzonderlijke lengte en gewicht metingen gedaan wordt) in te voeren.
+Formule: Body Mass Index wordt gewoonlijk berekend door gewicht (kg)/[lengte (m) in het kwadraat]. Dit is de veronderstelde formule, tenzij anders gespecificeerd in het Formule element in Protocol.
+Alternatieve geschatte Body Mass Index gebruik makend van pounds en inches: gewicht (lb)/[lengte(in) in het kwadraat] x 703 (met ounces (oz) en gedeeltes gewijzigd tot op de decimaal).
+In sommige situaties wordt de Body Mass Index formule gecorrigeerd, b.v. voor gebruik bij geamputeerden - deze specifieke formule kan geregistreerd worden als onderdeel van het protocol. Alternatief kan de gewoonlijke Body Mass Index berekening gebruikt worden bij geamputeerden en vergelijkbare verwondingen of handicaps, bij gebruikmaking van aangepaste gewicht en/of lengte in plaats van de werkelijke lengte en gewicht. Gebruik daarvoor openEHR-EHR-OBSERVATION.height-adjusted (openEHR-EHR-OBSERVATION.lengte-aangepast)  en openEHR-EHR-OBSERVATION.body_weight-adjusted (openEHR-EHR-OBSERVATION.lichaamsgewicht-aangepast).
+Zie de WHO richtlijnen tot aanpassing van hoogte / lengte voor Body Mass Index in de pediatrie.
+Bij kinderen en tieners, dient de BMI te worden beoordeeld met behulp van leeftijd-gerelateerde referentie lijsten.</use>
+      <misuse>Niet bestemd voor het registreren van informatie over de Body Mass Index percentielen - deze zullen worden opgenomen in afzonderlijke archetypen.</misuse>
+      <copyright>copyright (c) 2011 openEHR Foundation</copyright>
+    </details>
+    <details>
+      <language>
+        <code_string>pt-br</code_string>
+        <terminology_id>
+          <value>ISO_639-1</value>
+        </terminology_id>
+      </language>
+      <purpose>Para gravar o Índice de Massa Corpórea (IMC) de uma pessoa.
+Índice de Massa Corpórea é uma taxa calculada que descreve como o peso corporal de um indivíduo se relaciona com o peso que é considerado normal, ou desejável, para a altura do indivíduo.</purpose>
+      <keywords>obesidade</keywords>
+      <keywords>índice</keywords>
+      <keywords>massa corporal</keywords>
+      <keywords>IMC</keywords>
+      <keywords>anorexia</keywords>
+      <keywords>*Quetelet(en)</keywords>
+      <keywords>subnutrição</keywords>
+      <keywords>subdesenvolvimento</keywords>
+      <keywords>bulimia</keywords>
+      <use>Usado para gravar o Índice de Massa Corpórea de adultos e crianças.
+Use para registrar o IMC manualmente (isto é, calculado e digitado pelo médico) ou automaticamente (cálculo feito automaticamente por uma aplicação de software, com base na altura e medições de peso).
+Fórmulas: IMC é normalmente calculado como peso (kg) / [altura (m) ao quadrado]. Esta é a fórmula assimuda salvo nova fórmula registrada no protocolo. O IMC pode ser medido com libras e polegadas: Peso (lb) / [altura (polegadas) ao quadrado ] x 703 (com onças (oz) e frações alterando casas decimais).
+Em algumas situações, a fórmula do IMC é corrigida por exemplo, para uso em pacientes amputados - esta fórmula específica podem ser contabilizados como parte do protocolo. para essa  alternativa de IMC usada com amputados, lesões semelhantes ou deficiência ajusta-se a altura e/ou peso, conforme o caso. Veja openEHR-EHR-OBSERVATION.height-adjusted e OBSERVATION.body_weight-adjusted.
+Veja na referência ajustamentos da altura / comprimento para o IMC em pediatria.
+Em crianças e adolescentes, o IMC deve ser avaliada por meio de tabelas de referência relacionadas com a idade.</use>
+      <misuse>Não se destina a registrar informações sobre os percentis de IMC - estes serão gravadas em arquétipos distintos.</misuse>
+      <copyright>copyright (c) 2011 openEHR Foundation</copyright>
+    </details>
+    <details>
+      <language>
+        <code_string>fa</code_string>
+        <terminology_id>
+          <value>ISO_639-1</value>
+        </terminology_id>
+      </language>
+      <purpose>محاسبه می شود(وزن بر حسب كيلوگرم) تقسيم بر (مجذور قد بر حسب متر)  برای ثبت شاخص توده بدن .این شاخص با</purpose>
+      <keywords>چاقی</keywords>
+      <keywords>شاخص</keywords>
+      <use>BMIبرای ثبت</use>
+      <misuse>نشده در نظر گرفته شده برای ثبت اطلاعات را در مورد توده بدن درصد در صفحه اول انجمن -- این خواهد بود در archetypes جداگانه ثبت شده است.</misuse>
+      <copyright>copyright (c) 2011 openEHR Foundation</copyright>
+    </details>
+    <resource_package_uri />
+    <other_details id="MD5-CAM-1.0.1">43E7333B2B747AC6FBADE17ED6C293F1</other_details>
+    <other_details id="references">Clinical Guidelines on the Identification, Evaluation, and Treatment of Overweight and Obesity in Adults: The Evidence Report [Internet]. Bethesda (MD): National Heart, Lung, and Blood Institute; NIH Publication No. 98-4083, Sep 1998, [cited 2009 July 02]. Available from: http://www.nhlbi.nih.gov/guidelines/obesity/
+
+About BMI for Children and Teens [Internet]. Atlanta (GA): Division of Nutrition, Physical Activity and Obesity, Centers for Disease Control and Prevention; 2009 Jan 27 [cited 2009 Jul 28 ]. Available from: http://www.cdc.gov/healthyweight/assessing/bmi/childrens_BMI/about_childrens_BMI.html
+
+WHO Child Growth Standards: Length/height-for-age, weight-for-age, weight-for-length, weight-for-height and body mass index-for-age: Methods and development. [Internet] Geneva, Switzerland: WHO Multicentre Growth Reference Study Group, World Health Organization; 2006 [cited 2009 July 02].  Chapter 6, BMI-for-age standards. Available from: http://www.who.int/childgrowth/standards/Chap_6.pdf.
+
+Obesity: Preventing and Managing the Global Epidemic: Report of a WHO Consultation [Internet]. Geneva, Switzerland: World Health Organisation; 2000 [cited 2009 Jul 28]. Available from: http://www.who.int/nutrition/publications/obesity/WHO_TRS_894/en/index.html
+
+Tzamaloukas AH, Patron A, Malhotra D. Body Mass Index in Amputees. Journal of Parenteral and Enteral Nutrition [Internet]. 1994 [cited 2009 Jul 28]; 18 (4): 355. Available from: http://pen.sagepub.com/cgi/content/abstract/18/4/355</other_details>
+  </description>
+  <definition>
+    <rm_type_name>OBSERVATION</rm_type_name>
+    <occurrences>
+      <upper_included>true</upper_included>
+      <lower_included>true</lower_included>
+      <upper_unbounded>false</upper_unbounded>
+      <lower_unbounded>false</lower_unbounded>
+      <upper>1</upper>
+      <lower>1</lower>
+    </occurrences>
+    <node_id>at0000</node_id>
+    <attributes xsi:type="C_SINGLE_ATTRIBUTE">
+      <existence>
+        <lower_unbounded>false</lower_unbounded>
+        <upper_unbounded>false</upper_unbounded>
+        <lower>1</lower>
+        <upper>1</upper>
+      </existence>
+      <rm_attribute_name>data</rm_attribute_name>
+      <children xsi:type="C_COMPLEX_OBJECT">
+        <rm_type_name>HISTORY</rm_type_name>
+        <occurrences>
+          <upper_included>true</upper_included>
+          <lower_included>true</lower_included>
+          <upper_unbounded>false</upper_unbounded>
+          <lower_unbounded>false</lower_unbounded>
+          <upper>1</upper>
+          <lower>1</lower>
+        </occurrences>
+        <node_id>at0001</node_id>
+        <attributes xsi:type="C_MULTIPLE_ATTRIBUTE">
+          <existence>
+            <lower_unbounded>false</lower_unbounded>
+            <upper_unbounded>false</upper_unbounded>
+            <lower>1</lower>
+            <upper>1</upper>
+          </existence>
+          <rm_attribute_name>events</rm_attribute_name>
+          <children xsi:type="C_COMPLEX_OBJECT">
+            <rm_type_name>EVENT</rm_type_name>
+            <occurrences>
+              <upper_included>false</upper_included>
+              <lower_included>true</lower_included>
+              <upper_unbounded>true</upper_unbounded>
+              <lower_unbounded>false</lower_unbounded>
+              <lower>1</lower>
+            </occurrences>
+            <node_id>at0002</node_id>
+            <attributes xsi:type="C_SINGLE_ATTRIBUTE">
+              <existence>
+                <lower_unbounded>false</lower_unbounded>
+                <upper_unbounded>false</upper_unbounded>
+                <lower>1</lower>
+                <upper>1</upper>
+              </existence>
+              <rm_attribute_name>data</rm_attribute_name>
+              <children xsi:type="C_COMPLEX_OBJECT">
+                <rm_type_name>ITEM_TREE</rm_type_name>
+                <occurrences>
+                  <upper_included>true</upper_included>
+                  <lower_included>true</lower_included>
+                  <upper_unbounded>false</upper_unbounded>
+                  <lower_unbounded>false</lower_unbounded>
+                  <upper>1</upper>
+                  <lower>1</lower>
+                </occurrences>
+                <node_id>at0003</node_id>
+                <attributes xsi:type="C_MULTIPLE_ATTRIBUTE">
+                  <existence>
+                    <lower_unbounded>false</lower_unbounded>
+                    <upper_unbounded>false</upper_unbounded>
+                    <lower>1</lower>
+                    <upper>1</upper>
+                  </existence>
+                  <rm_attribute_name>items</rm_attribute_name>
+                  <children xsi:type="C_COMPLEX_OBJECT">
+                    <rm_type_name>ELEMENT</rm_type_name>
+                    <occurrences>
+                      <upper_included>true</upper_included>
+                      <lower_included>true</lower_included>
+                      <upper_unbounded>false</upper_unbounded>
+                      <lower_unbounded>false</lower_unbounded>
+                      <upper>1</upper>
+                      <lower>1</lower>
+                    </occurrences>
+                    <node_id>at0004</node_id>
+                    <attributes xsi:type="C_SINGLE_ATTRIBUTE">
+                      <existence>
+                        <lower_unbounded>false</lower_unbounded>
+                        <upper_unbounded>false</upper_unbounded>
+                        <lower>1</lower>
+                        <upper>1</upper>
+                      </existence>
+                      <rm_attribute_name>value</rm_attribute_name>
+                      <children xsi:type="C_DV_QUANTITY">
+                        <rm_type_name>DV_QUANTITY</rm_type_name>
+                        <occurrences>
+                          <upper_included>true</upper_included>
+                          <lower_included>true</lower_included>
+                          <upper_unbounded>false</upper_unbounded>
+                          <lower_unbounded>false</lower_unbounded>
+                          <upper>1</upper>
+                          <lower>1</lower>
+                        </occurrences>
+                        <node_id />
+                        <property>
+                          <code_string>349</code_string>
+                          <terminology_id>
+                            <value>openehr</value>
+                          </terminology_id>
+                        </property>
+                        <list>
+                          <magnitude>
+                            <upper_included>false</upper_included>
+                            <lower_included>true</lower_included>
+                            <upper_unbounded>false</upper_unbounded>
+                            <lower_unbounded>false</lower_unbounded>
+                            <upper>1000.0</upper>
+                            <lower>0.0</lower>
+                          </magnitude>
+                          <units>kg/m2</units>
+                        </list>
+                        <list>
+                          <magnitude>
+                            <upper_included>false</upper_included>
+                            <lower_included>true</lower_included>
+                            <upper_unbounded>false</upper_unbounded>
+                            <lower_unbounded>false</lower_unbounded>
+                            <upper>1000.0</upper>
+                            <lower>0.0</lower>
+                          </magnitude>
+                          <units>lb/in2</units>
+                        </list>
+                      </children>
+                    </attributes>
+                  </children>
+                  <cardinality>
+                    <is_ordered>false</is_ordered>
+                    <is_unique>false</is_unique>
+                    <interval>
+                      <upper_included>false</upper_included>
+                      <lower_included>true</lower_included>
+                      <upper_unbounded>true</upper_unbounded>
+                      <lower_unbounded>false</lower_unbounded>
+                      <lower>1</lower>
+                    </interval>
+                  </cardinality>
+                </attributes>
+              </children>
+            </attributes>
+          </children>
+          <cardinality>
+            <is_ordered>false</is_ordered>
+            <is_unique>false</is_unique>
+            <interval>
+              <upper_included>false</upper_included>
+              <lower_included>true</lower_included>
+              <upper_unbounded>true</upper_unbounded>
+              <lower_unbounded>false</lower_unbounded>
+              <lower>1</lower>
+            </interval>
+          </cardinality>
+        </attributes>
+      </children>
+    </attributes>
+    <attributes xsi:type="C_SINGLE_ATTRIBUTE">
+      <existence>
+        <lower_unbounded>false</lower_unbounded>
+        <upper_unbounded>false</upper_unbounded>
+        <lower>1</lower>
+        <upper>1</upper>
+      </existence>
+      <rm_attribute_name>protocol</rm_attribute_name>
+      <children xsi:type="C_COMPLEX_OBJECT">
+        <rm_type_name>ITEM_LIST</rm_type_name>
+        <occurrences>
+          <upper_included>true</upper_included>
+          <lower_included>true</lower_included>
+          <upper_unbounded>false</upper_unbounded>
+          <lower_unbounded>false</lower_unbounded>
+          <upper>1</upper>
+          <lower>1</lower>
+        </occurrences>
+        <node_id>at0005</node_id>
+        <attributes xsi:type="C_MULTIPLE_ATTRIBUTE">
+          <existence>
+            <lower_unbounded>false</lower_unbounded>
+            <upper_unbounded>false</upper_unbounded>
+            <lower>1</lower>
+            <upper>1</upper>
+          </existence>
+          <rm_attribute_name>items</rm_attribute_name>
+          <children xsi:type="C_COMPLEX_OBJECT">
+            <rm_type_name>ELEMENT</rm_type_name>
+            <occurrences>
+              <upper_included>true</upper_included>
+              <lower_included>true</lower_included>
+              <upper_unbounded>false</upper_unbounded>
+              <lower_unbounded>false</lower_unbounded>
+              <upper>1</upper>
+              <lower>0</lower>
+            </occurrences>
+            <node_id>at0006</node_id>
+            <attributes xsi:type="C_SINGLE_ATTRIBUTE">
+              <existence>
+                <lower_unbounded>false</lower_unbounded>
+                <upper_unbounded>false</upper_unbounded>
+                <lower>1</lower>
+                <upper>1</upper>
+              </existence>
+              <rm_attribute_name>value</rm_attribute_name>
+              <children xsi:type="C_COMPLEX_OBJECT">
+                <rm_type_name>DV_CODED_TEXT</rm_type_name>
+                <occurrences>
+                  <upper_included>true</upper_included>
+                  <lower_included>true</lower_included>
+                  <upper_unbounded>false</upper_unbounded>
+                  <lower_unbounded>false</lower_unbounded>
+                  <upper>1</upper>
+                  <lower>1</lower>
+                </occurrences>
+                <node_id />
+                <attributes xsi:type="C_SINGLE_ATTRIBUTE">
+                  <existence>
+                    <lower_unbounded>false</lower_unbounded>
+                    <upper_unbounded>false</upper_unbounded>
+                    <lower>1</lower>
+                    <upper>1</upper>
+                  </existence>
+                  <rm_attribute_name>defining_code</rm_attribute_name>
+                  <children xsi:type="C_CODE_PHRASE">
+                    <rm_type_name>CODE_PHRASE</rm_type_name>
+                    <occurrences>
+                      <upper_included>true</upper_included>
+                      <lower_included>true</lower_included>
+                      <upper_unbounded>false</upper_unbounded>
+                      <lower_unbounded>false</lower_unbounded>
+                      <upper>1</upper>
+                      <lower>1</lower>
+                    </occurrences>
+                    <node_id />
+                    <terminology_id>
+                      <value>local</value>
+                    </terminology_id>
+                    <code_list>at0007</code_list>
+                    <code_list>at0008</code_list>
+                  </children>
+                </attributes>
+              </children>
+            </attributes>
+          </children>
+          <children xsi:type="C_COMPLEX_OBJECT">
+            <rm_type_name>ELEMENT</rm_type_name>
+            <occurrences>
+              <upper_included>true</upper_included>
+              <lower_included>true</lower_included>
+              <upper_unbounded>false</upper_unbounded>
+              <lower_unbounded>false</lower_unbounded>
+              <upper>1</upper>
+              <lower>0</lower>
+            </occurrences>
+            <node_id>at0010</node_id>
+            <attributes xsi:type="C_SINGLE_ATTRIBUTE">
+              <existence>
+                <lower_unbounded>false</lower_unbounded>
+                <upper_unbounded>false</upper_unbounded>
+                <lower>1</lower>
+                <upper>1</upper>
+              </existence>
+              <rm_attribute_name>value</rm_attribute_name>
+              <children xsi:type="C_COMPLEX_OBJECT">
+                <any_allowed>true</any_allowed>
+                <rm_type_name>DV_TEXT</rm_type_name>
+                <occurrences>
+                  <upper_included>true</upper_included>
+                  <lower_included>true</lower_included>
+                  <upper_unbounded>false</upper_unbounded>
+                  <lower_unbounded>false</lower_unbounded>
+                  <upper>1</upper>
+                  <lower>1</lower>
+                </occurrences>
+                <node_id />
+              </children>
+            </attributes>
+          </children>
+          <children xsi:type="C_COMPLEX_OBJECT">
+            <rm_type_name>ELEMENT</rm_type_name>
+            <occurrences>
+              <upper_included>true</upper_included>
+              <lower_included>true</lower_included>
+              <upper_unbounded>false</upper_unbounded>
+              <lower_unbounded>false</lower_unbounded>
+              <upper>1</upper>
+              <lower>0</lower>
+            </occurrences>
+            <node_id>at0011</node_id>
+            <attributes xsi:type="C_SINGLE_ATTRIBUTE">
+              <existence>
+                <lower_unbounded>false</lower_unbounded>
+                <upper_unbounded>false</upper_unbounded>
+                <lower>1</lower>
+                <upper>1</upper>
+              </existence>
+              <rm_attribute_name>value</rm_attribute_name>
+              <children xsi:type="C_COMPLEX_OBJECT">
+                <any_allowed>true</any_allowed>
+                <rm_type_name>DV_TEXT</rm_type_name>
+                <occurrences>
+                  <upper_included>true</upper_included>
+                  <lower_included>true</lower_included>
+                  <upper_unbounded>false</upper_unbounded>
+                  <lower_unbounded>false</lower_unbounded>
+                  <upper>1</upper>
+                  <lower>1</lower>
+                </occurrences>
+                <node_id />
+              </children>
+            </attributes>
+          </children>
+          <cardinality>
+            <is_ordered>true</is_ordered>
+            <is_unique>false</is_unique>
+            <interval>
+              <upper_included>false</upper_included>
+              <lower_included>true</lower_included>
+              <upper_unbounded>true</upper_unbounded>
+              <lower_unbounded>false</lower_unbounded>
+              <lower>0</lower>
+            </interval>
+          </cardinality>
+        </attributes>
+      </children>
+    </attributes>
+  </definition>
+  <ontology>
+    <term_definitions language="en">
+      <items code="at0000">
+        <items id="text">Body mass index</items>
+        <items id="description">Calculated measurement which compares a person's weight and height.</items>
+      </items>
+      <items code="at0001">
+        <items id="text">history</items>
+        <items id="description">@ internal @</items>
+      </items>
+      <items code="at0002">
+        <items id="text">Any event</items>
+        <items id="description">Any timed recording of Body Mass Index.</items>
+      </items>
+      <items code="at0003">
+        <items id="text">Single</items>
+        <items id="description">@ internal @</items>
+      </items>
+      <items code="at0004">
+        <items id="text">Body Mass Index</items>
+        <items id="description">Index describing ratio of weight to height.</items>
+      </items>
+      <items code="at0005">
+        <items id="text">List</items>
+        <items id="description">@ internal @</items>
+      </items>
+      <items code="at0006">
+        <items id="text">Method</items>
+        <items id="description">The method of entering the Body Mass Index.</items>
+      </items>
+      <items code="at0007">
+        <items id="text">Automatic entry</items>
+        <items id="description">Body Mass Index calculated and entered automatically without user intervention.</items>
+      </items>
+      <items code="at0008">
+        <items id="text">Direct entry</items>
+        <items id="description">Body Mass Index calculated and entered directly by user.</items>
+      </items>
+      <items code="at0010">
+        <items id="text">Formula</items>
+        <items id="description">Formula used to derive the Body Mass Index.</items>
+      </items>
+      <items code="at0011">
+        <items id="text">Comment</items>
+        <items id="description">Comment about the Body Mass Index measurement eg noting that the measurements used were adjusted weight/height.</items>
+      </items>
+    </term_definitions>
+    <term_definitions language="nl">
+      <items code="at0000">
+        <items id="text">Body mass index</items>
+        <items id="description">Berekende meting welke gewicht en lengte van een persoon vergelijkt.</items>
+      </items>
+      <items code="at0001">
+        <items id="text">*history(en)</items>
+        <items id="description">*@ internal @(en)</items>
+      </items>
+      <items code="at0002">
+        <items id="text">Elke gebeurtenis</items>
+        <items id="description">Opslag van iedere meting van de Body Mass Index</items>
+      </items>
+      <items code="at0003">
+        <items id="text">*Single(en)</items>
+        <items id="description">*@ internal @(en)</items>
+      </items>
+      <items code="at0004">
+        <items id="text">Body Mass Index</items>
+        <items id="description">Index om ratio gewicht - lengte te beschrijven</items>
+      </items>
+      <items code="at0005">
+        <items id="text">*List(en)</items>
+        <items id="description">*@ internal @(en)</items>
+      </items>
+      <items code="at0006">
+        <items id="text">Methode</items>
+        <items id="description">De methode om de Body Mass Index in te voeren.</items>
+      </items>
+      <items code="at0007">
+        <items id="text">Automatische invoer</items>
+        <items id="description">Body Mass Index is automatisch berekend en ingevoerd, zonder tussenkomst van gebruikers.</items>
+      </items>
+      <items code="at0008">
+        <items id="text">Direkte invoer</items>
+        <items id="description">Body Mass Index is berekend en ingevoerd door de gebruiker.</items>
+      </items>
+      <items code="at0010">
+        <items id="text">Formule</items>
+        <items id="description">De formule die gebruikt wordt om de Body Mass Index te berekenen</items>
+      </items>
+      <items code="at0011">
+        <items id="text">Opmerking</items>
+        <items id="description">Opmerking over de Body Mass Index meting, b.v. dat de metingen die gebruikt werden voor de berekening, aangepaste lengte/gewicht zijn.</items>
+      </items>
+    </term_definitions>
+    <term_definitions language="pt-br">
+      <items code="at0000">
+        <items id="text">Indice de massa corpórea</items>
+        <items id="description">IMC - medida que compara o peso de uma pessoa com a altura.</items>
+      </items>
+      <items code="at0001">
+        <items id="text">history</items>
+        <items id="description">@ internal @</items>
+      </items>
+      <items code="at0002">
+        <items id="text">Qualquer evento</items>
+        <items id="description">Gravação a qualquer momento do Índice de Massa Corpórea.</items>
+      </items>
+      <items code="at0003">
+        <items id="text">Single</items>
+        <items id="description">@ internal @</items>
+      </items>
+      <items code="at0004">
+        <items id="text">Indice de massa corpórea</items>
+        <items id="description">Índice que descreve a relação de peso com a altura.</items>
+      </items>
+      <items code="at0005">
+        <items id="text">List</items>
+        <items id="description">@ internal @</items>
+      </items>
+      <items code="at0006">
+        <items id="text">Método</items>
+        <items id="description">Método de entrada do IMC.</items>
+      </items>
+      <items code="at0007">
+        <items id="text">Entrada automática</items>
+        <items id="description">IMC registrado automaticamente, sem a intervenção do usuário.</items>
+      </items>
+      <items code="at0008">
+        <items id="text">Entrada direta</items>
+        <items id="description">IMC registrado diretamente pelo usuário.</items>
+      </items>
+      <items code="at0010">
+        <items id="text">Fórmula</items>
+        <items id="description">Fórmula usada para calcular o IMC (somente se for diferente de peso/altura^2).</items>
+      </items>
+      <items code="at0011">
+        <items id="text">Comentário</items>
+        <items id="description">Comentário sobre a medição, por exemplo, IMC observando que as medidas utilizadas foram ajustadas para peso / altura.</items>
+      </items>
+    </term_definitions>
+    <term_definitions language="fa">
+      <items code="at0000">
+        <items id="text">شاخص توده بدن</items>
+        <items id="description">شاخص نشاندهنده چاقی</items>
+      </items>
+      <items code="at0001">
+        <items id="text">*history(en)</items>
+        <items id="description">*@ internal @(en)</items>
+      </items>
+      <items code="at0002">
+        <items id="text">هر واقعه</items>
+        <items id="description">BMIثبت زمان مند</items>
+      </items>
+      <items code="at0003">
+        <items id="text">*Single(en)</items>
+        <items id="description">*@ internal @(en)</items>
+      </items>
+      <items code="at0004">
+        <items id="text">شاخص توده بدن</items>
+        <items id="description">وزن بر حسب كيلوگرم) تقسيم بر (مجذور قد بر حسب متر)محاسبه شاخص از</items>
+      </items>
+      <items code="at0005">
+        <items id="text">*List(en)</items>
+        <items id="description">*@ internal @(en)</items>
+      </items>
+      <items code="at0006">
+        <items id="text">روش</items>
+        <items id="description">BMIروش محاسبه</items>
+      </items>
+      <items code="at0007">
+        <items id="text">محاسبه خودکار</items>
+        <items id="description">محاسبه از ثبت قد و وزن</items>
+      </items>
+      <items code="at0008">
+        <items id="text">ورود مستقیم داده ها</items>
+        <items id="description">نیستEHRبطور مستقیم وارد شده ، محاسبه از طریق داده های</items>
+      </items>
+      <items code="at0010">
+        <items id="text">فرمول</items>
+        <items id="description">فرمول مورد استفاده برای استخراج شاخص توده بدن</items>
+      </items>
+      <items code="at0011">
+        <items id="text">نظر</items>
+        <items id="description">نظر در مورد توده بدن به عنوان مثال اندازه گیری شاخص و اشاره کرد که اندازه گیری استفاده می شود وزن / قد همسان شدند.</items>
+      </items>
+    </term_definitions>
+  </ontology>
+</archetype>
+

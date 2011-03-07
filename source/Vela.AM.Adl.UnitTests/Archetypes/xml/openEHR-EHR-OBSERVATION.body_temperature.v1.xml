@@ -1,0 +1,1135 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<archetype xmlns="http://schemas.openehr.org/v1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <archetype_id>
+    <value>openEHR-EHR-OBSERVATION.body_temperature.v1</value>
+  </archetype_id>
+  <concept>at0000</concept>
+  <original_language>
+    <code_string>en</code_string>
+    <terminology_id>
+      <value>ISO_639-1</value>
+    </terminology_id>
+  </original_language>
+  <is_controlled>false</is_controlled>
+  <description>
+    <original_author id="email">sam.heard@oceaninformatics.com</original_author>
+    <original_author id="date">18/05/2004</original_author>
+    <original_author id="name">Sam Heard</original_author>
+    <original_author id="organisation">Ocean Informatics</original_author>
+    <other_contributors>Knut Bernstein</other_contributors>
+    <other_contributors>Sebastian Garde</other_contributors>
+    <other_contributors>Ian McNicoll</other_contributors>
+    <other_contributors>Omer Hotomaroglu</other_contributors>
+    <other_contributors>Sundaresan Jaganathan</other_contributors>
+    <other_contributors>Heather Leslie</other_contributors>
+    <other_contributors>Shahla Foozonkhah</other_contributors>
+    <lifecycle_state>AuthorDraft</lifecycle_state>
+    <details>
+      <language>
+        <code_string>en</code_string>
+        <terminology_id>
+          <value>ISO_639-1</value>
+        </terminology_id>
+      </language>
+      <purpose>To record the measured temperature of a person - as a surrogate for the temperature of the whole body.</purpose>
+      <keywords>temperature</keywords>
+      <keywords>body</keywords>
+      <keywords>core</keywords>
+      <keywords>fever</keywords>
+      <keywords>hypothermia</keywords>
+      <keywords>hyperthermia</keywords>
+      <use>Used for recording the whole body temperature of a person or body.
+Additional clusters can be included to provide additional state data - including environmental conditions, menstrual cycle details and exertion details, where appropriate.
+Please Note: The site and method of recording may need to be displayed to the end user to facilitate accurate interpretation of the temperature recorded.</use>
+      <misuse>This archetype is not to be used to record the temperature of any other object.
+This archetype is not to be used to record the temperature of a part of the body in isolation e.g. temperature of the sole of the foot as a part of chronic diabetes management.</misuse>
+      <copyright>copyright (c) 2011 openEHR Foundation</copyright>
+    </details>
+    <details>
+      <language>
+        <code_string>de</code_string>
+        <terminology_id>
+          <value>ISO_639-1</value>
+        </terminology_id>
+      </language>
+      <purpose>Zur Messung der Temperatur einer Person - als Surrogat for die Temperatur des gesamten Körpers.</purpose>
+      <keywords>Temperatur</keywords>
+      <keywords>Körper</keywords>
+      <keywords>Kern</keywords>
+      <keywords>Fieber</keywords>
+      <keywords>Hypothermie</keywords>
+      <keywords>Hyperthermie</keywords>
+      <use>Benutzt zur Aufzeichnung der gesamten Körpertemperatur einer Person oder eines Körpers.
+
+
+
+Wenn benötigt, können zusätzliche Cluster Archetypen eingefügt werden, um zusätzliche Statusdaten bereitzustellen - darunter Details zu Umgebungsbedingungen, Menstruationszyklus und Betätigung.
+
+
+
+Bitte beachten: Die Stelle und Methode der Messung muss ggf. dem Endverbraucher angezeigt werden, um eine präzise Interpretation der gemessenen Temperatur zu ermöglichen.</use>
+      <misuse>Dieser Archetyp soll nicht benutzt werden, um die Messung der Temperatur irgendeines anderen Objekts zu dokumentieren.
+
+
+
+Dieser Archetyp soll nicht benutzt werden, um die Temperatur eines Körperteils isoliert zu messen, z. B. die Temperatur an der Fußsohle im Rahmen des Managements von chronischem Diabetes.</misuse>
+      <copyright>copyright (c) 2011 openEHR Foundation</copyright>
+    </details>
+    <details>
+      <language>
+        <code_string>pt-br</code_string>
+        <terminology_id>
+          <value>ISO_639-1</value>
+        </terminology_id>
+      </language>
+      <purpose>Para registrar a temperatura aferida de uma pessoa - com valor médio equivalente para o corpo inteiro.</purpose>
+      <keywords>temperatura</keywords>
+      <keywords>corpo</keywords>
+      <keywords>febre</keywords>
+      <keywords>hipotermia</keywords>
+      <keywords>hipertermia</keywords>
+      <use>Usado para registrar a temperatura corporal de uma pessoa ou organismo.
+Clusters adicionais podem ser incluídos para fornecer dados adicionais - incluindo as condições ambientais, os detalhes do ciclo menstrual e detalhes de esforço, se for caso.
+
+Observação: O local e método de gravação podem precisar de ser exibidos ao usuário final para facilitar a interpretação exata da temperatura registrada.</use>
+      <misuse>Esse arquétipo não pode ser usado para registrar a temperatura de qualquer outro objeto.
+Esse arquétipo não pode ser usado para registrar a temperatura de uma parte do corpo isoladamente, por exemplo, temperatura da sola do pé, como parte do controle de diabetes crônica.</misuse>
+      <copyright>copyright (c) 2011 openEHR Foundation</copyright>
+    </details>
+    <details>
+      <language>
+        <code_string>ru</code_string>
+        <terminology_id>
+          <value>ISO_639-1</value>
+        </terminology_id>
+      </language>
+      <purpose>Для записи измеряемой температуры человека - в качестве суррогата температуры всего тела.</purpose>
+      <keywords>температура</keywords>
+      <keywords>лихорадка</keywords>
+      <keywords>жар</keywords>
+      <keywords>гипертермия</keywords>
+      <keywords>гипотермия</keywords>
+      <use>Используется для записи температуры тела пациента или органа.
+Дополнительные кластеры могут быть включены для получения дополнительной информации о состоянии - в том числе условия внешней среды, фаза менструального цикла и другие детали, где это уместно.
+Обратите внимание: запись о месте и методе измерения  может потребоваться  для облегчения точной интерпретации регистрируемой температуры.</use>
+      <misuse>Этот архетип не следует использовать для записи температуры любого другого объекта.
+Этот архетип не следует использовать для записи температуры части тела, например, отдельного измерения температуры ступни в лечении больных с диабетической стопой.</misuse>
+      <copyright>copyright (c) 2011 openEHR Foundation</copyright>
+    </details>
+    <resource_package_uri />
+    <other_details id="MD5-CAM-1.0.1">67AD0398E82C094EA41963065CD85084</other_details>
+  </description>
+  <definition>
+    <rm_type_name>OBSERVATION</rm_type_name>
+    <occurrences>
+      <upper_included>true</upper_included>
+      <lower_included>true</lower_included>
+      <upper_unbounded>false</upper_unbounded>
+      <lower_unbounded>false</lower_unbounded>
+      <upper>1</upper>
+      <lower>1</lower>
+    </occurrences>
+    <node_id>at0000</node_id>
+    <attributes xsi:type="C_SINGLE_ATTRIBUTE">
+      <existence>
+        <lower_unbounded>false</lower_unbounded>
+        <upper_unbounded>false</upper_unbounded>
+        <lower>1</lower>
+        <upper>1</upper>
+      </existence>
+      <rm_attribute_name>data</rm_attribute_name>
+      <children xsi:type="C_COMPLEX_OBJECT">
+        <rm_type_name>HISTORY</rm_type_name>
+        <occurrences>
+          <upper_included>true</upper_included>
+          <lower_included>true</lower_included>
+          <upper_unbounded>false</upper_unbounded>
+          <lower_unbounded>false</lower_unbounded>
+          <upper>1</upper>
+          <lower>1</lower>
+        </occurrences>
+        <node_id>at0002</node_id>
+        <attributes xsi:type="C_MULTIPLE_ATTRIBUTE">
+          <existence>
+            <lower_unbounded>false</lower_unbounded>
+            <upper_unbounded>false</upper_unbounded>
+            <lower>1</lower>
+            <upper>1</upper>
+          </existence>
+          <rm_attribute_name>events</rm_attribute_name>
+          <children xsi:type="C_COMPLEX_OBJECT">
+            <rm_type_name>EVENT</rm_type_name>
+            <occurrences>
+              <upper_included>false</upper_included>
+              <lower_included>true</lower_included>
+              <upper_unbounded>true</upper_unbounded>
+              <lower_unbounded>false</lower_unbounded>
+              <lower>0</lower>
+            </occurrences>
+            <node_id>at0003</node_id>
+            <attributes xsi:type="C_SINGLE_ATTRIBUTE">
+              <existence>
+                <lower_unbounded>false</lower_unbounded>
+                <upper_unbounded>false</upper_unbounded>
+                <lower>1</lower>
+                <upper>1</upper>
+              </existence>
+              <rm_attribute_name>data</rm_attribute_name>
+              <children xsi:type="C_COMPLEX_OBJECT">
+                <rm_type_name>ITEM_TREE</rm_type_name>
+                <occurrences>
+                  <upper_included>true</upper_included>
+                  <lower_included>true</lower_included>
+                  <upper_unbounded>false</upper_unbounded>
+                  <lower_unbounded>false</lower_unbounded>
+                  <upper>1</upper>
+                  <lower>1</lower>
+                </occurrences>
+                <node_id>at0001</node_id>
+                <attributes xsi:type="C_MULTIPLE_ATTRIBUTE">
+                  <existence>
+                    <lower_unbounded>false</lower_unbounded>
+                    <upper_unbounded>false</upper_unbounded>
+                    <lower>1</lower>
+                    <upper>1</upper>
+                  </existence>
+                  <rm_attribute_name>items</rm_attribute_name>
+                  <children xsi:type="C_COMPLEX_OBJECT">
+                    <rm_type_name>ELEMENT</rm_type_name>
+                    <occurrences>
+                      <upper_included>true</upper_included>
+                      <lower_included>true</lower_included>
+                      <upper_unbounded>false</upper_unbounded>
+                      <lower_unbounded>false</lower_unbounded>
+                      <upper>1</upper>
+                      <lower>1</lower>
+                    </occurrences>
+                    <node_id>at0004</node_id>
+                    <attributes xsi:type="C_SINGLE_ATTRIBUTE">
+                      <existence>
+                        <lower_unbounded>false</lower_unbounded>
+                        <upper_unbounded>false</upper_unbounded>
+                        <lower>1</lower>
+                        <upper>1</upper>
+                      </existence>
+                      <rm_attribute_name>value</rm_attribute_name>
+                      <children xsi:type="C_DV_QUANTITY">
+                        <rm_type_name>DV_QUANTITY</rm_type_name>
+                        <occurrences>
+                          <upper_included>true</upper_included>
+                          <lower_included>true</lower_included>
+                          <upper_unbounded>false</upper_unbounded>
+                          <lower_unbounded>false</lower_unbounded>
+                          <upper>1</upper>
+                          <lower>1</lower>
+                        </occurrences>
+                        <node_id />
+                        <property>
+                          <code_string>127</code_string>
+                          <terminology_id>
+                            <value>openehr</value>
+                          </terminology_id>
+                        </property>
+                        <list>
+                          <units>°C</units>
+                        </list>
+                        <list>
+                          <units>°F</units>
+                        </list>
+                      </children>
+                    </attributes>
+                  </children>
+                  <cardinality>
+                    <is_ordered>false</is_ordered>
+                    <is_unique>false</is_unique>
+                    <interval>
+                      <upper_included>true</upper_included>
+                      <lower_included>true</lower_included>
+                      <upper_unbounded>false</upper_unbounded>
+                      <lower_unbounded>false</lower_unbounded>
+                      <upper>1</upper>
+                      <lower>1</lower>
+                    </interval>
+                  </cardinality>
+                </attributes>
+              </children>
+            </attributes>
+            <attributes xsi:type="C_SINGLE_ATTRIBUTE">
+              <existence>
+                <lower_unbounded>false</lower_unbounded>
+                <upper_unbounded>false</upper_unbounded>
+                <lower>1</lower>
+                <upper>1</upper>
+              </existence>
+              <rm_attribute_name>state</rm_attribute_name>
+              <children xsi:type="C_COMPLEX_OBJECT">
+                <rm_type_name>ITEM_TREE</rm_type_name>
+                <occurrences>
+                  <upper_included>true</upper_included>
+                  <lower_included>true</lower_included>
+                  <upper_unbounded>false</upper_unbounded>
+                  <lower_unbounded>false</lower_unbounded>
+                  <upper>1</upper>
+                  <lower>1</lower>
+                </occurrences>
+                <node_id>at0029</node_id>
+                <attributes xsi:type="C_MULTIPLE_ATTRIBUTE">
+                  <existence>
+                    <lower_unbounded>false</lower_unbounded>
+                    <upper_unbounded>false</upper_unbounded>
+                    <lower>1</lower>
+                    <upper>1</upper>
+                  </existence>
+                  <rm_attribute_name>items</rm_attribute_name>
+                  <children xsi:type="C_COMPLEX_OBJECT">
+                    <rm_type_name>ELEMENT</rm_type_name>
+                    <occurrences>
+                      <upper_included>true</upper_included>
+                      <lower_included>true</lower_included>
+                      <upper_unbounded>false</upper_unbounded>
+                      <lower_unbounded>false</lower_unbounded>
+                      <upper>1</upper>
+                      <lower>0</lower>
+                    </occurrences>
+                    <node_id>at0030</node_id>
+                    <attributes xsi:type="C_SINGLE_ATTRIBUTE">
+                      <existence>
+                        <lower_unbounded>false</lower_unbounded>
+                        <upper_unbounded>false</upper_unbounded>
+                        <lower>1</lower>
+                        <upper>1</upper>
+                      </existence>
+                      <rm_attribute_name>value</rm_attribute_name>
+                      <children xsi:type="C_COMPLEX_OBJECT">
+                        <rm_type_name>DV_CODED_TEXT</rm_type_name>
+                        <occurrences>
+                          <upper_included>true</upper_included>
+                          <lower_included>true</lower_included>
+                          <upper_unbounded>false</upper_unbounded>
+                          <lower_unbounded>false</lower_unbounded>
+                          <upper>1</upper>
+                          <lower>1</lower>
+                        </occurrences>
+                        <node_id />
+                        <attributes xsi:type="C_SINGLE_ATTRIBUTE">
+                          <existence>
+                            <lower_unbounded>false</lower_unbounded>
+                            <upper_unbounded>false</upper_unbounded>
+                            <lower>1</lower>
+                            <upper>1</upper>
+                          </existence>
+                          <rm_attribute_name>defining_code</rm_attribute_name>
+                          <children xsi:type="C_CODE_PHRASE">
+                            <rm_type_name>CODE_PHRASE</rm_type_name>
+                            <occurrences>
+                              <upper_included>true</upper_included>
+                              <lower_included>true</lower_included>
+                              <upper_unbounded>false</upper_unbounded>
+                              <lower_unbounded>false</lower_unbounded>
+                              <upper>1</upper>
+                              <lower>1</lower>
+                            </occurrences>
+                            <node_id />
+                            <terminology_id>
+                              <value>local</value>
+                            </terminology_id>
+                            <code_list>at0031</code_list>
+                            <code_list>at0032</code_list>
+                            <code_list>at0033</code_list>
+                            <code_list>at0034</code_list>
+                          </children>
+                        </attributes>
+                      </children>
+                    </attributes>
+                  </children>
+                  <children xsi:type="ARCHETYPE_SLOT">
+                    <rm_type_name>CLUSTER</rm_type_name>
+                    <occurrences>
+                      <upper_included>true</upper_included>
+                      <lower_included>true</lower_included>
+                      <upper_unbounded>false</upper_unbounded>
+                      <lower_unbounded>false</lower_unbounded>
+                      <upper>1</upper>
+                      <lower>0</lower>
+                    </occurrences>
+                    <node_id>at0056</node_id>
+                    <includes>
+                      <tag />
+                      <string_expression />
+                      <expression xsi:type="EXPR_BINARY_OPERATOR">
+                        <type>BOOLEAN</type>
+                        <operator>2007</operator>
+                        <precedence_overridden>false</precedence_overridden>
+                        <left_operand xsi:type="EXPR_LEAF">
+                          <type>STRING</type>
+                          <item xsi:type="xsd:string">archetype_id/value</item>
+                          <reference_type>CONSTANT</reference_type>
+                        </left_operand>
+                        <right_operand xsi:type="EXPR_LEAF">
+                          <type>String</type>
+                          <item xsi:type="C_STRING">
+                            <pattern>openEHR-EHR-CLUSTER\.environmental_conditions\.v1</pattern>
+                          </item>
+                          <reference_type>CONSTANT</reference_type>
+                        </right_operand>
+                      </expression>
+                    </includes>
+                  </children>
+                  <children xsi:type="ARCHETYPE_SLOT">
+                    <rm_type_name>CLUSTER</rm_type_name>
+                    <occurrences>
+                      <upper_included>true</upper_included>
+                      <lower_included>true</lower_included>
+                      <upper_unbounded>false</upper_unbounded>
+                      <lower_unbounded>false</lower_unbounded>
+                      <upper>1</upper>
+                      <lower>0</lower>
+                    </occurrences>
+                    <node_id>at0057</node_id>
+                    <includes>
+                      <tag />
+                      <string_expression />
+                      <expression xsi:type="EXPR_BINARY_OPERATOR">
+                        <type>BOOLEAN</type>
+                        <operator>2007</operator>
+                        <precedence_overridden>false</precedence_overridden>
+                        <left_operand xsi:type="EXPR_LEAF">
+                          <type>STRING</type>
+                          <item xsi:type="xsd:string">archetype_id/value</item>
+                          <reference_type>CONSTANT</reference_type>
+                        </left_operand>
+                        <right_operand xsi:type="EXPR_LEAF">
+                          <type>String</type>
+                          <item xsi:type="C_STRING">
+                            <pattern>openEHR-EHR-CLUSTER\.level_of_exertion\.v1</pattern>
+                          </item>
+                          <reference_type>CONSTANT</reference_type>
+                        </right_operand>
+                      </expression>
+                    </includes>
+                  </children>
+                  <children xsi:type="ARCHETYPE_SLOT">
+                    <rm_type_name>ELEMENT</rm_type_name>
+                    <occurrences>
+                      <upper_included>true</upper_included>
+                      <lower_included>true</lower_included>
+                      <upper_unbounded>false</upper_unbounded>
+                      <lower_unbounded>false</lower_unbounded>
+                      <upper>1</upper>
+                      <lower>0</lower>
+                    </occurrences>
+                    <node_id>at0058</node_id>
+                    <includes>
+                      <tag />
+                      <string_expression />
+                      <expression xsi:type="EXPR_BINARY_OPERATOR">
+                        <type>BOOLEAN</type>
+                        <operator>2007</operator>
+                        <precedence_overridden>false</precedence_overridden>
+                        <left_operand xsi:type="EXPR_LEAF">
+                          <type>STRING</type>
+                          <item xsi:type="xsd:string">archetype_id/value</item>
+                          <reference_type>CONSTANT</reference_type>
+                        </left_operand>
+                        <right_operand xsi:type="EXPR_LEAF">
+                          <type>String</type>
+                          <item xsi:type="C_STRING">
+                            <pattern>openEHR-EHR-ELEMENT\.last_normal_menstrual_period\.v1|openEHR-EHR-ELEMENT\.menstrual_cycle_day\.v1</pattern>
+                          </item>
+                          <reference_type>CONSTANT</reference_type>
+                        </right_operand>
+                      </expression>
+                    </includes>
+                  </children>
+                  <children xsi:type="C_COMPLEX_OBJECT">
+                    <rm_type_name>ELEMENT</rm_type_name>
+                    <occurrences>
+                      <upper_included>true</upper_included>
+                      <lower_included>true</lower_included>
+                      <upper_unbounded>false</upper_unbounded>
+                      <lower_unbounded>false</lower_unbounded>
+                      <upper>1</upper>
+                      <lower>0</lower>
+                    </occurrences>
+                    <node_id>at0041</node_id>
+                    <attributes xsi:type="C_SINGLE_ATTRIBUTE">
+                      <existence>
+                        <lower_unbounded>false</lower_unbounded>
+                        <upper_unbounded>false</upper_unbounded>
+                        <lower>1</lower>
+                        <upper>1</upper>
+                      </existence>
+                      <rm_attribute_name>value</rm_attribute_name>
+                      <children xsi:type="C_COMPLEX_OBJECT">
+                        <any_allowed>true</any_allowed>
+                        <rm_type_name>DV_TEXT</rm_type_name>
+                        <occurrences>
+                          <upper_included>true</upper_included>
+                          <lower_included>true</lower_included>
+                          <upper_unbounded>false</upper_unbounded>
+                          <lower_unbounded>false</lower_unbounded>
+                          <upper>1</upper>
+                          <lower>1</lower>
+                        </occurrences>
+                        <node_id />
+                      </children>
+                    </attributes>
+                  </children>
+                  <cardinality>
+                    <is_ordered>true</is_ordered>
+                    <is_unique>false</is_unique>
+                    <interval>
+                      <upper_included>false</upper_included>
+                      <lower_included>true</lower_included>
+                      <upper_unbounded>true</upper_unbounded>
+                      <lower_unbounded>false</lower_unbounded>
+                      <lower>0</lower>
+                    </interval>
+                  </cardinality>
+                </attributes>
+              </children>
+            </attributes>
+          </children>
+          <cardinality>
+            <is_ordered>false</is_ordered>
+            <is_unique>false</is_unique>
+            <interval>
+              <upper_included>false</upper_included>
+              <lower_included>true</lower_included>
+              <upper_unbounded>true</upper_unbounded>
+              <lower_unbounded>false</lower_unbounded>
+              <lower>1</lower>
+            </interval>
+          </cardinality>
+        </attributes>
+      </children>
+    </attributes>
+    <attributes xsi:type="C_SINGLE_ATTRIBUTE">
+      <existence>
+        <lower_unbounded>false</lower_unbounded>
+        <upper_unbounded>false</upper_unbounded>
+        <lower>1</lower>
+        <upper>1</upper>
+      </existence>
+      <rm_attribute_name>protocol</rm_attribute_name>
+      <children xsi:type="C_COMPLEX_OBJECT">
+        <rm_type_name>ITEM_TREE</rm_type_name>
+        <occurrences>
+          <upper_included>true</upper_included>
+          <lower_included>true</lower_included>
+          <upper_unbounded>false</upper_unbounded>
+          <lower_unbounded>false</lower_unbounded>
+          <upper>1</upper>
+          <lower>1</lower>
+        </occurrences>
+        <node_id>at0020</node_id>
+        <attributes xsi:type="C_MULTIPLE_ATTRIBUTE">
+          <existence>
+            <lower_unbounded>false</lower_unbounded>
+            <upper_unbounded>false</upper_unbounded>
+            <lower>1</lower>
+            <upper>1</upper>
+          </existence>
+          <rm_attribute_name>items</rm_attribute_name>
+          <children xsi:type="C_COMPLEX_OBJECT">
+            <rm_type_name>ELEMENT</rm_type_name>
+            <occurrences>
+              <upper_included>true</upper_included>
+              <lower_included>true</lower_included>
+              <upper_unbounded>false</upper_unbounded>
+              <lower_unbounded>false</lower_unbounded>
+              <upper>1</upper>
+              <lower>0</lower>
+            </occurrences>
+            <node_id>at0021</node_id>
+            <attributes xsi:type="C_SINGLE_ATTRIBUTE">
+              <existence>
+                <lower_unbounded>false</lower_unbounded>
+                <upper_unbounded>false</upper_unbounded>
+                <lower>1</lower>
+                <upper>1</upper>
+              </existence>
+              <rm_attribute_name>value</rm_attribute_name>
+              <children xsi:type="C_COMPLEX_OBJECT">
+                <rm_type_name>DV_CODED_TEXT</rm_type_name>
+                <occurrences>
+                  <upper_included>true</upper_included>
+                  <lower_included>true</lower_included>
+                  <upper_unbounded>false</upper_unbounded>
+                  <lower_unbounded>false</lower_unbounded>
+                  <upper>1</upper>
+                  <lower>1</lower>
+                </occurrences>
+                <node_id />
+                <attributes xsi:type="C_SINGLE_ATTRIBUTE">
+                  <existence>
+                    <lower_unbounded>false</lower_unbounded>
+                    <upper_unbounded>false</upper_unbounded>
+                    <lower>1</lower>
+                    <upper>1</upper>
+                  </existence>
+                  <rm_attribute_name>defining_code</rm_attribute_name>
+                  <children xsi:type="C_CODE_PHRASE">
+                    <rm_type_name>CODE_PHRASE</rm_type_name>
+                    <occurrences>
+                      <upper_included>true</upper_included>
+                      <lower_included>true</lower_included>
+                      <upper_unbounded>false</upper_unbounded>
+                      <lower_unbounded>false</lower_unbounded>
+                      <upper>1</upper>
+                      <lower>1</lower>
+                    </occurrences>
+                    <node_id />
+                    <terminology_id>
+                      <value>local</value>
+                    </terminology_id>
+                    <code_list>at0022</code_list>
+                    <code_list>at0023</code_list>
+                    <code_list>at0024</code_list>
+                    <code_list>at0025</code_list>
+                    <code_list>at0026</code_list>
+                    <code_list>at0027</code_list>
+                    <code_list>at0028</code_list>
+                    <code_list>at0043</code_list>
+                    <code_list>at0051</code_list>
+                    <code_list>at0054</code_list>
+                    <code_list>at0055</code_list>
+                  </children>
+                </attributes>
+              </children>
+            </attributes>
+          </children>
+          <children xsi:type="ARCHETYPE_SLOT">
+            <rm_type_name>CLUSTER</rm_type_name>
+            <occurrences>
+              <upper_included>true</upper_included>
+              <lower_included>true</lower_included>
+              <upper_unbounded>false</upper_unbounded>
+              <lower_unbounded>false</lower_unbounded>
+              <upper>1</upper>
+              <lower>0</lower>
+            </occurrences>
+            <node_id>at0059</node_id>
+            <includes>
+              <tag />
+              <string_expression />
+              <expression xsi:type="EXPR_BINARY_OPERATOR">
+                <type>BOOLEAN</type>
+                <operator>2007</operator>
+                <precedence_overridden>false</precedence_overridden>
+                <left_operand xsi:type="EXPR_LEAF">
+                  <type>STRING</type>
+                  <item xsi:type="xsd:string">archetype_id/value</item>
+                  <reference_type>CONSTANT</reference_type>
+                </left_operand>
+                <right_operand xsi:type="EXPR_LEAF">
+                  <type>String</type>
+                  <item xsi:type="C_STRING">
+                    <pattern>openEHR-EHR-CLUSTER\.device\.v1</pattern>
+                  </item>
+                  <reference_type>CONSTANT</reference_type>
+                </right_operand>
+              </expression>
+            </includes>
+          </children>
+          <cardinality>
+            <is_ordered>true</is_ordered>
+            <is_unique>false</is_unique>
+            <interval>
+              <upper_included>false</upper_included>
+              <lower_included>true</lower_included>
+              <upper_unbounded>true</upper_unbounded>
+              <lower_unbounded>false</lower_unbounded>
+              <lower>0</lower>
+            </interval>
+          </cardinality>
+        </attributes>
+      </children>
+    </attributes>
+  </definition>
+  <ontology>
+    <term_definitions language="en">
+      <items code="at0000">
+        <items id="text">Body temperature</items>
+        <items id="description">A measurement of the body temperature, which is a surrogate for the whole body temperature of the person.</items>
+      </items>
+      <items code="at0001">
+        <items id="text">Single</items>
+        <items id="description">*</items>
+      </items>
+      <items code="at0002">
+        <items id="text">History</items>
+        <items id="description">@ internal @</items>
+      </items>
+      <items code="at0003">
+        <items id="text">Any event</items>
+        <items id="description">Any event</items>
+      </items>
+      <items code="at0004">
+        <items id="text">Temperature</items>
+        <items id="description">The measured body temperature (as a surrogate for the whole body).</items>
+      </items>
+      <items code="at0020">
+        <items id="text">Protocol</items>
+        <items id="description">@ internal @</items>
+      </items>
+      <items code="at0021">
+        <items id="text">Site of measurement</items>
+        <items id="description">The anatomical site of measurement of the temperature.</items>
+      </items>
+      <items code="at0022">
+        <items id="text">Mouth</items>
+        <items id="description">Temperature is measured within the mouth.</items>
+      </items>
+      <items code="at0023">
+        <items id="text">Ear canal</items>
+        <items id="description">Temperature is measured from within the external auditory canal.</items>
+      </items>
+      <items code="at0024">
+        <items id="text">Axilla</items>
+        <items id="description">Temperature is measured from the skin of the axilla with the arm positioned down by the side.</items>
+      </items>
+      <items code="at0025">
+        <items id="text">Rectum</items>
+        <items id="description">Temperature measured within the rectum.</items>
+      </items>
+      <items code="at0026">
+        <items id="text">Nasopharynx</items>
+        <items id="description">Temperature is measured within the nasopharynx.</items>
+      </items>
+      <items code="at0027">
+        <items id="text">Urinary bladder</items>
+        <items id="description">Temperature is measured in the urinary bladder.</items>
+      </items>
+      <items code="at0028">
+        <items id="text">Intravascular</items>
+        <items id="description">Temperature is measured within the vascular system.</items>
+      </items>
+      <items code="at0029">
+        <items id="text">State</items>
+        <items id="description">State information about the patient.</items>
+      </items>
+      <items code="at0030">
+        <items id="text">Body exposure</items>
+        <items id="description">The thermal situation of the person who is having the temperature taken.</items>
+      </items>
+      <items code="at0031">
+        <items id="text">Naked</items>
+        <items id="description">No clothing, bedding or covering.</items>
+      </items>
+      <items code="at0032">
+        <items id="text">Reduced clothing/bedding</items>
+        <items id="description">The person is covered by a lesser amount of clothing or bedding than deemed appropriate for the environmental circumstances.</items>
+      </items>
+      <items code="at0033">
+        <items id="text">Appropriate clothing/bedding</items>
+        <items id="description">The person is covered by an amount of clothing or bedding deemed appropriate for the environmental circumstances.</items>
+      </items>
+      <items code="at0034">
+        <items id="text">Increased clothing/bedding</items>
+        <items id="description">The person is covered by an increased amount of clothing or bedding than deemed appropriate for the environmental circumstances.</items>
+      </items>
+      <items code="at0041">
+        <items id="text">Description of thermal stress</items>
+        <items id="description">Description of the conditions applied to the subject that might influence their measured body temperature.</items>
+      </items>
+      <items code="at0043">
+        <items id="text">Skin</items>
+        <items id="description">Temperature is measured from exposed skin.</items>
+      </items>
+      <items code="at0051">
+        <items id="text">Vagina</items>
+        <items id="description">Temperature is measured within the vagina.</items>
+      </items>
+      <items code="at0054">
+        <items id="text">Oesophagus</items>
+        <items id="description">Temperatue is measured within the oesophagus.</items>
+      </items>
+      <items code="at0055">
+        <items id="text">Inguinal skin crease</items>
+        <items id="description">Temperature is measured in the inguinal skin crease between the leg and abdominal wall.</items>
+      </items>
+      <items code="at0056">
+        <items id="text">Environmental Conditions</items>
+        <items id="description">Details about the environmental conditions at the time of temperature measurement.</items>
+      </items>
+      <items code="at0057">
+        <items id="text">Exertion</items>
+        <items id="description">Details about the exertion of the person at the time of temperature measurement.</items>
+      </items>
+      <items code="at0058">
+        <items id="text">Menstrual Cycle</items>
+        <items id="description">Details about the menstrual cycle of a woman.</items>
+      </items>
+      <items code="at0059">
+        <items id="text">Device</items>
+        <items id="description">Details about the device use to measure body temperature.</items>
+      </items>
+    </term_definitions>
+    <term_definitions language="de">
+      <items code="at0000">
+        <items id="text">Körpertemperatur</items>
+        <items id="description">Eine Messung der Körpertemperatur an einer bestimmten Stelle als Surrogat für den gesamten Körper der Person.</items>
+      </items>
+      <items code="at0001">
+        <items id="text">Single</items>
+        <items id="description">*</items>
+      </items>
+      <items code="at0002">
+        <items id="text">History</items>
+        <items id="description">@ internal @</items>
+      </items>
+      <items code="at0003">
+        <items id="text">Any event</items>
+        <items id="description">Any event.</items>
+      </items>
+      <items code="at0004">
+        <items id="text">Temperatur</items>
+        <items id="description">Die gemessene Körpertemperatur (als Surrogat für den gesamten Körper).</items>
+      </items>
+      <items code="at0020">
+        <items id="text">Protocol</items>
+        <items id="description">@ internal @</items>
+      </items>
+      <items code="at0021">
+        <items id="text">Messstelle</items>
+        <items id="description">Die anatomische Stelle der Temperaturmessung.</items>
+      </items>
+      <items code="at0022">
+        <items id="text">Mund</items>
+        <items id="description">Messung der Temperatur im Mund.</items>
+      </items>
+      <items code="at0023">
+        <items id="text">Ohrenkanal</items>
+        <items id="description">Messung der Temperatur innerhalb des äußeren Gehörgangs.</items>
+      </items>
+      <items code="at0024">
+        <items id="text">Achselhöhle</items>
+        <items id="description">Messung der Temperatur an der Haut der Achselhöhle mit seitlich angelegtem Arm.</items>
+      </items>
+      <items code="at0025">
+        <items id="text">Rektum</items>
+        <items id="description">Messung der Temperatur innerhalb des Rektums.</items>
+      </items>
+      <items code="at0026">
+        <items id="text">Nasopharynx</items>
+        <items id="description">Messung der Temperatur innerhalb des Nasopharynxs (Nasenrachens).</items>
+      </items>
+      <items code="at0027">
+        <items id="text">Harnblase</items>
+        <items id="description">Messung der Temperatur in der Harnblase.</items>
+      </items>
+      <items code="at0028">
+        <items id="text">Intravaskulär</items>
+        <items id="description">Messung der Temperatur innerhalb des vaskulären Systems.</items>
+      </items>
+      <items code="at0029">
+        <items id="text">Status</items>
+        <items id="description">Statusinformationen über die Person.</items>
+      </items>
+      <items code="at0030">
+        <items id="text">Körperexposition</items>
+        <items id="description">Die thermale Situation der Person, deren Temperatur gemessen wird.</items>
+      </items>
+      <items code="at0031">
+        <items id="text">Nackt</items>
+        <items id="description">Keine Kleidung, Bettzeug oder andere Bedeckung.</items>
+      </items>
+      <items code="at0032">
+        <items id="text">Verminderte Kleidung/Bettzeug</items>
+        <items id="description">Die Person wird bedeckt von einer geringeren Menge an Kleidung oder Bettzeug als für die Umgebungsbedingungen angemessen erscheint.</items>
+      </items>
+      <items code="at0033">
+        <items id="text">Angemessene Kleidung/Bettzeug</items>
+        <items id="description">Die Person wird bedeckt von einer Menge an Kleidung oder Bettzeug, die den Umgebungsbedingungen angemessen erscheint.</items>
+      </items>
+      <items code="at0034">
+        <items id="text">Erhöhte Kleidung/Bettzeug</items>
+        <items id="description">Die Person wird bedeckt von einer größeren Menge an Kleidung oder Bettzeug als für die Umgebungsbedingungen angemessen erscheint.</items>
+      </items>
+      <items code="at0041">
+        <items id="text">Beschreibung der Wärmebelastung</items>
+        <items id="description">Beschreibung von Bedingungen, denen die Person ausgesetzt ist, welche die gemessene Körpertemperatur beeinflussen könnten.</items>
+      </items>
+      <items code="at0043">
+        <items id="text">Haut</items>
+        <items id="description">Messung der Temperatur an freiliegender Haut.</items>
+      </items>
+      <items code="at0051">
+        <items id="text">Vagina</items>
+        <items id="description">Messung der Temperatur innerhalb der Vagina.</items>
+      </items>
+      <items code="at0054">
+        <items id="text">Oesophagus</items>
+        <items id="description">Messung der Temperatur innerhalb des Oesophagus.</items>
+      </items>
+      <items code="at0055">
+        <items id="text">Inguinale Hautfalte</items>
+        <items id="description">Messung der Temperatur in der inguinalen Hautfalte zwischen Bein und Abdominalwand.</items>
+      </items>
+      <items code="at0056">
+        <items id="text">Umgebungsbedingungen</items>
+        <items id="description">Details über die Umgebungsbedingungen zur Zeit der Messung.</items>
+      </items>
+      <items code="at0057">
+        <items id="text">Betätigung</items>
+        <items id="description">Details über die Betätigung der Person zum Zeitpunkt der Messung der Temperatur.</items>
+      </items>
+      <items code="at0058">
+        <items id="text">Menstruationszyklus</items>
+        <items id="description">Details über den Menstruationszyklus einer Frau.</items>
+      </items>
+      <items code="at0059">
+        <items id="text">Gerät</items>
+        <items id="description">Details über das Gerät, das zur Temperaturmessung benutzt wurde.</items>
+      </items>
+    </term_definitions>
+    <term_definitions language="pt-br">
+      <items code="at0000">
+        <items id="text">Temperatura Corporal</items>
+        <items id="description">O valor para a temperatura corporal, com valor médio equivalente para o corpo inteiro.</items>
+      </items>
+      <items code="at0001">
+        <items id="text">Single</items>
+        <items id="description">*</items>
+      </items>
+      <items code="at0002">
+        <items id="text">History</items>
+        <items id="description">@ internal @</items>
+      </items>
+      <items code="at0003">
+        <items id="text">Qualquer evento</items>
+        <items id="description">Qualquer evento.</items>
+      </items>
+      <items code="at0004">
+        <items id="text">Temperatura</items>
+        <items id="description">A temperatura corporal aferida (média para o corpo inteiro).</items>
+      </items>
+      <items code="at0020">
+        <items id="text">Protocol</items>
+        <items id="description">@ internal @</items>
+      </items>
+      <items code="at0021">
+        <items id="text">Local da medida</items>
+        <items id="description">O local anatômico de onde a temperatura foi aferida.</items>
+      </items>
+      <items code="at0022">
+        <items id="text">Boca</items>
+        <items id="description">A temperatura é eferida no interior da boca.</items>
+      </items>
+      <items code="at0023">
+        <items id="text">Canal auditivo</items>
+        <items id="description">A temperatura é aferida dentro do canal auditivo do ouvido externo (conduto auditivo).</items>
+      </items>
+      <items code="at0024">
+        <items id="text">Axilla</items>
+        <items id="description">A temperatura é aferida na pele da axila com o braço abaixado.</items>
+      </items>
+      <items code="at0025">
+        <items id="text">Reto</items>
+        <items id="description">A temperatura é aferida no reto.</items>
+      </items>
+      <items code="at0026">
+        <items id="text">Nasofaringe</items>
+        <items id="description">A temperatura é aferida na parte nasal da faringe.</items>
+      </items>
+      <items code="at0027">
+        <items id="text">Bexiga</items>
+        <items id="description">A temperatura é aferida na bexiga.</items>
+      </items>
+      <items code="at0028">
+        <items id="text">Intravascular</items>
+        <items id="description">A temperatura é aferida no sistema vascular.</items>
+      </items>
+      <items code="at0029">
+        <items id="text">Estado</items>
+        <items id="description">Informações sobre o estado do paciente.</items>
+      </items>
+      <items code="at0030">
+        <items id="text">Exposição do corpo</items>
+        <items id="description">A situação térmica da pessoa que tem a sua temperatura aferida.</items>
+      </items>
+      <items code="at0031">
+        <items id="text">Despido</items>
+        <items id="description">Sem roupas, camisola ou capa.</items>
+      </items>
+      <items code="at0032">
+        <items id="text">Vestuário reduzido/camisola</items>
+        <items id="description">A pessoa está vestida por pouca roupa ou camisola considerado o vestuário necessário para as circunstâncias ambientais.</items>
+      </items>
+      <items code="at0033">
+        <items id="text">Apropriadamente vestido</items>
+        <items id="description">A pessoa está vestida apropriadamente considerado o vestuário necessário para as circunstâncias ambientais.</items>
+      </items>
+      <items code="at0034">
+        <items id="text">Excessivamente vestido</items>
+        <items id="description">A pessoa está excessivamente vestida considerado o vestuário necessário para as circunstâncias ambientais.</items>
+      </items>
+      <items code="at0041">
+        <items id="text">Choque térmico</items>
+        <items id="description">Descrição das condições aplicadas ao sujeito que possa influenciar a medida de sua temperatura corporal.</items>
+      </items>
+      <items code="at0043">
+        <items id="text">Pele</items>
+        <items id="description">A temperatura é aferida a partir da pele exposta.</items>
+      </items>
+      <items code="at0051">
+        <items id="text">Vagina</items>
+        <items id="description">A temperatura é afereida no interior da vagina.</items>
+      </items>
+      <items code="at0054">
+        <items id="text">Esófago</items>
+        <items id="description">A temperatura é aferida no esófago.</items>
+      </items>
+      <items code="at0055">
+        <items id="text">Região Inguinal</items>
+        <items id="description">A temperatura é aferida na dobra da pele entre a região inguinal e a região abdominal.</items>
+      </items>
+      <items code="at0056">
+        <items id="text">Condições ambientais</items>
+        <items id="description">Detalhes sobre as condições ambientais no momento em que foi aferida a temperatura.</items>
+      </items>
+      <items code="at0057">
+        <items id="text">Esforço</items>
+        <items id="description">Detalhes sobre esforço que a pessoa fez no momento da aferição da temperatura.</items>
+      </items>
+      <items code="at0058">
+        <items id="text">Ciclo Menstrual</items>
+        <items id="description">Detalhes sobre o ciclo menstrual da mulher.</items>
+      </items>
+      <items code="at0059">
+        <items id="text">Dispositivo</items>
+        <items id="description">Detalhes sobre o dispositivo utilizado para medir a temperatura corporal.</items>
+      </items>
+    </term_definitions>
+    <term_definitions language="ru">
+      <items code="at0000">
+        <items id="text">Температура тела</items>
+        <items id="description">Измерение температуры тела, которая является суррогатом температуры тела человека в целом.</items>
+      </items>
+      <items code="at0001">
+        <items id="text">*Single(en)</items>
+        <items id="description">**(en)</items>
+      </items>
+      <items code="at0002">
+        <items id="text">*History(en)</items>
+        <items id="description">*@ internal @(en)</items>
+      </items>
+      <items code="at0003">
+        <items id="text">Любое событие</items>
+        <items id="description">Любое событие.</items>
+      </items>
+      <items code="at0004">
+        <items id="text">Температура(ru)</items>
+        <items id="description">Измеряется температура тела (как суррогат для всего тела).</items>
+      </items>
+      <items code="at0020">
+        <items id="text">*Protocol(en)</items>
+        <items id="description">*@ internal @(en)</items>
+      </items>
+      <items code="at0021">
+        <items id="text">Место измерения</items>
+        <items id="description">Анатомическое место измернеия температуры.</items>
+      </items>
+      <items code="at0022">
+        <items id="text">Рот</items>
+        <items id="description">Температура измеряется в ротовой полости.</items>
+      </items>
+      <items code="at0023">
+        <items id="text">Наружный слуховой проход</items>
+        <items id="description">Температура измеряется в наружном слуховом проходе.</items>
+      </items>
+      <items code="at0024">
+        <items id="text">Подмышечная впадина</items>
+        <items id="description">Температура измеряется в кожной складке в подмышечной впадине, рука опущена вниз и прижата к туловищу.</items>
+      </items>
+      <items code="at0025">
+        <items id="text">Прямая кишка</items>
+        <items id="description">Температура измеряется внутри прямой кишки.</items>
+      </items>
+      <items code="at0026">
+        <items id="text">Носоглотка</items>
+        <items id="description">Температура измеряется в носоглотке.</items>
+      </items>
+      <items code="at0027">
+        <items id="text">Мочевой пузырь</items>
+        <items id="description">Температура измеряется внутри мочевого пузыря.</items>
+      </items>
+      <items code="at0028">
+        <items id="text">Внутрисосудистая</items>
+        <items id="description">Температура измеряется внутри сосоудистого русла.</items>
+      </items>
+      <items code="at0029">
+        <items id="text">Состояние</items>
+        <items id="description">Информация о состоянии пациента.</items>
+      </items>
+      <items code="at0030">
+        <items id="text">*Body exposure(en)</items>
+        <items id="description">*The thermal situation of the person who is having the temperature taken(en)</items>
+      </items>
+      <items code="at0031">
+        <items id="text">Обнажён</items>
+        <items id="description">Без одежды, ничем не укрыт.</items>
+      </items>
+      <items code="at0032">
+        <items id="text">Лёгкая одежда/постель</items>
+        <items id="description">На пациенте меньшее количество одежды / постельных принадлежностей, чем этого требуют условия внешней среды.</items>
+      </items>
+      <items code="at0033">
+        <items id="text">Соответствующая одежда/постель</items>
+        <items id="description">Одежда/постельные принадлежности пациента соответствуют условиям внешней среды.</items>
+      </items>
+      <items code="at0034">
+        <items id="text">Теплая одежда/постель</items>
+        <items id="description">На пациенте большее количество одежды / постельных принадлежностей, чем этого требуют условия внешней среды.</items>
+      </items>
+      <items code="at0041">
+        <items id="text">Тепловой стресс</items>
+        <items id="description">Описание особенностей, которые могут повлиять на результат измерения температуры тела.</items>
+      </items>
+      <items code="at0043">
+        <items id="text">Кожа</items>
+        <items id="description">Температура измеряется на поверхности кожи.</items>
+      </items>
+      <items code="at0051">
+        <items id="text">Влагалище</items>
+        <items id="description">Температура измеряется внутри влагвалища.</items>
+      </items>
+      <items code="at0054">
+        <items id="text">Пищевод</items>
+        <items id="description">Температура измеряется внитри пищевода.</items>
+      </items>
+      <items code="at0055">
+        <items id="text">Паховая складка</items>
+        <items id="description">Температура измеряется в паховой складке кожи между ногой и передней брюшной стенкой.</items>
+      </items>
+      <items code="at0056">
+        <items id="text">Условия внешней среды</items>
+        <items id="description">Подробная информация об условиях внешней среды в момент изменения температуры.</items>
+      </items>
+      <items code="at0057">
+        <items id="text">Нагрузка</items>
+        <items id="description">Подробная информация о нагрузках в момент измерения температуры.</items>
+      </items>
+      <items code="at0058">
+        <items id="text">Менструальный цикл</items>
+        <items id="description">Информация о фазе менструального цикла у женщины.</items>
+      </items>
+      <items code="at0059">
+        <items id="text">Устройство</items>
+        <items id="description">Информация об устройстве, используемом для измерения температуры тела.</items>
+      </items>
+    </term_definitions>
+    <term_bindings terminology="LNC205">
+      <items code="/data[at0002]/events[at0003]/data[at0001]/items[at0004]">
+        <value>
+          <terminology_id>
+            <value>LNC205</value>
+          </terminology_id>
+          <code_string>8310-5</code_string>
+        </value>
+      </items>
+    </term_bindings>
+  </ontology>
+</archetype>
+

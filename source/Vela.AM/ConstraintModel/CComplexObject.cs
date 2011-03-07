@@ -10,11 +10,16 @@ namespace Vela.AM.ConstraintModel
 	[OpenEhrName("C_COMPLEX_OBJECT")]
 	public class CComplexObject : CDefinedObject
 	{
+		private HashSet<CAttribute> _attributes;
+
 		/// <summary>
 		/// List of constraints on attributes of the reference model type represented by this object.
 		/// </summary>
 		[OpenEhrName("attributes")]
-		public HashSet<CAttribute> Attributes { get; set; }
+		public HashSet<CAttribute> Attributes
+		{
+			get { return _attributes ?? (_attributes = new HashSet<CAttribute>()); }
+		}
 
 		#region Overrides of ArchetypeConstraint
 

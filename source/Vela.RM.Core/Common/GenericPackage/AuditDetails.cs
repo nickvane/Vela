@@ -1,7 +1,6 @@
 ﻿using System;
 using Vela.RM.Core.DataTypes.TextPackage;
 using Vela.RM.Core.Support;
-using DateTime = Vela.RM.Core.DataTypes.DateTimePackage.DateTime;
 
 namespace Vela.RM.Core.Common.GenericPackage
 {
