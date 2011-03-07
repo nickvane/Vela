@@ -20,71 +20,43 @@ namespace Vela.AM.Archetypes
 		/// ADL version if archteype was read in from an ADL sharable archetype.
 		/// </summary>
 		[OpenEhrName("adl_version")]
-		public string AdlVersion
-		{
-			get;
-			set;
-		}
+		public string AdlVersion { get; set; }
 
 		/// <summary>
 		/// Multi-axial identifier of this archetype in archetype space.
 		/// </summary>
 		[OpenEhrName("archetype_id")]
-		public ArchetypeId ArchetypeId
-		{
-			get;
-			set;
-		}
+		public ArchetypeId ArchetypeId { get; set; }
 
 		/// <summary>
 		/// OID identifier of this archetype.
 		/// </summary>
 		[OpenEhrName("uid")]
-		public HierObjectId Uid
-		{
-			get;
-			set;
-		}
+		public HierObjectId Uid { get; set; }
 
 		/// <summary>
 		/// The normative meaning of the archetype as a whole, expressed as a local archetype code, typically “at0000”.
 		/// </summary>
 		[OpenEhrName("concept")]
-		public string Concept
-		{
-			get;
-			set;
-		}
+		public string Concept { get; set; }
 
 		/// <summary>
 		/// Identifier of the specialisation parent of this archetype.
 		/// </summary>
 		[OpenEhrName("parent_archetype_id")]
-		public ArchetypeId ParentArchetypeId
-		{
-			get;
-			set;
-		}
+		public ArchetypeId ParentArchetypeId { get; set; }
 
 		/// <summary>
 		/// Root node of this archetype
 		/// </summary>
 		[OpenEhrName("definition")]
-		public CComplexObject Definition
-		{
-			get;
-			set;
-		}
+		public CComplexObject Definition { get; set; }
 
 		/// <summary>
 		/// The ontology of the archetype.
 		/// </summary>
 		[OpenEhrName("ontology")]
-		public ArchetypeOntology Ontology
-		{
-			get;
-			set;
-		}
+		public ArchetypeOntology Ontology { get; set; }
 
 		/// <summary>
 		/// Invariant statements about this object. Statements are expressed in first order predicate logic, and usually refer to at least two attributes.

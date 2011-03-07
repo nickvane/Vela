@@ -10,6 +10,8 @@ namespace Vela.AM.ConstraintModel
 	[OpenEhrName("C_ATTRIBUTE")]
 	public abstract class CAttribute : ArchetypeConstraint
 	{
+		private List<CObject> _children;
+
 		/// <summary>
 		/// Reference model attribute within the enclosing type represented by a C_OBJECT.
 		/// </summary>
@@ -26,6 +28,9 @@ namespace Vela.AM.ConstraintModel
 		/// Child C_OBJECT nodes. Each such node represents a constraint on the type of this attribute in its reference model. Multiples occur both for multiple items in the case of container attributes, and alternatives in the case of singular attributes.
 		/// </summary>
 		[OpenEhrName("children")]
-		public List<CObject> Children { get; set; }
+		public List<CObject> Children
+		{
+			get { return _children ?? (_children = new List<CObject>()); }
+		}
 	}
 }

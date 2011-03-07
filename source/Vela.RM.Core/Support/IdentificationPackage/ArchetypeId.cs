@@ -56,9 +56,7 @@ namespace Vela.RM.Core.Support.IdentificationPackage
 				if (split.Length != 3) throw new ArgumentException(String.Format(Resources.InvalidArchetypeId, value), "value");
 				QualifiedReferenceModelEntity = split[0];
 				DomainConcept = split[1];
-				int versionId;
-				if (int.TryParse(split[2], out versionId)) VersionId = versionId.ToString();
-				else throw new ArgumentException(String.Format(Resources.InvalidVersionId, value), "value");
+				VersionId = split[2];
 			}
 		}
 

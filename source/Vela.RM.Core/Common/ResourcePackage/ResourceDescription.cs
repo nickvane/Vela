@@ -9,17 +9,28 @@ namespace Vela.RM.Core.Common.ResourcePackage
 	[OpenEhrName("RESOURCE_DESCRIPTION")]
 	public class ResourceDescription
 	{
+		private IDictionary<string, string> _originalAuthor;
+		private IList<string> _otherContributors;
+		private IDictionary<string, ResourceDescriptionItem> _details;
+		private IDictionary<string, string> _otherDetails;
+
 		/// <summary>
 		/// Original author of this resource, with all relevant details, including organisation.
 		/// </summary>
 		[OpenEhrName("original_author")]
-		public IDictionary<string, string> OriginalAuthor { get; set; }
+		public IDictionary<string, string> OriginalAuthor
+		{
+			get { return _originalAuthor ?? (_originalAuthor = new Dictionary<string, string>()); }
+		}
 
 		/// <summary>
 		/// Other contributors to the resource, probably listed in “name email” form.
 		/// </summary>
 		[OpenEhrName("other_contributors")]
-		public IList<string> OtherContributors { get; set; }
+		public IList<string> OtherContributors
+		{
+			get { return _otherContributors ?? (_otherContributors = new List<string>()); }
+		}
 
 		/// <summary>
 		/// Lifecycle state of the resource, typically including states such as: initial, submitted, experimental, awaiting_approval, approved, superseded, obsolete.
@@ -31,7 +42,10 @@ namespace Vela.RM.Core.Common.ResourcePackage
 		/// Details of all parts of resource description that are natural language-dependent, keyed by language code.
 		/// </summary>
 		[OpenEhrName("details")]
-		public IDictionary<string, ResourceDescriptionItem> Details { get; set; }
+		public IDictionary<string, ResourceDescriptionItem> Details
+		{
+			get { return _details ?? (_details = new Dictionary<string, ResourceDescriptionItem>()); }
+		}
 
 		/// <summary>
 		/// URI of package to which this resource belongs.
@@ -43,7 +57,10 @@ namespace Vela.RM.Core.Common.ResourcePackage
 		/// Additional non language-senstive resource meta-data, as a list of name/value pairs.
 		/// </summary>
 		[OpenEhrName("other_details")]
-		public IDictionary<string, string> OtherDetails { get; set; }
+		public IDictionary<string, string> OtherDetails
+		{
+			get { return _otherDetails ?? (_otherDetails = new Dictionary<string, string>()); }
+		}
 
 		/// <summary>
 		/// Reference to owning resource.

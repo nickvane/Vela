@@ -13,6 +13,8 @@ namespace Vela.RM.Core.DataTypes.QuantityPackage
 	[Serializable, OpenEhrName("DV_ORDERED")]
 	public abstract class Ordered<T> : DataValue, IEquatable<T>, IComparable<T> where T : Ordered<T>
 	{
+		private IList<ReferenceRange<T>> _otherReferenceRanges	;
+
 		/// <summary>
 		/// Optional normal status indicator of value with respect to normal range for this value. Often included by lab, even if the normal range itself is not included. Coded by ordinals in series HHH, HH, H, (nothing), L, LL, LLL; see openEHR terminology group â€œnormal statusâ€.
 		/// </summary>
@@ -39,8 +41,7 @@ namespace Vela.RM.Core.DataTypes.QuantityPackage
 		[OpenEhrName("other_reference_ranges")]
 		public IList<ReferenceRange<T>> OtherReferenceRanges
 		{
-			get;
-			set;
+			get { return _otherReferenceRanges ?? (_otherReferenceRanges = new List<ReferenceRange<T>>()); }
 		}
 
 		/// <summary>
@@ -60,7 +61,7 @@ namespace Vela.RM.Core.DataTypes.QuantityPackage
 		[OpenEhrName("is_simple")]
 		public bool IsSimple()
 		{
-			return OtherReferenceRanges == null;
+			return _otherReferenceRanges == null;
 		}
 
 		/// <summary>

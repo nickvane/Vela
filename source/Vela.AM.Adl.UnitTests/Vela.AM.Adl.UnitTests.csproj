@@ -1,0 +1,201 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{40A5B6E0-A3A3-4AB5-80D9-8E3D79E2E9A3}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Vela.AM.Adl.UnitTests</RootNamespace>
+    <AssemblyName>Vela.AM.Adl.UnitTests</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="nunit.framework">
+      <HintPath>..\..\lib\NUnit\nunit.framework.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="Microsoft.CSharp" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="XmlParserTests.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Vela.AM.Adl\Vela.AM.Adl.csproj">
+      <Project>{CBA0E56D-09A5-4648-A11A-99055C7C5A79}</Project>
+      <Name>Vela.AM.Adl</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Vela.AM\Vela.AM.csproj">
+      <Project>{34D0DBA3-314F-4633-8AC6-0F0E0068E1DD}</Project>
+      <Name>Vela.AM</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Vela.RM.Core\Vela.RM.Core.csproj">
+      <Project>{5B5BA21C-223B-409F-8291-87368BD5E5E6}</Project>
+      <Name>Vela.RM.Core</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Archetypes\xml\openEHR-EHR-ACTION.follow_up.v1.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Archetypes\xml\openEHR-EHR-ACTION.imaging.v1.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Archetypes\xml\openEHR-EHR-ACTION.intravenous_fluid_administration.v1.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Archetypes\xml\openEHR-EHR-ACTION.medication.v1.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Archetypes\xml\openEHR-EHR-ACTION.procedure.v1.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Archetypes\xml\openEHR-EHR-ACTION.transfusion.v1.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Archetypes\xml\openEHR-EHR-ADMIN_ENTRY.admission.v1.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Archetypes\xml\openEHR-EHR-COMPOSITION.encounter.v1.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Archetypes\xml\openEHR-EHR-COMPOSITION.medication_list.v1.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Archetypes\xml\openEHR-EHR-COMPOSITION.prescription.v1.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Archetypes\xml\openEHR-EHR-COMPOSITION.problem_list.v1.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Archetypes\xml\openEHR-EHR-COMPOSITION.referral.v1.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Archetypes\xml\openEHR-EHR-COMPOSITION.report.v1.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Archetypes\xml\openEHR-EHR-EVALUATION.adverse.v1.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Archetypes\xml\openEHR-EHR-EVALUATION.alert.v1.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Archetypes\xml\openEHR-EHR-EVALUATION.check_list-medication.v1.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Archetypes\xml\openEHR-EHR-EVALUATION.check_list.v1.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Archetypes\xml\openEHR-EHR-EVALUATION.citation.v1.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Archetypes\xml\openEHR-EHR-EVALUATION.clinical_synopsis.v1.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Archetypes\xml\openEHR-EHR-EVALUATION.excluded-intervention.v1.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Archetypes\xml\openEHR-EHR-EVALUATION.exclusion-adverse.v1.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Archetypes\xml\openEHR-EHR-EVALUATION.exclusion-family_history.v1.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Archetypes\xml\openEHR-EHR-EVALUATION.exclusion-medication.v1.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Archetypes\xml\openEHR-EHR-EVALUATION.exclusion-problem_diagnosis.v1.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Archetypes\xml\openEHR-EHR-EVALUATION.exclusion.v1.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Archetypes\xml\openEHR-EHR-EVALUATION.goal.v1.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Archetypes\xml\openEHR-EHR-EVALUATION.pregnancy.v1.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Archetypes\xml\openEHR-EHR-EVALUATION.problem-diagnosis.v1.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Archetypes\xml\openEHR-EHR-EVALUATION.problem.v1.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Archetypes\xml\openEHR-EHR-EVALUATION.reason_for_encounter.v1.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Archetypes\xml\openEHR-EHR-EVALUATION.risk-family_history.v1.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Archetypes\xml\openEHR-EHR-EVALUATION.risk.v1.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Archetypes\xml\openEHR-EHR-EVALUATION.substance_use_summary-alcohol.v1.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Archetypes\xml\openEHR-EHR-EVALUATION.substance_use_summary-tobacco.v1.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Archetypes\xml\openEHR-EHR-EVALUATION.substance_use_summary.v1.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Archetypes\xml\openEHR-EHR-EVALUATION.triage.v1.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Archetypes\xml\openEHR-EHR-INSTRUCTION.follow_up.v1.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Archetypes\xml\openEHR-EHR-INSTRUCTION.imaging.v1.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Archetypes\xml\openEHR-EHR-OBSERVATION.apgar.v1.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Archetypes\xml\openEHR-EHR-OBSERVATION.blood_pressure.v1.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Archetypes\xml\openEHR-EHR-OBSERVATION.body_mass_index.v1.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Archetypes\xml\openEHR-EHR-OBSERVATION.body_temperature.v1.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Archetypes\xml\openEHR-EHR-OBSERVATION.body_weight.v1.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Archetypes\xml\openEHR-EHR-OBSERVATION.height.v1.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
