@@ -17,14 +17,25 @@ namespace Vela.RM.Core.DataTypes.QuantityPackage
 	{
 		private bool _isLowerIncluded;
 		private bool _isUpperIncluded;
+		private bool _lowerIsSet;
+		private T _lower;
+		private bool _upperIsSet;
+		private T _upper;
 
 		/// <summary>
 		/// lower bound
 		/// </summary>
 		public T Lower
 		{
-			get;
-			set;
+			get
+			{
+				return _lower;
+			}
+			set
+			{
+				_lowerIsSet = true; 
+				_lower = value;
+			}
 		}
 
 		/// <summary>
@@ -32,8 +43,15 @@ namespace Vela.RM.Core.DataTypes.QuantityPackage
 		/// </summary>
 		public T Upper
 		{
-			get;
-			set;
+			get
+			{
+				return _upper;
+			}
+			set
+			{
+				_upperIsSet = true;
+				_upper = value;
+			}
 		}
 
 		/// <summary>
@@ -41,10 +59,7 @@ namespace Vela.RM.Core.DataTypes.QuantityPackage
 		/// </summary>
 		public bool IsLowerUnbounded
 		{
-			get
-			{
-				return EqualityComparer<T>.Default.Equals(Lower, default(T));
-			}
+			get { return (!_lowerIsSet && EqualityComparer<T>.Default.Equals(Lower, default(T))); }
 		}
 
 		/// <summary>
@@ -54,7 +69,7 @@ namespace Vela.RM.Core.DataTypes.QuantityPackage
 		{
 			get
 			{
-				return EqualityComparer<T>.Default.Equals(Upper, default(T));
+				return (!_upperIsSet && EqualityComparer<T>.Default.Equals(Upper, default(T)));
 			}
 		}
 

@@ -1,0 +1,359 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<archetype xmlns="http://schemas.openehr.org/v1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+	<archetype_id>
+		<value>Vela-EHR-EVALUATION.test1.v1</value>
+	</archetype_id>
+	<adl_version>1.4</adl_version>
+	<concept>at0000</concept>
+	<parent_archetype_id>
+		<value>Vela-EHR-EVALUATION.test1parent.v1</value>
+	</parent_archetype_id>
+	<original_language>
+		<code_string>en</code_string>
+		<terminology_id>
+			<value>ISO_639-1</value>
+		</terminology_id>
+	</original_language>
+	<is_controlled>true</is_controlled>
+	<description>
+		<original_author id="email">john.doe@vela.net</original_author>
+		<original_author id="date">08/03/2011</original_author>
+		<original_author id="name">John Doe</original_author>
+		<original_author id="organisation">Vela</original_author>
+		<other_contributors>Jane Doe</other_contributors>
+		<other_contributors>Jeff Doe</other_contributors>
+		<other_contributors>Janet Doe</other_contributors>
+		<lifecycle_state>AuthorDraft</lifecycle_state>
+		<details>
+			<language>
+				<code_string>nl</code_string>
+				<terminology_id>
+					<value>ISO_639-1</value>
+				</terminology_id>
+			</language>
+			<purpose>purpose-nl</purpose>
+			<keywords>keyword-nl-1</keywords>
+			<keywords>keyword-nl-2</keywords>
+			<use>use-nl</use>
+			<misuse>misuse-nl</misuse>
+			<copyright>copyright-nl</copyright>
+		</details>
+		<details>
+			<language>
+				<code_string>en</code_string>
+				<terminology_id>
+					<value>ISO_639-1</value>
+				</terminology_id>
+			</language>
+			<purpose>purpose-en</purpose>
+			<keywords>keyword-en-1</keywords>
+			<keywords>keyword-en-2</keywords>
+			<keywords>keyword-en-3</keywords>
+			<keywords>keyword-en-4</keywords>
+			<use>use-en</use>
+			<misuse>misuse-en</misuse>
+			<copyright>copyright-en</copyright>
+		</details>
+		<resource_package_uri />
+		<other_details id="MD5-CAM-1.0.1">md5</other_details>
+		<other_details id="references" />
+	</description>
+	<definition>
+		<rm_type_name>EVALUATION</rm_type_name>
+		<occurrences>
+			<upper_included>false</upper_included>
+			<lower_included>false</lower_included>
+			<upper_unbounded>false</upper_unbounded>
+			<lower_unbounded>false</lower_unbounded>
+			<upper>2</upper>
+			<lower>0</lower>
+		</occurrences>
+		<node_id>at0000</node_id>
+		<attributes xsi:type="C_MULTIPLE_ATTRIBUTE">
+			<existence>
+				<lower_unbounded>false</lower_unbounded>
+				<upper_unbounded>false</upper_unbounded>
+				<lower>1</lower>
+				<upper>1</upper>
+			</existence>
+			<rm_attribute_name>items</rm_attribute_name>
+			<children xsi:type="C_COMPLEX_OBJECT">
+				<rm_type_name>ELEMENT</rm_type_name>
+				<occurrences>
+					<upper_included>true</upper_included>
+					<lower_included>true</lower_included>
+					<upper_unbounded>false</upper_unbounded>
+					<lower_unbounded>false</lower_unbounded>
+					<upper>1</upper>
+					<lower>1</lower>
+				</occurrences>
+				<node_id>at0001</node_id>
+				<attributes xsi:type="C_SINGLE_ATTRIBUTE">
+					<existence>
+						<lower_unbounded>false</lower_unbounded>
+						<upper_unbounded>false</upper_unbounded>
+						<lower>1</lower>
+						<upper>1</upper>
+					</existence>
+					<rm_attribute_name>value</rm_attribute_name>
+					<children xsi:type="C_COMPLEX_OBJECT">
+						<any_allowed>true</any_allowed>
+						<rm_type_name>DV_TEXT</rm_type_name>
+						<occurrences>
+							<upper_included>true</upper_included>
+							<lower_included>true</lower_included>
+							<upper_unbounded>false</upper_unbounded>
+							<lower_unbounded>false</lower_unbounded>
+							<upper>1</upper>
+							<lower>1</lower>
+						</occurrences>
+						<node_id />
+					</children>
+				</attributes>
+			</children>
+			<children xsi:type="C_DV_QUANTITY">
+				<any_allowed>false</any_allowed>
+				<rm_type_name>DV_QUANTITY</rm_type_name>
+				<occurrences>
+					<upper_included>true</upper_included>
+					<lower_included>true</lower_included>
+					<upper_unbounded>false</upper_unbounded>
+					<lower_unbounded>false</lower_unbounded>
+					<upper>1</upper>
+					<lower>1</lower>
+				</occurrences>
+				<node_id />
+			</children>
+			<children xsi:type="CONSTRAINT_REF">
+				<rm_type_name>CODE_PHRASE</rm_type_name>
+				<occurrences>
+					<upper_included>true</upper_included>
+					<lower_included>true</lower_included>
+					<upper_unbounded>false</upper_unbounded>
+					<lower_unbounded>false</lower_unbounded>
+					<upper>1</upper>
+					<lower>1</lower>
+				</occurrences>
+				<node_id />
+				<reference>ac0.1</reference>
+			</children>
+			<children xsi:type="C_PRIMITIVE_OBJECT">
+				<rm_type_name>DV_DURATION</rm_type_name>
+				<occurrences>
+					<upper_included>true</upper_included>
+					<lower_included>true</lower_included>
+					<upper_unbounded>false</upper_unbounded>
+					<lower_unbounded>false</lower_unbounded>
+					<upper>1</upper>
+					<lower>1</lower>
+				</occurrences>
+				<node_id />
+				<item xsi:type="C_DURATION">
+					<range>
+						<upper_included>true</upper_included>
+						<lower_included>true</lower_included>
+						<upper_unbounded>false</upper_unbounded>
+						<lower_unbounded>false</lower_unbounded>
+						<upper>PT1M</upper>
+						<lower>PT1M</lower>
+					</range>
+				</item>
+			</children>
+			<children xsi:type="C_DV_ORDINAL">
+				<rm_type_name>DV_ORDINAL</rm_type_name>
+				<occurrences>
+					<upper_included>true</upper_included>
+					<lower_included>true</lower_included>
+					<upper_unbounded>false</upper_unbounded>
+					<lower_unbounded>false</lower_unbounded>
+					<upper>1</upper>
+					<lower>1</lower>
+				</occurrences>
+				<node_id />
+				<list>
+					<value>1</value>
+					<symbol>
+						<defining_code>
+							<code_string>at0002</code_string>
+							<terminology_id>
+								<value>local</value>
+							</terminology_id>
+						</defining_code>
+					</symbol>
+				</list>
+				<list>
+					<value>4</value>
+					<symbol>
+						<defining_code>
+							<code_string>at0003</code_string>
+							<terminology_id>
+								<value>local</value>
+							</terminology_id>
+						</defining_code>
+					</symbol>
+				</list>
+				<list>
+					<value>7</value>
+					<symbol>
+						<defining_code>
+							<code_string>at0004</code_string>
+							<terminology_id>
+								<value>local</value>
+							</terminology_id>
+						</defining_code>
+					</symbol>
+				</list>
+			</children>
+			<children xsi:type="C_PRIMITIVE_OBJECT">
+				<rm_type_name>DV_DATE</rm_type_name>
+				<occurrences>
+					<upper_included>true</upper_included>
+					<lower_included>true</lower_included>
+					<upper_unbounded>false</upper_unbounded>
+					<lower_unbounded>false</lower_unbounded>
+					<upper>1</upper>
+					<lower>1</lower>
+				</occurrences>
+				<node_id />
+				<item xsi:type="C_DATE">
+					<pattern>yyyy-??-XX</pattern>
+				</item>
+			</children>
+			<children xsi:type="C_DV_QUANTITY">
+				<rm_type_name>DV_QUANTITY</rm_type_name>
+				<occurrences>
+					<upper_included>true</upper_included>
+					<lower_included>true</lower_included>
+					<upper_unbounded>false</upper_unbounded>
+					<lower_unbounded>false</lower_unbounded>
+					<upper>1</upper>
+					<lower>1</lower>
+				</occurrences>
+				<node_id />
+				<property>
+					<code_string>382</code_string>
+					<terminology_id>
+						<value>openehr</value>
+					</terminology_id>
+				</property>
+				<list>
+					<units>/h</units>
+				</list>
+				<list>
+					<units>/d</units>
+				</list>
+				<list>
+					<units>/mo</units>
+				</list>
+				<list>
+					<units>/wk</units>
+				</list>
+				<list>
+					<units>/yr</units>
+				</list>
+			</children>
+			<children xsi:type="C_PRIMITIVE_OBJECT">
+				<rm_type_name>INTEGER</rm_type_name>
+				<occurrences>
+					<upper_included>true</upper_included>
+					<lower_included>true</lower_included>
+					<upper_unbounded>false</upper_unbounded>
+					<lower_unbounded>false</lower_unbounded>
+					<upper>1</upper>
+					<lower>1</lower>
+				</occurrences>
+				<node_id />
+				<item xsi:type="C_INTEGER">
+					<range>
+						<upper_included>false</upper_included>
+						<lower_included>true</lower_included>
+						<upper_unbounded>true</upper_unbounded>
+						<lower_unbounded>false</lower_unbounded>
+						<lower>1</lower>
+					</range>
+				</item>
+			</children>
+			<children xsi:type="C_CODE_PHRASE">
+				<rm_type_name>CODE_PHRASE</rm_type_name>
+				<occurrences>
+					<upper_included>true</upper_included>
+					<lower_included>true</lower_included>
+					<upper_unbounded>false</upper_unbounded>
+					<lower_unbounded>false</lower_unbounded>
+					<upper>1</upper>
+					<lower>1</lower>
+				</occurrences>
+				<node_id />
+				<terminology_id>
+					<value>local</value>
+				</terminology_id>
+				<code_list>at0005</code_list>
+			</children>
+			<cardinality>
+				<is_ordered>true</is_ordered>
+				<is_unique>true</is_unique>
+				<interval>
+					<upper_included>false</upper_included>
+					<lower_included>true</lower_included>
+					<upper_unbounded>true</upper_unbounded>
+					<lower_unbounded>false</lower_unbounded>
+					<lower>1</lower>
+				</interval>
+			</cardinality>
+		</attributes>
+	</definition>
+	<ontology>
+		<term_definitions language="nl">
+			<items code="at0000">
+				<items id="text">at0000-text-nl</items>
+				<items id="description">at0000-description-nl</items>
+			</items>
+			<items code="at0001">
+				<items id="text">at0001-text-nl</items>
+				<items id="description">at0001-description-nl</items>
+			</items>
+			<items code="at0002">
+				<items id="text">at0002-text-nl</items>
+				<items id="description">at0002-description-nl</items>
+			</items>
+			<items code="at0003">
+				<items id="text">at0003-text-nl</items>
+				<items id="description">at0003-description-nl</items>
+			</items>
+			<items code="at0004">
+				<items id="text">at0004-text-nl</items>
+				<items id="description">at0004-description-nl</items>
+			</items>
+			<items code="at0005">
+				<items id="text">at0005-text-nl</items>
+				<items id="description">at0005-description-nl</items>
+			</items>
+		</term_definitions>
+		<term_definitions language="en">
+			<items code="at0000">
+				<items id="text">at0000-text-en</items>
+				<items id="description">at0000-description-en</items>
+			</items>
+			<items code="at0001">
+				<items id="text">at0001-text-en</items>
+				<items id="description">at0001-description-en</items>
+			</items>
+			<items code="at0002">
+				<items id="text">at0002-text-en</items>
+				<items id="description">at0002-description-en</items>
+			</items>
+			<items code="at0003">
+				<items id="text">at0003-text-en</items>
+				<items id="description">at0003-description-en</items>
+			</items>
+			<items code="at0004">
+				<items id="text">at0004-text-en</items>
+				<items id="description">at0004-description-en</items>
+			</items>
+			<items code="at0005">
+				<items id="text">at0005-text-en</items>
+				<items id="description">at0005-description-en</items>
+			</items>
+		</term_definitions>
+	</ontology>
+</archetype>

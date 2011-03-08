@@ -15,6 +15,16 @@ namespace Vela.RM.Core.DataTypes.DateTimePackage
 	[OpenEhrName("DV_DURATION")]
 	public class Duration : Amount<Duration>
 	{
+		public Duration()
+		{
+			
+		}
+
+		public Duration(string value)
+		{
+			Value = value;
+		}
+
 		///<summary>
 		/// ISO8601 duration
 		///</summary>
