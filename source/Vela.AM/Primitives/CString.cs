@@ -6,7 +6,7 @@ namespace Vela.AM.Primitives
     /// <summary>
     /// Constraint on instances of STRING.
     /// </summary>
-    public class CString : CPrimitive<string>
+    public class CString : CPrimitive
     {
         /// <summary>
         /// Regular expression pattern for proposed instances of String to match.
@@ -26,7 +26,7 @@ namespace Vela.AM.Primitives
         /// <summary>
         /// Generate a default value from this constraint object
         /// </summary>
-        public override string DefaultValue { get; set; }
+        public new string DefaultValue { get; set; }
 
         /// <summary>
         /// True if there is an assumed value
@@ -36,14 +36,14 @@ namespace Vela.AM.Primitives
         /// <summary>
         /// The value to assume if this item is not included in data, due to being part of an optional structure.
         /// </summary>
-        public override string AssumedValue { get; set; }
+        public new string AssumedValue { get; set; }
 
         /// <summary>
         /// True if a_value is valid with respect to constraint expressed in concrete instance of this type.
         /// </summary>
         /// <param name="value"></param>
         /// <returns></returns>
-        public override bool IsValidValue(string value)
+        public bool IsValidValue(string value)
         {
             throw new NotImplementedException();
         }

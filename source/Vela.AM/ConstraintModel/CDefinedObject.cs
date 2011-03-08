@@ -36,7 +36,7 @@ namespace Vela.AM.ConstraintModel
 		/// True if any value (i.e. instance) of the reference model type would be allowed. Redefined in descedants.
 		/// </summary>
 		[OpenEhrName("any_allowed")]
-		public abstract bool AnyAllowed();
+		public abstract bool AnyAllowed { get; set; }
 
 		/// <summary>
 		/// True if a_value is valid with respect to constraint expressed in concrete instance of this type.

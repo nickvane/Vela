@@ -7,7 +7,9 @@ using Vela.AM.Archetypes;
 using Vela.AM.Assertions;
 using Vela.AM.ConstraintModel;
 using Vela.AM.Ontologies;
+using Vela.AM.Primitives;
 using Vela.RM.Core.Common.ResourcePackage;
+using Vela.RM.Core.DataTypes.DateTimePackage;
 using Vela.RM.Core.DataTypes.QuantityPackage;
 using Vela.RM.Core.DataTypes.TextPackage;
 using Vela.RM.Core.Support.IdentificationPackage;
@@ -74,18 +76,18 @@ namespace Vela.AM.Adl
 
 		#region Parse Archetype
 
-		private static TranslationDetails Parse(this TRANSLATION_DETAILS translationDetailsModel)
+		private static TranslationDetails Parse(this TRANSLATION_DETAILS model)
 		{
 			var detail = new TranslationDetails
 			             	{
-			             		Language = translationDetailsModel.language.Parse(),
-			             		Accreditation = translationDetailsModel.accreditation
+			             		Language = model.language.Parse(),
+			             		Accreditation = model.accreditation
 			             	};
-			foreach (StringDictionaryItem item in translationDetailsModel.author)
+			foreach (StringDictionaryItem item in model.author)
 			{
 				detail.Author.Add(item.id, item.TypedValue);
 			}
-			foreach (StringDictionaryItem item in translationDetailsModel.other_details)
+			foreach (StringDictionaryItem item in model.other_details)
 			{
 				detail.OtherDetails.Add(item.id, item.TypedValue);
 			}
@@ -154,19 +156,19 @@ namespace Vela.AM.Adl
 			return resourceDescription;
 		}
 
-		private static Assertion Parse(this ASSERTION archetypeModelAssertion)
+		private static Assertion Parse(this ASSERTION model)
 		{
 			throw new NotImplementedException("ASSERTION.Parse");
 		}
 
-		private static ArchetypeOntology Parse(this ARCHETYPE_ONTOLOGY ontologyModel)
+		private static ArchetypeOntology Parse(this ARCHETYPE_ONTOLOGY model)
 		{
 			var ontology = new ArchetypeOntology();
 
 			//TermDefinitions
-			if (ontologyModel.term_definitions != null && ontologyModel.term_definitions.Count > 0)
+			if (model.term_definitions != null && model.term_definitions.Count > 0)
 			{
-				foreach (CodeDefinitionSet definition in ontologyModel.term_definitions)
+				foreach (CodeDefinitionSet definition in model.term_definitions)
 				{
 					var itemlist = new List<ArchetypeTerminology>();
 					foreach (ARCHETYPE_TERM item in definition.items)
@@ -183,9 +185,9 @@ namespace Vela.AM.Adl
 			}
 
 			//TermBindings
-			if (ontologyModel.term_bindings != null && ontologyModel.term_bindings.Count > 0)
+			if (model.term_bindings != null && model.term_bindings.Count > 0)
 			{
-				foreach (TermBindingSet bindingSet in ontologyModel.term_bindings)
+				foreach (TermBindingSet bindingSet in model.term_bindings)
 				{
 					Dictionary<string, CodePhrase> items = bindingSet.items.ToDictionary(item => item.code,
 					                                                                     item => item.value.Parse());
@@ -194,9 +196,9 @@ namespace Vela.AM.Adl
 			}
 
 			//ConstraintDefinitions
-			if (ontologyModel.constraint_definitions != null && ontologyModel.constraint_definitions.Count > 0)
+			if (model.constraint_definitions != null && model.constraint_definitions.Count > 0)
 			{
-				foreach (CodeDefinitionSet definition in ontologyModel.constraint_definitions)
+				foreach (CodeDefinitionSet definition in model.constraint_definitions)
 				{
 					var itemlist = new List<ArchetypeTerminology>();
 					foreach (ARCHETYPE_TERM item in definition.items)
@@ -213,7 +215,7 @@ namespace Vela.AM.Adl
 			}
 
 			//ConstraintBindings
-			if (ontologyModel.constraint_bindings != null && ontologyModel.constraint_bindings.Count > 0)
+			if (model.constraint_bindings != null && model.constraint_bindings.Count > 0)
 			{
 				throw new NotImplementedException();
 			}
@@ -225,132 +227,146 @@ namespace Vela.AM.Adl
 
 		#region Parse Definition
 
-		private static CComplexObject Parse(this C_COMPLEX_OBJECT complexObjectModel)
+		private static CComplexObject Parse(this C_COMPLEX_OBJECT model)
 		{
 			var complexObject = new CComplexObject();
 
-			foreach (C_ATTRIBUTE attribute in complexObjectModel.attributes)
+			foreach (C_ATTRIBUTE attribute in model.attributes)
 			{
 				complexObject.Attributes.Add(attribute.Parse());
 			}
-			complexObject.NodeId = complexObjectModel.node_id;
-			complexObject.ReferenceModelTypeName = complexObjectModel.rm_type_name;
-			complexObject.Occurences = complexObjectModel.occurrences.Parse();
+			complexObject.NodeId = model.node_id;
+			complexObject.ReferenceModelTypeName = model.rm_type_name;
+			complexObject.Occurences = model.occurrences.Parse();
+			complexObject.AnyAllowed = model.any_allowed;
 
 			return complexObject;
 		}
 
-		private static Interval<int> Parse(this IntervalOfInteger intervalModel)
+		private static Interval<int> Parse(this IntervalOfInteger model)
 		{
 			var interval = new Interval<int>();
 
-			if (intervalModel.lower_included.HasValue)
-				interval.IsLowerIncluded = intervalModel.lower_included.Value;
-			if (intervalModel.upper_included.HasValue)
-				interval.IsUpperIncluded = intervalModel.upper_included.Value;
-			if (intervalModel.lower.HasValue)
-				interval.Lower = intervalModel.lower.Value;
-			if (intervalModel.upper.HasValue)
-				interval.Upper = intervalModel.upper.Value;
+			if (model.lower_included.HasValue)
+				interval.IsLowerIncluded = model.lower_included.Value;
+			if (model.upper_included.HasValue)
+				interval.IsUpperIncluded = model.upper_included.Value;
+			if (model.lower.HasValue)
+				interval.Lower = model.lower.Value;
+			if (model.upper.HasValue)
+				interval.Upper = model.upper.Value;
 
 			return interval;
 		}
 
-		private static CAttribute Parse(this C_ATTRIBUTE attributeModel)
+		private static CAttribute Parse(this C_ATTRIBUTE model)
 		{
 			CAttribute attribute;
-			if (attributeModel.GetType() == typeof (C_SINGLE_ATTRIBUTE))
+			if (model.GetType() == typeof (C_SINGLE_ATTRIBUTE))
 			{
 				attribute = new CSingleAttribute();
 			}
-			else if (attributeModel.GetType() == typeof (C_MULTIPLE_ATTRIBUTE))
+			else if (model.GetType() == typeof (C_MULTIPLE_ATTRIBUTE))
 			{
 				attribute = new CMultipleAttribute();
-				((CMultipleAttribute) attribute).Cardinality = ((C_MULTIPLE_ATTRIBUTE) attributeModel).cardinality.Parse();
+				((CMultipleAttribute) attribute).Cardinality = ((C_MULTIPLE_ATTRIBUTE) model).cardinality.Parse();
 			}
 			else
 			{
-				throw new ParseException(string.Format("'{0}' is not a valid attribute type.", attributeModel.GetType()));
+				throw new ParseException(string.Format("'{0}' is not a valid attribute type.", model.GetType()));
 			}
 
-			attribute.Existence = attributeModel.existence.Parse();
-			attribute.ReferenceModelAttributeName = attributeModel.rm_attribute_name;
-			if (attributeModel.children != null)
+			attribute.Existence = model.existence.Parse();
+			attribute.ReferenceModelAttributeName = model.rm_attribute_name;
+			if (model.children != null)
 			{
-				foreach (C_OBJECT child in attributeModel.children)
+				foreach (C_OBJECT child in model.children)
 				{
-					attribute.Children.Add(child.Parse());
+					attribute.Children.Add(child.Parse(attribute));
 				}
 			}
 			return attribute;
 		}
 
-		private static Cardinality Parse(this CARDINALITY cardinalityModel)
+		private static Cardinality Parse(this CARDINALITY model)
 		{
-			//TODO
-			return null;
+			var cardinality = new Cardinality
+			                  	{
+			                  		IsOrdered = model.is_ordered,
+			                  		IsUnique = model.is_unique,
+			                  		Interval = model.interval.Parse()
+			                  	};
+			return cardinality;
 		}
 
-		private static CObject Parse(this C_OBJECT objectModel)
+		private static CObject Parse(this C_OBJECT model, CAttribute parent)
 		{
 			CObject constraintObject;
 
-			if (objectModel.GetType() == typeof (C_COMPLEX_OBJECT))
+			if (model.GetType() == typeof (C_COMPLEX_OBJECT))
 			{
-				constraintObject = ((C_COMPLEX_OBJECT) objectModel).Parse();
+				constraintObject = ((C_COMPLEX_OBJECT) model).Parse();
 			}
-			else if (objectModel.GetType() == typeof (C_PRIMITIVE_OBJECT))
+			else if (model.GetType() == typeof (C_PRIMITIVE_OBJECT))
 			{
-				constraintObject = ((C_PRIMITIVE_OBJECT) objectModel).Parse();
+				constraintObject = ((C_PRIMITIVE_OBJECT) model).Parse();
 			}
-			else if (objectModel.GetType() == typeof (ARCHETYPE_SLOT))
+			else if (model.GetType() == typeof (ARCHETYPE_SLOT))
 			{
-				constraintObject = ((ARCHETYPE_SLOT) objectModel).Parse();
+				constraintObject = ((ARCHETYPE_SLOT) model).Parse();
 			}
-			else if (objectModel.GetType() == typeof (ARCHETYPE_INTERNAL_REF))
+			else if (model.GetType() == typeof (ARCHETYPE_INTERNAL_REF))
 			{
-				constraintObject = ((ARCHETYPE_INTERNAL_REF) objectModel).Parse();
+				constraintObject = ((ARCHETYPE_INTERNAL_REF) model).Parse();
 			}
-			else if (objectModel.GetType() == typeof (CONSTRAINT_REF))
+			else if (model.GetType() == typeof (CONSTRAINT_REF))
 			{
-				constraintObject = ((CONSTRAINT_REF) objectModel).Parse();
+				constraintObject = ((CONSTRAINT_REF) model).Parse();
 			}
-			else if (objectModel.GetType() == typeof (C_CODE_PHRASE))
+			else if (model.GetType() == typeof (C_CODE_PHRASE))
 			{
-				constraintObject = ((C_CODE_PHRASE) objectModel).Parse();
+				constraintObject = ((C_CODE_PHRASE) model).Parse();
 			}
-			else if (objectModel.GetType() == typeof (C_DV_QUANTITY))
+			else if (model.GetType() == typeof (C_DV_QUANTITY))
 			{
-				constraintObject = ((C_DV_QUANTITY) objectModel).Parse();
+				constraintObject = ((C_DV_QUANTITY) model).Parse();
 			}
-			else if (objectModel.GetType() == typeof (C_DV_ORDINAL))
+			else if (model.GetType() == typeof (C_DV_ORDINAL))
 			{
-				constraintObject = ((C_DV_ORDINAL) objectModel).Parse();
+				constraintObject = ((C_DV_ORDINAL) model).Parse();
 			}
 			else
 			{
-				throw new ParseException(string.Format("'{0}' is not a valid object type.", objectModel.GetType()));
+				throw new ParseException(string.Format("'{0}' is not a valid object type.", model.GetType()));
 			}
-
+			if (constraintObject != null)
+				constraintObject.Parent = parent;
 			return constraintObject;
 		}
 
-		private static CPrimitiveObject Parse(this C_PRIMITIVE_OBJECT primitiveObjectModel)
+		private static CPrimitiveObject Parse(this C_PRIMITIVE_OBJECT model)
 		{
-			//TODO
-			return null;
+			var primitiveObject = new CPrimitiveObject
+			                      	{
+			                      		AnyAllowed = model.any_allowed,
+			                      		NodeId = model.node_id,
+			                      		Item = model.item.Parse(),
+			                      		ReferenceModelTypeName = model.rm_type_name,
+			                      		Occurences = model.occurrences.Parse()
+			                      	};
+			return primitiveObject;
 		}
 
-		private static CCodePhrase Parse(this C_CODE_PHRASE codePhraseModel)
+		private static CCodePhrase Parse(this C_CODE_PHRASE model)
 		{
 			var codePhrase = new CCodePhrase
 			                 	{
-			                 		CodeString = codePhraseModel.code_string,
-			                 		TerminologyId = new TerminologyId(codePhraseModel.terminology_id.value)
+			                 		CodeString = model.code_string,
+			                 		TerminologyId = new TerminologyId(model.terminology_id.value)
 			                 	};
-			if (codePhraseModel.code_list != null)
+			if (model.code_list != null)
 			{
-				foreach (string item in codePhraseModel.code_list)
+				foreach (string item in model.code_list)
 				{
 					codePhrase.CodeList.Add(item);
 				}
@@ -359,48 +375,54 @@ namespace Vela.AM.Adl
 			return codePhrase;
 		}
 
-		private static ArchetypeSlot Parse(this ARCHETYPE_SLOT archetypeSlotModel)
+		private static ArchetypeSlot Parse(this ARCHETYPE_SLOT model)
 		{
 			//TODO
 			return null;
 		}
 
-		private static ArchetypeInternalRef Parse(this ARCHETYPE_INTERNAL_REF archetypeInternalRefModel)
+		private static ArchetypeInternalRef Parse(this ARCHETYPE_INTERNAL_REF model)
 		{
 			//TODO
 			return null;
 		}
 
-		private static ConstraintRef Parse(this CONSTRAINT_REF constraintRefModel)
+		private static ConstraintRef Parse(this CONSTRAINT_REF model)
 		{
-			//TODO
-			return null;
+			var constraintRef = new ConstraintRef
+			                    	{
+			                    		NodeId = model.node_id,
+			                    		Occurences = model.occurrences.Parse(),
+			                    		Reference = model.reference,
+			                    		ReferenceModelTypeName = model.rm_type_name
+			                    	};
+			return constraintRef;
 		}
 
-		private static CQuantity Parse(this C_DV_QUANTITY quantityModel)
+		private static CQuantity Parse(this C_DV_QUANTITY model)
 		{
 			var quantity = new CQuantity
 			               	{
-			               		ReferenceModelTypeName = quantityModel.rm_type_name,
-			               		NodeId = quantityModel.node_id
+			               		ReferenceModelTypeName = model.rm_type_name,
+			               		NodeId = model.node_id
 			               	};
-			if (quantityModel.property != null)
-				quantity.CodePhrase = quantityModel.property.Parse();
-			if (quantityModel.occurrences != null)
-				quantity.Occurences = quantityModel.occurrences.Parse();
+			if (model.property != null)
+				quantity.CodePhrase = model.property.Parse();
+			if (model.occurrences != null)
+				quantity.Occurences = model.occurrences.Parse();
 			return quantity;
 		}
 
-		private static COrdinal Parse(this C_DV_ORDINAL ordinalModel)
+		private static COrdinal Parse(this C_DV_ORDINAL model)
 		{
 			var ordinal = new COrdinal
 			              	{
-			              		ReferenceModelTypeName = ordinalModel.rm_type_name,
-			              		NodeId = ordinalModel.node_id,
-			              		Occurences = ordinalModel.occurrences.Parse()
+			              		ReferenceModelTypeName = model.rm_type_name,
+			              		NodeId = model.node_id,
+			              		Occurences = model.occurrences.Parse()
 			              	};
 
-			foreach (DV_ORDINAL dvOrdinal in ordinalModel.list)
+			foreach (DV_ORDINAL dvOrdinal in model.list)
 			{
 				ordinal.Ordinals.Add(dvOrdinal.Parse());
 			}
@@ -408,62 +430,62 @@ namespace Vela.AM.Adl
 			return ordinal;
 		}
 
-		private static Interval<Ordinal> Parse(this DV_INTERVAL intervalModel)
+		private static Interval<Ordinal> Parse(this DV_INTERVAL model)
 		{
 			var interval = new Interval<Ordinal>();
-			if (intervalModel.lower != null)
-				interval.Lower = ((DV_ORDINAL) intervalModel.lower).Parse();
-			if (intervalModel.lower_included.HasValue)
-				interval.IsLowerIncluded = intervalModel.lower_included.Value;
-			if (intervalModel.upper != null)
-				interval.Upper = ((DV_ORDINAL) intervalModel.upper).Parse();
-			if (intervalModel.upper_included.HasValue)
-				interval.IsUpperIncluded = intervalModel.upper_included.Value;
+			if (model.lower != null)
+				interval.Lower = ((DV_ORDINAL) model.lower).Parse();
+			if (model.lower_included.HasValue)
+				interval.IsLowerIncluded = model.lower_included.Value;
+			if (model.upper != null)
+				interval.Upper = ((DV_ORDINAL) model.upper).Parse();
+			if (model.upper_included.HasValue)
+				interval.IsUpperIncluded = model.upper_included.Value;
 
 			return interval;
 		}
 
-		private static ReferenceRange<Ordinal> Parse(this REFERENCE_RANGE range)
+		private static ReferenceRange<Ordinal> Parse(this REFERENCE_RANGE model)
 		{
 			var referenceRange = new ReferenceRange<Ordinal>
 			                     	{
-			                     		Meaning = new Text(range.meaning.value)
+			                     		Meaning = new Text(model.meaning.value)
 			                     		          	{
-			                     		          		Formatting = range.meaning.formatting,
-			                     		          		Encoding = range.meaning.encoding.Parse(),
-			                     		          		Language = range.meaning.language.Parse(),
-			                     		          		Hyperlink = new Uri(range.meaning.hyperlink.value.ToString())
+			                     		          		Formatting = model.meaning.formatting,
+			                     		          		Encoding = model.meaning.encoding.Parse(),
+			                     		          		Language = model.meaning.language.Parse(),
+			                     		          		Hyperlink = new Uri(model.meaning.hyperlink.value.ToString())
 			                     		          	}
 			                     	};
 
-			foreach (var mapping in range.meaning.mappings)
+			foreach (TERM_MAPPING mapping in model.meaning.mappings)
 			{
 				referenceRange.Meaning.Mappings.Add(mapping.Parse());
 			}
-			referenceRange.Range = range.range.Parse();
+			referenceRange.Range = model.range.Parse();
 
 			return referenceRange;
 		}
 
-		private static Ordinal Parse(this DV_ORDINAL ordinalModel)
+		private static Ordinal Parse(this DV_ORDINAL model)
 		{
-			var ordinal = new Ordinal(ordinalModel.value);
-			if (ordinalModel.normal_status != null)
+			var ordinal = new Ordinal(model.value);
+			if (model.normal_status != null)
 			{
-				ordinal.NormalStatus = ordinalModel.normal_status.Parse();
+				ordinal.NormalStatus = model.normal_status.Parse();
 			}
-			if (ordinalModel.normal_range != null)
+			if (model.normal_range != null)
 			{
-				ordinal.NormalRange = ordinalModel.normal_range.Parse();
+				ordinal.NormalRange = model.normal_range.Parse();
 			}
-			if (ordinalModel.symbol != null)
+			if (model.symbol != null)
 			{
-				ordinal.Symbol = ordinalModel.symbol.Parse(); 
+				ordinal.Symbol = model.symbol.Parse();
 			}
 
-			if (ordinalModel.other_reference_ranges != null)
+			if (model.other_reference_ranges != null)
 			{
-				foreach (REFERENCE_RANGE range in ordinalModel.other_reference_ranges)
+				foreach (REFERENCE_RANGE range in model.other_reference_ranges)
 				{
 					ordinal.OtherReferenceRanges.Add(range.Parse());
 				}
@@ -471,47 +493,133 @@ namespace Vela.AM.Adl
 			return ordinal;
 		}
 
-		private static CodedText Parse(this DV_CODED_TEXT codedTextModel)
+		private static CodedText Parse(this DV_CODED_TEXT model)
 		{
-			var codedText = new CodedText(codedTextModel.value)
+			var codedText = new CodedText(model.value)
 			                	{
-			                		DefiningCode = codedTextModel.defining_code.Parse(),
-									Formatting = codedTextModel.formatting
-								};
-			if (codedTextModel.language != null)
-				codedText.Language = codedTextModel.language.Parse();
-			if (codedTextModel.encoding != null)
-				codedText.Encoding = codedTextModel.encoding.Parse();
-			if (codedTextModel.hyperlink != null)
-				codedText.Hyperlink = new Uri(codedTextModel.hyperlink.value.ToString());
-			foreach (var mapping in codedTextModel.mappings)
+			                		DefiningCode = model.defining_code.Parse(),
+			                		Formatting = model.formatting
+			                	};
+			if (model.language != null)
+				codedText.Language = model.language.Parse();
+			if (model.encoding != null)
+				codedText.Encoding = model.encoding.Parse();
+			if (model.hyperlink != null)
+				codedText.Hyperlink = new Uri(model.hyperlink.value.ToString());
+			foreach (TERM_MAPPING mapping in model.mappings)
 			{
 				codedText.Mappings.Add(mapping.Parse());
 			}
 			return codedText;
 		}
 
-		private static CodePhrase Parse(this CODE_PHRASE codePhraseModel)
+		private static CodePhrase Parse(this CODE_PHRASE model)
 		{
-			if (codePhraseModel == null) return null;
-			var codePhrase = new CodePhrase(codePhraseModel.code_string)
-			{
-				TerminologyId = new TerminologyId(codePhraseModel.terminology_id.value)
-			};
+			if (model == null) return null;
+			var codePhrase = new CodePhrase(model.code_string)
+			                 	{
+			                 		TerminologyId = new TerminologyId(model.terminology_id.value)
+			                 	};
 			return codePhrase;
 		}
 
-		private static TerminologyMapping Parse(this TERM_MAPPING termMappingModel)
+		private static TerminologyMapping Parse(this TERM_MAPPING model)
 		{
 			var termMapping = new TerminologyMapping
-			{
-				Purpose = termMappingModel.purpose.Parse(),
-				Target = termMappingModel.target.Parse()
-			};
-			var match = Match.Unknown;
-			Enum.TryParse(termMappingModel.match, true, out match);
+			                  	{
+			                  		Purpose = model.purpose.Parse(),
+			                  		Target = model.target.Parse()
+			                  	};
+			Match match;
+			Enum.TryParse(model.match, true, out match);
 			termMapping.Match = match;
 			return termMapping;
+		}
+
+		private static CPrimitive Parse(this C_PRIMITIVE model)
+		{
+			CPrimitive primitive;
+
+			if (model.GetType() == typeof (C_BOOLEAN))
+			{
+				primitive = ((C_BOOLEAN) model).Parse();
+			}
+			else if (model.GetType() == typeof (C_INTEGER))
+			{
+				primitive = ((C_INTEGER) model).Parse();
+			}
+			else if (model.GetType() == typeof (C_STRING))
+			{
+				primitive = ((C_STRING) model).Parse();
+			}
+			else if (model.GetType() == typeof (C_DURATION))
+			{
+				primitive = ((C_DURATION) model).Parse();
+			}
+			else if (model.GetType() == typeof (C_DATE))
+			{
+				//primitive = ((C_DATE)model).Parse();
+				primitive = null;
+			}
+			else
+			{
+				throw new ParseException(string.Format("'{0}' is not a valid primitive type.", model.GetType()));
+			}
+			return primitive;
+		}
+
+		private static CBoolean Parse(this C_BOOLEAN model)
+		{
+			var primitive = new CBoolean {IsFalseValid = model.false_valid, IsTrueValid = model.true_valid};
+			if (model.assumed_value.HasValue)
+				primitive.AssumedValue = model.assumed_value.Value;
+			return primitive;
+		}
+
+		private static CInteger Parse(this C_INTEGER model)
+		{
+			var primitive = new CInteger {Range = model.range.Parse()};
+			if (model.assumed_value.HasValue)
+				primitive.AssumedValue = model.assumed_value.Value;
+			foreach (int i in model.list)
+			{
+				primitive.List.Add(i);
+			}
+			return primitive;
+		}
+
+		private static CString Parse(this C_STRING model)
+		{
+			var primitive = new CString {Pattern = model.pattern, AssumedValue = model.assumed_value};
+			if (model.list_open.HasValue)
+				primitive.IsListOpen = model.list_open.Value;
+			foreach (string s in model.list)
+			{
+				primitive.List.Add(s);
+			}
+			return primitive;
+		}
+
+		private static CDuration Parse(this C_DURATION model)
+		{
+			var primitive = new CDuration
+			                	{
+			                		AssumedValue = new Duration(model.assumed_value),
+			                		Pattern = model.pattern
+			                	};
+			if (model.range != null)
+				primitive.Range = model.range.Parse();
+			return primitive;
+		}
+
+		private static Interval<Duration> Parse(this IntervalOfDuration model)
+		{
+			var interval = new Interval<Duration> {Lower = new Duration(model.lower), Upper = new Duration(model.upper)};
+			if (model.lower_included.HasValue)
+				interval.IsLowerIncluded = model.lower_included.Value;
+			if (model.upper_included.HasValue)
+				interval.IsUpperIncluded = model.upper_included.Value;
+			return interval;
 		}
 
 		#endregion

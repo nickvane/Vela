@@ -56,10 +56,7 @@ namespace Vela.AM.ConstraintModel
 		/// <summary>
 		/// True if any value of the reference model type being constrained is allowed.
 		/// </summary>
-		public override bool AnyAllowed()
-		{
-			throw new NotImplementedException();
-		}
+		public override bool AnyAllowed { get; set; }
 
 		/// <summary>
 		/// True if a_value is valid with respect to constraint expressed in concrete instance of this type.

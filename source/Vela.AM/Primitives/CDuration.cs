@@ -1,11 +1,49 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+using Vela.RM.Core.DataTypes.DateTimePackage;
+using Vela.RM.Core.DataTypes.QuantityPackage;
+using Vela.RM.Core.Support;
 
 namespace Vela.AM.Primitives
 {
-	class CDuration
+	public class CDuration : CPrimitive
 	{
+		/// <summary>
+		/// Generate a default value from this constraint object
+		/// </summary>
+		public new Duration DefaultValue { get; set; }
+
+		/// <summary>
+		/// True if there is an assumed value
+		/// </summary>
+		public override bool HasAssumedValue
+		{
+			get; set; }
+
+		/// <summary>
+		/// Value to be assumed if none sent in data
+		/// </summary>
+		[OpenEhrName("")]
+		public new Duration AssumedValue { get; set; }
+
+		/// <summary>
+		/// True if a_value is valid with respect to constraint expressed in concrete instance of this type.
+		/// </summary>
+		/// <param name="value"></param>
+		/// <returns></returns>
+		[OpenEhrName("")]
+		public new bool IsValidValue(Duration value)
+		{
+			throw new NotImplementedException();
+		}
+
+		/// <summary>
+		/// Range of Durations specifying constraint
+		/// </summary>
+		public Interval<Duration> Range { get; set; }
+
+		/// <summary>
+		/// Regular expression pattern for proposed instances of Duration to match.
+		/// </summary>
+		public string Pattern { get; set; }
 	}
 }
