@@ -1,5 +1,4 @@
-﻿using System;
-using Vela.RM.Core.Support;
+﻿using Vela.RM.Core.Support;
 
 namespace Vela.AM.Primitives
 {
@@ -9,33 +8,6 @@ namespace Vela.AM.Primitives
 	[OpenEhrName("")]
 	public abstract class CPrimitive
 	{
-		/// <summary>
-		/// Generate a default value from this constraint object
-		/// </summary>
-		[OpenEhrName("")]
-		public object DefaultValue { get; set; }
-
-		/// <summary>
-		/// True if there is an assumed value
-		/// </summary>
-		[OpenEhrName("")]
-		public abstract bool HasAssumedValue { get; set; }
-
-		/// <summary>
-		/// Value to be assumed if none sent in data
-		/// </summary>
-		[OpenEhrName("")]
-		public object AssumedValue { get; set; }
-
-		/// <summary>
-		/// True if a_value is valid with respect to constraint expressed in concrete instance of this type.
-		/// </summary>
-		/// <param name="value"></param>
-		/// <returns></returns>
-		[OpenEhrName("")]
-		public bool IsValidValue(object value)
-		{
-			throw new NotImplementedException();	
-		}
+		
 	}
 }

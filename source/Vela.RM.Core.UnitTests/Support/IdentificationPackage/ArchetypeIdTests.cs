@@ -33,16 +33,13 @@ namespace Vela.RM.Core.UnitTests.Support.IdentificationPackage
 	}
 
 	[TestFixture]
-	public class WhenUsingArchetypeIdWithInValidValues
+	public class InValidValuesThrowsException
 	{
 		[ExpectedException(typeof(ArgumentException))]
 		[TestCase("")]
 		[TestCase(".")]
 		[TestCase("...")]
-		//[TestCase("..")]
-		//[TestCase("--..")]
-		//[TestCase("--.-.")]
-		//[TestCase("v-v-v.v-v.")]
+		[TestCase("-..")]
 		public void ShouldThrowException(string value)
 		{
 			new ArchetypeId(value);

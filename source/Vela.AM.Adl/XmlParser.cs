@@ -13,6 +13,8 @@ using Vela.RM.Core.DataTypes.DateTimePackage;
 using Vela.RM.Core.DataTypes.QuantityPackage;
 using Vela.RM.Core.DataTypes.TextPackage;
 using Vela.RM.Core.Support.IdentificationPackage;
+using Xml.Schema.Linq;
+using DateTime = Vela.RM.Core.DataTypes.DateTimePackage.DateTime;
 using Uri = Vela.RM.Core.DataTypes.UriPackage.Uri;
 
 namespace Vela.AM.Adl
@@ -158,7 +160,94 @@ namespace Vela.AM.Adl
 
 		private static Assertion Parse(this ASSERTION model)
 		{
-			throw new NotImplementedException("ASSERTION.Parse");
+			var assertion = new Assertion
+			                	{
+			                		ExpressionString = model.string_expression,
+			                		Tag = model.tag,
+			                		Expression = model.expression.Parse()
+			                	};
+			if (assertion.Variables != null)
+			{
+				foreach (AssertionVariable variable in assertion.Variables)
+				{
+					assertion.Variables.Add(new AssertionVariable {Definition = variable.Definition, Name = variable.Name});
+				}
+			}
+
+			return assertion;
+		}
+
+		private static ExprItem Parse(this EXPR_ITEM model)
+		{
+			ExprItem exprItem;
+			if (model.GetType() == typeof (EXPR_LEAF))
+			{
+				exprItem = ((EXPR_LEAF) model).Parse();
+			}
+			else if (model.GetType() == typeof (EXPR_BINARY_OPERATOR))
+			{
+				exprItem = ((EXPR_BINARY_OPERATOR) model).Parse();
+			}
+			else if (model.GetType() == typeof (EXPR_UNARY_OPERATOR))
+			{
+				exprItem = ((EXPR_UNARY_OPERATOR) model).Parse();
+			}
+			else
+			{
+				throw new ParseException(string.Format("'{0}' is not a valid expritem type.", model.GetType()));
+			}
+			exprItem.Type = model.type;
+			return exprItem;
+		}
+
+		private static ExprLeaf Parse(this EXPR_LEAF model)
+		{
+			return new ExprLeaf {ReferenceType = model.reference_type, Item = ParseExpressionItem(model.item)};
+		}
+
+		private static ExprBinaryOperator Parse(this EXPR_BINARY_OPERATOR model)
+		{
+			var binary = new ExprBinaryOperator
+			             	{
+			             		IsPrecedenceOverriden = model.precedence_overridden,
+			             		Operator = (OperatorKind) ((int) model.@operator),
+			             		LeftOperand = model.left_operand.Parse(),
+			             		RightOperand = model.right_operand.Parse()
+			             	};
+			return binary;
+		}
+
+		private static ExprUnaryOperator Parse(this EXPR_UNARY_OPERATOR model)
+		{
+			var unary = new ExprUnaryOperator
+			            	{
+			            		IsPrecedenceOverriden = model.precedence_overridden,
+			            		Operand = model.operand.Parse(),
+			            		Operator = (OperatorKind) ((int) model.@operator)
+			            	};
+			return unary;
+		}
+
+		private static object ParseExpressionItem(XTypedElement model)
+		{
+			object item;
+			var typeValue = (from a in model.Untyped.Attributes().ToList() where a.Name.LocalName == "type" select a.Value).SingleOrDefault();
+
+			if (typeValue == "xsd:string")
+			{
+				item = model.Untyped.Value;
+			}
+			else if (typeValue == "C_STRING")
+			{
+				var element = (from e in model.Untyped.Elements() where e.Name.LocalName == "pattern" select e).SingleOrDefault();
+				var cstring = new CString {Pattern = element.Value};
+				item = cstring;
+			}
+			else
+			{
+				throw new ParseException(string.Format("'{0}' is not a valid item type for expression.item.", model.GetType()));
+			}
+			return item;
 		}
 
 		private static ArchetypeOntology Parse(this ARCHETYPE_ONTOLOGY model)
@@ -243,20 +332,17 @@ namespace Vela.AM.Adl
 			return complexObject;
 		}
 
-		private static Interval<int> Parse(this IntervalOfInteger model)
+		private static CPrimitiveObject Parse(this C_PRIMITIVE_OBJECT model)
 		{
-			var interval = new Interval<int>();
-
-			if (model.lower_included.HasValue)
-				interval.IsLowerIncluded = model.lower_included.Value;
-			if (model.upper_included.HasValue)
-				interval.IsUpperIncluded = model.upper_included.Value;
-			if (model.lower.HasValue)
-				interval.Lower = model.lower.Value;
-			if (model.upper.HasValue)
-				interval.Upper = model.upper.Value;
-
-			return interval;
+			var primitiveObject = new CPrimitiveObject
+			                      	{
+			                      		AnyAllowed = model.any_allowed,
+			                      		NodeId = model.node_id,
+			                      		Item = model.item.Parse(),
+			                      		ReferenceModelTypeName = model.rm_type_name,
+			                      		Occurences = model.occurrences.Parse()
+			                      	};
+			return primitiveObject;
 		}
 
 		private static CAttribute Parse(this C_ATTRIBUTE model)
@@ -344,31 +430,22 @@ namespace Vela.AM.Adl
 			return constraintObject;
 		}
 
-		private static CPrimitiveObject Parse(this C_PRIMITIVE_OBJECT model)
-		{
-			var primitiveObject = new CPrimitiveObject
-			                      	{
-			                      		AnyAllowed = model.any_allowed,
-			                      		NodeId = model.node_id,
-			                      		Item = model.item.Parse(),
-			                      		ReferenceModelTypeName = model.rm_type_name,
-			                      		Occurences = model.occurrences.Parse()
-			                      	};
-			return primitiveObject;
-		}
-
 		private static CCodePhrase Parse(this C_CODE_PHRASE model)
 		{
 			var codePhrase = new CCodePhrase
 			                 	{
-			                 		CodeString = model.code_string,
-			                 		TerminologyId = new TerminologyId(model.terminology_id.value)
+			                 		Occurences = model.occurrences.Parse(),
+			                 		NodeId = model.node_id,
+			                 		ReferenceModelTypeName = model.rm_type_name
 			                 	};
 			if (model.code_list != null)
 			{
 				foreach (string item in model.code_list)
 				{
-					codePhrase.CodeList.Add(item);
+					codePhrase.CodePhrases.Add(new CodePhrase(item)
+					                           	{
+					                           		TerminologyId = new TerminologyId(model.terminology_id.value)
+					                           	});
 				}
 			}
 
@@ -377,14 +454,39 @@ namespace Vela.AM.Adl
 
 		private static ArchetypeSlot Parse(this ARCHETYPE_SLOT model)
 		{
-			//TODO
-			return null;
+			var archetypeSlot = new ArchetypeSlot
+			                    	{
+			                    		Occurences = model.occurrences.Parse(),
+			                    		NodeId = model.node_id,
+			                    		ReferenceModelTypeName = model.rm_type_name
+			                    	};
+			if (model.includes != null)
+			{
+				foreach (ASSERTION assertion in model.includes)
+				{
+					archetypeSlot.Includes.Add(assertion.Parse());
+				}
+			}
+			if (model.excludes != null)
+			{
+				foreach (ASSERTION assertion in model.excludes)
+				{
+					archetypeSlot.Includes.Add(assertion.Parse());
+				}
+			}
+			return archetypeSlot;
 		}
 
 		private static ArchetypeInternalRef Parse(this ARCHETYPE_INTERNAL_REF model)
 		{
-			//TODO
-			return null;
+			var archetypeInternalRef = new ArchetypeInternalRef
+			                           	{
+			                           		Occurences = model.occurrences.Parse(),
+			                           		NodeId = model.node_id,
+			                           		ReferenceModelTypeName = model.rm_type_name,
+			                           		TargetPath = model.target_path
+			                           	};
+			return archetypeInternalRef;
 		}
 
 		private static ConstraintRef Parse(this CONSTRAINT_REF model)
@@ -410,6 +512,13 @@ namespace Vela.AM.Adl
 				quantity.CodePhrase = model.property.Parse();
 			if (model.occurrences != null)
 				quantity.Occurences = model.occurrences.Parse();
+			foreach (DV_UNIT unit in model.list)
+			{
+				// TODO
+				//var qt = new Quantity();
+				//qt. = unit.mag
+				//quantity.Quantities.Add(unit.units);
+			}
 			return quantity;
 		}
 
@@ -428,43 +537,6 @@ namespace Vela.AM.Adl
 			}
 
 			return ordinal;
-		}
-
-		private static Interval<Ordinal> Parse(this DV_INTERVAL model)
-		{
-			var interval = new Interval<Ordinal>();
-			if (model.lower != null)
-				interval.Lower = ((DV_ORDINAL) model.lower).Parse();
-			if (model.lower_included.HasValue)
-				interval.IsLowerIncluded = model.lower_included.Value;
-			if (model.upper != null)
-				interval.Upper = ((DV_ORDINAL) model.upper).Parse();
-			if (model.upper_included.HasValue)
-				interval.IsUpperIncluded = model.upper_included.Value;
-
-			return interval;
-		}
-
-		private static ReferenceRange<Ordinal> Parse(this REFERENCE_RANGE model)
-		{
-			var referenceRange = new ReferenceRange<Ordinal>
-			                     	{
-			                     		Meaning = new Text(model.meaning.value)
-			                     		          	{
-			                     		          		Formatting = model.meaning.formatting,
-			                     		          		Encoding = model.meaning.encoding.Parse(),
-			                     		          		Language = model.meaning.language.Parse(),
-			                     		          		Hyperlink = new Uri(model.meaning.hyperlink.value.ToString())
-			                     		          	}
-			                     	};
-
-			foreach (TERM_MAPPING mapping in model.meaning.mappings)
-			{
-				referenceRange.Meaning.Mappings.Add(mapping.Parse());
-			}
-			referenceRange.Range = model.range.Parse();
-
-			return referenceRange;
 		}
 
 		private static Ordinal Parse(this DV_ORDINAL model)
@@ -536,6 +608,28 @@ namespace Vela.AM.Adl
 			return termMapping;
 		}
 
+		private static ReferenceRange<Ordinal> Parse(this REFERENCE_RANGE model)
+		{
+			var referenceRange = new ReferenceRange<Ordinal>
+			                     	{
+			                     		Meaning = new Text(model.meaning.value)
+			                     		          	{
+			                     		          		Formatting = model.meaning.formatting,
+			                     		          		Encoding = model.meaning.encoding.Parse(),
+			                     		          		Language = model.meaning.language.Parse(),
+			                     		          		Hyperlink = new Uri(model.meaning.hyperlink.value.ToString())
+			                     		          	}
+			                     	};
+
+			foreach (TERM_MAPPING mapping in model.meaning.mappings)
+			{
+				referenceRange.Meaning.Mappings.Add(mapping.Parse());
+			}
+			referenceRange.Range = model.range.Parse();
+
+			return referenceRange;
+		}
+
 		private static CPrimitive Parse(this C_PRIMITIVE model)
 		{
 			CPrimitive primitive;
@@ -558,8 +652,15 @@ namespace Vela.AM.Adl
 			}
 			else if (model.GetType() == typeof (C_DATE))
 			{
-				//primitive = ((C_DATE)model).Parse();
-				primitive = null;
+				primitive = ((C_DATE) model).Parse();
+			}
+			else if (model.GetType() == typeof (C_DATE_TIME))
+			{
+				primitive = ((C_DATE_TIME) model).Parse();
+			}
+			else if (model.GetType() == typeof (C_REAL))
+			{
+				primitive = ((C_REAL) model).Parse();
 			}
 			else
 			{
@@ -579,6 +680,21 @@ namespace Vela.AM.Adl
 		private static CInteger Parse(this C_INTEGER model)
 		{
 			var primitive = new CInteger {Range = model.range.Parse()};
+			if (model.assumed_value.HasValue)
+				primitive.AssumedValue = model.assumed_value.Value;
+			foreach (int i in model.list)
+			{
+				primitive.List.Add(i);
+			}
+			return primitive;
+		}
+
+		private static CReal Parse(this C_REAL model)
+		{
+			var primitive = new CReal
+			                	{
+			                		Range = model.range.Parse()
+			                	};
 			if (model.assumed_value.HasValue)
 				primitive.AssumedValue = model.assumed_value.Value;
 			foreach (int i in model.list)
@@ -610,6 +726,124 @@ namespace Vela.AM.Adl
 			if (model.range != null)
 				primitive.Range = model.range.Parse();
 			return primitive;
+		}
+
+		private static CDate Parse(this C_DATE model)
+		{
+			var primitive = new CDate
+			                	{
+			                		AssumedValue = new Date
+			                		               	{
+			                		               		Value = model.assumed_value
+			                		               	},
+			                		Pattern = model.pattern
+			                	};
+			if (model.range != null)
+				primitive.Range = model.range.Parse();
+			return primitive;
+		}
+
+		private static CDateTime Parse(this C_DATE_TIME model)
+		{
+			var primitive = new CDateTime
+			                	{
+			                		AssumedValue = new DateTime
+			                		               	{
+			                		               		Value = model.assumed_value
+			                		               	},
+			                		Pattern = model.pattern
+			                	};
+			if (model.range != null)
+				primitive.Range = model.range.Parse();
+			return primitive;
+		}
+
+		private static Interval<int> Parse(this IntervalOfInteger model)
+		{
+			if (model == null) return null;
+			var interval = new Interval<int>();
+
+			if (model.lower_included.HasValue)
+				interval.IsLowerIncluded = model.lower_included.Value;
+			if (model.upper_included.HasValue)
+				interval.IsUpperIncluded = model.upper_included.Value;
+			if (model.lower.HasValue)
+				interval.Lower = model.lower.Value;
+			if (model.upper.HasValue)
+				interval.Upper = model.upper.Value;
+
+			return interval;
+		}
+
+		private static Interval<double> Parse(this IntervalOfReal model)
+		{
+			var interval = new Interval<double>();
+
+			if (model.lower_included.HasValue)
+				interval.IsLowerIncluded = model.lower_included.Value;
+			if (model.upper_included.HasValue)
+				interval.IsUpperIncluded = model.upper_included.Value;
+			if (model.lower.HasValue)
+				interval.Lower = model.lower.Value;
+			if (model.upper.HasValue)
+				interval.Upper = model.upper.Value;
+
+			return interval;
+		}
+
+		private static Interval<Date> Parse(this IntervalOfDate model)
+		{
+			var interval = new Interval<Date>
+			               	{
+			               		Lower = new Date
+			               		        	{
+			               		        		Value = model.lower
+			               		        	},
+			               		Upper = new Date
+			               		        	{
+			               		        		Value = model.upper
+			               		        	}
+			               	};
+			if (model.lower_included.HasValue)
+				interval.IsLowerIncluded = model.lower_included.Value;
+			if (model.upper_included.HasValue)
+				interval.IsUpperIncluded = model.upper_included.Value;
+			return interval;
+		}
+
+		private static Interval<DateTime> Parse(this IntervalOfDateTime model)
+		{
+			var interval = new Interval<DateTime>
+			               	{
+			               		Lower = new DateTime
+			               		        	{
+			               		        		Value = model.lower
+			               		        	},
+			               		Upper = new DateTime
+			               		        	{
+			               		        		Value = model.upper
+			               		        	}
+			               	};
+			if (model.lower_included.HasValue)
+				interval.IsLowerIncluded = model.lower_included.Value;
+			if (model.upper_included.HasValue)
+				interval.IsUpperIncluded = model.upper_included.Value;
+			return interval;
+		}
+
+		private static Interval<Ordinal> Parse(this DV_INTERVAL model)
+		{
+			var interval = new Interval<Ordinal>();
+			if (model.lower != null)
+				interval.Lower = ((DV_ORDINAL) model.lower).Parse();
+			if (model.lower_included.HasValue)
+				interval.IsLowerIncluded = model.lower_included.Value;
+			if (model.upper != null)
+				interval.Upper = ((DV_ORDINAL) model.upper).Parse();
+			if (model.upper_included.HasValue)
+				interval.IsUpperIncluded = model.upper_included.Value;
+
+			return interval;
 		}
 
 		private static Interval<Duration> Parse(this IntervalOfDuration model)

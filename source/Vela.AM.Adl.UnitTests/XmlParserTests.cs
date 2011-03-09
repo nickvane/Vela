@@ -23,6 +23,7 @@ namespace Vela.AM.Adl.UnitTests
 		}
 
 		[Test]
+		[Ignore]
 		public void ParseTestArchetype()
 		{
 			var archetypeString = File.ReadAllText(@"archetypetest.xml");
@@ -31,6 +32,7 @@ namespace Vela.AM.Adl.UnitTests
 			// header
 			Assert.AreEqual("1.4", archetype.AdlVersion);
 			Assert.AreEqual("Vela-EHR-EVALUATION.test1.v1", archetype.ArchetypeId.Value);
+			Assert.AreEqual("CEFA2F4D-6D3F-4172-97FF-B7FD5A063923", archetype.Uid.Value);
 			Assert.AreEqual("at0000", archetype.Concept);
 			Assert.AreEqual("Vela-EHR-EVALUATION.test1parent.v1", archetype.ParentArchetypeId.Value);
 			Assert.AreEqual("en", archetype.OriginalLanguage.CodeString);
@@ -99,7 +101,9 @@ namespace Vela.AM.Adl.UnitTests
 			Assert.AreEqual(typeof(CMultipleAttribute), archetype.Definition.Attributes.First().GetType());
 			var ma = (CMultipleAttribute)archetype.Definition.Attributes.First();
 			Assert.AreEqual("items", ma.ReferenceModelAttributeName);
-			Assert.AreEqual(9, ma.Children.Count);
+
+			Assert.AreEqual(12, ma.Children.Count);
+
 			Assert.IsTrue(ma.Cardinality.IsOrdered);
 			Assert.IsTrue(ma.Cardinality.IsUnique);
 			Assert.AreEqual(0, ma.Cardinality.Interval.Upper);
@@ -108,6 +112,7 @@ namespace Vela.AM.Adl.UnitTests
 			Assert.IsFalse(ma.Cardinality.Interval.IsUpperIncluded);
 			Assert.IsFalse(ma.Cardinality.Interval.IsLowerUnbounded);
 			Assert.IsTrue(ma.Cardinality.Interval.IsUpperUnbounded);
+
 			Assert.AreEqual(typeof(CComplexObject), ma.Children[0].GetType());
 			var co = (CComplexObject) ma.Children[0];
 			Assert.AreEqual("ELEMENT", co.ReferenceModelTypeName);
@@ -133,6 +138,7 @@ namespace Vela.AM.Adl.UnitTests
 			co = (CComplexObject)sa.Children[0];
 			Assert.IsTrue(co.AnyAllowed);
 			Assert.AreEqual("DV_TEXT", co.ReferenceModelTypeName);
+
 			Assert.AreEqual(typeof(CQuantity), ma.Children[1].GetType());
 			var qu = (CQuantity)ma.Children[1];
 			Assert.IsFalse(qu.AnyAllowed);
@@ -144,6 +150,12 @@ namespace Vela.AM.Adl.UnitTests
 			Assert.IsTrue(qu.Occurences.IsUpperIncluded);
 			Assert.IsFalse(qu.Occurences.IsLowerUnbounded);
 			Assert.IsFalse(qu.Occurences.IsUpperUnbounded);
+			Assert.AreEqual("382", qu.CodePhrase.CodeString);
+			Assert.AreEqual("openehr", qu.CodePhrase.TerminologyId.Value);
+			Assert.AreEqual(2, qu.Quantities.Count);
+			//Assert.IsTrue(qu.Quantities.Contains("l/m"));
+			//Assert.IsTrue(qu.Quantities.Contains("ml/min"));
+
 			Assert.AreEqual(typeof(ConstraintRef), ma.Children[2].GetType());
 			var cr = (ConstraintRef)ma.Children[2];
 			Assert.AreEqual("CODE_PHRASE", cr.ReferenceModelTypeName);
@@ -155,6 +167,7 @@ namespace Vela.AM.Adl.UnitTests
 			Assert.IsTrue(cr.Occurences.IsUpperIncluded);
 			Assert.IsFalse(cr.Occurences.IsLowerUnbounded);
 			Assert.IsFalse(cr.Occurences.IsUpperUnbounded);
+
 			Assert.AreEqual(typeof(CPrimitiveObject), ma.Children[3].GetType());
 			var du = (CPrimitiveObject)ma.Children[3];
 			Assert.IsFalse(du.AnyAllowed);
@@ -170,6 +183,99 @@ namespace Vela.AM.Adl.UnitTests
 			Assert.AreEqual("PT1M", ((CDuration)du.Item).Range.Lower.Value);
 			Assert.AreEqual("PT1M", ((CDuration)du.Item).Range.Upper.Value);
 
+			Assert.AreEqual(typeof(COrdinal), ma.Children[4].GetType());
+			var or = (COrdinal)ma.Children[4];
+			Assert.AreEqual("DV_ORDINAL", or.ReferenceModelTypeName);
+			Assert.AreEqual(string.Empty, or.NodeId);
+			Assert.AreEqual(1, or.Occurences.Upper);
+			Assert.AreEqual(1, or.Occurences.Lower);
+			Assert.IsTrue(or.Occurences.IsLowerIncluded);
+			Assert.IsTrue(or.Occurences.IsUpperIncluded);
+			Assert.IsFalse(or.Occurences.IsLowerUnbounded);
+			Assert.IsFalse(or.Occurences.IsUpperUnbounded);
+			Assert.AreEqual(3, or.Ordinals.Count);
+			Assert.AreEqual(1, or.Ordinals[0].Value);
+			Assert.AreEqual("at0002", or.Ordinals[0].Symbol.DefiningCode.CodeString);
+			Assert.AreEqual("local", or.Ordinals[0].Symbol.DefiningCode.TerminologyId.Value);
+			Assert.AreEqual(4, or.Ordinals[1].Value);
+			Assert.AreEqual("at0003", or.Ordinals[1].Symbol.DefiningCode.CodeString);
+			Assert.AreEqual("local", or.Ordinals[1].Symbol.DefiningCode.TerminologyId.Value);
+			Assert.AreEqual(7, or.Ordinals[2].Value);
+			Assert.AreEqual("at0004", or.Ordinals[2].Symbol.DefiningCode.CodeString);
+			Assert.AreEqual("local", or.Ordinals[2].Symbol.DefiningCode.TerminologyId.Value);
+
+			Assert.AreEqual(typeof(CPrimitiveObject), ma.Children[5].GetType());
+			var da = (CPrimitiveObject)ma.Children[5];
+			Assert.AreEqual("DV_DATE", da.ReferenceModelTypeName);
+			Assert.AreEqual(string.Empty, da.NodeId);
+			Assert.AreEqual(1, da.Occurences.Upper);
+			Assert.AreEqual(1, da.Occurences.Lower);
+			Assert.IsTrue(da.Occurences.IsLowerIncluded);
+			Assert.IsTrue(da.Occurences.IsUpperIncluded);
+			Assert.IsFalse(da.Occurences.IsLowerUnbounded);
+			Assert.IsFalse(da.Occurences.IsUpperUnbounded);
+			Assert.AreEqual(typeof(CDate), da.Item.GetType());
+			Assert.AreEqual("yyyy-??-XX", ((CDate)da.Item).Pattern);
+
+			Assert.AreEqual(typeof(CPrimitiveObject), ma.Children[6].GetType());
+			var it = (CPrimitiveObject)ma.Children[6];
+			Assert.AreEqual("INTEGER", it.ReferenceModelTypeName);
+			Assert.AreEqual(string.Empty, it.NodeId);
+			Assert.AreEqual(1, it.Occurences.Upper);
+			Assert.AreEqual(1, it.Occurences.Lower);
+			Assert.IsTrue(it.Occurences.IsLowerIncluded);
+			Assert.IsTrue(it.Occurences.IsUpperIncluded);
+			Assert.IsFalse(it.Occurences.IsLowerUnbounded);
+			Assert.IsFalse(it.Occurences.IsUpperUnbounded);
+			Assert.AreEqual(typeof(CInteger), it.Item.GetType());
+			Assert.AreEqual(1, ((CInteger)it.Item).Range.Lower);
+			Assert.IsTrue(((CInteger)it.Item).Range.IsLowerIncluded);
+			Assert.IsFalse(((CInteger)it.Item).Range.IsUpperIncluded);
+			Assert.IsFalse(((CInteger)it.Item).Range.IsLowerUnbounded);
+			Assert.IsTrue(((CInteger)it.Item).Range.IsUpperUnbounded);
+
+			Assert.AreEqual(typeof(CCodePhrase), ma.Children[7].GetType());
+			var cp = (CCodePhrase)ma.Children[7];
+			Assert.AreEqual("CODE_PHRASE", cp.ReferenceModelTypeName);
+			Assert.AreEqual(string.Empty, cp.NodeId);
+			Assert.AreEqual(1, cp.Occurences.Upper);
+			Assert.AreEqual(1, cp.Occurences.Lower);
+			Assert.IsTrue(cp.Occurences.IsLowerIncluded);
+			Assert.IsTrue(cp.Occurences.IsUpperIncluded);
+			Assert.IsFalse(cp.Occurences.IsLowerUnbounded);
+			Assert.IsFalse(cp.Occurences.IsUpperUnbounded);
+			Assert.AreEqual(1, cp.CodePhrases.Count);
+			Assert.AreEqual("at0005", cp.CodePhrases.First().CodeString);
+
+			Assert.AreEqual(typeof(CPrimitiveObject), ma.Children[8].GetType());
+			var dt = (CPrimitiveObject)ma.Children[8];
+			Assert.AreEqual("DV_DATE_TIME", dt.ReferenceModelTypeName);
+			Assert.AreEqual(string.Empty, dt.NodeId);
+			Assert.AreEqual(1, dt.Occurences.Upper);
+			Assert.AreEqual(1, dt.Occurences.Lower);
+			Assert.IsTrue(dt.Occurences.IsLowerIncluded);
+			Assert.IsTrue(dt.Occurences.IsUpperIncluded);
+			Assert.IsFalse(dt.Occurences.IsLowerUnbounded);
+			Assert.IsFalse(dt.Occurences.IsUpperUnbounded);
+			Assert.AreEqual(typeof(CDateTime), dt.Item.GetType());
+			Assert.AreEqual("yyyy-??-??T??:??:??", ((CDateTime)dt.Item).Pattern);
+
+			Assert.AreEqual(typeof(CPrimitiveObject), ma.Children[9].GetType());
+			var re = (CPrimitiveObject)ma.Children[9];
+			Assert.AreEqual("DOUBLE", re.ReferenceModelTypeName);
+			Assert.AreEqual(string.Empty, re.NodeId);
+			Assert.AreEqual(1, re.Occurences.Upper);
+			Assert.AreEqual(1, re.Occurences.Lower);
+			Assert.IsTrue(re.Occurences.IsLowerIncluded);
+			Assert.IsTrue(re.Occurences.IsUpperIncluded);
+			Assert.IsFalse(re.Occurences.IsLowerUnbounded);
+			Assert.IsFalse(re.Occurences.IsUpperUnbounded);
+			Assert.AreEqual(typeof(CReal), re.Item.GetType());
+			Assert.AreEqual(0.0, ((CReal)re.Item).Range.Lower);
+			Assert.IsTrue(((CReal)re.Item).Range.IsLowerIncluded);
+			Assert.IsFalse(((CReal)re.Item).Range.IsUpperIncluded);
+			Assert.IsFalse(((CReal)re.Item).Range.IsLowerUnbounded);
+			Assert.IsTrue(((CReal)re.Item).Range.IsUpperUnbounded);
 
 			// ontology
 			Assert.AreEqual(2, archetype.Ontology.TerminologyDefinitions.Count);

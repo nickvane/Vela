@@ -6,7 +6,7 @@ namespace Vela.AM.Primitives
     /// Constraint on instances of Boolean.
     /// Both attributes cannot be set to False, since this would mean that the Boolean value being constrained cannot be True or False.
     /// </summary>
-    public class CBoolean : CPrimitive
+	public class CBoolean : CPrimitiveBase<bool>
     {
         /// <summary>
         /// 
@@ -18,29 +18,29 @@ namespace Vela.AM.Primitives
         /// </summary>
         public bool IsFalseValid { get; set; }
 
-        /// <summary>
-        /// 
-        /// </summary>
-        public new bool DefaultValue { get; set; }
+    	/// <summary>
+    	/// Generate a default value from this constraint object
+    	/// </summary>
+    	public override bool DefaultValue { get; set; }
 
-        /// <summary>
+    	/// <summary>
         /// 
         /// </summary>
         public override bool HasAssumedValue { get; set; }
 
-        /// <summary>
-        /// The value to assume if this item is not included in data, due to being part of an optional structure.
-        /// </summary>
-        public new bool AssumedValue { get; set; }
+    	/// <summary>
+    	/// Value to be assumed if none sent in data
+    	/// </summary>
+    	public override bool AssumedValue { get; set; }
 
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="value"></param>
-        /// <returns></returns>
-        public bool IsValidValue(bool value)
-        {
-            throw new NotImplementedException();
-        }
+    	/// <summary>
+    	/// True if a_value is valid with respect to constraint expressed in concrete instance of this type.
+    	/// </summary>
+    	/// <param name="value"></param>
+    	/// <returns></returns>
+    	public override bool IsValidValue(bool value)
+    	{
+    		throw new NotImplementedException();
+    	}
     }
 }

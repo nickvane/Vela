@@ -4,7 +4,7 @@ using Vela.RM.Core.DataTypes.QuantityPackage;
 
 namespace Vela.AM.ConstraintModel
 {
-	public class COrdinal : CDomainType
+	public class COrdinal : CDomainType<COrdinal>
 	{
 		private IList<Ordinal> _ordinals;
 
@@ -34,22 +34,17 @@ namespace Vela.AM.ConstraintModel
 		/// Generate a default value from this constraint object
 		/// </summary>
 		/// <returns></returns>
-		public override object DefaultValue()
+		public override COrdinal DefaultValue()
 		{
 			throw new NotImplementedException();
 		}
-
-		/// <summary>
-		/// True if any value (i.e. instance) of the reference model type would be allowed. Redefined in descedants.
-		/// </summary>
-		public override bool AnyAllowed { get; set; }
 
 		/// <summary>
 		/// True if a_value is valid with respect to constraint expressed in concrete instance of this type.
 		/// </summary>
 		/// <param name="value"></param>
 		/// <returns></returns>
-		public override bool IsValidValue(object value)
+		public override bool IsValidValue(COrdinal value)
 		{
 			throw new NotImplementedException();
 		}

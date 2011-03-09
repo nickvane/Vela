@@ -85,6 +85,7 @@
     <Compile Include="Primitives\CDateTime.cs" />
     <Compile Include="Primitives\CDuration.cs" />
     <Compile Include="Primitives\CInteger.cs" />
+    <Compile Include="Primitives\CPrimitiveBase.cs" />
     <Compile Include="Primitives\CPrimitive.cs" />
     <Compile Include="Primitives\CReal.cs" />
     <Compile Include="Primitives\CString.cs" />
@@ -97,6 +98,10 @@
     </None>
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Vela.Common\Vela.Common.csproj">
+      <Project>{D03FD7DB-3886-4D57-A01D-2F01C6CFE02C}</Project>
+      <Name>Vela.Common</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Vela.RM.Core\Vela.RM.Core.csproj">
       <Project>{5B5BA21C-223B-409F-8291-87368BD5E5E6}</Project>
       <Name>Vela.RM.Core</Name>

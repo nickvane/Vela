@@ -4,12 +4,14 @@ using Vela.RM.Core.DataTypes.QuantityPackage;
 
 namespace Vela.AM.Primitives
 {
-    public class CInteger : CPrimitive
+	public class CInteger : CPrimitiveBase<int>
     {
-        /// <summary>
+		private HashSet<int> _list;
+
+		/// <summary>
         /// Set of Integers specifying constraint
         /// </summary>
-        public HashSet<int> List { get; set; }
+        public HashSet<int> List { get { return _list ?? (_list = new HashSet<int>()); } }
 
         /// <summary>
         /// Range of Integers specifying constraint
@@ -19,7 +21,11 @@ namespace Vela.AM.Primitives
         /// <summary>
         /// Generate a default value from this constraint object
         /// </summary>
-        public new int DefaultValue { get; set; }
+		public override int DefaultValue
+		{
+			get;
+			set;
+		}
 
         /// <summary>
         /// True if there is an assumed value
@@ -29,14 +35,18 @@ namespace Vela.AM.Primitives
         /// <summary>
         /// Value to be assumed if none sent in data
         /// </summary>
-        public new int AssumedValue { get; set; }
+		public override int AssumedValue
+		{
+			get;
+			set;
+		}
 
         /// <summary>
         /// True if a_value is valid with respect to constraint expressed in concrete instance of this type.
         /// </summary>
         /// <param name="value"></param>
         /// <returns></returns>
-        public bool IsValidValue(int value)
+		public override bool IsValidValue(int value)
         {
             throw new NotImplementedException();
         }

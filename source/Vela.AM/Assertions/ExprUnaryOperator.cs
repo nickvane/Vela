@@ -1,11 +1,17 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+﻿using Vela.RM.Core.Support;
 
 namespace Vela.AM.Assertions
 {
-	class ExprUnaryOperator
+	/// <summary>
+	/// Unary operator expression node.
+	/// </summary>
+	[OpenEhrName("EXPR_UNARY_OPERATOR")]
+	public class ExprUnaryOperator : ExprOperator
 	{
+		/// <summary>
+		/// Operand node.
+		/// </summary>
+		[OpenEhrName("operand")]
+		public ExprItem Operand { get; set; }
 	}
 }

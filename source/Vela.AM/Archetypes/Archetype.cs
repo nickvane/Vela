@@ -2,6 +2,7 @@
 using Vela.AM.Assertions;
 using Vela.AM.ConstraintModel;
 using Vela.AM.Ontologies;
+using Vela.Common.Dal.RavenDB;
 using Vela.RM.Core.Common.ResourcePackage;
 using Vela.RM.Core.Support;
 using Vela.RM.Core.Support.IdentificationPackage;
@@ -12,7 +13,7 @@ namespace Vela.AM.Archetypes
 	/// Archetype equivalent to ARCHETYPED class in Common reference model. Defines semantics of identfication, lifecycle, versioning, composition and specialisation.
 	/// </summary>
 	[OpenEhrName("ARCHETYPE")]
-	public class Archetype : AuthoredResource
+	public class Archetype : AuthoredResource, IDocument
 	{
 		private IList<Assertion> _invariants;
 
@@ -66,6 +67,16 @@ namespace Vela.AM.Archetypes
 		{
 			get { return _invariants ?? (_invariants = new List<Assertion>()); }
 		}
+
+		#region IDocument Members
+
+		public string Id
+		{
+			get { return ArchetypeId.Value; }
+			set { ArchetypeId.Value = value; }
+		}
+
+		#endregion
 
 		//TODO: add methods from specification
 	}

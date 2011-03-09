@@ -8,7 +8,7 @@ namespace Vela.AM.ConstraintModel
 	/// Constraint on a primitive type.
 	/// </summary>
 	[OpenEhrName("C_PRIMITIVE_OBJECT")]
-	public class CPrimitiveObject : CDefinedObject
+	public class CPrimitiveObject : CDefinedObject<CPrimitiveObject>
 	{
 		/// <summary>
 		/// Object actually defining the constraint.
@@ -39,33 +39,24 @@ namespace Vela.AM.ConstraintModel
 		}
 
 		#endregion
-
-		#region Overrides of CDefinedObject
-
+		
 		/// <summary>
 		/// Generate a default value from this constraint object
 		/// </summary>
 		/// <returns></returns>
-		public override object DefaultValue()
+		public override CPrimitiveObject DefaultValue()
 		{
 			throw new NotImplementedException();
 		}
-
-		/// <summary>
-		/// True if any value (i.e. instance) of the reference model type would be allowed. Redefined in descedants.
-		/// </summary>
-		public override bool AnyAllowed { get; set; }
 
 		/// <summary>
 		/// True if a_value is valid with respect to constraint expressed in concrete instance of this type.
 		/// </summary>
 		/// <param name="value"></param>
 		/// <returns></returns>
-		public override bool IsValidValue(object value)
+		public override bool IsValidValue(CPrimitiveObject value)
 		{
 			throw new NotImplementedException();
 		}
-
-		#endregion
 	}
 }

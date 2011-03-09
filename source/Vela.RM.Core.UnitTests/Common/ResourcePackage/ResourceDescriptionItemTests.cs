@@ -10,9 +10,9 @@ namespace Vela.RM.Core.UnitTests.Common.ResourcePackage
 		public void ListPropertiesAreNotNull()
 		{
 			var item = new ResourceDescriptionItem();
-			Assert.IsNotNull(item.OtherDetails);
 			Assert.IsNotNull(item.Keywords);
 			Assert.IsNotNull(item.OriginalResourceUri);
+			Assert.IsNotNull(item.OtherDetails);
 		}
 	}
 }

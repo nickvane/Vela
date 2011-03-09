@@ -3,6 +3,9 @@
 	<archetype_id>
 		<value>Vela-EHR-EVALUATION.test1.v1</value>
 	</archetype_id>
+	<uid>
+		<value>CEFA2F4D-6D3F-4172-97FF-B7FD5A063923</value>
+	</uid>
 	<adl_version>1.4</adl_version>
 	<concept>at0000</concept>
 	<parent_archetype_id>
@@ -123,6 +126,34 @@
 					<lower>1</lower>
 				</occurrences>
 				<node_id />
+				<property>
+					<code_string>382</code_string>
+					<terminology_id>
+						<value>openehr</value>
+					</terminology_id>
+				</property>
+				<list>
+					<magnitude>
+						<upper_included>true</upper_included>
+						<lower_included>true</lower_included>
+						<upper_unbounded>false</upper_unbounded>
+						<lower_unbounded>false</lower_unbounded>
+						<upper>50.0</upper>
+						<lower>0.0</lower>
+					</magnitude>
+					<units>l/m</units>
+				</list>
+				<list>
+					<magnitude>
+						<upper_included>true</upper_included>
+						<lower_included>true</lower_included>
+						<upper_unbounded>false</upper_unbounded>
+						<lower_unbounded>false</lower_unbounded>
+						<upper>50000.0</upper>
+						<lower>0.0</lower>
+					</magnitude>
+					<units>ml/min</units>
+				</list>
 			</children>
 			<children xsi:type="CONSTRAINT_REF">
 				<rm_type_name>CODE_PHRASE</rm_type_name>
@@ -219,39 +250,6 @@
 					<pattern>yyyy-??-XX</pattern>
 				</item>
 			</children>
-			<children xsi:type="C_DV_QUANTITY">
-				<rm_type_name>DV_QUANTITY</rm_type_name>
-				<occurrences>
-					<upper_included>true</upper_included>
-					<lower_included>true</lower_included>
-					<upper_unbounded>false</upper_unbounded>
-					<lower_unbounded>false</lower_unbounded>
-					<upper>1</upper>
-					<lower>1</lower>
-				</occurrences>
-				<node_id />
-				<property>
-					<code_string>382</code_string>
-					<terminology_id>
-						<value>openehr</value>
-					</terminology_id>
-				</property>
-				<list>
-					<units>/h</units>
-				</list>
-				<list>
-					<units>/d</units>
-				</list>
-				<list>
-					<units>/mo</units>
-				</list>
-				<list>
-					<units>/wk</units>
-				</list>
-				<list>
-					<units>/yr</units>
-				</list>
-			</children>
 			<children xsi:type="C_PRIMITIVE_OBJECT">
 				<rm_type_name>INTEGER</rm_type_name>
 				<occurrences>
@@ -288,6 +286,90 @@
 					<value>local</value>
 				</terminology_id>
 				<code_list>at0005</code_list>
+			</children>
+			<children xsi:type="C_PRIMITIVE_OBJECT">
+				<rm_type_name>DV_DATE_TIME</rm_type_name>
+				<occurrences>
+					<upper_included>true</upper_included>
+					<lower_included>true</lower_included>
+					<upper_unbounded>false</upper_unbounded>
+					<lower_unbounded>false</lower_unbounded>
+					<upper>1</upper>
+					<lower>1</lower>
+				</occurrences>
+				<node_id />
+				<item xsi:type="C_DATE_TIME">
+					<pattern>yyyy-??-??T??:??:??</pattern>
+				</item>
+			</children>
+			<children xsi:type="C_PRIMITIVE_OBJECT">
+				<rm_type_name>DOUBLE</rm_type_name>
+				<occurrences>
+					<upper_included>true</upper_included>
+					<lower_included>true</lower_included>
+					<upper_unbounded>false</upper_unbounded>
+					<lower_unbounded>false</lower_unbounded>
+					<upper>1</upper>
+					<lower>1</lower>
+				</occurrences>
+				<node_id />
+				<item xsi:type="C_REAL">
+					<range>
+						<upper_included>false</upper_included>
+						<lower_included>true</lower_included>
+						<upper_unbounded>true</upper_unbounded>
+						<lower_unbounded>false</lower_unbounded>
+						<lower>0.0</lower>
+					</range>
+				</item>
+			</children>
+			<children xsi:type="C_PRIMITIVE_OBJECT">
+				<rm_type_name>DV_BOOLEAN</rm_type_name>
+				<occurrences>
+					<upper_included>true</upper_included>
+					<lower_included>true</lower_included>
+					<upper_unbounded>false</upper_unbounded>
+					<lower_unbounded>false</lower_unbounded>
+					<upper>1</upper>
+					<lower>1</lower>
+				</occurrences>
+				<node_id />
+				<item xsi:type="C_BOOLEAN">
+					<true_valid>false</true_valid>
+					<false_valid>true</false_valid>
+				</item>
+			</children>
+			<children xsi:type="ARCHETYPE_SLOT">
+				<rm_type_name>CLUSTER</rm_type_name>
+				<occurrences>
+					<upper_included>false</upper_included>
+					<lower_included>true</lower_included>
+					<upper_unbounded>true</upper_unbounded>
+					<lower_unbounded>false</lower_unbounded>
+					<lower>0</lower>
+				</occurrences>
+				<node_id>at0012</node_id>
+				<includes>
+					<tag />
+					<string_expression />
+					<expression xsi:type="EXPR_BINARY_OPERATOR">
+						<type>BOOLEAN</type>
+						<operator>2007</operator>
+						<precedence_overridden>false</precedence_overridden>
+						<left_operand xsi:type="EXPR_LEAF">
+							<type>STRING</type>
+							<item xsi:type="xsd:string">archetype_id/value</item>
+							<reference_type>CONSTANT</reference_type>
+						</left_operand>
+						<right_operand xsi:type="EXPR_LEAF">
+							<type>String</type>
+							<item xsi:type="C_STRING">
+								<pattern>openEHR-EHR-CLUSTER\.device(-[a-zA-Z0-9_]+)*\.v1</pattern>
+							</item>
+							<reference_type>CONSTANT</reference_type>
+						</right_operand>
+					</expression>
+				</includes>
 			</children>
 			<cardinality>
 				<is_ordered>true</is_ordered>

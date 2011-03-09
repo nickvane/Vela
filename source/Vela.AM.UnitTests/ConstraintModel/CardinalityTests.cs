@@ -1,0 +1,34 @@
+﻿using System;
+using NUnit.Framework;
+using Vela.AM.ConstraintModel;
+
+namespace Vela.AM.UnitTests.ConstraintModel
+{
+	[TestFixture]
+	public class WhenUsingCardinality
+	{
+		[Test]
+		[ExpectedException(typeof(NotImplementedException))]
+		public void IsBagThrowsException()
+		{
+			var cardinality = new Cardinality();
+			var result = cardinality.IsBag();
+		}
+
+		[Test]
+		[ExpectedException(typeof(NotImplementedException))]
+		public void IsListThrowsException()
+		{
+			var cardinality = new Cardinality();
+			var result = cardinality.IsList();
+		}
+
+		[Test]
+		[ExpectedException(typeof(NotImplementedException))]
+		public void IsSetThrowsException()
+		{
+			var cardinality = new Cardinality();
+			var result = cardinality.IsSet();
+		}
+	}
+}

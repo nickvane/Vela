@@ -5,12 +5,16 @@ using Vela.RM.Core.Support;
 
 namespace Vela.AM.Primitives
 {
-	public class CDuration : CPrimitive
+	public class CDuration : CPrimitiveBase<Duration>
 	{
 		/// <summary>
 		/// Generate a default value from this constraint object
 		/// </summary>
-		public new Duration DefaultValue { get; set; }
+		public override Duration DefaultValue
+		{
+			get;
+			set;
+		}
 
 		/// <summary>
 		/// True if there is an assumed value
@@ -23,7 +27,11 @@ namespace Vela.AM.Primitives
 		/// Value to be assumed if none sent in data
 		/// </summary>
 		[OpenEhrName("")]
-		public new Duration AssumedValue { get; set; }
+		public override Duration AssumedValue
+		{
+			get;
+			set;
+		}
 
 		/// <summary>
 		/// True if a_value is valid with respect to constraint expressed in concrete instance of this type.
@@ -31,7 +39,7 @@ namespace Vela.AM.Primitives
 		/// <param name="value"></param>
 		/// <returns></returns>
 		[OpenEhrName("")]
-		public new bool IsValidValue(Duration value)
+		public override bool IsValidValue(Duration value)
 		{
 			throw new NotImplementedException();
 		}
