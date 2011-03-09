@@ -1,4 +1,11 @@
-﻿using Vela.RM.Core.DataTypes.TextPackage;
+﻿//-----------------------------------------------------------------------
+// <copyright file="PartyRelated.cs" company="Vela">
+//     Copyright © Vela. All rights reserved.
+// </copyright>
+// <author>Nick Van Eeckhout</author>
+//-----------------------------------------------------------------------
+
+using Vela.RM.Core.DataTypes.TextPackage;
 using Vela.RM.Core.Support;
 
 namespace Vela.RM.Core.Common.GenericPackage

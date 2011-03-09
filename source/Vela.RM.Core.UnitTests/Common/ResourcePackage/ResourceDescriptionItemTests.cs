@@ -1,4 +1,11 @@
-﻿using NUnit.Framework;
+﻿//-----------------------------------------------------------------------
+// <copyright file="ResourceDescriptionItemTests.cs" company="Vela">
+//     Copyright © Vela. All rights reserved.
+// </copyright>
+// <author>Nick Van Eeckhout</author>
+//-----------------------------------------------------------------------
+
+using NUnit.Framework;
 using Vela.RM.Core.Common.ResourcePackage;
 
 namespace Vela.RM.Core.UnitTests.Common.ResourcePackage

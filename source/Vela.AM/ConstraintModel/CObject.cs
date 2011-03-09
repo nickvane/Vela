@@ -1,4 +1,11 @@
-﻿using Vela.RM.Core.DataTypes.QuantityPackage;
+﻿//-----------------------------------------------------------------------
+// <copyright file="CObject.cs" company="Vela">
+//     Copyright © Vela. All rights reserved.
+// </copyright>
+// <author>Nick Van Eeckhout</author>
+//-----------------------------------------------------------------------
+
+using Vela.RM.Core.DataTypes.QuantityPackage;
 using Vela.RM.Core.Support;
 
 namespace Vela.AM.ConstraintModel

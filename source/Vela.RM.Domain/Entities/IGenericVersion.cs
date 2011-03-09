@@ -1,4 +1,11 @@
-﻿using Vela.Common.Dal.RavenDB;
+﻿//-----------------------------------------------------------------------
+// <copyright file="IGenericVersion.cs" company="Vela">
+//     Copyright © Vela. All rights reserved.
+// </copyright>
+// <author>Nick Van Eeckhout</author>
+//-----------------------------------------------------------------------
+
+using Vela.Common.Dal.RavenDB;
 using Vela.RM.Core.Common.ChangeControlPackage;
 using Vela.RM.Core.DataTypes.DateTimePackage;
 using Vela.RM.Core.Support.IdentificationPackage;

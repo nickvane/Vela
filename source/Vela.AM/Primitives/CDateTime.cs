@@ -1,4 +1,11 @@
-﻿using System;
+﻿//-----------------------------------------------------------------------
+// <copyright file="CDateTime.cs" company="Vela">
+//     Copyright © Vela. All rights reserved.
+// </copyright>
+// <author>Nick Van Eeckhout</author>
+//-----------------------------------------------------------------------
+
+using System;
 using Vela.RM.Core.DataTypes.QuantityPackage;
 using Vela.RM.Core.Support;
 using DateTime = Vela.RM.Core.DataTypes.DateTimePackage.DateTime;

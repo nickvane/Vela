@@ -1,4 +1,11 @@
-﻿using NUnit.Framework;
+﻿//-----------------------------------------------------------------------
+// <copyright file="TerminologyMappingTests.cs" company="Vela">
+//     Copyright © Vela. All rights reserved.
+// </copyright>
+// <author>Nick Van Eeckhout</author>
+//-----------------------------------------------------------------------
+
+using NUnit.Framework;
 using Vela.RM.Core.DataTypes.TextPackage;
 
 namespace Vela.RM.Core.UnitTests.DataTypes.TextPackage

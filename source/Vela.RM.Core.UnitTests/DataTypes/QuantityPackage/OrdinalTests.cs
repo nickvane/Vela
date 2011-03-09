@@ -1,4 +1,11 @@
-﻿using NUnit.Framework;
+﻿//-----------------------------------------------------------------------
+// <copyright file="OrdinalTests.cs" company="Vela">
+//     Copyright © Vela. All rights reserved.
+// </copyright>
+// <author>Nick Van Eeckhout</author>
+//-----------------------------------------------------------------------
+
+using NUnit.Framework;
 using Vela.RM.Core.DataTypes.QuantityPackage;
 
 namespace Vela.RM.Core.UnitTests.DataTypes.QuantityPackage

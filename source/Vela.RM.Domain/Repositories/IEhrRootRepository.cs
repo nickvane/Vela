@@ -1,4 +1,11 @@
-﻿using Vela.Common.Dal.RavenDB;
+﻿//-----------------------------------------------------------------------
+// <copyright file="IEhrRootRepository.cs" company="Vela">
+//     Copyright © Vela. All rights reserved.
+// </copyright>
+// <author>Nick Van Eeckhout</author>
+//-----------------------------------------------------------------------
+
+using Vela.Common.Dal.RavenDB;
 using Vela.RM.Domain.Ehr.EhrPackage;
 
 namespace Vela.RM.Domain.Repositories

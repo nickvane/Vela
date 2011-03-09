@@ -1,4 +1,11 @@
-﻿using System.Diagnostics;
+﻿//-----------------------------------------------------------------------
+// <copyright file="XmlParserTests.cs" company="Vela">
+//     Copyright © Vela. All rights reserved.
+// </copyright>
+// <author>Nick Van Eeckhout</author>
+//-----------------------------------------------------------------------
+
+using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using NUnit.Framework;

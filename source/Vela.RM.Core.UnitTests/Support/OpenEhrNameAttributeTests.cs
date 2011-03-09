@@ -1,4 +1,11 @@
-﻿using System.Linq;
+﻿//-----------------------------------------------------------------------
+// <copyright file="OpenEhrNameAttributeTests.cs" company="Vela">
+//     Copyright © Vela. All rights reserved.
+// </copyright>
+// <author>Nick Van Eeckhout</author>
+//-----------------------------------------------------------------------
+
+using System.Linq;
 using NUnit.Framework;
 using Vela.Common.Helper;
 using Vela.RM.Core.Support;

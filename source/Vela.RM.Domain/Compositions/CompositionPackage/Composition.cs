@@ -1,4 +1,11 @@
-﻿using System;
+﻿//-----------------------------------------------------------------------
+// <copyright file="Composition.cs" company="Vela">
+//     Copyright © Vela. All rights reserved.
+// </copyright>
+// <author>Nick Van Eeckhout</author>
+//-----------------------------------------------------------------------
+
+using System;
 using System.Collections.Generic;
 using Vela.RM.Core.Common.ArchetypedPackage;
 using Vela.RM.Core.Common.GenericPackage;

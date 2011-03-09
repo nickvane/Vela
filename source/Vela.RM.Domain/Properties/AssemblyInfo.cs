@@ -1,4 +1,11 @@
-﻿#region Using directives
+﻿//-----------------------------------------------------------------------
+// <copyright file="AssemblyInfo.cs" company="Vela">
+//     Copyright © Vela. All rights reserved.
+// </copyright>
+// <author>Nick Van Eeckhout</author>
+//-----------------------------------------------------------------------
+
+#region Using directives
 
 using System.Reflection;
 

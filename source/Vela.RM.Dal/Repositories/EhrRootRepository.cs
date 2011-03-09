@@ -1,4 +1,11 @@
-﻿using System.Linq;
+﻿//-----------------------------------------------------------------------
+// <copyright file="EhrRootRepository.cs" company="Vela">
+//     Copyright © Vela. All rights reserved.
+// </copyright>
+// <author>Nick Van Eeckhout</author>
+//-----------------------------------------------------------------------
+
+using System.Linq;
 using Raven.Client;
 using Vela.Common.Dal.RavenDB;
 using Vela.RM.Domain.Ehr.EhrPackage;
