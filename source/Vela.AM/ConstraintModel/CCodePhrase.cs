@@ -1,4 +1,11 @@
-﻿using System;
+﻿//-----------------------------------------------------------------------
+// <copyright file="CCodePhrase.cs" company="Vela">
+//     Copyright © Vela. All rights reserved.
+// </copyright>
+// <author>Nick Van Eeckhout</author>
+//-----------------------------------------------------------------------
+
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using Vela.RM.Core.DataTypes.TextPackage;

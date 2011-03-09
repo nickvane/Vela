@@ -1,4 +1,11 @@
-﻿namespace Vela.AM.Assertions
+﻿//-----------------------------------------------------------------------
+// <copyright file="OperatorKind.cs" company="Vela">
+//     Copyright © Vela. All rights reserved.
+// </copyright>
+// <author>Nick Van Eeckhout</author>
+//-----------------------------------------------------------------------
+
+namespace Vela.AM.Assertions
 {
     /// <summary>
     /// Enumeration type for operator types in assertion expressions.

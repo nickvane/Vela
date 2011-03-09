@@ -1,4 +1,11 @@
-﻿using System;
+﻿//-----------------------------------------------------------------------
+// <copyright file="IntervalEvent.cs" company="Vela">
+//     Copyright © Vela. All rights reserved.
+// </copyright>
+// <author>Nick Van Eeckhout</author>
+//-----------------------------------------------------------------------
+
+using System;
 using Vela.RM.Core.DataStructures.ItemStructurePackage;
 using Vela.RM.Core.DataTypes.DateTimePackage;
 using Vela.RM.Core.DataTypes.TextPackage;

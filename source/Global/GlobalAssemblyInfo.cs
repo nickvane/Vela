@@ -1,3 +1,10 @@
+//-----------------------------------------------------------------------
+// <copyright file="GlobalAssemblyInfo.cs" company="Vela">
+//     Copyright © Vela. All rights reserved.
+// </copyright>
+// <author>Nick Van Eeckhout</author>
+//-----------------------------------------------------------------------
+
 using System;
 using System.Reflection;
 using System.Runtime.InteropServices;

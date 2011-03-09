@@ -1,4 +1,11 @@
-﻿using System;
+﻿//-----------------------------------------------------------------------
+// <copyright file="Assertion.cs" company="Vela">
+//     Copyright © Vela. All rights reserved.
+// </copyright>
+// <author>Nick Van Eeckhout</author>
+//-----------------------------------------------------------------------
+
+using System;
 
 namespace Vela.Common.Helper
 {

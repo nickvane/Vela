@@ -1,4 +1,11 @@
-﻿using Vela.RM.Core.Support;
+﻿//-----------------------------------------------------------------------
+// <copyright file="ExprItem.cs" company="Vela">
+//     Copyright © Vela. All rights reserved.
+// </copyright>
+// <author>Nick Van Eeckhout</author>
+//-----------------------------------------------------------------------
+
+using Vela.RM.Core.Support;
 
 namespace Vela.AM.Assertions
 {

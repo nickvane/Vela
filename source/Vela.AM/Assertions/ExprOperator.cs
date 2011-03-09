@@ -1,4 +1,11 @@
-﻿namespace Vela.AM.Assertions
+﻿//-----------------------------------------------------------------------
+// <copyright file="ExprOperator.cs" company="Vela">
+//     Copyright © Vela. All rights reserved.
+// </copyright>
+// <author>Nick Van Eeckhout</author>
+//-----------------------------------------------------------------------
+
+namespace Vela.AM.Assertions
 {
     /// <summary>
     /// Abstract parent of operator types.

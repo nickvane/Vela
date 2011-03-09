@@ -1,4 +1,11 @@
-﻿using NUnit.Framework;
+﻿//-----------------------------------------------------------------------
+// <copyright file="DocumentScopeTests.cs" company="Vela">
+//     Copyright © Vela. All rights reserved.
+// </copyright>
+// <author>Nick Van Eeckhout</author>
+//-----------------------------------------------------------------------
+
+using NUnit.Framework;
 using Raven.Client;
 using Rhino.Mocks;
 using Vela.Common.Dal;

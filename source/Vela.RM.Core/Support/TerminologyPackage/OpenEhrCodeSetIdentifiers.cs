@@ -1,4 +1,11 @@
-﻿using System.Collections.Generic;
+﻿//-----------------------------------------------------------------------
+// <copyright file="OpenEhrCodeSetIdentifiers.cs" company="Vela">
+//     Copyright © Vela. All rights reserved.
+// </copyright>
+// <author>Nick Van Eeckhout</author>
+//-----------------------------------------------------------------------
+
+using System.Collections.Generic;
 
 namespace Vela.RM.Core.Support.TerminologyPackage
 {

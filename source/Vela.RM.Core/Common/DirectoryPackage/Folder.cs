@@ -1,4 +1,11 @@
-﻿using System.Collections.Generic;
+﻿//-----------------------------------------------------------------------
+// <copyright file="Folder.cs" company="Vela">
+//     Copyright © Vela. All rights reserved.
+// </copyright>
+// <author>Nick Van Eeckhout</author>
+//-----------------------------------------------------------------------
+
+using System.Collections.Generic;
 using Vela.RM.Core.Common.ArchetypedPackage;
 using Vela.RM.Core.Support;
 using Vela.RM.Core.Support.IdentificationPackage;

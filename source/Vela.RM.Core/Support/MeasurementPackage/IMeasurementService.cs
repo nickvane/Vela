@@ -1,4 +1,11 @@
-﻿namespace Vela.RM.Core.Support.MeasurementPackage
+﻿//-----------------------------------------------------------------------
+// <copyright file="IMeasurementService.cs" company="Vela">
+//     Copyright © Vela. All rights reserved.
+// </copyright>
+// <author>Nick Van Eeckhout</author>
+//-----------------------------------------------------------------------
+
+namespace Vela.RM.Core.Support.MeasurementPackage
 {
 	/// <summary>
 	/// Defines an object providing proxy access to a measurement information service.

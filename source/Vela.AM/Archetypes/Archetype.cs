@@ -1,4 +1,11 @@
-﻿using System.Collections.Generic;
+﻿//-----------------------------------------------------------------------
+// <copyright file="Archetype.cs" company="Vela">
+//     Copyright © Vela. All rights reserved.
+// </copyright>
+// <author>Nick Van Eeckhout</author>
+//-----------------------------------------------------------------------
+
+using System.Collections.Generic;
 using Vela.AM.Assertions;
 using Vela.AM.ConstraintModel;
 using Vela.AM.Ontologies;

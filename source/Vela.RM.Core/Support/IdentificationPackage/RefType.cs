@@ -1,4 +1,11 @@
-﻿namespace Vela.RM.Core.Support.IdentificationPackage
+﻿//-----------------------------------------------------------------------
+// <copyright file="RefType.cs" company="Vela">
+//     Copyright © Vela. All rights reserved.
+// </copyright>
+// <author>Nick Van Eeckhout</author>
+//-----------------------------------------------------------------------
+
+namespace Vela.RM.Core.Support.IdentificationPackage
 {
 	public enum RefType
 	{

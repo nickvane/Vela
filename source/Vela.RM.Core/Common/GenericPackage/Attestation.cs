@@ -1,4 +1,11 @@
-﻿using System;
+﻿//-----------------------------------------------------------------------
+// <copyright file="Attestation.cs" company="Vela">
+//     Copyright © Vela. All rights reserved.
+// </copyright>
+// <author>Nick Van Eeckhout</author>
+//-----------------------------------------------------------------------
+
+using System;
 using System.Collections.Generic;
 using Vela.RM.Core.DataTypes.EncapsulatedPackage;
 using Vela.RM.Core.DataTypes.TextPackage;

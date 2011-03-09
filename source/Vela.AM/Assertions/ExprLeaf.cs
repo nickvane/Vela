@@ -1,4 +1,11 @@
-﻿namespace Vela.AM.Assertions
+﻿//-----------------------------------------------------------------------
+// <copyright file="ExprLeaf.cs" company="Vela">
+//     Copyright © Vela. All rights reserved.
+// </copyright>
+// <author>Nick Van Eeckhout</author>
+//-----------------------------------------------------------------------
+
+namespace Vela.AM.Assertions
 {
     /// <summary>
     /// Expression tree leaf item. This can represent one of:

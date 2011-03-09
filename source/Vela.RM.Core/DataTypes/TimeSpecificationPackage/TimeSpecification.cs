@@ -1,4 +1,11 @@
-﻿using System;
+﻿//-----------------------------------------------------------------------
+// <copyright file="TimeSpecification.cs" company="Vela">
+//     Copyright © Vela. All rights reserved.
+// </copyright>
+// <author>Nick Van Eeckhout</author>
+//-----------------------------------------------------------------------
+
+using System;
 using Vela.RM.Core.DataTypes.BasicPackage;
 using Vela.RM.Core.DataTypes.EncapsulatedPackage;
 using Vela.RM.Core.Support;
