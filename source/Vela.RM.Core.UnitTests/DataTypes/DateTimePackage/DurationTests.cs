@@ -12,6 +12,7 @@ namespace Vela.RM.Core.UnitTests.DataTypes.DateTimePackage
 		{
 			var date = new Duration();
 			Assert.AreEqual(0, date.Magnitude);
+			date = new Duration(string.Empty);
 		}
 
 		[Test]

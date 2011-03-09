@@ -44,14 +44,38 @@
     <Compile Include="Archetypes\ArchetypeTests.cs" />
     <Compile Include="ConstraintModel\ArchetypeConstraintTests.cs" />
     <Compile Include="ConstraintModel\ArchetypeInternalRefTests.cs" />
+    <Compile Include="ConstraintModel\ArchetypeSlotTests.cs" />
+    <Compile Include="ConstraintModel\CardinalityTests.cs" />
+    <Compile Include="ConstraintModel\CAttribute.cs" />
+    <Compile Include="ConstraintModel\CCodePhraseTests.cs" />
+    <Compile Include="ConstraintModel\CComplexObjectTests.cs" />
+    <Compile Include="ConstraintModel\CDefinedObjectTests.cs" />
+    <Compile Include="ConstraintModel\CMultipleAttributeTests.cs" />
+    <Compile Include="ConstraintModel\ConstraintRefTests.cs" />
+    <Compile Include="ConstraintModel\CSingleAttributeTests.cs" />
+    <Compile Include="ConstraintModel\CQuantityTests.cs" />
+    <Compile Include="ConstraintModel\CPrimitiveObjectTests.cs" />
+    <Compile Include="ConstraintModel\COrdinalTests.cs" />
     <Compile Include="Ontologies\ArchetypeOntologyTests.cs" />
     <Compile Include="Ontologies\ArchetypeTerminologyTests.cs" />
+    <Compile Include="Primitives\CBooleanTests.cs" />
+    <Compile Include="Primitives\CDateTests.cs" />
+    <Compile Include="Primitives\CDateTimeTests.cs" />
+    <Compile Include="Primitives\CDurationTests.cs" />
+    <Compile Include="Primitives\CIntegerTests.cs" />
+    <Compile Include="Primitives\CTimeTests.cs" />
+    <Compile Include="Primitives\CStringTests.cs" />
+    <Compile Include="Primitives\CRealTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Vela.AM\Vela.AM.csproj">
       <Project>{34D0DBA3-314F-4633-8AC6-0F0E0068E1DD}</Project>
       <Name>Vela.AM</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Vela.Common\Vela.Common.csproj">
+      <Project>{D03FD7DB-3886-4D57-A01D-2F01C6CFE02C}</Project>
+      <Name>Vela.Common</Name>
     </ProjectReference>
     <ProjectReference Include="..\Vela.RM.Core\Vela.RM.Core.csproj">
       <Project>{5B5BA21C-223B-409F-8291-87368BD5E5E6}</Project>

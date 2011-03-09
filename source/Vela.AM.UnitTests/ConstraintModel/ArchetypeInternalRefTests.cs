@@ -17,7 +17,7 @@ namespace Vela.AM.UnitTests.ConstraintModel
 
 		[Test]
 		[ExpectedException(typeof(NotImplementedException))]
-		public void HasPathThrowsException()
+		public void IsValidThrowsException()
 		{
 			var archetypeInternalRef = new ArchetypeInternalRef();
 			var result = archetypeInternalRef.IsValid();

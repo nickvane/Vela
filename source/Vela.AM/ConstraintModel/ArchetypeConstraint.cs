@@ -22,7 +22,10 @@ namespace Vela.AM.ConstraintModel
 		/// </summary>
 		/// <returns></returns>
 		[OpenEhrName("is_valid")]
-		public abstract bool IsValid();
+		public virtual bool IsValid()
+		{
+			return true;
+		}
 
 		/// <summary>
 		/// Path of this node relative to root of archetype.

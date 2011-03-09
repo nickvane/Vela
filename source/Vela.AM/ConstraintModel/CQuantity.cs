@@ -1,10 +1,13 @@
 ﻿using System;
+using System.Collections.Generic;
+using Vela.RM.Core.DataTypes.QuantityPackage;
 using Vela.RM.Core.DataTypes.TextPackage;
 
 namespace Vela.AM.ConstraintModel
 {
-	public class CQuantity : CDomainType
+	public class CQuantity : CDomainType<CQuantity>
 	{
+		private IList<Quantity> _quantities;
 		public CodePhrase CodePhrase { get; set; }
 
 		/// <summary>
@@ -27,25 +30,28 @@ namespace Vela.AM.ConstraintModel
 		}
 
 		/// <summary>
-		/// Generate a default value from this constraint object
+		/// 
 		/// </summary>
-		/// <returns></returns>
-		public override object DefaultValue()
+		public IList<Quantity> Quantities
 		{
-			throw new NotImplementedException();
+			get { return _quantities ?? (_quantities = new List<Quantity>()); }
 		}
 
 		/// <summary>
-		/// True if any value (i.e. instance) of the reference model type would be allowed. Redefined in descedants.
+		/// Generate a default value from this constraint object
 		/// </summary>
-		public override bool AnyAllowed { get; set; }
+		/// <returns></returns>
+		public override CQuantity DefaultValue()
+		{
+			throw new NotImplementedException();
+		}
 
 		/// <summary>
 		/// True if a_value is valid with respect to constraint expressed in concrete instance of this type.
 		/// </summary>
 		/// <param name="value"></param>
 		/// <returns></returns>
-		public override bool IsValidValue(object value)
+		public override bool IsValidValue(CQuantity value)
 		{
 			throw new NotImplementedException();
 		}

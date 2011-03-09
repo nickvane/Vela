@@ -8,7 +8,7 @@ namespace Vela.AM.ConstraintModel
 	/// Constraint on complex objects, i.e. any object that consists of other object constraints.
 	/// </summary>
 	[OpenEhrName("C_COMPLEX_OBJECT")]
-	public class CComplexObject : CDefinedObject
+	public class CComplexObject : CDefinedObject<CComplexObject>
 	{
 		private HashSet<CAttribute> _attributes;
 
@@ -48,22 +48,17 @@ namespace Vela.AM.ConstraintModel
 		/// Generate a default value from this constraint object
 		/// </summary>
 		/// <returns></returns>
-		public override object DefaultValue()
+		public override CComplexObject DefaultValue()
 		{
 			throw new NotImplementedException();
 		}
-
-		/// <summary>
-		/// True if any value of the reference model type being constrained is allowed.
-		/// </summary>
-		public override bool AnyAllowed { get; set; }
 
 		/// <summary>
 		/// True if a_value is valid with respect to constraint expressed in concrete instance of this type.
 		/// </summary>
 		/// <param name="value"></param>
 		/// <returns></returns>
-		public override bool IsValidValue(object value)
+		public override bool IsValidValue(CComplexObject value)
 		{
 			throw new NotImplementedException();
 		}

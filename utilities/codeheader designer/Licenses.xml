@@ -1,0 +1,63 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Licenses>
+  <License>
+    <Code>CC-BY</Code>
+    <Text>Creative Commons - Attribution</Text>
+    <Link>http://creativecommons.org/licenses/by/3.0/</Link>
+  </License>
+  <License>
+    <Code>CC-BY-ND</Code>
+    <Text>Creative Commons - Attribution-No Derivative Works</Text>
+    <Link>http://creativecommons.org/licenses/by-nd/3.0/</Link>
+  </License>
+  <License>
+    <Code>CC-BY-NC-ND</Code>
+    <Text>Creative Commons - Attribution-Noncommercial-No Derivative Works</Text>
+    <Link>http://creativecommons.org/licenses/by-nc-nd/3.0/</Link>
+  </License>
+  <License>
+    <Code>CC-BY-NC</Code>
+    <Text>Creative Commons - Attribution-Noncommercial</Text>
+    <Link>http://creativecommons.org/licenses/by-nc/3.0/</Link>
+  </License>
+  <License>
+    <Code>CC-BY-NC-SA</Code>
+    <Text>Creative Commons - Attribution-Noncommercial-Share Alike</Text>
+    <Link>http://creativecommons.org/licenses/by-nc-sa/3.0/</Link>
+  </License>
+  <License>
+    <Code>CC-BY-SA</Code>
+    <Text>Creative Commons - Attribution-Share Alike</Text>
+    <Link>http://creativecommons.org/licenses/by-sa/3.0/</Link>
+  </License>
+  <License>
+    <Code>CC-GNU-GPL</Code>
+    <Text>Creative Commons - GNU General Public License</Text>
+    <Link>http://creativecommons.org/licenses/GPL/2.0/</Link>
+  </License>
+  <License>
+    <Code>CC-GNU-LGPL</Code>
+    <Text>Creative Commons - GNU Lesser General Public License</Text>
+    <Link>http://creativecommons.org/licenses/LGPL/2.1/</Link>
+  </License>
+  <License>
+    <Code>CC-BSD</Code>
+    <Text>Creative Commons - BSD License</Text>
+    <Link>http://creativecommons.org/licenses/BSD/</Link>
+  </License>
+  <License>
+    <Code>MS-PL</Code>
+    <Text>Microsoft Public License</Text>
+    <Link>http://www.microsoft.com/opensource/licenses.mspx#Ms-PL</Link>
+  </License>
+  <License>
+    <Code>MS-RL</Code>
+    <Text>Microsoft Reciprocal License</Text>
+    <Link>http://www.microsoft.com/opensource/licenses.mspx#Ms-RL</Link>
+  </License>
+  <License>
+    <Code>Apache-2.0</Code>
+    <Text>Apache License, Version 2.0</Text>
+    <Link>http://www.apache.org/licenses/LICENSE-2.0.html</Link>
+  </License>
+</Licenses>

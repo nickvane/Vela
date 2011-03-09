@@ -398,7 +398,6 @@
 			<xs:extension base="C_DOMAIN_TYPE">
 				<xs:sequence>
 					<xs:element name="terminology_id" type="TERMINOLOGY_ID"/>
-					<xs:element name="code_string" type="xs:string"/>
 					<xs:element name="code_list" type="xs:string" minOccurs="0" maxOccurs="unbounded"/>
 				</xs:sequence>
 			</xs:extension>
@@ -409,6 +408,7 @@
 			<xs:extension base="C_DOMAIN_TYPE">
 				<xs:sequence>
 					<xs:element name="property" type="CODE_PHRASE"/>
+          <xs:element name="list" type="DV_UNIT" minOccurs="0" maxOccurs="unbounded"/>
 				</xs:sequence>
 			</xs:extension>
 		</xs:complexContent>
@@ -422,4 +422,9 @@
 			</xs:extension>
 		</xs:complexContent>
 	</xs:complexType>
+  <xs:complexType name="DV_UNIT">
+    <xs:sequence>
+      <xs:element name="units" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
 </xs:schema>

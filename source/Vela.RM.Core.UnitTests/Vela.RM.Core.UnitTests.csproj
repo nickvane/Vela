@@ -52,6 +52,7 @@
     <Compile Include="Common\ChangeControlPackage\VersionTests.cs" />
     <Compile Include="Common\GenericPackage\RevisionHistoryTests.cs" />
     <Compile Include="Common\ResourcePackage\AuthoredResourceTests.cs" />
+    <Compile Include="Common\ResourcePackage\ResourceDescriptionTests.cs" />
     <Compile Include="Common\ResourcePackage\ResourceDescriptionItemTests.cs" />
     <Compile Include="DataStructures\HistoryPackage\HistoryTests.cs" />
     <Compile Include="DataStructures\HistoryPackage\IntervalEventTests.cs" />

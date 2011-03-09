@@ -1,0 +1,193 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<archetype xmlns="http://schemas.openehr.org/v1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <archetype_id>
+    <value>openEHR-EHR-SECTION.vital_signs.v1</value>
+  </archetype_id>
+  <concept>at0000</concept>
+  <original_language>
+    <code_string>en</code_string>
+    <terminology_id>
+      <value>ISO_639-1</value>
+    </terminology_id>
+  </original_language>
+  <is_controlled>false</is_controlled>
+  <description>
+    <original_author id="email">sam.heard@oceaninformatics.com</original_author>
+    <original_author id="date">14/03/2006</original_author>
+    <original_author id="name">Sam Heard</original_author>
+    <original_author id="organisation">Ocean Informatics</original_author>
+    <lifecycle_state>AuthorDraft</lifecycle_state>
+    <details>
+      <language>
+        <code_string>en</code_string>
+        <terminology_id>
+          <value>ISO_639-1</value>
+        </terminology_id>
+      </language>
+      <purpose>A heading or section which can only contain observations considered to be vital signs. This group of observations is a common set in medicine, and while these often occur separately in health records, when they are measured together this is a significant assessment of wellbeing.</purpose>
+      <keywords>blood pressure</keywords>
+      <keywords>temperature</keywords>
+      <keywords>pulse</keywords>
+      <keywords>oxygen saturation</keywords>
+      <keywords>respirations</keywords>
+      <keywords>observations</keywords>
+      <keywords>vital</keywords>
+      <keywords>signs</keywords>
+      <use>An organisational heading for vital signs</use>
+      <misuse>Does not need to be used to record these entries separately</misuse>
+      <copyright>copyright (c) 2011 openEHR Foundation</copyright>
+    </details>
+    <details>
+      <language>
+        <code_string>de</code_string>
+        <terminology_id>
+          <value>ISO_639-1</value>
+        </terminology_id>
+      </language>
+      <purpose>Rubrik oder Abschnitt, der nur Observationen beinhalten kann, die als Vitalparameter gelten. Diese Gruppe von Observationen ist eine in der Medizin allgemein gebräuchliche Menge. Während die einzelnen Messungen in Gesundheitsakten oft getrennt vorkommen, bilden sie zusammen gemessen eine bedeutsame Beurteilung des Zustandes der Person.</purpose>
+      <keywords>Blutdruck</keywords>
+      <keywords>Temperatur</keywords>
+      <keywords>Puls</keywords>
+      <keywords>Sauerstoffsättigung</keywords>
+      <keywords>Atmung</keywords>
+      <keywords>Observationen</keywords>
+      <keywords>Vital</keywords>
+      <keywords>Parameter</keywords>
+      <use>Eine organisatorische Rukrik (Section) für Vitalparameter</use>
+      <misuse>Muss nicht benutzt werden, um die verschiedenen Messungen getrennt voneinander aufzuzeichenen.</misuse>
+      <copyright>copyright (c) 2011 openEHR Foundation</copyright>
+    </details>
+    <resource_package_uri />
+    <other_details id="MD5-CAM-1.0.1">488A4CC0A50FAFFA5E1B4BD01BE11EDC</other_details>
+    <other_details id="references" />
+  </description>
+  <definition>
+    <rm_type_name>SECTION</rm_type_name>
+    <occurrences>
+      <upper_included>true</upper_included>
+      <lower_included>true</lower_included>
+      <upper_unbounded>false</upper_unbounded>
+      <lower_unbounded>false</lower_unbounded>
+      <upper>1</upper>
+      <lower>1</lower>
+    </occurrences>
+    <node_id>at0000</node_id>
+    <attributes xsi:type="C_MULTIPLE_ATTRIBUTE">
+      <existence>
+        <lower_unbounded>false</lower_unbounded>
+        <upper_unbounded>false</upper_unbounded>
+        <lower>1</lower>
+        <upper>1</upper>
+      </existence>
+      <rm_attribute_name>items</rm_attribute_name>
+      <children xsi:type="ARCHETYPE_SLOT">
+        <rm_type_name>OBSERVATION</rm_type_name>
+        <occurrences>
+          <upper_included>true</upper_included>
+          <lower_included>true</lower_included>
+          <upper_unbounded>false</upper_unbounded>
+          <lower_unbounded>false</lower_unbounded>
+          <upper>1</upper>
+          <lower>0</lower>
+        </occurrences>
+        <node_id>at0001</node_id>
+        <includes>
+          <tag />
+          <string_expression />
+          <expression xsi:type="EXPR_BINARY_OPERATOR">
+            <type>BOOLEAN</type>
+            <operator>2007</operator>
+            <precedence_overridden>false</precedence_overridden>
+            <left_operand xsi:type="EXPR_LEAF">
+              <type>STRING</type>
+              <item xsi:type="xsd:string">archetype_id/value</item>
+              <reference_type>CONSTANT</reference_type>
+            </left_operand>
+            <right_operand xsi:type="EXPR_LEAF">
+              <type>String</type>
+              <item xsi:type="C_STRING">
+                <pattern>openEHR-EHR-OBSERVATION\.blood_pressure(-[a-zA-Z0-9_]+)*\.v1|openEHR-EHR-OBSERVATION\.body_temperature(-[a-zA-Z0-9_]+)*\.v1|openEHR-EHR-OBSERVATION\.heart_rate(-[a-zA-Z0-9_]+)*\.v1|openEHR-EHR-OBSERVATION\.indirect_oximetry(-[a-zA-Z0-9_]+)*\.v1|openEHR-EHR-OBSERVATION\.respiration(-[a-zA-Z0-9_]+)*\.v1</pattern>
+              </item>
+              <reference_type>CONSTANT</reference_type>
+            </right_operand>
+          </expression>
+        </includes>
+      </children>
+      <children xsi:type="ARCHETYPE_SLOT">
+        <rm_type_name>EVALUATION</rm_type_name>
+        <occurrences>
+          <upper_included>true</upper_included>
+          <lower_included>true</lower_included>
+          <upper_unbounded>false</upper_unbounded>
+          <lower_unbounded>false</lower_unbounded>
+          <upper>1</upper>
+          <lower>0</lower>
+        </occurrences>
+        <node_id>at0002</node_id>
+        <includes>
+          <tag />
+          <string_expression />
+          <expression xsi:type="EXPR_BINARY_OPERATOR">
+            <type>BOOLEAN</type>
+            <operator>2007</operator>
+            <precedence_overridden>false</precedence_overridden>
+            <left_operand xsi:type="EXPR_LEAF">
+              <type>STRING</type>
+              <item xsi:type="xsd:string">archetype_id/value</item>
+              <reference_type>CONSTANT</reference_type>
+            </left_operand>
+            <right_operand xsi:type="EXPR_LEAF">
+              <type>String</type>
+              <item xsi:type="C_STRING">
+                <pattern>openEHR-EHR-EVALUATION\.clinical_synopsis(-[a-zA-Z0-9_]+)*\.v1</pattern>
+              </item>
+              <reference_type>CONSTANT</reference_type>
+            </right_operand>
+          </expression>
+        </includes>
+      </children>
+      <cardinality>
+        <is_ordered>false</is_ordered>
+        <is_unique>false</is_unique>
+        <interval>
+          <upper_included>false</upper_included>
+          <lower_included>true</lower_included>
+          <upper_unbounded>true</upper_unbounded>
+          <lower_unbounded>false</lower_unbounded>
+          <lower>1</lower>
+        </interval>
+      </cardinality>
+    </attributes>
+  </definition>
+  <ontology>
+    <term_definitions language="en">
+      <items code="at0000">
+        <items id="text">Vital signs</items>
+        <items id="description">A group of observations that are recorded at the same time and record the blood pressure, pulse, temperature and other readings</items>
+      </items>
+      <items code="at0001">
+        <items id="text">Vital signs</items>
+        <items id="description">Vital signs observations.</items>
+      </items>
+      <items code="at0002">
+        <items id="text">Synopsis</items>
+        <items id="description">Textual summary of vital signs</items>
+      </items>
+    </term_definitions>
+    <term_definitions language="de">
+      <items code="at0000">
+        <items id="text">Vitalparameter</items>
+        <items id="description">Eine Gruppe von Observationen, die zur selben Zeit erfasst werden und den Blutdruck, Puls, Temperatur und andere Messungen beinhalten.</items>
+      </items>
+      <items code="at0001">
+        <items id="text">*Vital signs(en)</items>
+        <items id="description">*Vital signs observations.(en)</items>
+      </items>
+      <items code="at0002">
+        <items id="text">*Synopsis(en)</items>
+        <items id="description">*Textual summary of vital signs(en)</items>
+      </items>
+    </term_definitions>
+  </ontology>
+</archetype>
+

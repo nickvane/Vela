@@ -1,28 +1,17 @@
 ﻿using System;
 using System.Collections.Generic;
-using Vela.RM.Core.Support.IdentificationPackage;
+using System.Linq;
+using Vela.RM.Core.DataTypes.TextPackage;
 
 namespace Vela.AM.ConstraintModel
 {
-	public class CCodePhrase : CDomainType
+	public class CCodePhrase : CDomainType<CodePhrase>
 	{
-		private IList<string> _codeList	;
+		private IList<CodePhrase> _codePhrases;
 
-		public string CodeString
+		public IList<CodePhrase> CodePhrases
 		{
-			get;
-			set;
-		}
-
-		public TerminologyId TerminologyId
-		{
-			get;
-			set;
-		}
-
-		public IList<string> CodeList
-		{
-			get { return _codeList ?? (_codeList = new List<string>()); }
+			get { return _codePhrases ?? (_codePhrases = new List<CodePhrase>()); }
 		}
 
 		/// <summary>
@@ -41,29 +30,24 @@ namespace Vela.AM.ConstraintModel
 		/// <returns></returns>
 		public override bool IsValid()
 		{
-			throw new NotImplementedException();
+			return CodePhrases.Aggregate(base.IsValid() && CodePhrases.Count > 0, (current, codePhrase) => current & !string.IsNullOrEmpty(codePhrase.CodeString));
 		}
 
 		/// <summary>
 		/// Generate a default value from this constraint object
 		/// </summary>
 		/// <returns></returns>
-		public override object DefaultValue()
+		public override CodePhrase DefaultValue()
 		{
 			throw new NotImplementedException();
 		}
-
-		/// <summary>
-		/// True if any value (i.e. instance) of the reference model type would be allowed. Redefined in descedants.
-		/// </summary>
-		public override bool AnyAllowed { get; set; }
 
 		/// <summary>
 		/// True if a_value is valid with respect to constraint expressed in concrete instance of this type.
 		/// </summary>
 		/// <param name="value"></param>
 		/// <returns></returns>
-		public override bool IsValidValue(object value)
+		public override bool IsValidValue(CodePhrase value)
 		{
 			throw new NotImplementedException();
 		}
