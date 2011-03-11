@@ -6,7 +6,7 @@
 //-----------------------------------------------------------------------
 
 using System.Collections.Generic;
-using Vela.Common.Dal.RavenDB;
+using Vela.Common;
 using Vela.RM.Core.Support;
 using Vela.RM.Core.Support.IdentificationPackage;
 using DateTime = Vela.RM.Core.DataTypes.DateTimePackage.DateTime;

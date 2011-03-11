@@ -1,0 +1,8 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<archetype xmlns="http://schemas.openehr.org/v1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <concept>at0000</concept>
+  <definition>
+    <rm_type_name>EVALUATION</rm_type_name>
+  </definition>
+  <ontology/>
+</archetype>

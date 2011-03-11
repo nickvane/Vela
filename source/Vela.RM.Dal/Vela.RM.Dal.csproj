@@ -63,6 +63,10 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Vela.Common.Dal\Vela.Common.Dal.csproj">
+      <Project>{E00E85D4-6EB7-4FF9-A91D-E6FD5E8B0199}</Project>
+      <Name>Vela.Common.Dal</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Vela.Common\Vela.Common.csproj">
       <Project>{D03FD7DB-3886-4D57-A01D-2F01C6CFE02C}</Project>
       <Name>Vela.Common</Name>

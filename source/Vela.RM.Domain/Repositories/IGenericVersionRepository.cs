@@ -6,11 +6,11 @@
 //-----------------------------------------------------------------------
 
 using System.Collections.Generic;
-using Vela.Common.Dal.RavenDB;
+using Vela.Common;
 
 namespace Vela.RM.Domain.Repositories
 {
-	public interface IGenericVersionRepository<T> : IRavenRepository<T> where T : IDocument
+	public interface IGenericVersionRepository<T> : IBaseRepository<T> where T : IDocument
 	{
 		///<summary>
 		/// Return a list of all versions of a versionedComposition.

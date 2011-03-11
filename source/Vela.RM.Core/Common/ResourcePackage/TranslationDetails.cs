@@ -17,6 +17,9 @@ namespace Vela.RM.Core.Common.ResourcePackage
 	[OpenEhrName("TRANSLATION_DETAILS")]
 	public class TranslationDetails
 	{
+		private IDictionary<string, string> _author;
+		private IDictionary<string, string> _otherDetails;
+
 		///<summary>
 		/// Language of translation
 		///</summary>
@@ -27,7 +30,10 @@ namespace Vela.RM.Core.Common.ResourcePackage
 		/// Translator name and other demographic details
 		///</summary>
 		[OpenEhrName("author")]
-		public IDictionary<string, string> Author { get; set; }
+		public IDictionary<string, string> Author
+		{
+			get { return _author ?? (_author = new Dictionary<string, string>()); }
+		}
 
 		///<summary>
 		/// Accreditation of translator, usually a national translator’s association id
@@ -39,6 +45,9 @@ namespace Vela.RM.Core.Common.ResourcePackage
 		/// Any other meta-data
 		///</summary>
 		[OpenEhrName("other_details")]
-		public IDictionary<string, string> OtherDetails { get; set; }
+		public IDictionary<string, string> OtherDetails
+		{
+			get { return _otherDetails ?? (_otherDetails = new Dictionary<string, string>()); }
+		}
 	}
 }

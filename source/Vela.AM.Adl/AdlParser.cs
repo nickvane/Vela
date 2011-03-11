@@ -6,7 +6,7 @@
 //-----------------------------------------------------------------------
 
 using System;
-using Vela.AM.Archetypes;
+using Vela.AM.Aom.Archetypes;
 
 namespace Vela.AM.Adl
 {

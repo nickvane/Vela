@@ -39,6 +39,8 @@
     <Reference Include="Microsoft.CSharp" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AdlParserTests.cs" />
+    <Compile Include="ParseExceptionTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="XmlParserTests.cs" />
   </ItemGroup>
@@ -47,9 +49,13 @@
       <Project>{CBA0E56D-09A5-4648-A11A-99055C7C5A79}</Project>
       <Name>Vela.AM.Adl</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Vela.AM\Vela.AM.csproj">
+    <ProjectReference Include="..\Vela.AM.Ap\Vela.AM.Ap.csproj">
+      <Project>{68A113B0-B977-4259-BC47-5FADBBFC698C}</Project>
+      <Name>Vela.AM.Ap</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Vela.AM.Aom\Vela.AM.Aom.csproj">
       <Project>{34D0DBA3-314F-4633-8AC6-0F0E0068E1DD}</Project>
-      <Name>Vela.AM</Name>
+      <Name>Vela.AM.Aom</Name>
     </ProjectReference>
     <ProjectReference Include="..\Vela.Common\Vela.Common.csproj">
       <Project>{D03FD7DB-3886-4D57-A01D-2F01C6CFE02C}</Project>
@@ -784,8 +790,23 @@
     <Content Include="Archetypes\xml\openEHR-EHR-SECTION.vital_signs.v1.xml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="archetypetest.xml">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    <Content Include="Tests\ArchetypeWithNoArchetypeId.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Tests\ArchetypeWithNoConcept.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Tests\ArchetypeWithNoDefinition.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Tests\ArchetypeWithNoOntology.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Tests\ArchetypeWithNonConsistentTypeName.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Tests\FullArchetype.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

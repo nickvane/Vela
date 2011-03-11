@@ -131,7 +131,9 @@
     <Compile Include="Repositories\IGenericVersionRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="Demographic\" />
+  </ItemGroup>
   <ItemGroup>
     <None Include="..\Global\key.snk">
       <Link>key.snk</Link>
