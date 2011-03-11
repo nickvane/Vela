@@ -5,13 +5,13 @@
 // <author>Nick Van Eeckhout</author>
 //-----------------------------------------------------------------------
 
-using Vela.Common.Dal.RavenDB;
+using Vela.Common;
 using Vela.RM.Domain.Ehr.EhrPackage;
 
 namespace Vela.RM.Domain.Repositories
 {
 	[System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Design", "CA1040:AvoidEmptyInterfaces")]
-	public interface IEhrRootRepository : IRavenRepository<EhrRoot>
+	public interface IEhrRootRepository : IBaseRepository<EhrRoot>
 	{
 	}
 }

@@ -8,14 +8,14 @@
 using System.Collections.Generic;
 using System.Linq;
 using Raven.Client;
-using Vela.Common.Dal.RavenDB;
+using Vela.Common.Dal;
 using Vela.RM.Core.Common.ChangeControlPackage;
 using Vela.RM.Domain.Entities;
 using Vela.RM.Domain.Repositories;
 
 namespace Vela.RM.Dal.Repositories
 {
-	public class GenericVersionRepository<T, TA> : RavenRepository<T>, IGenericVersionRepository<T> where T : class, IGenericVersion<TA> where TA : class
+	public class GenericVersionRepository<T, TA> : BaseRepository<T>, IGenericVersionRepository<T> where T : class, IGenericVersion<TA> where TA : class
 	{
 		public GenericVersionRepository(IDocumentSession session, IQueryable<T> collection) : base(session, collection)
 		{

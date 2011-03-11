@@ -9,12 +9,15 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Xml.Linq;
 using schemas.openehr.org.v1;
-using Vela.AM.Archetypes;
-using Vela.AM.Assertions;
-using Vela.AM.ConstraintModel;
-using Vela.AM.Ontologies;
-using Vela.AM.Primitives;
+using Vela.AM.Aom.Archetypes;
+using Vela.AM.Aom.Assertions;
+using Vela.AM.Aom.ConstraintModel;
+using Vela.AM.Aom.Ontologies;
+using Vela.AM.Aom.Primitives;
+using Vela.AM.Ap.DataTypes.Quantity;
+using Vela.AM.Ap.DataTypes.Text;
 using Vela.RM.Core.Common.ResourcePackage;
 using Vela.RM.Core.DataTypes.DateTimePackage;
 using Vela.RM.Core.DataTypes.QuantityPackage;
@@ -35,49 +38,52 @@ namespace Vela.AM.Adl
 			{
 				archetype archetypeModel = archetype.Load(textReader);
 
-				if (archetypeModel.Content != null)
+				if (archetypeModel.Content.archetype_id == null || string.IsNullOrEmpty(archetypeModel.Content.archetype_id.value)) throw new ParseException("ArchetypeId cannot be empty");
+				if (string.IsNullOrEmpty(archetypeModel.Content.concept)) throw new ParseException("Concept cannot be empty");
+				if (archetypeModel.Content.definition == null) throw new ParseException("Definition cannot be empty");
+				if (archetypeModel.Content.ontology == null) throw new ParseException("Ontology cannot be empty");
+				
+				if (archetypeModel.Content.uid != null)
+					archetypeInstance.Uid = new HierObjectId(archetypeModel.Content.uid.value);
+
+				archetypeInstance.AdlVersion = archetypeModel.Content.adl_version;
+				archetypeInstance.Concept = archetypeModel.Content.concept;
+				archetypeInstance.ArchetypeId = new ArchetypeId(archetypeModel.Content.archetype_id.value);
+				if (archetypeModel.Content.parent_archetype_id != null)
+					archetypeInstance.ParentArchetypeId = new ArchetypeId(archetypeModel.Content.parent_archetype_id.value);
+
+				if (archetypeModel.Content.original_language != null)
 				{
-					if (archetypeModel.Content.uid != null)
-						archetypeInstance.Uid = new HierObjectId(archetypeModel.Content.uid.value);
-
-					archetypeInstance.AdlVersion = archetypeModel.Content.adl_version;
-					archetypeInstance.ArchetypeId = new ArchetypeId(archetypeModel.Content.archetype_id.value);
-					if (archetypeModel.Content.parent_archetype_id != null)
-						archetypeInstance.ParentArchetypeId = new ArchetypeId(archetypeModel.Content.parent_archetype_id.value);
-
-					archetypeInstance.Concept = archetypeModel.Content.concept;
-					if (archetypeModel.Content.original_language != null)
+					archetypeInstance.OriginalLanguage = archetypeModel.Content.original_language.Parse();
+				}
+				if (archetypeModel.Content.translations != null)
+				{
+					foreach (TRANSLATION_DETAILS translation in archetypeModel.Content.translations)
 					{
-						archetypeInstance.OriginalLanguage = archetypeModel.Content.original_language.Parse();
+						archetypeInstance.Translations.Add(translation.language.code_string, translation.Parse());
 					}
-					if (archetypeModel.Content.translations != null)
-					{
-						foreach (TRANSLATION_DETAILS translation in archetypeModel.Content.translations)
-						{
-							archetypeInstance.Translations.Add(translation.language.code_string, translation.Parse());
-						}
-					}
-					if (archetypeModel.Content.is_controlled.HasValue)
-						archetypeInstance.IsControlled = archetypeModel.Content.is_controlled.Value;
+				}
+				if (archetypeModel.Content.is_controlled.HasValue)
+					archetypeInstance.IsControlled = archetypeModel.Content.is_controlled.Value;
 
+				if (archetypeModel.Content.description != null)
 					archetypeInstance.Description = archetypeModel.Content.description.Parse();
 
-					archetypeInstance.Definition = archetypeModel.Content.definition.Parse();
+				archetypeInstance.Definition = archetypeModel.Content.definition.Parse();
+				if (archetypeInstance.Definition.ReferenceModelTypeName != archetypeInstance.ArchetypeId.ReferenceModelEntity)
+					throw new ParseException(string.Format("Archetype definition typename is not consistent: '{0}' <> '{1}'", archetypeInstance.ArchetypeId.ReferenceModelEntity, archetypeInstance.Definition.ReferenceModelTypeName));
 
-					if (archetypeModel.Content.invariants != null)
-					{
-						foreach (ASSERTION assertion in archetypeModel.Content.invariants)
-						{
-							archetypeInstance.Invariants.Add(assertion.Parse());
-						}
-					}
-
-					archetypeInstance.Ontology = archetypeModel.Content.ontology.Parse();
-				}
-				else
+				if (archetypeModel.Content.invariants != null)
 				{
-					throw new ParseException("Unable to parse content from archetype");
+					foreach (ASSERTION assertion in archetypeModel.Content.invariants)
+					{
+						archetypeInstance.Invariants.Add(assertion.Parse());
+					}
 				}
+
+				//TODO: revision history
+
+				archetypeInstance.Ontology = archetypeModel.Content.ontology.Parse();
 			}
 
 			return archetypeInstance;
@@ -170,14 +176,14 @@ namespace Vela.AM.Adl
 			var assertion = new Assertion
 			                	{
 			                		ExpressionString = model.string_expression,
-			                		Tag = model.tag,
-			                		Expression = model.expression.Parse()
+			                		Tag = model.tag
 			                	};
-			if (assertion.Variables != null)
+			assertion.Expression = model.expression.Parse();
+			if (model.variables != null)
 			{
-				foreach (AssertionVariable variable in assertion.Variables)
+				foreach (var variable in model.variables)
 				{
-					assertion.Variables.Add(new AssertionVariable {Definition = variable.Definition, Name = variable.Name});
+					assertion.Variables.Add(new AssertionVariable {Definition = variable.definition, Name = variable.name});
 				}
 			}
 
@@ -238,7 +244,8 @@ namespace Vela.AM.Adl
 		private static object ParseExpressionItem(XTypedElement model)
 		{
 			object item;
-			var typeValue = (from a in model.Untyped.Attributes().ToList() where a.Name.LocalName == "type" select a.Value).SingleOrDefault();
+			string typeValue =
+				(from a in model.Untyped.Attributes().ToList() where a.Name.LocalName == "type" select a.Value).SingleOrDefault();
 
 			if (typeValue == "xsd:string")
 			{
@@ -246,7 +253,8 @@ namespace Vela.AM.Adl
 			}
 			else if (typeValue == "C_STRING")
 			{
-				var element = (from e in model.Untyped.Elements() where e.Name.LocalName == "pattern" select e).SingleOrDefault();
+				XElement element =
+					(from e in model.Untyped.Elements() where e.Name.LocalName == "pattern" select e).SingleOrDefault();
 				var cstring = new CString {Pattern = element.Value};
 				item = cstring;
 			}
@@ -443,16 +451,14 @@ namespace Vela.AM.Adl
 			                 	{
 			                 		Occurences = model.occurrences.Parse(),
 			                 		NodeId = model.node_id,
+									TerminologyId = new TerminologyId(model.terminology_id.value),
 			                 		ReferenceModelTypeName = model.rm_type_name
 			                 	};
 			if (model.code_list != null)
 			{
 				foreach (string item in model.code_list)
 				{
-					codePhrase.CodePhrases.Add(new CodePhrase(item)
-					                           	{
-					                           		TerminologyId = new TerminologyId(model.terminology_id.value)
-					                           	});
+					codePhrase.CodeList.Add(item);
 				}
 			}
 
@@ -478,7 +484,7 @@ namespace Vela.AM.Adl
 			{
 				foreach (ASSERTION assertion in model.excludes)
 				{
-					archetypeSlot.Includes.Add(assertion.Parse());
+					archetypeSlot.Excludes.Add(assertion.Parse());
 				}
 			}
 			return archetypeSlot;
@@ -516,15 +522,12 @@ namespace Vela.AM.Adl
 			               		NodeId = model.node_id
 			               	};
 			if (model.property != null)
-				quantity.CodePhrase = model.property.Parse();
+				quantity.Property = model.property.Parse();
 			if (model.occurrences != null)
 				quantity.Occurences = model.occurrences.Parse();
-			foreach (DV_UNIT unit in model.list)
+			foreach (var unit in model.list)
 			{
-				// TODO
-				//var qt = new Quantity();
-				//qt. = unit.mag
-				//quantity.Quantities.Add(unit.units);
+				quantity.QuantityConstraints.Add(new CQuantityItem {Units = unit.units, Magnitude = unit.magnitude.Parse()});
 			}
 			return quantity;
 		}
@@ -595,10 +598,9 @@ namespace Vela.AM.Adl
 		private static CodePhrase Parse(this CODE_PHRASE model)
 		{
 			if (model == null) return null;
-			var codePhrase = new CodePhrase(model.code_string)
-			                 	{
-			                 		TerminologyId = new TerminologyId(model.terminology_id.value)
-			                 	};
+			var codePhrase = new CodePhrase(model.code_string);
+			if (model.terminology_id != null)
+				codePhrase.TerminologyId = new TerminologyId(model.terminology_id.value);
 			return codePhrase;
 		}
 
@@ -784,6 +786,7 @@ namespace Vela.AM.Adl
 
 		private static Interval<double> Parse(this IntervalOfReal model)
 		{
+			if (model == null) return null;
 			var interval = new Interval<double>();
 
 			if (model.lower_included.HasValue)
@@ -800,6 +803,7 @@ namespace Vela.AM.Adl
 
 		private static Interval<Date> Parse(this IntervalOfDate model)
 		{
+			if (model == null) return null;
 			var interval = new Interval<Date>
 			               	{
 			               		Lower = new Date
@@ -820,6 +824,7 @@ namespace Vela.AM.Adl
 
 		private static Interval<DateTime> Parse(this IntervalOfDateTime model)
 		{
+			if (model == null) return null;
 			var interval = new Interval<DateTime>
 			               	{
 			               		Lower = new DateTime
@@ -840,6 +845,7 @@ namespace Vela.AM.Adl
 
 		private static Interval<Ordinal> Parse(this DV_INTERVAL model)
 		{
+			if (model == null) return null;
 			var interval = new Interval<Ordinal>();
 			if (model.lower != null)
 				interval.Lower = ((DV_ORDINAL) model.lower).Parse();
@@ -855,6 +861,7 @@ namespace Vela.AM.Adl
 
 		private static Interval<Duration> Parse(this IntervalOfDuration model)
 		{
+			if (model == null) return null;
 			var interval = new Interval<Duration> {Lower = new Duration(model.lower), Upper = new Duration(model.upper)};
 			if (model.lower_included.HasValue)
 				interval.IsLowerIncluded = model.lower_included.Value;

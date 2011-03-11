@@ -50,9 +50,6 @@
     <Reference Include="System.Core" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Xml" />
-    <Reference Include="Xml.Schema.Linq">
-      <HintPath>..\..\lib\linqtoxsd\Xml.Schema.Linq.dll</HintPath>
-    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="..\Global\GlobalAssemblyInfo.cs">
@@ -76,11 +73,21 @@
     <LinqToXsdSchema Include="Schemas\1.0.2\Resource.xsd">
       <SubType>Designer</SubType>
     </LinqToXsdSchema>
+    <LinqToXsdSchema Include="Schemas\1.0.2\OpenehrProfile.xsd">
+      <SubType>Designer</SubType>
+    </LinqToXsdSchema>
+    <LinqToXsdSchema Include="Schemas\1.0.2\Template.xsd">
+      <SubType>Designer</SubType>
+    </LinqToXsdSchema>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Vela.AM\Vela.AM.csproj">
+    <ProjectReference Include="..\Vela.AM.Ap\Vela.AM.Ap.csproj">
+      <Project>{68A113B0-B977-4259-BC47-5FADBBFC698C}</Project>
+      <Name>Vela.AM.Ap</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Vela.AM.Aom\Vela.AM.Aom.csproj">
       <Project>{34D0DBA3-314F-4633-8AC6-0F0E0068E1DD}</Project>
-      <Name>Vela.AM</Name>
+      <Name>Vela.AM.Aom</Name>
     </ProjectReference>
     <ProjectReference Include="..\Vela.Common\Vela.Common.csproj">
       <Project>{D03FD7DB-3886-4D57-A01D-2F01C6CFE02C}</Project>

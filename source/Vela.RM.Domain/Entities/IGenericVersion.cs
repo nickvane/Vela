@@ -5,7 +5,7 @@
 // <author>Nick Van Eeckhout</author>
 //-----------------------------------------------------------------------
 
-using Vela.Common.Dal.RavenDB;
+using Vela.Common;
 using Vela.RM.Core.Common.ChangeControlPackage;
 using Vela.RM.Core.DataTypes.DateTimePackage;
 using Vela.RM.Core.Support.IdentificationPackage;

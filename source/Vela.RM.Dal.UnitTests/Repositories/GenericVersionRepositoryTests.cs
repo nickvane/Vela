@@ -11,7 +11,7 @@ using System.Linq;
 using NUnit.Framework;
 using Raven.Client;
 using Rhino.Mocks;
-using Vela.Common.Dal.RavenDB;
+using Vela.Common;
 using Vela.RM.Core.Common.ChangeControlPackage;
 using Vela.RM.Core.Common.GenericPackage;
 using Vela.RM.Core.Support.IdentificationPackage;

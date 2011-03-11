@@ -9,8 +9,11 @@ using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using NUnit.Framework;
-using Vela.AM.ConstraintModel;
-using Vela.AM.Primitives;
+using Vela.AM.Aom.Assertions;
+using Vela.AM.Aom.ConstraintModel;
+using Vela.AM.Aom.Primitives;
+using Vela.AM.Ap.DataTypes.Quantity;
+using Vela.AM.Ap.DataTypes.Text;
 
 namespace Vela.AM.Adl.UnitTests
 {
@@ -30,14 +33,28 @@ namespace Vela.AM.Adl.UnitTests
 		}
 
 		[Test]
-		[Ignore]
-		public void ParseTestArchetype()
+		public void ArchetypeWithMissingMandatorySections()
 		{
-			var archetypeString = File.ReadAllText(@"archetypetest.xml");
+			string s1 = File.ReadAllText(@"Tests\ArchetypeWithNoArchetypeId.xml");
+			Assert.Throws<ParseException>(() => XmlParser.Parse(s1));
+			string s2 = File.ReadAllText(@"Tests\ArchetypeWithNoConcept.xml");
+			Assert.Throws<ParseException>(() => XmlParser.Parse(s2));
+			string s3 = File.ReadAllText(@"Tests\ArchetypeWithNoDefinition.xml");
+			Assert.Throws<ParseException>(() => XmlParser.Parse(s3));
+			string s4 = File.ReadAllText(@"Tests\ArchetypeWithNoOntology.xml");
+			Assert.Throws<ParseException>(() => XmlParser.Parse(s4));
+			string s5 = File.ReadAllText(@"Tests\ArchetypeWithNonConsistentTypeName.xml");
+			Assert.Throws<ParseException>(() => XmlParser.Parse(s5));
+		}
+
+		[Test]
+		public void ParseFullArchetype()
+		{
+			var archetypeString = File.ReadAllText(@"Tests\FullArchetype.xml");
 			var archetype = XmlParser.Parse(archetypeString);
 			
 			// header
-			Assert.AreEqual("1.4", archetype.AdlVersion);
+			Assert.AreEqual("2", archetype.AdlVersion);
 			Assert.AreEqual("Vela-EHR-EVALUATION.test1.v1", archetype.ArchetypeId.Value);
 			Assert.AreEqual("CEFA2F4D-6D3F-4172-97FF-B7FD5A063923", archetype.Uid.Value);
 			Assert.AreEqual("at0000", archetype.Concept);
@@ -92,8 +109,46 @@ namespace Vela.AM.Adl.UnitTests
 			Assert.IsTrue(archetype.Description.Details["en"].Keywords.Contains("keyword-en-2"));
 			Assert.IsTrue(archetype.Description.Details["en"].Keywords.Contains("keyword-en-3"));
 			Assert.IsTrue(archetype.Description.Details["en"].Keywords.Contains("keyword-en-4"));
-			Assert.AreEqual(0, archetype.Description.Details["en"].OtherDetails.Count);
+			Assert.AreEqual(1, archetype.Description.Details["en"].OtherDetails.Count);
+			Assert.IsTrue(archetype.Description.Details["en"].OtherDetails.ContainsKey("references"));
+			Assert.AreEqual(string.Empty, archetype.Description.Details["en"].OtherDetails["references"]);
 			Assert.AreEqual(0, archetype.Description.Details["en"].OriginalResourceUri.Count);
+
+			//translations
+			Assert.AreEqual(1, archetype.Translations.Count);
+			Assert.IsTrue(archetype.Translations.ContainsKey("nl"));
+			var tr = archetype.Translations["nl"];
+			Assert.AreEqual("nl", tr.Language.CodeString);
+			Assert.AreEqual("ISO_639-1", tr.Language.TerminologyId.Value);
+			Assert.AreEqual(2, tr.Author.Count);
+			Assert.IsTrue(tr.Author.ContainsKey("email"));
+			Assert.IsTrue(tr.Author.ContainsKey("date"));
+			Assert.AreEqual("john.doe@vela.net", tr.Author["email"]);
+			Assert.AreEqual("08/03/2011", tr.Author["date"]);
+			Assert.AreEqual("translation accreditation", tr.Accreditation);
+			Assert.AreEqual(2, tr.OtherDetails.Count);
+			Assert.IsTrue(tr.OtherDetails.ContainsKey("detail"));
+			Assert.IsTrue(tr.OtherDetails.ContainsKey("references"));
+			Assert.AreEqual("other detail", tr.OtherDetails["detail"]);
+			Assert.AreEqual(string.Empty, tr.OtherDetails["references"]);
+
+			//invariants
+			Assert.AreEqual(1, archetype.Invariants.Count);
+			Assert.AreEqual("invariants tag", archetype.Invariants.First().Tag);
+			Assert.AreEqual("string expression", archetype.Invariants.First().ExpressionString);
+			Assert.AreEqual(1, archetype.Invariants.First().Variables.Count);
+			Assert.AreEqual("variable name", archetype.Invariants.First().Variables.First().Name);
+			Assert.AreEqual("variable definition", archetype.Invariants.First().Variables.First().Definition);
+			Assert.AreEqual(typeof(ExprUnaryOperator), archetype.Invariants.First().Expression.GetType());
+			var exp1 = (ExprUnaryOperator) archetype.Invariants.First().Expression;
+			Assert.AreEqual("BOOLEAN", exp1.Type);
+			Assert.AreEqual(OperatorKind.OpMatches, exp1.Operator);
+			Assert.IsFalse(exp1.IsPrecedenceOverriden);
+			Assert.AreEqual(typeof(ExprLeaf), exp1.Operand.GetType());
+			var op1 = (ExprLeaf) exp1.Operand;
+			Assert.AreEqual("STRING", op1.Type);
+			Assert.AreEqual("archetype_id/value", op1.Item);
+			Assert.AreEqual("CONSTANT", op1.ReferenceType);
 			
 			// definition
 			Assert.AreEqual("EVALUATION", archetype.Definition.ReferenceModelTypeName);
@@ -109,7 +164,7 @@ namespace Vela.AM.Adl.UnitTests
 			var ma = (CMultipleAttribute)archetype.Definition.Attributes.First();
 			Assert.AreEqual("items", ma.ReferenceModelAttributeName);
 
-			Assert.AreEqual(12, ma.Children.Count);
+			Assert.AreEqual(13, ma.Children.Count);
 
 			Assert.IsTrue(ma.Cardinality.IsOrdered);
 			Assert.IsTrue(ma.Cardinality.IsUnique);
@@ -157,11 +212,23 @@ namespace Vela.AM.Adl.UnitTests
 			Assert.IsTrue(qu.Occurences.IsUpperIncluded);
 			Assert.IsFalse(qu.Occurences.IsLowerUnbounded);
 			Assert.IsFalse(qu.Occurences.IsUpperUnbounded);
-			Assert.AreEqual("382", qu.CodePhrase.CodeString);
-			Assert.AreEqual("openehr", qu.CodePhrase.TerminologyId.Value);
-			Assert.AreEqual(2, qu.Quantities.Count);
-			//Assert.IsTrue(qu.Quantities.Contains("l/m"));
-			//Assert.IsTrue(qu.Quantities.Contains("ml/min"));
+			Assert.AreEqual("382", qu.Property.CodeString);
+			Assert.AreEqual("openehr", qu.Property.TerminologyId.Value);
+			Assert.AreEqual(2, qu.QuantityConstraints.Count);
+			Assert.AreEqual("l/m", qu.QuantityConstraints.First().Units);
+			Assert.AreEqual(50.0, qu.QuantityConstraints.First().Magnitude.Upper);
+			Assert.AreEqual(0.0, qu.QuantityConstraints.First().Magnitude.Lower);
+			Assert.IsTrue(qu.QuantityConstraints.First().Magnitude.IsLowerIncluded);
+			Assert.IsTrue(qu.QuantityConstraints.First().Magnitude.IsUpperIncluded);
+			Assert.IsFalse(qu.QuantityConstraints.First().Magnitude.IsLowerUnbounded);
+			Assert.IsFalse(qu.QuantityConstraints.First().Magnitude.IsUpperUnbounded);
+			Assert.AreEqual("ml/min", qu.QuantityConstraints.Last().Units);
+			Assert.AreEqual(50000.0, qu.QuantityConstraints.Last().Magnitude.Upper);
+			Assert.AreEqual(0.0, qu.QuantityConstraints.Last().Magnitude.Lower);
+			Assert.IsTrue(qu.QuantityConstraints.Last().Magnitude.IsLowerIncluded);
+			Assert.IsTrue(qu.QuantityConstraints.Last().Magnitude.IsUpperIncluded);
+			Assert.IsFalse(qu.QuantityConstraints.Last().Magnitude.IsLowerUnbounded);
+			Assert.IsFalse(qu.QuantityConstraints.Last().Magnitude.IsUpperUnbounded);
 
 			Assert.AreEqual(typeof(ConstraintRef), ma.Children[2].GetType());
 			var cr = (ConstraintRef)ma.Children[2];
@@ -251,8 +318,8 @@ namespace Vela.AM.Adl.UnitTests
 			Assert.IsTrue(cp.Occurences.IsUpperIncluded);
 			Assert.IsFalse(cp.Occurences.IsLowerUnbounded);
 			Assert.IsFalse(cp.Occurences.IsUpperUnbounded);
-			Assert.AreEqual(1, cp.CodePhrases.Count);
-			Assert.AreEqual("at0005", cp.CodePhrases.First().CodeString);
+			Assert.AreEqual(1, cp.CodeList.Count);
+			Assert.AreEqual("at0005", cp.CodeList.First());
 
 			Assert.AreEqual(typeof(CPrimitiveObject), ma.Children[8].GetType());
 			var dt = (CPrimitiveObject)ma.Children[8];
@@ -283,6 +350,59 @@ namespace Vela.AM.Adl.UnitTests
 			Assert.IsFalse(((CReal)re.Item).Range.IsUpperIncluded);
 			Assert.IsFalse(((CReal)re.Item).Range.IsLowerUnbounded);
 			Assert.IsTrue(((CReal)re.Item).Range.IsUpperUnbounded);
+
+			Assert.AreEqual(typeof(CPrimitiveObject), ma.Children[10].GetType());
+			var bo = (CPrimitiveObject)ma.Children[10];
+			Assert.AreEqual("DV_BOOLEAN", bo.ReferenceModelTypeName);
+			Assert.AreEqual(1, bo.Occurences.Upper);
+			Assert.AreEqual(1, bo.Occurences.Lower);
+			Assert.IsTrue(bo.Occurences.IsLowerIncluded);
+			Assert.IsTrue(bo.Occurences.IsUpperIncluded);
+			Assert.IsFalse(bo.Occurences.IsLowerUnbounded);
+			Assert.IsFalse(bo.Occurences.IsUpperUnbounded);
+			Assert.AreEqual(typeof(CBoolean), bo.Item.GetType());
+			Assert.IsTrue(((CBoolean)bo.Item).IsFalseValid);
+			Assert.IsFalse(((CBoolean)bo.Item).IsTrueValid);
+
+			Assert.AreEqual(typeof(ArchetypeSlot), ma.Children[11].GetType());
+			var ars = (ArchetypeSlot)ma.Children[11];
+			Assert.AreEqual("CLUSTER", ars.ReferenceModelTypeName);
+			Assert.AreEqual("at0012", ars.NodeId);
+			Assert.AreEqual(0, ars.Occurences.Lower);
+			Assert.IsTrue(ars.Occurences.IsLowerIncluded);
+			Assert.IsFalse(ars.Occurences.IsUpperIncluded);
+			Assert.IsFalse(ars.Occurences.IsLowerUnbounded);
+			Assert.IsTrue(ars.Occurences.IsUpperUnbounded);
+			Assert.AreEqual(1, ars.Includes.Count);
+			Assert.AreEqual(string.Empty, ars.Includes.First().Tag);
+			Assert.AreEqual(string.Empty, ars.Includes.First().ExpressionString);
+			Assert.AreEqual(typeof(ExprBinaryOperator), ars.Includes.First().Expression.GetType());
+			var exp2 = (ExprBinaryOperator)ars.Includes.First().Expression;
+			Assert.AreEqual("BOOLEAN", exp2.Type);
+			Assert.AreEqual(OperatorKind.OpMatches, exp2.Operator);
+			Assert.IsFalse(exp1.IsPrecedenceOverriden);
+			Assert.AreEqual(typeof(ExprLeaf), exp2.LeftOperand.GetType());
+			Assert.AreEqual(typeof(ExprLeaf), exp2.RightOperand.GetType());
+			var op2 = (ExprLeaf)exp2.LeftOperand;
+			Assert.AreEqual("STRING", op2.Type);
+			Assert.AreEqual("archetype_id/value", op2.Item);
+			Assert.AreEqual("CONSTANT", op2.ReferenceType);
+			var op3 = (ExprLeaf)exp2.RightOperand;
+			Assert.AreEqual("STRING", op3.Type);
+			Assert.AreEqual(@"openEHR-EHR-CLUSTER\.device(-[a-zA-Z0-9_]+)*\.v1", ((CString)op3.Item).Pattern);
+			Assert.AreEqual("CONSTANT", op3.ReferenceType);
+			Assert.AreEqual(1, ars.Excludes.Count);
+
+			Assert.AreEqual(typeof(ArchetypeInternalRef), ma.Children[12].GetType());
+			var air = (ArchetypeInternalRef)ma.Children[12];
+			Assert.AreEqual("ELEMENT", air.ReferenceModelTypeName);
+			Assert.AreEqual(1, air.Occurences.Upper);
+			Assert.AreEqual(1, air.Occurences.Lower);
+			Assert.IsTrue(air.Occurences.IsLowerIncluded);
+			Assert.IsTrue(air.Occurences.IsUpperIncluded);
+			Assert.IsFalse(air.Occurences.IsLowerUnbounded);
+			Assert.IsFalse(air.Occurences.IsUpperUnbounded);
+			Assert.AreEqual("/data[at0001]/items[at0073]/items[at0104]/items[at0107]", air.TargetPath);
 
 			// ontology
 			Assert.AreEqual(2, archetype.Ontology.TerminologyDefinitions.Count);
