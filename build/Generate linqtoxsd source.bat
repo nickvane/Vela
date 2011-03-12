@@ -1,0 +1,2 @@
+"../utilities/linqtoxsd/LinqToXsd.exe" "..\source\Vela.VirtualEhr\Vela.AM.Adl\Schemas\1.0.2\Archetype.xsd" "..\source\Vela.VirtualEhr\Vela.AM.Adl\Schemas\1.0.2\BaseTypes.xsd" "..\source\Vela.VirtualEhr\Vela.AM.Adl\Schemas\1.0.2\OpenehrProfile.xsd" "..\source\Vela.VirtualEhr\Vela.AM.Adl\Schemas\1.0.2\Resource.xsd" "..\source\Vela.VirtualEhr\Vela.AM.Adl\Schemas\1.0.2\Template.xsd" /filename:LinqToXsdSource.cs
+pause

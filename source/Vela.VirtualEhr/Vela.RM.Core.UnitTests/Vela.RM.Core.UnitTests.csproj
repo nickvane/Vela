@@ -1,0 +1,130 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{598A6D14-BCAB-49FC-A84F-DC33A9B76444}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Vela.RM.Core.UnitTests</RootNamespace>
+    <AssemblyName>Vela.RM.Core.UnitTests</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>..\bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>..\bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <SignAssembly>true</SignAssembly>
+  </PropertyGroup>
+  <PropertyGroup>
+    <AssemblyOriginatorKeyFile>..\..\Global\key.snk</AssemblyOriginatorKeyFile>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="nunit.framework, Version=2.5.7.10213, Culture=neutral, PublicKeyToken=96d09a1eb7f44a77, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\lib\NUnit\nunit.framework.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Vela.Common, Version=0.1.4088.22637, Culture=neutral, PublicKeyToken=cab1eccc070768d9, processorArchitecture=MSIL">
+      <HintPath>..\..\Common\bin\Vela.Common.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Common\ArchetypedPackage\FeederAuditDetailsTests.cs" />
+    <Compile Include="Common\ArchetypedPackage\LocatableTests.cs" />
+    <Compile Include="Common\ChangeControlPackage\OriginalVersionTests.cs" />
+    <Compile Include="Common\ChangeControlPackage\VersionTests.cs" />
+    <Compile Include="Common\GenericPackage\RevisionHistoryTests.cs" />
+    <Compile Include="Common\ResourcePackage\AuthoredResourceTests.cs" />
+    <Compile Include="Common\ResourcePackage\ResourceDescriptionTests.cs" />
+    <Compile Include="Common\ResourcePackage\ResourceDescriptionItemTests.cs" />
+    <Compile Include="DataStructures\HistoryPackage\HistoryTests.cs" />
+    <Compile Include="DataStructures\HistoryPackage\IntervalEventTests.cs" />
+    <Compile Include="DataStructures\ItemStructurePackage\ItemListTests.cs" />
+    <Compile Include="DataStructures\ItemStructurePackage\ItemTableTests.cs" />
+    <Compile Include="DataStructures\ItemStructurePackage\ItemTreeTests.cs" />
+    <Compile Include="DataStructures\RepresentationPackage\ClusterTests.cs" />
+    <Compile Include="DataStructures\RepresentationPackage\ElementTests.cs" />
+    <Compile Include="DataTypes\DateTimePackage\DateTests.cs" />
+    <Compile Include="DataTypes\DateTimePackage\DateTimeTests.cs" />
+    <Compile Include="DataTypes\DateTimePackage\DurationTests.cs" />
+    <Compile Include="DataTypes\DateTimePackage\TimeTests.cs" />
+    <Compile Include="DataTypes\QuantityPackage\AbsoluteQuantityTests.cs" />
+    <Compile Include="DataTypes\QuantityPackage\AmountTests.cs" />
+    <Compile Include="DataTypes\QuantityPackage\CountTests.cs" />
+    <Compile Include="DataTypes\QuantityPackage\IntervalTests.cs" />
+    <Compile Include="DataTypes\QuantityPackage\OrderedTests.cs" />
+    <Compile Include="DataTypes\QuantityPackage\OrdinalTests.cs" />
+    <Compile Include="DataTypes\QuantityPackage\ProportionTests.cs" />
+    <Compile Include="DataTypes\QuantityPackage\QuantityTests.cs" />
+    <Compile Include="DataTypes\QuantityPackage\ReferenceRangeTests.cs" />
+    <Compile Include="DataTypes\TextPackage\CodedTextTests.cs" />
+    <Compile Include="DataTypes\TextPackage\ParagraphTests.cs" />
+    <Compile Include="DataTypes\TextPackage\TerminologyMappingTests.cs" />
+    <Compile Include="DataTypes\TextPackage\TextTests.cs" />
+    <Compile Include="DataTypes\UriPackage\EhrUriTests.cs" />
+    <Compile Include="DataTypes\UriPackage\UriTests.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ResourcesTests.cs" />
+    <Compile Include="Support\IdentificationPackage\AccessGroupRefTests.cs" />
+    <Compile Include="Support\IdentificationPackage\ArchetypeIdTests.cs" />
+    <Compile Include="Support\IdentificationPackage\GenericIdTests.cs" />
+    <Compile Include="Support\IdentificationPackage\HierObjectIdTests.cs" />
+    <Compile Include="Support\IdentificationPackage\InternetIdTests.cs" />
+    <Compile Include="Support\IdentificationPackage\IsoOIdTests.cs" />
+    <Compile Include="Support\IdentificationPackage\LocatableRefTests.cs" />
+    <Compile Include="Support\IdentificationPackage\ObjectIdTests.cs" />
+    <Compile Include="Support\IdentificationPackage\ObjectVersionIdTests.cs" />
+    <Compile Include="Support\IdentificationPackage\PartyRefTests.cs" />
+    <Compile Include="Support\IdentificationPackage\TemplateIdTests.cs" />
+    <Compile Include="Support\IdentificationPackage\TerminologyIdTests.cs" />
+    <Compile Include="Support\IdentificationPackage\UIdBasedIdTests.cs" />
+    <Compile Include="Support\IdentificationPackage\UUIdTests.cs" />
+    <Compile Include="Support\IdentificationPackage\VersionTreeIdTests.cs" />
+    <Compile Include="Support\OpenEhrNameAttributeTests.cs" />
+    <Compile Include="Support\TerminologyPackage\OpenEhrCodeSetIdentifiersTests.cs" />
+    <Compile Include="Support\TerminologyPackage\OpenEhrTerminologyGroupIdentifiersTests.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Vela.RM.Core\Vela.RM.Core.csproj">
+      <Project>{5B5BA21C-223B-409F-8291-87368BD5E5E6}</Project>
+      <Name>Vela.RM.Core</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Security\" />
+    <Folder Include="Support\AssumedTypes\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="..\..\Global\key.snk">
+      <Link>key.snk</Link>
+    </None>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

@@ -1,0 +1,92 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{E7CD4618-0295-4FCA-AC60-96F6B23741CF}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Vela.AM.Aom.UnitTests</RootNamespace>
+    <AssemblyName>Vela.AM.Aom.UnitTests</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>..\bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>..\bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="nunit.framework">
+      <HintPath>..\..\..\lib\NUnit\nunit.framework.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+    <Reference Include="Vela.Common, Version=0.1.4088.22637, Culture=neutral, PublicKeyToken=cab1eccc070768d9, processorArchitecture=MSIL">
+      <HintPath>..\..\Common\bin\Vela.Common.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Archetypes\ArchetypeTests.cs" />
+    <Compile Include="ConstraintModel\ArchetypeConstraintTests.cs" />
+    <Compile Include="ConstraintModel\ArchetypeInternalRefTests.cs" />
+    <Compile Include="ConstraintModel\ArchetypeSlotTests.cs" />
+    <Compile Include="ConstraintModel\CardinalityTests.cs" />
+    <Compile Include="ConstraintModel\CAttribute.cs" />
+    <Compile Include="ConstraintModel\CComplexObjectTests.cs" />
+    <Compile Include="ConstraintModel\CDefinedObjectTests.cs" />
+    <Compile Include="ConstraintModel\CMultipleAttributeTests.cs" />
+    <Compile Include="ConstraintModel\ConstraintRefTests.cs" />
+    <Compile Include="ConstraintModel\CSingleAttributeTests.cs" />
+    <Compile Include="ConstraintModel\CPrimitiveObjectTests.cs" />
+    <Compile Include="Ontologies\ArchetypeOntologyTests.cs" />
+    <Compile Include="Ontologies\ArchetypeTerminologyTests.cs" />
+    <Compile Include="Primitives\CBooleanTests.cs" />
+    <Compile Include="Primitives\CDateTests.cs" />
+    <Compile Include="Primitives\CDateTimeTests.cs" />
+    <Compile Include="Primitives\CDurationTests.cs" />
+    <Compile Include="Primitives\CIntegerTests.cs" />
+    <Compile Include="Primitives\CTimeTests.cs" />
+    <Compile Include="Primitives\CStringTests.cs" />
+    <Compile Include="Primitives\CRealTests.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Vela.AM.Aom\Vela.AM.Aom.csproj">
+      <Project>{34D0DBA3-314F-4633-8AC6-0F0E0068E1DD}</Project>
+      <Name>Vela.AM.Aom</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Vela.RM.Core\Vela.RM.Core.csproj">
+      <Project>{5B5BA21C-223B-409F-8291-87368BD5E5E6}</Project>
+      <Name>Vela.RM.Core</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
