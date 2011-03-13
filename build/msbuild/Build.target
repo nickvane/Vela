@@ -3,7 +3,8 @@
 		<ItemGroup>
 			<Solutions Include="$(SourceDirectory)\Vela.Common.sln" />
 			<Solutions Include="$(SourceDirectory)\Vela.VirtualEhr.sln" />	
-			<Solutions Include="$(SourceDirectory)\Vela.Persistence.sln" />					
+			<Solutions Include="$(SourceDirectory)\Vela.Persistence.sln" />		
+			<Solutions Include="$(SourceDirectory)\Vela.Portal.sln" />					
 		</ItemGroup>
 		<MSBuild BuildInParallel="true" Projects="%(Solutions.FullPath)" Targets="Build" Properties="Configuration=$(Configuration);" StopOnFirstFailure="True" />
 	</Target>
