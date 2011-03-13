@@ -48,8 +48,9 @@
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Xml" />
     <Reference Include="System.Xml.Linq" />
-    <Reference Include="Vela.Common, Version=0.1.4088.22637, Culture=neutral, PublicKeyToken=cab1eccc070768d9, processorArchitecture=MSIL">
+    <Reference Include="Vela.Common, Version=0.1.4089.23229, Culture=neutral, PublicKeyToken=cab1eccc070768d9, processorArchitecture=MSIL">
       <HintPath>..\..\Common\bin\Vela.Common.dll</HintPath>
+      <SpecificVersion>False</SpecificVersion>
     </Reference>
     <Reference Include="Xml.Schema.Linq, Version=2.0.2.56002, Culture=neutral, PublicKeyToken=47d0c84d0ebb13e5, processorArchitecture=MSIL">
       <HintPath>..\..\..\lib\Xml.Schema.Linq\Xml.Schema.Linq.dll</HintPath>

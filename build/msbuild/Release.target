@@ -1,0 +1,23 @@
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="4.0">
+	
+	<Target Name="Release" DependsOnTargets="CleanRelease;ReleaseVelaVirtualEhr" Condition="$(DoRelease)" />			
+	
+	<PropertyGroup>
+		<ReleaseVelaVirtualEhrDirectory>$(ReleaseDirectory)\Vela.VirtualEhr</ReleaseVelaVirtualEhrDirectory>		
+	</PropertyGroup>
+	
+	<Target Name="CleanRelease">
+		<RemoveDir Directories="$(ReleaseDirectory)" />
+		<MakeDir Directories="$(ReleaseDirectory)" />
+		<MakeDir Directories="$(ReleaseVelaVirtualEhrDirectory)" />
+	</Target>
+	
+	<Target Name="ReleaseVelaVirtualEhr">
+		<ItemGroup>
+			<VelaVirtualEhrFiles Include="$(SourceDirectory)\Vela.VirtualEhr\bin\Vela.Common.*" />
+			<VelaVirtualEhrFiles Include="$(SourceDirectory)\Vela.VirtualEhr\bin\Vela.VirtualEhr.*" />			
+			<VelaVirtualEhrFiles Include="$(SourceDirectory)\Vela.VirtualEhr\bin\Xml.Schema.Linq.*" />
+		</ItemGroup>
+		<Exec Command='xcopy "%(VelaVirtualEhrFiles.FullPath)" "$(ReleaseVelaVirtualEhrDirectory)"' />
+	</Target>
+</Project>
