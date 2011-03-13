@@ -1,0 +1,11 @@
+<Project DefaultTargets="All" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="4.0">
+	<Import Project="msbuild\Constants.target"/>
+	<Import Project="$(MsBuildCommunityTasksTarget)" />	
+	
+	<Import Project="msbuild\Cleanup.target" />
+	<Import Project="msbuild\Build.target" />
+	<Import Project="msbuild\Test.target" />
+	<Import Project="msbuild\Release.target" />
+	
+	<Target Name="All" DependsOnTargets="Cleanup;Build;Test;Release;" />	
+</Project>

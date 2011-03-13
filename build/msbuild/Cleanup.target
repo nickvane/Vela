@@ -1,0 +1,12 @@
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="4.0">	
+	<Target Name="Cleanup">
+		<ItemGroup>
+			<GeneratedFilesFromPreviousBuilds Include="*.fit.xml;*.fxcop.xml;*.nunit.xml;*.ncover.xml;*coverage*.*" />
+		</ItemGroup>
+		
+		<Delete Files="@(GeneratedFilesFromPreviousBuilds)" />
+		<RemoveDir Directories="$(SourceDirectory)\Vela.Common\bin" />
+		<RemoveDir Directories="$(SourceDirectory)\Vela.VirtualEhr\bin" />
+		<RemoveDir Directories="$(SourceDirectory)\Vela.Persistence\bin" />
+	</Target>
+</Project>

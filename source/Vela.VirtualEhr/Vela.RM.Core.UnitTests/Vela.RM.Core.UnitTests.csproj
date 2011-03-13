@@ -44,8 +44,9 @@
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="Microsoft.CSharp" />
-    <Reference Include="Vela.Common, Version=0.1.4088.22637, Culture=neutral, PublicKeyToken=cab1eccc070768d9, processorArchitecture=MSIL">
+    <Reference Include="Vela.Common, Version=0.1.4089.23229, Culture=neutral, PublicKeyToken=cab1eccc070768d9, processorArchitecture=MSIL">
       <HintPath>..\..\Common\bin\Vela.Common.dll</HintPath>
+      <SpecificVersion>False</SpecificVersion>
     </Reference>
   </ItemGroup>
   <ItemGroup>
