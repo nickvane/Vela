@@ -5,11 +5,11 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProductVersion>8.0.30703</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{D8B61F1C-7406-4D75-8DEB-016BEFDE1B02}</ProjectGuid>
+    <ProjectGuid>{DFA22E5C-6314-4846-940A-88DBD5D9B9D8}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Vela.RM.Dal.UnitTests</RootNamespace>
-    <AssemblyName>Vela.RM.Dal.UnitTests</AssemblyName>
+    <RootNamespace>Vela.Portal.PatientStorage.UnitTests</RootNamespace>
+    <AssemblyName>Vela.Portal.PatientStorage.UnitTests</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -17,7 +17,7 @@
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
-    <OutputPath>..\bin\</OutputPath>
+    <OutputPath>bin\Debug\</OutputPath>
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
@@ -25,7 +25,7 @@
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
-    <OutputPath>..\bin\</OutputPath>
+    <OutputPath>bin\Release\</OutputPath>
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
@@ -34,39 +34,17 @@
     <Reference Include="nunit.framework">
       <HintPath>..\..\..\lib\NUnit\nunit.framework.dll</HintPath>
     </Reference>
-    <Reference Include="Raven.Client.Lightweight">
-      <HintPath>..\..\..\lib\RavenDB\Client\Raven.Client.Lightweight.dll</HintPath>
-    </Reference>
-    <Reference Include="Rhino.Mocks">
-      <HintPath>..\..\..\lib\RhinoMocks\Rhino.Mocks.dll</HintPath>
-    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="Microsoft.CSharp" />
-    <Reference Include="Vela.Common">
-      <HintPath>..\..\Common\bin\Vela.Common.dll</HintPath>
-    </Reference>
-    <Reference Include="Vela.VirtualEhr">
-      <HintPath>..\..\Vela.VirtualEhr\bin\Vela.VirtualEhr.dll</HintPath>
-    </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Repositories\CompositionVersionRepositoryTests.cs" />
-    <Compile Include="Repositories\FolderVersionRepositoryTests.cs" />
-    <Compile Include="Repositories\EhrStatusRepositoryTests.cs" />
-    <Compile Include="Repositories\EhrRootRepositoryTests.cs" />
-    <Compile Include="Repositories\EhrAccessVersionRepositoryTests.cs" />
-    <Compile Include="Repositories\GenericVersionRepositoryTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Vela.Common.Dal\Vela.Common.Dal.csproj">
-      <Project>{E00E85D4-6EB7-4FF9-A91D-E6FD5E8B0199}</Project>
-      <Name>Vela.Common.Dal</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Vela.RM.Dal\Vela.RM.Dal.csproj">
-      <Project>{8DA8DA12-B183-4038-A983-BB1C32705925}</Project>
-      <Name>Vela.RM.Dal</Name>
+    <ProjectReference Include="..\Vela.Portal.PatientStorage\Vela.Portal.PatientStorage.csproj">
+      <Project>{F89D66DA-7F65-4557-94DC-93645D574E52}</Project>
+      <Name>Vela.Portal.PatientStorage</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

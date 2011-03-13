@@ -1,0 +1,38 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Vela.Portal.Web", "Vela.Portal\Vela.Portal.Web\Vela.Portal.Web.csproj", "{7942914D-4CE3-4A5C-96B1-66783C43929B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Vela.Portal.Web.UnitTests", "Vela.Portal\Vela.Portal.Web.UnitTests\Vela.Portal.Web.UnitTests.csproj", "{A71CA2CA-A801-466F-BCD1-3FD77956A038}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Vela.Portal.PatientStorage", "Vela.Portal\Vela.Portal.PatientStorage\Vela.Portal.PatientStorage.csproj", "{F89D66DA-7F65-4557-94DC-93645D574E52}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Vela.Portal.PatientStorage.UnitTests", "Vela.Portal\Vela.Portal.PatientStorage.UnitTests\Vela.Portal.PatientStorage.UnitTests.csproj", "{DFA22E5C-6314-4846-940A-88DBD5D9B9D8}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{7942914D-4CE3-4A5C-96B1-66783C43929B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7942914D-4CE3-4A5C-96B1-66783C43929B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7942914D-4CE3-4A5C-96B1-66783C43929B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7942914D-4CE3-4A5C-96B1-66783C43929B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A71CA2CA-A801-466F-BCD1-3FD77956A038}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A71CA2CA-A801-466F-BCD1-3FD77956A038}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A71CA2CA-A801-466F-BCD1-3FD77956A038}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A71CA2CA-A801-466F-BCD1-3FD77956A038}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F89D66DA-7F65-4557-94DC-93645D574E52}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F89D66DA-7F65-4557-94DC-93645D574E52}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F89D66DA-7F65-4557-94DC-93645D574E52}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F89D66DA-7F65-4557-94DC-93645D574E52}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DFA22E5C-6314-4846-940A-88DBD5D9B9D8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DFA22E5C-6314-4846-940A-88DBD5D9B9D8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DFA22E5C-6314-4846-940A-88DBD5D9B9D8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DFA22E5C-6314-4846-940A-88DBD5D9B9D8}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
