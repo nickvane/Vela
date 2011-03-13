@@ -55,11 +55,8 @@
     <Reference Include="Vela.Common">
       <HintPath>..\..\Common\bin\Vela.Common.dll</HintPath>
     </Reference>
-    <Reference Include="Vela.RM.Core">
-      <HintPath>..\..\Vela.VirtualEhr\bin\Vela.RM.Core.dll</HintPath>
-    </Reference>
-    <Reference Include="Vela.RM.Domain">
-      <HintPath>..\..\Vela.VirtualEhr\bin\Vela.RM.Domain.dll</HintPath>
+    <Reference Include="Vela.VirtualEhr">
+      <HintPath>..\..\Vela.VirtualEhr\bin\Vela.VirtualEhr.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>

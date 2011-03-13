@@ -1,20 +1,28 @@
 <Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="4.0">
 	
-	<Target Name="Release" DependsOnTargets="CleanRelease;ReleaseVelaVirtualEhr" Condition="$(DoRelease)" />			
+	<Target Name="Release" DependsOnTargets="CleanRelease;ReleaseVelaCommon;ReleaseVelaVirtualEhr" Condition="$(DoRelease)" />			
 	
 	<PropertyGroup>
-		<ReleaseVelaVirtualEhrDirectory>$(ReleaseDirectory)\Vela.VirtualEhr</ReleaseVelaVirtualEhrDirectory>		
+		<ReleaseVelaCommonDirectory>$(ReleaseDirectory)\Vela.Common</ReleaseVelaCommonDirectory>
+		<ReleaseVelaVirtualEhrDirectory>$(ReleaseDirectory)\Vela.VirtualEhr</ReleaseVelaVirtualEhrDirectory>
 	</PropertyGroup>
 	
 	<Target Name="CleanRelease">
 		<RemoveDir Directories="$(ReleaseDirectory)" />
 		<MakeDir Directories="$(ReleaseDirectory)" />
 		<MakeDir Directories="$(ReleaseVelaVirtualEhrDirectory)" />
+		<MakeDir Directories="$(ReleaseVelaCommonDirectory)" />
+	</Target>
+	
+	<Target Name="ReleaseVelaCommon">
+		<ItemGroup>
+			<VelaCommonFiles Include="$(SourceDirectory)\Vela.VirtualEhr\bin\Vela.Common.*" />
+		</ItemGroup>
+		<Exec Command='xcopy "%(VelaCommonFiles.FullPath)" "$(ReleaseVelaCommonDirectory)"' />
 	</Target>
 	
 	<Target Name="ReleaseVelaVirtualEhr">
 		<ItemGroup>
-			<VelaVirtualEhrFiles Include="$(SourceDirectory)\Vela.VirtualEhr\bin\Vela.Common.*" />
 			<VelaVirtualEhrFiles Include="$(SourceDirectory)\Vela.VirtualEhr\bin\Vela.VirtualEhr.*" />			
 			<VelaVirtualEhrFiles Include="$(SourceDirectory)\Vela.VirtualEhr\bin\Xml.Schema.Linq.*" />
 		</ItemGroup>

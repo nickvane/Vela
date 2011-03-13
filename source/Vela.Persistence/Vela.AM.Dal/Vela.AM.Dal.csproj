@@ -52,17 +52,11 @@
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="Microsoft.CSharp" />
-    <Reference Include="Vela.AM.Aom">
-      <HintPath>..\..\Vela.VirtualEhr\bin\Vela.AM.Aom.dll</HintPath>
-    </Reference>
-    <Reference Include="Vela.AM.Ap">
-      <HintPath>..\..\Vela.VirtualEhr\bin\Vela.AM.Ap.dll</HintPath>
-    </Reference>
     <Reference Include="Vela.Common">
       <HintPath>..\..\Common\bin\Vela.Common.dll</HintPath>
     </Reference>
-    <Reference Include="Vela.RM.Core">
-      <HintPath>..\..\Vela.VirtualEhr\bin\Vela.RM.Core.dll</HintPath>
+    <Reference Include="Vela.VirtualEhr">
+      <HintPath>..\..\Vela.VirtualEhr\bin\Vela.VirtualEhr.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
