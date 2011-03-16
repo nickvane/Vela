@@ -10,5 +10,6 @@ namespace Vela.Common
 	public interface IDocument
 	{
 		string Id { get; set; }
+		bool IsDeleted { get; set; }
 	}
 }

@@ -90,6 +90,12 @@ namespace Vela.AM.Aom.Archetypes
 			}
 		}
 
+		public bool IsDeleted
+		{
+			get;
+			set;
+		}
+
 		#endregion
 
 		//TODO: add methods from specification

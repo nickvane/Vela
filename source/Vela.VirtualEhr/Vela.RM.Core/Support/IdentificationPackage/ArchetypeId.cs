@@ -50,12 +50,17 @@ namespace Vela.RM.Core.Support.IdentificationPackage
 		{
 		}
 
+		public string VersionLessId
+		{
+			get { return QualifiedReferenceModelEntity + "." + DomainConcept; }
+		}
+
 		[OpenEhrName("value")]
 		public override string Value
 		{
 			get
 			{
-				return QualifiedReferenceModelEntity + "." + DomainConcept + "." + VersionId;
+				return QualifiedReferenceModelEntity + "." + DomainConcept + ".v" + VersionId;
 			}
 			set
 			{
@@ -63,7 +68,16 @@ namespace Vela.RM.Core.Support.IdentificationPackage
 				if (split.Length != 3) throw new ArgumentException(String.Format(Resources.InvalidArchetypeId, value), "value");
 				QualifiedReferenceModelEntity = split[0];
 				DomainConcept = split[1];
-				VersionId = split[2];
+				if (!split[2].StartsWith("v")) throw new ArgumentException(String.Format(Resources.InvalidArchetypeId, value), "value");
+				int versionId;
+				if (int.TryParse(split[2].Replace("v", ""), out versionId))
+				{
+					VersionId = versionId;
+				}
+				else
+				{
+					throw new ArgumentException(String.Format(Resources.InvalidArchetypeId, value), "value");
+				}
 			}
 		}
 
@@ -153,7 +167,7 @@ namespace Vela.RM.Core.Support.IdentificationPackage
 		/// Version of this archetype.
 		/// </summary>
 		[OpenEhrName("version_id")]
-		public string VersionId
+		public int VersionId
 		{
 			get;
 			set;

@@ -19,12 +19,12 @@ namespace Vela.Portal.Web.Plumbing.Installers
 			container.Register(
 				AllTypes.FromAssemblyNamed("Vela.AM.Dal")
 					.BasedOn(typeof(IBaseRepository<>))
-					.WithService.Base()
+					.WithService.DefaultInterface().Configure(x=> x.LifeStyle.PerWebRequest)
 			);
 			container.Register(
 				AllTypes.FromAssemblyNamed("Vela.RM.Dal")
 					.BasedOn(typeof(IBaseRepository<>))
-					.WithService.Base()
+					.WithService.DefaultInterface().Configure(x => x.LifeStyle.PerWebRequest)
 			);
 		}
 	}

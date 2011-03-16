@@ -35,7 +35,7 @@ namespace Vela.Common
 		/// Adds an item to the collection.
 		/// </summary>
 		/// <param name="item">The object to add to the collection.</param>
-		void Store(T item);
+		void Save(T item);
 
 		/// <summary>
 		/// Removes the first occurrence of a specific object from the collection.

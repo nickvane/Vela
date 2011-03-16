@@ -1,4 +1,6 @@
-﻿using System.Linq;
+﻿
+using System.Collections.Generic;
+using System.Linq;
 using Raven.Client;
 using Vela.AM.Aom.Archetypes;
 using Vela.AM.Aom.Repositories;
@@ -8,7 +10,7 @@ namespace Vela.AM.Dal.Repositories
 {
 	public class ArchetypeRepository : BaseRepository<Archetype>, IArchetypeRepository
 	{
-		public ArchetypeRepository(IDocumentSession session, IQueryable<Archetype> collection) : base(session, collection)
+		public ArchetypeRepository(IDocumentSession session, IQueryable<Archetype> collection = null) : base(session, collection)
 		{
 		}
 
@@ -20,6 +22,33 @@ namespace Vela.AM.Dal.Repositories
 		public Archetype GetArchetype(string archetypeId)
 		{
 			return this[archetypeId];
+		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		/// <param name="archetypeId"></param>
+		/// <returns></returns>
+		public bool IsValidArchetype(string archetypeId)
+		{
+			var result = from a in Collection
+			             where a.ArchetypeId.VersionLessId == this[archetypeId].ArchetypeId.VersionLessId & a.IsDeleted == false
+						 orderby a.ArchetypeId.VersionId descending 
+			             select a;
+			return result.FirstOrDefault().Id == archetypeId;
+		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		/// <returns></returns>
+		public IList<Archetype> GetValidArchetypes()
+		{
+			var result = from a in Collection
+						 where a.IsDeleted == false
+						 select a;
+			//TODO: only get the latest version of an archetype
+			return result.ToList();
 		}
 	}
 }

@@ -15,7 +15,8 @@ namespace Vela.RM.Dal.Repositories
 {
 	public class EhrRootRepository : BaseRepository<EhrRoot>, IEhrRootRepository
 	{
-		public EhrRootRepository(IDocumentSession session, IQueryable<EhrRoot> collection) : base(session, collection)
+		public EhrRootRepository(IDocumentSession session, IQueryable<EhrRoot> collection = null)
+			: base(session, collection)
 		{
 		}
 	}

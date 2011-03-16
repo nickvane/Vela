@@ -7,9 +7,9 @@
 
 using System.Collections.Generic;
 using Vela.Common;
+using Vela.RM.Core.DataTypes.DateTimePackage;
 using Vela.RM.Core.Support;
 using Vela.RM.Core.Support.IdentificationPackage;
-using DateTime = Vela.RM.Core.DataTypes.DateTimePackage.DateTime;
 
 namespace Vela.RM.Domain.Ehr.EhrPackage
 {
@@ -19,8 +19,8 @@ namespace Vela.RM.Domain.Ehr.EhrPackage
 	[OpenEhrName("EHR")]
 	public class EhrRoot : IDocument
 	{
-		private IList<ObjectRef> _contributions;
 		private IList<ObjectRef> _compositions;
+		private IList<ObjectRef> _contributions;
 
 		/// <summary>
 		/// The id of this EHR.
@@ -64,10 +64,7 @@ namespace Vela.RM.Domain.Ehr.EhrPackage
 		[OpenEhrName("compositions")]
 		public IList<ObjectRef> Compositions
 		{
-			get
-			{
-				return _compositions ?? (_compositions = new List<ObjectRef>());
-			}
+			get { return _compositions ?? (_compositions = new List<ObjectRef>()); }
 		}
 
 		/// <summary>
@@ -76,11 +73,10 @@ namespace Vela.RM.Domain.Ehr.EhrPackage
 		[OpenEhrName("contributions")]
 		public IList<ObjectRef> Contributions
 		{
-			get
-			{
-				return _contributions ?? (_contributions = new List<ObjectRef>());
-			}
+			get { return _contributions ?? (_contributions = new List<ObjectRef>()); }
 		}
+
+		#region IDocument Members
 
 		/// <summary>
 		/// 
@@ -90,5 +86,9 @@ namespace Vela.RM.Domain.Ehr.EhrPackage
 			get { return EhrId != null ? EhrId.Value : string.Empty; }
 			set { if (EhrId == null) EhrId = new HierObjectId(value); }
 		}
+
+		public bool IsDeleted { get; set; }
+
+		#endregion
 	}
 }

@@ -17,6 +17,8 @@ namespace Vela.RM.Domain.Entities
 	/// </summary>
 	public class GenericVersion<T> : IGenericVersion<T>
 	{
+		#region IGenericVersion<T> Members
+
 		/// <summary>
 		/// Unique identifier of this version container. This id will be the same in all instances of the same container in a distributed environment, meaning that it can be understood as the uid of the “virtual version tree”.
 		/// </summary>
@@ -35,8 +37,6 @@ namespace Vela.RM.Domain.Entities
 		[OpenEhrName("time_created")]
 		public DateTime TimeCreated { get; set; }
 
-		#region IGenericVersion<T> Members
-
 		/// <summary>
 		/// The specific version. This is either OriginalVersion or ImportedVersion
 		/// </summary>
@@ -50,6 +50,8 @@ namespace Vela.RM.Domain.Entities
 			get { return (Version != null && Version.Uid != null) ? Version.Uid.Value : string.Empty; }
 			set { if (Version != null && Version.Uid != null) Version.Uid.Value = value; }
 		}
+
+		public bool IsDeleted { get; set; }
 
 		#endregion
 	}

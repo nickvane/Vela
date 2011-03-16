@@ -29,7 +29,20 @@ using Uri = Vela.RM.Core.DataTypes.UriPackage.Uri;
 
 namespace Vela.AM.Adl
 {
-	public static class XmlParser
+	public class XmlParser : IArchetypeParser
+	{
+		/// <summary>
+		/// 
+		/// </summary>
+		/// <param name="archetype"></param>
+		/// <returns></returns>
+		public Archetype Parse(string archetype)
+		{
+			return XmlParserInternal.Parse(archetype);
+		}
+	}
+
+	internal static class XmlParserInternal
 	{
 		public static Archetype Parse(string archetypeXmlString)
 		{

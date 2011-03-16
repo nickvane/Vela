@@ -17,7 +17,8 @@ namespace Vela.RM.Dal.Repositories
 {
 	public class GenericVersionRepository<T, TA> : BaseRepository<T>, IGenericVersionRepository<T> where T : class, IGenericVersion<TA> where TA : class
 	{
-		public GenericVersionRepository(IDocumentSession session, IQueryable<T> collection) : base(session, collection)
+		public GenericVersionRepository(IDocumentSession session, IQueryable<T> collection = null)
+			: base(session, collection)
 		{
 		}
 

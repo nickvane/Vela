@@ -1,0 +1,21 @@
+﻿@{
+    ViewBag.Title = "Create";
+}
+<h2>
+    Create</h2>
+<div>
+    <fieldset>
+        <legend>Account Information</legend>
+        <div class="editor-label">
+            archetype in xml
+        </div>
+        <div class="editor-field">
+            <form action="Create" method="post" enctype="multipart/form-data">
+            <label for="file">
+                Filename:</label>
+            <input type="file" name="Archetype" id="Archetype" />
+            <input type="submit" name="submit" value="Submit" />
+            </form>
+        </div>
+    </fieldset>
+</div>

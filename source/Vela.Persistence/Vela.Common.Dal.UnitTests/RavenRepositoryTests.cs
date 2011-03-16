@@ -47,7 +47,7 @@ namespace Vela.Common.Dal.UnitTests
 		{
 			Expect.Call(() => _session.Store(_document1));
 			_mocks.ReplayAll();
-			_repository.Store(_document1);
+			_repository.Save(_document1);
 			_mocks.VerifyAll();
 		}
 

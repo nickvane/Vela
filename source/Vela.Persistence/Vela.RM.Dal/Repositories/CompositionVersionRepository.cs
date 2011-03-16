@@ -15,7 +15,7 @@ namespace Vela.RM.Dal.Repositories
 {
 	public class CompositionVersionRepository : GenericVersionRepository<CompositionVersion, Composition>, ICompositionVersionRepository
 	{
-		public CompositionVersionRepository(IDocumentSession session, IQueryable<CompositionVersion> collection) : base(session, collection)
+		public CompositionVersionRepository(IDocumentSession session, IQueryable<CompositionVersion> collection = null) : base(session, collection)
 		{
 		}
 	}

@@ -5,6 +5,7 @@
 // <author>Nick Van Eeckhout</author>
 //-----------------------------------------------------------------------
 
+using System;
 using System.Linq;
 using Raven.Client;
 using Vela.Common.Helper;
@@ -45,15 +46,6 @@ namespace Vela.Common.Dal
 		}
 
 		/// <summary>
-		/// Adds an item to the collection.
-		/// </summary>
-		/// <param name="item">The object to add to the collection.</param>
-		public void Store(T item)
-		{
-			DocumentSession.Store(item);
-		}
-
-		/// <summary>
 		/// Determines whether the collection contains a specific value.
 		/// </summary>
 		/// <returns>
@@ -64,6 +56,15 @@ namespace Vela.Common.Dal
 		{
 			if (item == null) return false;
 			return this[item.Id] != null;
+		}
+
+		/// <summary>
+		/// Adds an item to the collection.
+		/// </summary>
+		/// <param name="item">The object to add to the collection.</param>
+		public void Save(T item)
+		{
+			DocumentSession.Store(item);
 		}
 
 		/// <summary>

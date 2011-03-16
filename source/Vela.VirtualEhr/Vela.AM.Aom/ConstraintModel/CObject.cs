@@ -5,6 +5,7 @@
 // <author>Nick Van Eeckhout</author>
 //-----------------------------------------------------------------------
 
+using Newtonsoft.Json;
 using Vela.RM.Core.DataTypes.QuantityPackage;
 using Vela.RM.Core.Support;
 
@@ -38,6 +39,7 @@ namespace Vela.AM.Aom.ConstraintModel
 		/// C_ATTRIBUTE that owns this C_OBJECT.
 		/// </summary>
 		[OpenEhrName("parent")]
+		[JsonIgnore]
 		public CAttribute Parent { get; set; }
 	}
 }
