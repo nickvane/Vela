@@ -106,7 +106,10 @@ namespace Vela.Portal.Web
 				new RavenDbInstaller(),
 				new LogInstaller(Server),
 				new DalInstaller(),
-				new ControllerInstaller()
+				new ServiceInstaller(),
+				new ControllerInstaller(),
+				new PatientStorageInstaller(),
+				new PatientEhrLinkInstaller()
 				);
 		}
 	}

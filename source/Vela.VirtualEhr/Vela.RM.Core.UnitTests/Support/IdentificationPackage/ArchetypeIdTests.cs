@@ -24,7 +24,7 @@ namespace Vela.RM.Core.UnitTests.Support.IdentificationPackage
 			const string conceptName = "biochemistry_result";
 			const string specialisation = "cholesterol";
 			const string domainConcept = conceptName + "-" + specialisation;
-			const string versionId = "1";
+			const string versionId = "v1";
 			const string value = qualifiedReferenceModelEntity + "." + domainConcept + "." + versionId;
 			var id1 = new ArchetypeId(value);
 			Assert.AreEqual(value, id1.Value);
@@ -34,7 +34,7 @@ namespace Vela.RM.Core.UnitTests.Support.IdentificationPackage
 			Assert.AreEqual(referenceModelEntity, id1.ReferenceModelEntity);
 			Assert.AreEqual(domainConcept, id1.DomainConcept);
 			Assert.AreEqual(specialisation, id1.Specialisation);
-			Assert.AreEqual(versionId, id1.VersionId);
+			Assert.AreEqual(versionId, "v" + id1.VersionId);
 			Assert.AreEqual(value, id1.ToString());
 		}
 	}
@@ -47,6 +47,8 @@ namespace Vela.RM.Core.UnitTests.Support.IdentificationPackage
 		[TestCase(".")]
 		[TestCase("...")]
 		[TestCase("-..")]
+		[TestCase("-.-.")]
+		[TestCase("-.-.1")]
 		public void ShouldThrowException(string value)
 		{
 			new ArchetypeId(value);

@@ -52,8 +52,8 @@
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="Microsoft.CSharp" />
-    <Reference Include="Vela.Common">
-      <HintPath>..\..\Common\bin\Vela.Common.dll</HintPath>
+    <Reference Include="Vela.VirtualEhr">
+      <HintPath>..\..\Vela.VirtualEhr\bin\Vela.VirtualEhr.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>

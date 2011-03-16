@@ -15,7 +15,7 @@ namespace Vela.RM.Dal.Repositories
 {
 	public class FolderVersionRepository : GenericVersionRepository<FolderVersion, Folder>, IFolderVersionRepository
 	{
-		public FolderVersionRepository(IDocumentSession session, IQueryable<FolderVersion> collection)
+		public FolderVersionRepository(IDocumentSession session, IQueryable<FolderVersion> collection = null)
 			: base(session, collection)
 		{
 		}

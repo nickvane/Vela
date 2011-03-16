@@ -78,7 +78,7 @@
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
-    <PostBuildEvent>$(SolutionDir)..\utilities\ilmerge\ilmerge /log:$(OutDir)ilmerge.log /targetplatform:v4,"C:\Windows\Microsoft.NET\Framework\v4.0.30319" /keyfile:"$(SolutionDir)\global\key.snk" /t:library /out:"$(OutDir)Vela.VirtualEhr.dll" "$(OutDir)Vela.RM.Core.dll" "$(OutDir)Vela.RM.Domain.dll" "$(OutDir)Vela.AM.Aom.dll" "$(OutDir)Vela.AM.Ap.dll" "$(OutDir)Vela.AM.Adl.dll" "$(OutDir)Vela.SM.ArchetypeService.dll" "$(OutDir)Vela.SM.EhrService.dll" "$(OutDir)Vela.SM.VirtualEhr.dll"</PostBuildEvent>
+    <PostBuildEvent>$(SolutionDir)..\utilities\ilmerge\ilmerge /log:$(OutDir)ilmerge.log /targetplatform:v4,"C:\Windows\Microsoft.NET\Framework\v4.0.30319" /keyfile:"$(SolutionDir)\global\key.snk" /t:library /out:"$(OutDir)Vela.VirtualEhr.dll" "$(OutDir)Vela.SM.VirtualEhr.dll" "$(OutDir)Vela.Common.dll" "$(OutDir)Vela.RM.Core.dll" "$(OutDir)Vela.RM.Domain.dll" "$(OutDir)Vela.AM.Aom.dll" "$(OutDir)Vela.AM.Ap.dll" "$(OutDir)Vela.AM.Adl.dll" "$(OutDir)Vela.SM.ArchetypeService.dll" "$(OutDir)Vela.SM.EhrService.dll"</PostBuildEvent>
   </PropertyGroup>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

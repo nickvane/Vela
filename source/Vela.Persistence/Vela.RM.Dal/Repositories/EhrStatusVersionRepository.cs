@@ -15,7 +15,7 @@ namespace Vela.RM.Dal.Repositories
 {
 	public class EhrStatusVersionRepository : GenericVersionRepository<EhrStatusVersion, EhrStatus>, IEhrStatusVersionRepository
 	{
-		public EhrStatusVersionRepository(IDocumentSession session, IQueryable<EhrStatusVersion> collection)
+		public EhrStatusVersionRepository(IDocumentSession session, IQueryable<EhrStatusVersion> collection = null)
 			: base(session, collection)
 		{
 		}

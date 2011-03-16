@@ -1,0 +1,52 @@
+﻿@model IEnumerable<Vela.AM.Aom.Archetypes.Archetype>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table>
+    <tr>
+        <th>
+            Id
+        </th>
+        <th>
+            AdlVersion
+        </th>
+        <th>
+            Concept
+        </th>
+        <th>
+            IsDeleted
+        </th>
+        <th>
+            IsControlled
+        </th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @item.Id
+        </td>
+        <td>
+            @item.AdlVersion
+        </td>
+        <td>
+            @item.Concept
+        </td>
+        <td>
+            @item.IsDeleted
+        </td>
+        <td>
+            @item.IsControlled
+        </td>
+    </tr>
+}
+
+</table>
+

@@ -58,7 +58,9 @@
     <Compile Include="..\..\Global\GlobalAssemblyInfo.cs">
       <Link>Properties\GlobalAssemblyInfo.cs</Link>
     </Compile>
+    <Compile Include="ArchetypeService.cs" />
     <Compile Include="CompositionBuilder.cs" />
+    <Compile Include="IArchetypeService.cs" />
     <Compile Include="ICompositionBuilder.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
