@@ -59,6 +59,8 @@
     <Compile Include="IArchetypeService.cs" />
     <Compile Include="ICompositionBuilder.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ReferenceModel.cs" />
+    <Compile Include="ReferenceModelInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="..\..\Global\key.snk">
