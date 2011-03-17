@@ -30,7 +30,14 @@ namespace Vela.AM.Aom.Ontologies
 		[OpenEhrName("items")]
 		public IDictionary<string, string> Items
 		{
-			get { return _items ?? (_items = new Dictionary<string, string>()); }
+			get
+			{
+				return _items ?? (_items = new Dictionary<string, string>());
+			}
+			private set
+			{
+				_items = value;
+			}
 		}
 	}
 }

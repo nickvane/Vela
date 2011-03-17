@@ -26,6 +26,7 @@ namespace Vela.AM.Aom.ConstraintModel
 		public HashSet<CAttribute> Attributes
 		{
 			get { return _attributes ?? (_attributes = new HashSet<CAttribute>()); }
+			private set { _attributes = value; }
 		}
 
 		#region Overrides of ArchetypeConstraint

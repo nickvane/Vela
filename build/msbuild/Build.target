@@ -1,7 +1,6 @@
 <Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="4.0">
 	<Target Name="Build">
 		<ItemGroup>
-			<Solutions Include="$(SourceDirectory)\Vela.Common.sln" />
 			<Solutions Include="$(SourceDirectory)\Vela.VirtualEhr.sln" />	
 			<Solutions Include="$(SourceDirectory)\Vela.Persistence.sln" />		
 			<Solutions Include="$(SourceDirectory)\Vela.Portal.sln" />					

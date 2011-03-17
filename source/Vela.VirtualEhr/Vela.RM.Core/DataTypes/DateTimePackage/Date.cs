@@ -31,8 +31,8 @@ namespace Vela.RM.Core.DataTypes.DateTimePackage
 		[OpenEhrName("magnitude")]
 		public override double Magnitude
 		{
-			get { return 0; }
-			set { throw new NotSupportedException(string.Format(Resources.NotSupportedReadOnlyProperty, "Magnitude")); }
+			get; set;
+			//set { throw new NotSupportedException(string.Format(Resources.NotSupportedReadOnlyProperty, "Magnitude")); }
 		}
 
 		///<summary>

@@ -41,10 +41,6 @@
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Data" />
     <Reference Include="System.Xml" />
-    <Reference Include="Vela.Common, Version=0.1.4089.23229, Culture=neutral, PublicKeyToken=cab1eccc070768d9, processorArchitecture=MSIL">
-      <HintPath>..\..\Common\bin\Vela.Common.dll</HintPath>
-      <SpecificVersion>False</SpecificVersion>
-    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Archetypes\ArchetypeTests.cs" />
@@ -75,6 +71,10 @@
     <ProjectReference Include="..\Vela.AM.Aom\Vela.AM.Aom.csproj">
       <Project>{34D0DBA3-314F-4633-8AC6-0F0E0068E1DD}</Project>
       <Name>Vela.AM.Aom</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Vela.Common\Vela.Common.csproj">
+      <Project>{D03FD7DB-3886-4D57-A01D-2F01C6CFE02C}</Project>
+      <Name>Vela.Common</Name>
     </ProjectReference>
     <ProjectReference Include="..\Vela.RM.Core\Vela.RM.Core.csproj">
       <Project>{5B5BA21C-223B-409F-8291-87368BD5E5E6}</Project>

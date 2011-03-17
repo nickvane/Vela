@@ -49,10 +49,6 @@
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="Microsoft.CSharp" />
-    <Reference Include="Vela.Common, Version=0.1.4089.23229, Culture=neutral, PublicKeyToken=cab1eccc070768d9, processorArchitecture=MSIL">
-      <HintPath>..\..\Common\bin\Vela.Common.dll</HintPath>
-      <SpecificVersion>False</SpecificVersion>
-    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="..\..\Global\GlobalAssemblyInfo.cs">
@@ -81,6 +77,10 @@
     <ProjectReference Include="..\Vela.AM.Ap\Vela.AM.Ap.csproj">
       <Project>{68A113B0-B977-4259-BC47-5FADBBFC698C}</Project>
       <Name>Vela.AM.Ap</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Vela.Common\Vela.Common.csproj">
+      <Project>{D03FD7DB-3886-4D57-A01D-2F01C6CFE02C}</Project>
+      <Name>Vela.Common</Name>
     </ProjectReference>
     <ProjectReference Include="..\Vela.RM.Core\Vela.RM.Core.csproj">
       <Project>{5B5BA21C-223B-409F-8291-87368BD5E5E6}</Project>
