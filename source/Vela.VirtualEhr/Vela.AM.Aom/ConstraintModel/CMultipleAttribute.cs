@@ -17,7 +17,7 @@ namespace Vela.AM.Aom.ConstraintModel
 	[OpenEhrName("C_MULTIPLE_ATTRIBUTE")]
 	public class CMultipleAttribute : CAttribute
 	{
-		private List<CObject> _members;
+		private IList<CObject> _members;
 
 		/// <summary>
 		/// Cardinality of this attribute constraint, if it constraints a container attribute.
@@ -32,7 +32,14 @@ namespace Vela.AM.Aom.ConstraintModel
 		[OpenEhrName("members")]
 		public IList<CObject> Members
 		{
-			get { return _members ?? (_members = new List<CObject>()); }
+			get
+			{
+				return _members ?? (_members = new List<CObject>());
+			}
+			private set
+			{
+				_members = value;
+			}
 		}
 
 		/// <summary>

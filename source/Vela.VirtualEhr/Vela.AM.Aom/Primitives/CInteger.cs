@@ -18,7 +18,17 @@ namespace Vela.AM.Aom.Primitives
 		/// <summary>
 		/// Set of Integers specifying constraint
 		/// </summary>
-		public HashSet<int> List { get { return _list ?? (_list = new HashSet<int>()); } }
+		public HashSet<int> List
+		{
+			get
+			{
+				return _list ?? (_list = new HashSet<int>());
+			}
+			private set
+			{
+				_list = value;
+			}
+		}
 
 		/// <summary>
 		/// Range of Integers specifying constraint

@@ -34,6 +34,16 @@
     <Reference Include="nunit.framework">
       <HintPath>..\..\..\lib\NUnit\nunit.framework.dll</HintPath>
     </Reference>
+    <Reference Include="Raven.Client.Embedded">
+      <HintPath>..\..\..\lib\RavenDB\EmbeddedClient\Raven.Client.Embedded.dll</HintPath>
+    </Reference>
+    <Reference Include="Raven.Client.Lightweight, Version=1.0.0.0, Culture=neutral, PublicKeyToken=37f41c7f99471593, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\lib\RavenDB\EmbeddedClient\Raven.Client.Lightweight.dll</HintPath>
+    </Reference>
+    <Reference Include="Raven.Storage.Managed">
+      <HintPath>..\..\..\lib\RavenDB\EmbeddedClient\Raven.Storage.Managed.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="Microsoft.CSharp" />
@@ -42,6 +52,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ArchetypeRepositoryTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -49,6 +60,976 @@
       <Project>{06E1C01C-07B3-44CC-8522-6964910E16AA}</Project>
       <Name>Vela.AM.Dal</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Vela.Common.Dal\Vela.Common.Dal.csproj">
+      <Project>{E00E85D4-6EB7-4FF9-A91D-E6FD5E8B0199}</Project>
+      <Name>Vela.Common.Dal</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="..\..\..\content\archetypes\xml\openEHR-EHR-ACTION.follow_up.v1.xml">
+      <Link>archetypes\xml\openEHR-EHR-ACTION.follow_up.v1.xml</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\..\..\content\archetypes\xml\openEHR-EHR-ACTION.imaging.v1.xml">
+      <Link>archetypes\xml\openEHR-EHR-ACTION.imaging.v1.xml</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\..\..\content\archetypes\xml\openEHR-EHR-ACTION.intravenous_fluid_administration.v1.xml">
+      <Link>archetypes\xml\openEHR-EHR-ACTION.intravenous_fluid_administration.v1.xml</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\..\..\content\archetypes\xml\openEHR-EHR-ACTION.medication.v1.xml">
+      <Link>archetypes\xml\openEHR-EHR-ACTION.medication.v1.xml</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\..\..\content\archetypes\xml\openEHR-EHR-ACTION.procedure.v1.xml">
+      <Link>archetypes\xml\openEHR-EHR-ACTION.procedure.v1.xml</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\..\..\content\archetypes\xml\openEHR-EHR-ACTION.transfusion.v1.xml">
+      <Link>archetypes\xml\openEHR-EHR-ACTION.transfusion.v1.xml</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\..\..\content\archetypes\xml\openEHR-EHR-ADMIN_ENTRY.admission.v1.xml">
+      <Link>archetypes\xml\openEHR-EHR-ADMIN_ENTRY.admission.v1.xml</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\..\..\content\archetypes\xml\openEHR-EHR-CLUSTER.address.v1.xml">
+      <Link>archetypes\xml\openEHR-EHR-CLUSTER.address.v1.xml</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\..\..\content\archetypes\xml\openEHR-EHR-CLUSTER.ambient_oxygen.v1.xml">
+      <Link>archetypes\xml\openEHR-EHR-CLUSTER.ambient_oxygen.v1.xml</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\..\..\content\archetypes\xml\openEHR-EHR-CLUSTER.anatomical_location-precise.v1.xml">
+      <Link>archetypes\xml\openEHR-EHR-CLUSTER.anatomical_location-precise.v1.xml</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\..\..\content\archetypes\xml\openEHR-EHR-CLUSTER.anatomical_location.v1.xml">
+      <Link>archetypes\xml\openEHR-EHR-CLUSTER.anatomical_location.v1.xml</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\..\..\content\archetypes\xml\openEHR-EHR-CLUSTER.auscultation-chest.v1.xml">
+      <Link>archetypes\xml\openEHR-EHR-CLUSTER.auscultation-chest.v1.xml</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\..\..\content\archetypes\xml\openEHR-EHR-CLUSTER.auscultation.v1.xml">
+      <Link>archetypes\xml\openEHR-EHR-CLUSTER.auscultation.v1.xml</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\..\..\content\archetypes\xml\openEHR-EHR-CLUSTER.balance.v1.xml">
+      <Link>archetypes\xml\openEHR-EHR-CLUSTER.balance.v1.xml</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\..\..\content\archetypes\xml\openEHR-EHR-CLUSTER.case_identification.v1.xml">
+      <Link>archetypes\xml\openEHR-EHR-CLUSTER.case_identification.v1.xml</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\..\..\content\archetypes\xml\openEHR-EHR-CLUSTER.cessation_attempts.v1.xml">
+      <Link>archetypes\xml\openEHR-EHR-CLUSTER.cessation_attempts.v1.xml</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\..\..\content\archetypes\xml\openEHR-EHR-CLUSTER.change.v1.xml">
+      <Link>archetypes\xml\openEHR-EHR-CLUSTER.change.v1.xml</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\..\..\content\archetypes\xml\openEHR-EHR-CLUSTER.citation.v1.xml">
+      <Link>archetypes\xml\openEHR-EHR-CLUSTER.citation.v1.xml</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\..\..\content\archetypes\xml\openEHR-EHR-CLUSTER.clubbing.v1.xml">
+      <Link>archetypes\xml\openEHR-EHR-CLUSTER.clubbing.v1.xml</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\..\..\content\archetypes\xml\openEHR-EHR-CLUSTER.coordination.v1.xml">
+      <Link>archetypes\xml\openEHR-EHR-CLUSTER.coordination.v1.xml</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\..\..\content\archetypes\xml\openEHR-EHR-CLUSTER.cranial_nerves.v1.xml">
+      <Link>archetypes\xml\openEHR-EHR-CLUSTER.cranial_nerves.v1.xml</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\..\..\content\archetypes\xml\openEHR-EHR-CLUSTER.delivery_of_infant.v1.xml">
+      <Link>archetypes\xml\openEHR-EHR-CLUSTER.delivery_of_infant.v1.xml</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\..\..\content\archetypes\xml\openEHR-EHR-CLUSTER.device.v1.xml">
+      <Link>archetypes\xml\openEHR-EHR-CLUSTER.device.v1.xml</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\..\..\content\archetypes\xml\openEHR-EHR-CLUSTER.dimensions.v1.xml">
+      <Link>archetypes\xml\openEHR-EHR-CLUSTER.dimensions.v1.xml</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\..\..\content\archetypes\xml\openEHR-EHR-CLUSTER.environmental_conditions.v1.xml">
+      <Link>archetypes\xml\openEHR-EHR-CLUSTER.environmental_conditions.v1.xml</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\..\..\content\archetypes\xml\openEHR-EHR-CLUSTER.exam-abdomen.v1.xml">
+      <Link>archetypes\xml\openEHR-EHR-CLUSTER.exam-abdomen.v1.xml</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\..\..\content\archetypes\xml\openEHR-EHR-CLUSTER.exam-bone.v1.xml">
+      <Link>archetypes\xml\openEHR-EHR-CLUSTER.exam-bone.v1.xml</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\..\..\content\archetypes\xml\openEHR-EHR-CLUSTER.exam-chest.v1.xml">
+      <Link>archetypes\xml\openEHR-EHR-CLUSTER.exam-chest.v1.xml</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\..\..\content\archetypes\xml\openEHR-EHR-CLUSTER.exam-ears.v1.xml">
+      <Link>archetypes\xml\openEHR-EHR-CLUSTER.exam-ears.v1.xml</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\..\..\content\archetypes\xml\openEHR-EHR-CLUSTER.exam-face.v1.xml">
+      <Link>archetypes\xml\openEHR-EHR-CLUSTER.exam-face.v1.xml</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\..\..\content\archetypes\xml\openEHR-EHR-CLUSTER.exam-fetus.v1.xml">
+      <Link>archetypes\xml\openEHR-EHR-CLUSTER.exam-fetus.v1.xml</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\..\..\content\archetypes\xml\openEHR-EHR-CLUSTER.exam-generic-joint.v1.xml">
+      <Link>archetypes\xml\openEHR-EHR-CLUSTER.exam-generic-joint.v1.xml</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\..\..\content\archetypes\xml\openEHR-EHR-CLUSTER.exam-generic-lymphnode.v1.xml">
+      <Link>archetypes\xml\openEHR-EHR-CLUSTER.exam-generic-lymphnode.v1.xml</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\..\..\content\archetypes\xml\openEHR-EHR-CLUSTER.exam-generic.v1.xml">
+      <Link>archetypes\xml\openEHR-EHR-CLUSTER.exam-generic.v1.xml</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\..\..\content\archetypes\xml\openEHR-EHR-CLUSTER.exam-mouth.v1.xml">
+      <Link>archetypes\xml\openEHR-EHR-CLUSTER.exam-mouth.v1.xml</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\..\..\content\archetypes\xml\openEHR-EHR-CLUSTER.exam-nose.v1.xml">
+      <Link>archetypes\xml\openEHR-EHR-CLUSTER.exam-nose.v1.xml</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\..\..\content\archetypes\xml\openEHR-EHR-CLUSTER.exam-thyroid.v1.xml">
+      <Link>archetypes\xml\openEHR-EHR-CLUSTER.exam-thyroid.v1.xml</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\..\..\content\archetypes\xml\openEHR-EHR-CLUSTER.exam-uterine_cervix.v1.xml">
+      <Link>archetypes\xml\openEHR-EHR-CLUSTER.exam-uterine_cervix.v1.xml</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\..\..\content\archetypes\xml\openEHR-EHR-CLUSTER.exam-uterus.v1.xml">
+      <Link>archetypes\xml\openEHR-EHR-CLUSTER.exam-uterus.v1.xml</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\..\..\content\archetypes\xml\openEHR-EHR-CLUSTER.exam.v1.xml">
+      <Link>archetypes\xml\openEHR-EHR-CLUSTER.exam.v1.xml</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\..\..\content\archetypes\xml\openEHR-EHR-CLUSTER.fluid.v1.xml">
+      <Link>archetypes\xml\openEHR-EHR-CLUSTER.fluid.v1.xml</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\..\..\content\archetypes\xml\openEHR-EHR-CLUSTER.free_text.v1.xml">
+      <Link>archetypes\xml\openEHR-EHR-CLUSTER.free_text.v1.xml</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\..\..\content\archetypes\xml\openEHR-EHR-CLUSTER.gait.v1.xml">
+      <Link>archetypes\xml\openEHR-EHR-CLUSTER.gait.v1.xml</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\..\..\content\archetypes\xml\openEHR-EHR-CLUSTER.health_event-poisoning.v1.xml">
+      <Link>archetypes\xml\openEHR-EHR-CLUSTER.health_event-poisoning.v1.xml</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\..\..\content\archetypes\xml\openEHR-EHR-CLUSTER.health_event-trauma.v1.xml">
+      <Link>archetypes\xml\openEHR-EHR-CLUSTER.health_event-trauma.v1.xml</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\..\..\content\archetypes\xml\openEHR-EHR-CLUSTER.health_event.v1.xml">
+      <Link>archetypes\xml\openEHR-EHR-CLUSTER.health_event.v1.xml</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\..\..\content\archetypes\xml\openEHR-EHR-CLUSTER.hydration.v1.xml">
+      <Link>archetypes\xml\openEHR-EHR-CLUSTER.hydration.v1.xml</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\..\..\content\archetypes\xml\openEHR-EHR-CLUSTER.imaging.v1.xml">
+      <Link>archetypes\xml\openEHR-EHR-CLUSTER.imaging.v1.xml</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\..\..\content\archetypes\xml\openEHR-EHR-CLUSTER.individual_personal.v1.xml">
+      <Link>archetypes\xml\openEHR-EHR-CLUSTER.individual_personal.v1.xml</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\..\..\content\archetypes\xml\openEHR-EHR-CLUSTER.individual_professional.v1.xml">
+      <Link>archetypes\xml\openEHR-EHR-CLUSTER.individual_professional.v1.xml</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\..\..\content\archetypes\xml\openEHR-EHR-CLUSTER.inspection-ear_canal.v1.xml">
+      <Link>archetypes\xml\openEHR-EHR-CLUSTER.inspection-ear_canal.v1.xml</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\..\..\content\archetypes\xml\openEHR-EHR-CLUSTER.inspection-external_ear.v1.xml">
+      <Link>archetypes\xml\openEHR-EHR-CLUSTER.inspection-external_ear.v1.xml</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\..\..\content\archetypes\xml\openEHR-EHR-CLUSTER.inspection-joint.v1.xml">
+      <Link>archetypes\xml\openEHR-EHR-CLUSTER.inspection-joint.v1.xml</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\..\..\content\archetypes\xml\openEHR-EHR-CLUSTER.inspection-skin-scalp.v1.xml">
+      <Link>archetypes\xml\openEHR-EHR-CLUSTER.inspection-skin-scalp.v1.xml</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\..\..\content\archetypes\xml\openEHR-EHR-CLUSTER.inspection-skin-wound.v1.xml">
+      <Link>archetypes\xml\openEHR-EHR-CLUSTER.inspection-skin-wound.v1.xml</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\..\..\content\archetypes\xml\openEHR-EHR-CLUSTER.inspection-skin.v1.xml">
+      <Link>archetypes\xml\openEHR-EHR-CLUSTER.inspection-skin.v1.xml</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\..\..\content\archetypes\xml\openEHR-EHR-CLUSTER.inspection-tongue.v1.xml">
+      <Link>archetypes\xml\openEHR-EHR-CLUSTER.inspection-tongue.v1.xml</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\..\..\content\archetypes\xml\openEHR-EHR-CLUSTER.inspection-trauma.v1.xml">
+      <Link>archetypes\xml\openEHR-EHR-CLUSTER.inspection-trauma.v1.xml</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\..\..\content\archetypes\xml\openEHR-EHR-CLUSTER.inspection-tympanic_membrane.v1.xml">
+      <Link>archetypes\xml\openEHR-EHR-CLUSTER.inspection-tympanic_membrane.v1.xml</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\..\..\content\archetypes\xml\openEHR-EHR-CLUSTER.inspection-tympanic_perforation.v1.xml">
+      <Link>archetypes\xml\openEHR-EHR-CLUSTER.inspection-tympanic_perforation.v1.xml</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\..\..\content\archetypes\xml\openEHR-EHR-CLUSTER.inspection.v1.xml">
+      <Link>archetypes\xml\openEHR-EHR-CLUSTER.inspection.v1.xml</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\..\..\content\archetypes\xml\openEHR-EHR-CLUSTER.issue.v1.xml">
+      <Link>archetypes\xml\openEHR-EHR-CLUSTER.issue.v1.xml</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\..\..\content\archetypes\xml\openEHR-EHR-CLUSTER.lab_result_annotation.v1.xml">
+      <Link>archetypes\xml\openEHR-EHR-CLUSTER.lab_result_annotation.v1.xml</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\..\..\content\archetypes\xml\openEHR-EHR-CLUSTER.level_of_exertion.v1.xml">
+      <Link>archetypes\xml\openEHR-EHR-CLUSTER.level_of_exertion.v1.xml</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\..\..\content\archetypes\xml\openEHR-EHR-CLUSTER.lymph_node_metastases.v1.xml">
+      <Link>archetypes\xml\openEHR-EHR-CLUSTER.lymph_node_metastases.v1.xml</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\..\..\content\archetypes\xml\openEHR-EHR-CLUSTER.macroscopy_colorectal_carcinoma.v1.xml">
+      <Link>archetypes\xml\openEHR-EHR-CLUSTER.macroscopy_colorectal_carcinoma.v1.xml</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\..\..\content\archetypes\xml\openEHR-EHR-CLUSTER.macroscopy_lung_carcinoma.v1.xml">
+      <Link>archetypes\xml\openEHR-EHR-CLUSTER.macroscopy_lung_carcinoma.v1.xml</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\..\..\content\archetypes\xml\openEHR-EHR-CLUSTER.menstrual_cycle.v1.xml">
+      <Link>archetypes\xml\openEHR-EHR-CLUSTER.menstrual_cycle.v1.xml</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\..\..\content\archetypes\xml\openEHR-EHR-CLUSTER.microscopy_breast_carcinoma.v1.xml">
+      <Link>archetypes\xml\openEHR-EHR-CLUSTER.microscopy_breast_carcinoma.v1.xml</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\..\..\content\archetypes\xml\openEHR-EHR-CLUSTER.microscopy_colorectal_carcinoma.v1.xml">
+      <Link>archetypes\xml\openEHR-EHR-CLUSTER.microscopy_colorectal_carcinoma.v1.xml</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\..\..\content\archetypes\xml\openEHR-EHR-CLUSTER.microscopy_lung_carcinoma.v1.xml">
+      <Link>archetypes\xml\openEHR-EHR-CLUSTER.microscopy_lung_carcinoma.v1.xml</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\..\..\content\archetypes\xml\openEHR-EHR-CLUSTER.microscopy_lymphoma.v1.xml">
+      <Link>archetypes\xml\openEHR-EHR-CLUSTER.microscopy_lymphoma.v1.xml</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\..\..\content\archetypes\xml\openEHR-EHR-CLUSTER.microscopy_prostate_carcinoma.v1.xml">
+      <Link>archetypes\xml\openEHR-EHR-CLUSTER.microscopy_prostate_carcinoma.v1.xml</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\..\..\content\archetypes\xml\openEHR-EHR-CLUSTER.move-joint.v1.xml">
+      <Link>archetypes\xml\openEHR-EHR-CLUSTER.move-joint.v1.xml</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\..\..\content\archetypes\xml\openEHR-EHR-CLUSTER.move-spine.v1.xml">
+      <Link>archetypes\xml\openEHR-EHR-CLUSTER.move-spine.v1.xml</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\..\..\content\archetypes\xml\openEHR-EHR-CLUSTER.move.v1.xml">
+      <Link>archetypes\xml\openEHR-EHR-CLUSTER.move.v1.xml</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\..\..\content\archetypes\xml\openEHR-EHR-CLUSTER.notifiable_condition.v1.xml">
+      <Link>archetypes\xml\openEHR-EHR-CLUSTER.notifiable_condition.v1.xml</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\..\..\content\archetypes\xml\openEHR-EHR-CLUSTER.oedema.v1.xml">
+      <Link>archetypes\xml\openEHR-EHR-CLUSTER.oedema.v1.xml</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\..\..\content\archetypes\xml\openEHR-EHR-CLUSTER.organisation.v1.xml">
+      <Link>archetypes\xml\openEHR-EHR-CLUSTER.organisation.v1.xml</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\..\..\content\archetypes\xml\openEHR-EHR-CLUSTER.outbreak_identification.v1.xml">
+      <Link>archetypes\xml\openEHR-EHR-CLUSTER.outbreak_identification.v1.xml</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\..\..\content\archetypes\xml\openEHR-EHR-CLUSTER.palpation-external_ear.v1.xml">
+      <Link>archetypes\xml\openEHR-EHR-CLUSTER.palpation-external_ear.v1.xml</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\..\..\content\archetypes\xml\openEHR-EHR-CLUSTER.palpation-joint.v1.xml">
+      <Link>archetypes\xml\openEHR-EHR-CLUSTER.palpation-joint.v1.xml</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\..\..\content\archetypes\xml\openEHR-EHR-CLUSTER.palpation.v1.xml">
+      <Link>archetypes\xml\openEHR-EHR-CLUSTER.palpation.v1.xml</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\..\..\content\archetypes\xml\openEHR-EHR-CLUSTER.percussion.v1.xml">
+      <Link>archetypes\xml\openEHR-EHR-CLUSTER.percussion.v1.xml</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\..\..\content\archetypes\xml\openEHR-EHR-CLUSTER.person_name.v1.xml">
+      <Link>archetypes\xml\openEHR-EHR-CLUSTER.person_name.v1.xml</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\..\..\content\archetypes\xml\openEHR-EHR-CLUSTER.physical_properties.v1.xml">
+      <Link>archetypes\xml\openEHR-EHR-CLUSTER.physical_properties.v1.xml</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\..\..\content\archetypes\xml\openEHR-EHR-CLUSTER.professional_role.v1.xml">
+      <Link>archetypes\xml\openEHR-EHR-CLUSTER.professional_role.v1.xml</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\..\..\content\archetypes\xml\openEHR-EHR-CLUSTER.pupils.v1.xml">
+      <Link>archetypes\xml\openEHR-EHR-CLUSTER.pupils.v1.xml</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\..\..\content\archetypes\xml\openEHR-EHR-CLUSTER.sense_of_smell.v1.xml">
+      <Link>archetypes\xml\openEHR-EHR-CLUSTER.sense_of_smell.v1.xml</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\..\..\content\archetypes\xml\openEHR-EHR-CLUSTER.specimen.v1.xml">
+      <Link>archetypes\xml\openEHR-EHR-CLUSTER.specimen.v1.xml</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\..\..\content\archetypes\xml\openEHR-EHR-CLUSTER.specimen_preparation.v1.xml">
+      <Link>archetypes\xml\openEHR-EHR-CLUSTER.specimen_preparation.v1.xml</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\..\..\content\archetypes\xml\openEHR-EHR-CLUSTER.symptom-pain.v1.xml">
+      <Link>archetypes\xml\openEHR-EHR-CLUSTER.symptom-pain.v1.xml</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\..\..\content\archetypes\xml\openEHR-EHR-CLUSTER.symptom.v1.xml">
+      <Link>archetypes\xml\openEHR-EHR-CLUSTER.symptom.v1.xml</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\..\..\content\archetypes\xml\openEHR-EHR-CLUSTER.synthesis_lymphoma.v1.xml">
+      <Link>archetypes\xml\openEHR-EHR-CLUSTER.synthesis_lymphoma.v1.xml</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\..\..\content\archetypes\xml\openEHR-EHR-CLUSTER.telecom_details.v1.xml">
+      <Link>archetypes\xml\openEHR-EHR-CLUSTER.telecom_details.v1.xml</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\..\..\content\archetypes\xml\openEHR-EHR-CLUSTER.tnm_staging-breast.v1.xml">
+      <Link>archetypes\xml\openEHR-EHR-CLUSTER.tnm_staging-breast.v1.xml</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\..\..\content\archetypes\xml\openEHR-EHR-CLUSTER.tnm_staging-colorectal.v1.xml">
+      <Link>archetypes\xml\openEHR-EHR-CLUSTER.tnm_staging-colorectal.v1.xml</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\..\..\content\archetypes\xml\openEHR-EHR-CLUSTER.tnm_staging-lung_cancer.v1.xml">
+      <Link>archetypes\xml\openEHR-EHR-CLUSTER.tnm_staging-lung_cancer.v1.xml</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\..\..\content\archetypes\xml\openEHR-EHR-CLUSTER.tnm_staging-melanoma.v1.xml">
+      <Link>archetypes\xml\openEHR-EHR-CLUSTER.tnm_staging-melanoma.v1.xml</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\..\..\content\archetypes\xml\openEHR-EHR-CLUSTER.tnm_staging-prostate.v1.xml">
+      <Link>archetypes\xml\openEHR-EHR-CLUSTER.tnm_staging-prostate.v1.xml</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\..\..\content\archetypes\xml\openEHR-EHR-CLUSTER.tnm_staging.v1.xml">
+      <Link>archetypes\xml\openEHR-EHR-CLUSTER.tnm_staging.v1.xml</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\..\..\content\archetypes\xml\openEHR-EHR-CLUSTER.tnm_staging_7th-breast.v1.xml">
+      <Link>archetypes\xml\openEHR-EHR-CLUSTER.tnm_staging_7th-breast.v1.xml</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\..\..\content\archetypes\xml\openEHR-EHR-CLUSTER.tnm_staging_7th-colorectal.v1.xml">
+      <Link>archetypes\xml\openEHR-EHR-CLUSTER.tnm_staging_7th-colorectal.v1.xml</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\..\..\content\archetypes\xml\openEHR-EHR-CLUSTER.tnm_staging_7th-lung.v1.xml">
+      <Link>archetypes\xml\openEHR-EHR-CLUSTER.tnm_staging_7th-lung.v1.xml</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\..\..\content\archetypes\xml\openEHR-EHR-CLUSTER.tnm_staging_7th-lymphoma.v1.xml">
+      <Link>archetypes\xml\openEHR-EHR-CLUSTER.tnm_staging_7th-lymphoma.v1.xml</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\..\..\content\archetypes\xml\openEHR-EHR-CLUSTER.tnm_staging_7th-melanoma.v1.xml">
+      <Link>archetypes\xml\openEHR-EHR-CLUSTER.tnm_staging_7th-melanoma.v1.xml</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\..\..\content\archetypes\xml\openEHR-EHR-CLUSTER.tnm_staging_7th-prostate.v1.xml">
+      <Link>archetypes\xml\openEHR-EHR-CLUSTER.tnm_staging_7th-prostate.v1.xml</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\..\..\content\archetypes\xml\openEHR-EHR-CLUSTER.tnm_staging_7th.v1.xml">
+      <Link>archetypes\xml\openEHR-EHR-CLUSTER.tnm_staging_7th.v1.xml</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\..\..\content\archetypes\xml\openEHR-EHR-CLUSTER.tumour_colorectal_staging_non_tnm.v1.xml">
+      <Link>archetypes\xml\openEHR-EHR-CLUSTER.tumour_colorectal_staging_non_tnm.v1.xml</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\..\..\content\archetypes\xml\openEHR-EHR-CLUSTER.tumour_invasion.v1.xml">
+      <Link>archetypes\xml\openEHR-EHR-CLUSTER.tumour_invasion.v1.xml</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\..\..\content\archetypes\xml\openEHR-EHR-CLUSTER.tumour_resection_margins.v1.xml">
+      <Link>archetypes\xml\openEHR-EHR-CLUSTER.tumour_resection_margins.v1.xml</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\..\..\content\archetypes\xml\openEHR-EHR-CLUSTER.tympanic_ventilation_tube.v1.xml">
+      <Link>archetypes\xml\openEHR-EHR-CLUSTER.tympanic_ventilation_tube.v1.xml</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\..\..\content\archetypes\xml\openEHR-EHR-CLUSTER.waveform.v1.xml">
+      <Link>archetypes\xml\openEHR-EHR-CLUSTER.waveform.v1.xml</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\..\..\content\archetypes\xml\openEHR-EHR-COMPOSITION.encounter.v1.xml">
+      <Link>archetypes\xml\openEHR-EHR-COMPOSITION.encounter.v1.xml</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\..\..\content\archetypes\xml\openEHR-EHR-COMPOSITION.medication_list.v1.xml">
+      <Link>archetypes\xml\openEHR-EHR-COMPOSITION.medication_list.v1.xml</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\..\..\content\archetypes\xml\openEHR-EHR-COMPOSITION.prescription.v1.xml">
+      <Link>archetypes\xml\openEHR-EHR-COMPOSITION.prescription.v1.xml</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\..\..\content\archetypes\xml\openEHR-EHR-COMPOSITION.problem_list.v1.xml">
+      <Link>archetypes\xml\openEHR-EHR-COMPOSITION.problem_list.v1.xml</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\..\..\content\archetypes\xml\openEHR-EHR-COMPOSITION.referral.v1.xml">
+      <Link>archetypes\xml\openEHR-EHR-COMPOSITION.referral.v1.xml</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\..\..\content\archetypes\xml\openEHR-EHR-COMPOSITION.report.v1.xml">
+      <Link>archetypes\xml\openEHR-EHR-COMPOSITION.report.v1.xml</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\..\..\content\archetypes\xml\openEHR-EHR-EVALUATION.adverse.v1.xml">
+      <Link>archetypes\xml\openEHR-EHR-EVALUATION.adverse.v1.xml</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\..\..\content\archetypes\xml\openEHR-EHR-EVALUATION.alert.v1.xml">
+      <Link>archetypes\xml\openEHR-EHR-EVALUATION.alert.v1.xml</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\..\..\content\archetypes\xml\openEHR-EHR-EVALUATION.check_list-medication.v1.xml">
+      <Link>archetypes\xml\openEHR-EHR-EVALUATION.check_list-medication.v1.xml</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\..\..\content\archetypes\xml\openEHR-EHR-EVALUATION.check_list.v1.xml">
+      <Link>archetypes\xml\openEHR-EHR-EVALUATION.check_list.v1.xml</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\..\..\content\archetypes\xml\openEHR-EHR-EVALUATION.citation.v1.xml">
+      <Link>archetypes\xml\openEHR-EHR-EVALUATION.citation.v1.xml</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\..\..\content\archetypes\xml\openEHR-EHR-EVALUATION.clinical_synopsis.v1.xml">
+      <Link>archetypes\xml\openEHR-EHR-EVALUATION.clinical_synopsis.v1.xml</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\..\..\content\archetypes\xml\openEHR-EHR-EVALUATION.excluded-intervention.v1.xml">
+      <Link>archetypes\xml\openEHR-EHR-EVALUATION.excluded-intervention.v1.xml</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\..\..\content\archetypes\xml\openEHR-EHR-EVALUATION.exclusion-adverse.v1.xml">
+      <Link>archetypes\xml\openEHR-EHR-EVALUATION.exclusion-adverse.v1.xml</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\..\..\content\archetypes\xml\openEHR-EHR-EVALUATION.exclusion-family_history.v1.xml">
+      <Link>archetypes\xml\openEHR-EHR-EVALUATION.exclusion-family_history.v1.xml</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\..\..\content\archetypes\xml\openEHR-EHR-EVALUATION.exclusion-medication.v1.xml">
+      <Link>archetypes\xml\openEHR-EHR-EVALUATION.exclusion-medication.v1.xml</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\..\..\content\archetypes\xml\openEHR-EHR-EVALUATION.exclusion-problem_diagnosis.v1.xml">
+      <Link>archetypes\xml\openEHR-EHR-EVALUATION.exclusion-problem_diagnosis.v1.xml</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\..\..\content\archetypes\xml\openEHR-EHR-EVALUATION.exclusion.v1.xml">
+      <Link>archetypes\xml\openEHR-EHR-EVALUATION.exclusion.v1.xml</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\..\..\content\archetypes\xml\openEHR-EHR-EVALUATION.goal.v1.xml">
+      <Link>archetypes\xml\openEHR-EHR-EVALUATION.goal.v1.xml</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\..\..\content\archetypes\xml\openEHR-EHR-EVALUATION.pregnancy.v1.xml">
+      <Link>archetypes\xml\openEHR-EHR-EVALUATION.pregnancy.v1.xml</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\..\..\content\archetypes\xml\openEHR-EHR-EVALUATION.problem-diagnosis.v1.xml">
+      <Link>archetypes\xml\openEHR-EHR-EVALUATION.problem-diagnosis.v1.xml</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\..\..\content\archetypes\xml\openEHR-EHR-EVALUATION.problem.v1.xml">
+      <Link>archetypes\xml\openEHR-EHR-EVALUATION.problem.v1.xml</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\..\..\content\archetypes\xml\openEHR-EHR-EVALUATION.reason_for_encounter.v1.xml">
+      <Link>archetypes\xml\openEHR-EHR-EVALUATION.reason_for_encounter.v1.xml</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\..\..\content\archetypes\xml\openEHR-EHR-EVALUATION.risk-family_history.v1.xml">
+      <Link>archetypes\xml\openEHR-EHR-EVALUATION.risk-family_history.v1.xml</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\..\..\content\archetypes\xml\openEHR-EHR-EVALUATION.risk.v1.xml">
+      <Link>archetypes\xml\openEHR-EHR-EVALUATION.risk.v1.xml</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\..\..\content\archetypes\xml\openEHR-EHR-EVALUATION.substance_use_summary-alcohol.v1.xml">
+      <Link>archetypes\xml\openEHR-EHR-EVALUATION.substance_use_summary-alcohol.v1.xml</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\..\..\content\archetypes\xml\openEHR-EHR-EVALUATION.substance_use_summary-tobacco.v1.xml">
+      <Link>archetypes\xml\openEHR-EHR-EVALUATION.substance_use_summary-tobacco.v1.xml</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\..\..\content\archetypes\xml\openEHR-EHR-EVALUATION.substance_use_summary.v1.xml">
+      <Link>archetypes\xml\openEHR-EHR-EVALUATION.substance_use_summary.v1.xml</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\..\..\content\archetypes\xml\openEHR-EHR-EVALUATION.triage.v1.xml">
+      <Link>archetypes\xml\openEHR-EHR-EVALUATION.triage.v1.xml</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\..\..\content\archetypes\xml\openEHR-EHR-INSTRUCTION.follow_up.v1.xml">
+      <Link>archetypes\xml\openEHR-EHR-INSTRUCTION.follow_up.v1.xml</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\..\..\content\archetypes\xml\openEHR-EHR-INSTRUCTION.imaging.v1.xml">
+      <Link>archetypes\xml\openEHR-EHR-INSTRUCTION.imaging.v1.xml</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\..\..\content\archetypes\xml\openEHR-EHR-INSTRUCTION.intravenous_fluid_order.v1.xml">
+      <Link>archetypes\xml\openEHR-EHR-INSTRUCTION.intravenous_fluid_order.v1.xml</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\..\..\content\archetypes\xml\openEHR-EHR-INSTRUCTION.medication.v1.xml">
+      <Link>archetypes\xml\openEHR-EHR-INSTRUCTION.medication.v1.xml</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\..\..\content\archetypes\xml\openEHR-EHR-INSTRUCTION.non_drug_therapy.v1.xml">
+      <Link>archetypes\xml\openEHR-EHR-INSTRUCTION.non_drug_therapy.v1.xml</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\..\..\content\archetypes\xml\openEHR-EHR-INSTRUCTION.request-lab_test.v1.xml">
+      <Link>archetypes\xml\openEHR-EHR-INSTRUCTION.request-lab_test.v1.xml</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\..\..\content\archetypes\xml\openEHR-EHR-INSTRUCTION.request-procedure.v1.xml">
+      <Link>archetypes\xml\openEHR-EHR-INSTRUCTION.request-procedure.v1.xml</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\..\..\content\archetypes\xml\openEHR-EHR-INSTRUCTION.request-referral.v1.xml">
+      <Link>archetypes\xml\openEHR-EHR-INSTRUCTION.request-referral.v1.xml</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\..\..\content\archetypes\xml\openEHR-EHR-INSTRUCTION.request.v1.xml">
+      <Link>archetypes\xml\openEHR-EHR-INSTRUCTION.request.v1.xml</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\..\..\content\archetypes\xml\openEHR-EHR-INSTRUCTION.transfusion.v1.xml">
+      <Link>archetypes\xml\openEHR-EHR-INSTRUCTION.transfusion.v1.xml</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\..\..\content\archetypes\xml\openEHR-EHR-ITEM_TREE.follow_up.v1.xml">
+      <Link>archetypes\xml\openEHR-EHR-ITEM_TREE.follow_up.v1.xml</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\..\..\content\archetypes\xml\openEHR-EHR-ITEM_TREE.gas_administration.v1.xml">
+      <Link>archetypes\xml\openEHR-EHR-ITEM_TREE.gas_administration.v1.xml</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\..\..\content\archetypes\xml\openEHR-EHR-ITEM_TREE.imaging.v1.xml">
+      <Link>archetypes\xml\openEHR-EHR-ITEM_TREE.imaging.v1.xml</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\..\..\content\archetypes\xml\openEHR-EHR-ITEM_TREE.intravenous_fluids.v1.xml">
+      <Link>archetypes\xml\openEHR-EHR-ITEM_TREE.intravenous_fluids.v1.xml</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\..\..\content\archetypes\xml\openEHR-EHR-ITEM_TREE.medication-formulation.v1.xml">
+      <Link>archetypes\xml\openEHR-EHR-ITEM_TREE.medication-formulation.v1.xml</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\..\..\content\archetypes\xml\openEHR-EHR-ITEM_TREE.medication-vaccine.v1.xml">
+      <Link>archetypes\xml\openEHR-EHR-ITEM_TREE.medication-vaccine.v1.xml</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\..\..\content\archetypes\xml\openEHR-EHR-ITEM_TREE.medication.v1.xml">
+      <Link>archetypes\xml\openEHR-EHR-ITEM_TREE.medication.v1.xml</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\..\..\content\archetypes\xml\openEHR-EHR-OBSERVATION.apgar.v1.xml">
+      <Link>archetypes\xml\openEHR-EHR-OBSERVATION.apgar.v1.xml</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\..\..\content\archetypes\xml\openEHR-EHR-OBSERVATION.audiogram.v1.xml">
+      <Link>archetypes\xml\openEHR-EHR-OBSERVATION.audiogram.v1.xml</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\..\..\content\archetypes\xml\openEHR-EHR-OBSERVATION.autopsy.v1.xml">
+      <Link>archetypes\xml\openEHR-EHR-OBSERVATION.autopsy.v1.xml</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\..\..\content\archetypes\xml\openEHR-EHR-OBSERVATION.barthel.v1.xml">
+      <Link>archetypes\xml\openEHR-EHR-OBSERVATION.barthel.v1.xml</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\..\..\content\archetypes\xml\openEHR-EHR-OBSERVATION.blood_match.v1.xml">
+      <Link>archetypes\xml\openEHR-EHR-OBSERVATION.blood_match.v1.xml</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\..\..\content\archetypes\xml\openEHR-EHR-OBSERVATION.blood_pressure.v1.xml">
+      <Link>archetypes\xml\openEHR-EHR-OBSERVATION.blood_pressure.v1.xml</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\..\..\content\archetypes\xml\openEHR-EHR-OBSERVATION.bodily_output-defaecation.v1.xml">
+      <Link>archetypes\xml\openEHR-EHR-OBSERVATION.bodily_output-defaecation.v1.xml</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\..\..\content\archetypes\xml\openEHR-EHR-OBSERVATION.bodily_output-urination.v1.xml">
+      <Link>archetypes\xml\openEHR-EHR-OBSERVATION.bodily_output-urination.v1.xml</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\..\..\content\archetypes\xml\openEHR-EHR-OBSERVATION.bodily_output.v1.xml">
+      <Link>archetypes\xml\openEHR-EHR-OBSERVATION.bodily_output.v1.xml</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\..\..\content\archetypes\xml\openEHR-EHR-OBSERVATION.body_mass_index.v1.xml">
+      <Link>archetypes\xml\openEHR-EHR-OBSERVATION.body_mass_index.v1.xml</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\..\..\content\archetypes\xml\openEHR-EHR-OBSERVATION.body_temperature.v1.xml">
+      <Link>archetypes\xml\openEHR-EHR-OBSERVATION.body_temperature.v1.xml</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\..\..\content\archetypes\xml\openEHR-EHR-OBSERVATION.body_weight.v1.xml">
+      <Link>archetypes\xml\openEHR-EHR-OBSERVATION.body_weight.v1.xml</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\..\..\content\archetypes\xml\openEHR-EHR-OBSERVATION.chest_expansion.v1.xml">
+      <Link>archetypes\xml\openEHR-EHR-OBSERVATION.chest_expansion.v1.xml</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\..\..\content\archetypes\xml\openEHR-EHR-OBSERVATION.distraction_hearing_test.v1.xml">
+      <Link>archetypes\xml\openEHR-EHR-OBSERVATION.distraction_hearing_test.v1.xml</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\..\..\content\archetypes\xml\openEHR-EHR-OBSERVATION.ecg.v1.xml">
+      <Link>archetypes\xml\openEHR-EHR-OBSERVATION.ecg.v1.xml</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\..\..\content\archetypes\xml\openEHR-EHR-OBSERVATION.electroacoustic_hearing_test.v1.xml">
+      <Link>archetypes\xml\openEHR-EHR-OBSERVATION.electroacoustic_hearing_test.v1.xml</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\..\..\content\archetypes\xml\openEHR-EHR-OBSERVATION.exam.v1.xml">
+      <Link>archetypes\xml\openEHR-EHR-OBSERVATION.exam.v1.xml</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\..\..\content\archetypes\xml\openEHR-EHR-OBSERVATION.faeces.v1.xml">
+      <Link>archetypes\xml\openEHR-EHR-OBSERVATION.faeces.v1.xml</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\..\..\content\archetypes\xml\openEHR-EHR-OBSERVATION.fetal_movement.v1.xml">
+      <Link>archetypes\xml\openEHR-EHR-OBSERVATION.fetal_movement.v1.xml</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\..\..\content\archetypes\xml\openEHR-EHR-OBSERVATION.fundoscopic_examination.v1.xml">
+      <Link>archetypes\xml\openEHR-EHR-OBSERVATION.fundoscopic_examination.v1.xml</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\..\..\content\archetypes\xml\openEHR-EHR-OBSERVATION.glasgow_coma.v1.xml">
+      <Link>archetypes\xml\openEHR-EHR-OBSERVATION.glasgow_coma.v1.xml</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\..\..\content\archetypes\xml\openEHR-EHR-OBSERVATION.global.v1.xml">
+      <Link>archetypes\xml\openEHR-EHR-OBSERVATION.global.v1.xml</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\..\..\content\archetypes\xml\openEHR-EHR-OBSERVATION.heart_rate-pulse.v1.xml">
+      <Link>archetypes\xml\openEHR-EHR-OBSERVATION.heart_rate-pulse.v1.xml</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\..\..\content\archetypes\xml\openEHR-EHR-OBSERVATION.heart_rate.v1.xml">
+      <Link>archetypes\xml\openEHR-EHR-OBSERVATION.heart_rate.v1.xml</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\..\..\content\archetypes\xml\openEHR-EHR-OBSERVATION.height.v1.xml">
+      <Link>archetypes\xml\openEHR-EHR-OBSERVATION.height.v1.xml</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\..\..\content\archetypes\xml\openEHR-EHR-OBSERVATION.imaging.v1.xml">
+      <Link>archetypes\xml\openEHR-EHR-OBSERVATION.imaging.v1.xml</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\..\..\content\archetypes\xml\openEHR-EHR-OBSERVATION.indirect_oximetry.v1.xml">
+      <Link>archetypes\xml\openEHR-EHR-OBSERVATION.indirect_oximetry.v1.xml</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\..\..\content\archetypes\xml\openEHR-EHR-OBSERVATION.infant_feeding.v1.xml">
+      <Link>archetypes\xml\openEHR-EHR-OBSERVATION.infant_feeding.v1.xml</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\..\..\content\archetypes\xml\openEHR-EHR-OBSERVATION.intravascular_pressure-cvp.v1.xml">
+      <Link>archetypes\xml\openEHR-EHR-OBSERVATION.intravascular_pressure-cvp.v1.xml</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\..\..\content\archetypes\xml\openEHR-EHR-OBSERVATION.intravascular_pressure-jvp.v1.xml">
+      <Link>archetypes\xml\openEHR-EHR-OBSERVATION.intravascular_pressure-jvp.v1.xml</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\..\..\content\archetypes\xml\openEHR-EHR-OBSERVATION.intravascular_pressure.v1.xml">
+      <Link>archetypes\xml\openEHR-EHR-OBSERVATION.intravascular_pressure.v1.xml</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\..\..\content\archetypes\xml\openEHR-EHR-OBSERVATION.lab_test-blood_gases.v1.xml">
+      <Link>archetypes\xml\openEHR-EHR-OBSERVATION.lab_test-blood_gases.v1.xml</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\..\..\content\archetypes\xml\openEHR-EHR-OBSERVATION.lab_test-blood_glucose.v1.xml">
+      <Link>archetypes\xml\openEHR-EHR-OBSERVATION.lab_test-blood_glucose.v1.xml</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\..\..\content\archetypes\xml\openEHR-EHR-OBSERVATION.lab_test-blood_match.v1.xml">
+      <Link>archetypes\xml\openEHR-EHR-OBSERVATION.lab_test-blood_match.v1.xml</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\..\..\content\archetypes\xml\openEHR-EHR-OBSERVATION.lab_test-esr.v1.xml">
+      <Link>archetypes\xml\openEHR-EHR-OBSERVATION.lab_test-esr.v1.xml</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\..\..\content\archetypes\xml\openEHR-EHR-OBSERVATION.lab_test-full_blood_count.v1.xml">
+      <Link>archetypes\xml\openEHR-EHR-OBSERVATION.lab_test-full_blood_count.v1.xml</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\..\..\content\archetypes\xml\openEHR-EHR-OBSERVATION.lab_test-hba1c.v1.xml">
+      <Link>archetypes\xml\openEHR-EHR-OBSERVATION.lab_test-hba1c.v1.xml</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\..\..\content\archetypes\xml\openEHR-EHR-OBSERVATION.lab_test-histopathology.v1.xml">
+      <Link>archetypes\xml\openEHR-EHR-OBSERVATION.lab_test-histopathology.v1.xml</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\..\..\content\archetypes\xml\openEHR-EHR-OBSERVATION.lab_test-immunology-ANA.v1.xml">
+      <Link>archetypes\xml\openEHR-EHR-OBSERVATION.lab_test-immunology-ANA.v1.xml</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\..\..\content\archetypes\xml\openEHR-EHR-OBSERVATION.lab_test-immunology.v1.xml">
+      <Link>archetypes\xml\openEHR-EHR-OBSERVATION.lab_test-immunology.v1.xml</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\..\..\content\archetypes\xml\openEHR-EHR-OBSERVATION.lab_test-lipids.v1.xml">
+      <Link>archetypes\xml\openEHR-EHR-OBSERVATION.lab_test-lipids.v1.xml</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\..\..\content\archetypes\xml\openEHR-EHR-OBSERVATION.lab_test-liver_function.v1.xml">
+      <Link>archetypes\xml\openEHR-EHR-OBSERVATION.lab_test-liver_function.v1.xml</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\..\..\content\archetypes\xml\openEHR-EHR-OBSERVATION.lab_test-microalbumin.v1.xml">
+      <Link>archetypes\xml\openEHR-EHR-OBSERVATION.lab_test-microalbumin.v1.xml</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\..\..\content\archetypes\xml\openEHR-EHR-OBSERVATION.lab_test-microbiology-csf.v1.xml">
+      <Link>archetypes\xml\openEHR-EHR-OBSERVATION.lab_test-microbiology-csf.v1.xml</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\..\..\content\archetypes\xml\openEHR-EHR-OBSERVATION.lab_test-microbiology-urine.v1.xml">
+      <Link>archetypes\xml\openEHR-EHR-OBSERVATION.lab_test-microbiology-urine.v1.xml</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\..\..\content\archetypes\xml\openEHR-EHR-OBSERVATION.lab_test-microbiology.v1.xml">
+      <Link>archetypes\xml\openEHR-EHR-OBSERVATION.lab_test-microbiology.v1.xml</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\..\..\content\archetypes\xml\openEHR-EHR-OBSERVATION.lab_test-thyroid.v1.xml">
+      <Link>archetypes\xml\openEHR-EHR-OBSERVATION.lab_test-thyroid.v1.xml</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\..\..\content\archetypes\xml\openEHR-EHR-OBSERVATION.lab_test-urea_and_electrolytes.v1.xml">
+      <Link>archetypes\xml\openEHR-EHR-OBSERVATION.lab_test-urea_and_electrolytes.v1.xml</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\..\..\content\archetypes\xml\openEHR-EHR-OBSERVATION.lab_test-urine_protein.v1.xml">
+      <Link>archetypes\xml\openEHR-EHR-OBSERVATION.lab_test-urine_protein.v1.xml</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\..\..\content\archetypes\xml\openEHR-EHR-OBSERVATION.lab_test.v1.xml">
+      <Link>archetypes\xml\openEHR-EHR-OBSERVATION.lab_test.v1.xml</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\..\..\content\archetypes\xml\openEHR-EHR-OBSERVATION.menstruation.v1.xml">
+      <Link>archetypes\xml\openEHR-EHR-OBSERVATION.menstruation.v1.xml</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\..\..\content\archetypes\xml\openEHR-EHR-OBSERVATION.operation_record.v1.xml">
+      <Link>archetypes\xml\openEHR-EHR-OBSERVATION.operation_record.v1.xml</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\..\..\content\archetypes\xml\openEHR-EHR-OBSERVATION.oral_fluid_intake.v1.xml">
+      <Link>archetypes\xml\openEHR-EHR-OBSERVATION.oral_fluid_intake.v1.xml</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\..\..\content\archetypes\xml\openEHR-EHR-OBSERVATION.postural_oedema.v1.xml">
+      <Link>archetypes\xml\openEHR-EHR-OBSERVATION.postural_oedema.v1.xml</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\..\..\content\archetypes\xml\openEHR-EHR-OBSERVATION.pregnancy_test.v1.xml">
+      <Link>archetypes\xml\openEHR-EHR-OBSERVATION.pregnancy_test.v1.xml</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\..\..\content\archetypes\xml\openEHR-EHR-OBSERVATION.respiration.v1.xml">
+      <Link>archetypes\xml\openEHR-EHR-OBSERVATION.respiration.v1.xml</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\..\..\content\archetypes\xml\openEHR-EHR-OBSERVATION.speech.v1.xml">
+      <Link>archetypes\xml\openEHR-EHR-OBSERVATION.speech.v1.xml</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\..\..\content\archetypes\xml\openEHR-EHR-OBSERVATION.story.v1.xml">
+      <Link>archetypes\xml\openEHR-EHR-OBSERVATION.story.v1.xml</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\..\..\content\archetypes\xml\openEHR-EHR-OBSERVATION.substance_use-alcohol.v1.xml">
+      <Link>archetypes\xml\openEHR-EHR-OBSERVATION.substance_use-alcohol.v1.xml</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\..\..\content\archetypes\xml\openEHR-EHR-OBSERVATION.substance_use-caffeine.v1.xml">
+      <Link>archetypes\xml\openEHR-EHR-OBSERVATION.substance_use-caffeine.v1.xml</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\..\..\content\archetypes\xml\openEHR-EHR-OBSERVATION.substance_use-tobacco.v1.xml">
+      <Link>archetypes\xml\openEHR-EHR-OBSERVATION.substance_use-tobacco.v1.xml</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\..\..\content\archetypes\xml\openEHR-EHR-OBSERVATION.substance_use.v1.xml">
+      <Link>archetypes\xml\openEHR-EHR-OBSERVATION.substance_use.v1.xml</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\..\..\content\archetypes\xml\openEHR-EHR-OBSERVATION.temperature.v1.xml">
+      <Link>archetypes\xml\openEHR-EHR-OBSERVATION.temperature.v1.xml</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\..\..\content\archetypes\xml\openEHR-EHR-OBSERVATION.tendon_babinski_reflexes.v1.xml">
+      <Link>archetypes\xml\openEHR-EHR-OBSERVATION.tendon_babinski_reflexes.v1.xml</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\..\..\content\archetypes\xml\openEHR-EHR-OBSERVATION.third_party_observation-hearing.v1.xml">
+      <Link>archetypes\xml\openEHR-EHR-OBSERVATION.third_party_observation-hearing.v1.xml</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\..\..\content\archetypes\xml\openEHR-EHR-OBSERVATION.third_party_observation.v1.xml">
+      <Link>archetypes\xml\openEHR-EHR-OBSERVATION.third_party_observation.v1.xml</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\..\..\content\archetypes\xml\openEHR-EHR-OBSERVATION.tympanogram.v1.xml">
+      <Link>archetypes\xml\openEHR-EHR-OBSERVATION.tympanogram.v1.xml</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\..\..\content\archetypes\xml\openEHR-EHR-OBSERVATION.urinalysis.v1.xml">
+      <Link>archetypes\xml\openEHR-EHR-OBSERVATION.urinalysis.v1.xml</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\..\..\content\archetypes\xml\openEHR-EHR-OBSERVATION.urine_output.v1.xml">
+      <Link>archetypes\xml\openEHR-EHR-OBSERVATION.urine_output.v1.xml</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\..\..\content\archetypes\xml\openEHR-EHR-OBSERVATION.uterine_contractions.v1.xml">
+      <Link>archetypes\xml\openEHR-EHR-OBSERVATION.uterine_contractions.v1.xml</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\..\..\content\archetypes\xml\openEHR-EHR-OBSERVATION.waist_hip.v1.xml">
+      <Link>archetypes\xml\openEHR-EHR-OBSERVATION.waist_hip.v1.xml</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\..\..\content\archetypes\xml\openEHR-EHR-OBSERVATION.warble_tones_hearing_test.v1.xml">
+      <Link>archetypes\xml\openEHR-EHR-OBSERVATION.warble_tones_hearing_test.v1.xml</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\..\..\content\archetypes\xml\openEHR-EHR-OBSERVATION.word_list_hearing_test.v1.xml">
+      <Link>archetypes\xml\openEHR-EHR-OBSERVATION.word_list_hearing_test.v1.xml</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\..\..\content\archetypes\xml\openEHR-EHR-SECTION.adhoc.v1.xml">
+      <Link>archetypes\xml\openEHR-EHR-SECTION.adhoc.v1.xml</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\..\..\content\archetypes\xml\openEHR-EHR-SECTION.adverse_list.v1.xml">
+      <Link>archetypes\xml\openEHR-EHR-SECTION.adverse_list.v1.xml</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\..\..\content\archetypes\xml\openEHR-EHR-SECTION.conclusion.v1.xml">
+      <Link>archetypes\xml\openEHR-EHR-SECTION.conclusion.v1.xml</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\..\..\content\archetypes\xml\openEHR-EHR-SECTION.diagnostic_reports.v1.xml">
+      <Link>archetypes\xml\openEHR-EHR-SECTION.diagnostic_reports.v1.xml</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\..\..\content\archetypes\xml\openEHR-EHR-SECTION.medication_order_list.v1.xml">
+      <Link>archetypes\xml\openEHR-EHR-SECTION.medication_order_list.v1.xml</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\..\..\content\archetypes\xml\openEHR-EHR-SECTION.problem_list.v1.xml">
+      <Link>archetypes\xml\openEHR-EHR-SECTION.problem_list.v1.xml</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\..\..\content\archetypes\xml\openEHR-EHR-SECTION.referral_details.v1.xml">
+      <Link>archetypes\xml\openEHR-EHR-SECTION.referral_details.v1.xml</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\..\..\content\archetypes\xml\openEHR-EHR-SECTION.soap.v1.xml">
+      <Link>archetypes\xml\openEHR-EHR-SECTION.soap.v1.xml</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\..\..\content\archetypes\xml\openEHR-EHR-SECTION.vital_signs.v1.xml">
+      <Link>archetypes\xml\openEHR-EHR-SECTION.vital_signs.v1.xml</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

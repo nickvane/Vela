@@ -42,7 +42,14 @@ namespace Vela.AM.Aom.Assertions
 		[OpenEhrName("variables")]
 		public IList<AssertionVariable> Variables
 		{
-			get { return _variables ?? (_variables = new List<AssertionVariable>()); }
+			get
+			{
+				return _variables ?? (_variables = new List<AssertionVariable>());
+			}
+			private set
+			{
+				_variables = value;
+			}
 		}
 	}
 }

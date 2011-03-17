@@ -27,7 +27,14 @@ namespace Vela.AM.Aom.ConstraintModel
 		[OpenEhrName("includes")]
 		public IList<Assertion> Includes
 		{
-			get { return _includes ?? (_includes = new List<Assertion>()); }
+			get
+			{
+				return _includes ?? (_includes = new List<Assertion>());
+			}
+			private set
+			{
+				_includes = value;
+			}
 		}
 
 		/// <summary>
@@ -36,7 +43,14 @@ namespace Vela.AM.Aom.ConstraintModel
 		[OpenEhrName("excludes")]
 		public IList<Assertion> Excludes
 		{
-			get { return _excludes ?? (_excludes = new List<Assertion>()); }
+			get
+			{
+				return _excludes ?? (_excludes = new List<Assertion>());
+			}
+			private set
+			{
+				_excludes = value;
+			}
 		}
 
 		/// <summary>

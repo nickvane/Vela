@@ -1,5 +1,5 @@
-Raven DB - build 287
-====================
+Raven DB
+========
 This release contains the following:
 
 /Server - The files required to run Raven in server / service mode.

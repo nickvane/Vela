@@ -44,10 +44,6 @@
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="Microsoft.CSharp" />
-    <Reference Include="Vela.Common, Version=0.1.4089.23229, Culture=neutral, PublicKeyToken=cab1eccc070768d9, processorArchitecture=MSIL">
-      <HintPath>..\..\Common\bin\Vela.Common.dll</HintPath>
-      <SpecificVersion>False</SpecificVersion>
-    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Common\ArchetypedPackage\FeederAuditDetailsTests.cs" />
@@ -106,6 +102,10 @@
     <Compile Include="Support\TerminologyPackage\OpenEhrTerminologyGroupIdentifiersTests.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Vela.Common\Vela.Common.csproj">
+      <Project>{D03FD7DB-3886-4D57-A01D-2F01C6CFE02C}</Project>
+      <Name>Vela.Common</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Vela.RM.Core\Vela.RM.Core.csproj">
       <Project>{5B5BA21C-223B-409F-8291-87368BD5E5E6}</Project>
       <Name>Vela.RM.Core</Name>

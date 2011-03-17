@@ -37,7 +37,14 @@ namespace Vela.AM.Aom.ConstraintModel
 		[OpenEhrName("children")]
 		public List<CObject> Children
 		{
-			get { return _children ?? (_children = new List<CObject>()); }
+			get
+			{
+				return _children ?? (_children = new List<CObject>());
+			}
+			private set
+			{
+				_children = value;
+			}
 		}
 	}
 }

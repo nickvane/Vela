@@ -118,6 +118,7 @@ namespace Vela.RM.Core.Support.IdentificationPackage
 			{
 				var split = value.Split('-');
 				ConceptName = split[0];
+				if (split.Length > 2) throw new ArgumentException(String.Format(Resources.InvalidArchetypeId, value), "value");
 				if (split.Length > 1) Specialisation = split[1];
 			}
 		}

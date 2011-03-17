@@ -73,6 +73,10 @@ namespace Vela.AM.Aom.Archetypes
 		public IList<Assertion> Invariants
 		{
 			get { return _invariants ?? (_invariants = new List<Assertion>()); }
+			private set
+			{
+				_invariants = value;
+			}
 		}
 
 		#region IDocument Members

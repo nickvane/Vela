@@ -49,6 +49,7 @@ namespace Vela.RM.Core.UnitTests.Support.IdentificationPackage
 		[TestCase("-..")]
 		[TestCase("-.-.")]
 		[TestCase("-.-.1")]
+		[TestCase("openEHR-EHR-CLUSTER.exam-generic-lymphnode.v1")]
 		public void ShouldThrowException(string value)
 		{
 			new ArchetypeId(value);

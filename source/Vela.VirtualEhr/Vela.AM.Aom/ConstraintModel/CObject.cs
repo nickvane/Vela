@@ -40,6 +40,10 @@ namespace Vela.AM.Aom.ConstraintModel
 		/// </summary>
 		[OpenEhrName("parent")]
 		[JsonIgnore]
-		public CAttribute Parent { get; set; }
+		public CAttribute Parent
+		{
+			get;
+			set;
+		}
 	}
 }

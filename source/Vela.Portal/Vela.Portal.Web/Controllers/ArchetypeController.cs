@@ -1,6 +1,5 @@
 ﻿using System.Collections.Generic;
 using System.IO;
-using System.Web;
 using System.Web.Mvc;
 using Vela.AM.Aom.Archetypes;
 using Vela.Portal.Web.Plumbing;
@@ -15,7 +14,6 @@ namespace Vela.Portal.Web.Controllers
 		//
 		// GET: /Archetype/
 
-		[UnitOfWork]
 		public ActionResult Index()
 		{
 			IList<Archetype> archetypes = ArchetypeService.GetAllArchetypes();
@@ -25,9 +23,10 @@ namespace Vela.Portal.Web.Controllers
 		//
 		// GET: /Archetype/Details/5
 
-		public ActionResult Details(int id)
+		public ActionResult Details(string id)
 		{
-			return View();
+			var archetype = ArchetypeService.GetArchetype(id);
+			return View(archetype);
 		}
 
 		//

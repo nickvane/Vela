@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <archetype xmlns="http://schemas.openehr.org/v1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
   <archetype_id>
-    <value>openEHR-EHR-CLUSTER.inspection-skin-scalp.v1</value>
+    <value>openEHR-EHR-CLUSTER.inspection-skin_scalp.v1</value>
   </archetype_id>
   <concept>at0000.1.1</concept>
   <parent_archetype_id>
-    <value>openEHR-EHR-CLUSTER.inspection-skin-scalp.v1</value>
+    <value>openEHR-EHR-CLUSTER.inspection-skin_scalp.v1</value>
   </parent_archetype_id>
   <original_language>
     <code_string>en</code_string>

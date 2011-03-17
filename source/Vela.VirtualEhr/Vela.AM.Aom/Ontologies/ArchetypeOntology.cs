@@ -32,7 +32,14 @@ namespace Vela.AM.Aom.Ontologies
 		/// </summary>
 		public IDictionary<string, IList<ArchetypeTerminology>> TerminologyDefinitions
 		{
-			get { return _terminologyDefinitions ?? (_terminologyDefinitions = new Dictionary<string, IList<ArchetypeTerminology>>()); }
+			get
+			{
+				return _terminologyDefinitions ?? (_terminologyDefinitions = new Dictionary<string, IList<ArchetypeTerminology>>());
+			}
+			private set
+			{
+				_terminologyDefinitions = value;
+			}
 		}
 
 		/// <summary>
@@ -40,7 +47,14 @@ namespace Vela.AM.Aom.Ontologies
 		/// </summary>
 		public IDictionary<string, IDictionary<string, CodePhrase>> TerminologyBindings
 		{
-			get { return _terminologyBindings ?? (_terminologyBindings = new Dictionary<string, IDictionary<string, CodePhrase>>()); }
+			get
+			{
+				return _terminologyBindings ?? (_terminologyBindings = new Dictionary<string, IDictionary<string, CodePhrase>>());
+			}
+			private set
+			{
+				_terminologyBindings = value;
+			}
 		}
 
 		/// <summary>
@@ -48,7 +62,14 @@ namespace Vela.AM.Aom.Ontologies
 		/// </summary>
 		public IDictionary<string, IList<ArchetypeTerminology>> ConstraintDefinitions
 		{
-			get { return _constraintDefinitions ?? (_constraintDefinitions = new Dictionary<string, IList<ArchetypeTerminology>>()); }
+			get
+			{
+				return _constraintDefinitions ?? (_constraintDefinitions = new Dictionary<string, IList<ArchetypeTerminology>>());
+			}
+			private set
+			{
+				_constraintDefinitions = value;
+			}
 		}
 
 		/// <summary>
@@ -56,7 +77,14 @@ namespace Vela.AM.Aom.Ontologies
 		/// </summary>
 		public IDictionary<string, IList<ArchetypeTerminology>> ConstraintBindings
 		{
-			get { return _constraintBindings ?? (_constraintBindings = new Dictionary<string, IList<ArchetypeTerminology>>()); }
+			get
+			{
+				return _constraintBindings ?? (_constraintBindings = new Dictionary<string, IList<ArchetypeTerminology>>());
+			}
+			private set
+			{
+				_constraintBindings = value;
+			}
 		}
 
 		/// <summary>
@@ -75,19 +103,49 @@ namespace Vela.AM.Aom.Ontologies
 		/// List of all term codes in the ontology. Most of these correspond to “at” codes in an ADL archetype, which are the node_ids on C_OBJECT descendants. There may be an extra one, if a different term is used as the overall archetype concept from that used as the node_id of the outermost C_OBJECT in the definition part.
 		/// </summary>
 		[OpenEhrName("term_codes")]
-		public IList<string> TerminologyCodes { get { return _terminologyCodes ?? (_terminologyCodes = new List<string>()); } }
+		public IList<string> TerminologyCodes
+		{
+			get
+			{
+				return _terminologyCodes ?? (_terminologyCodes = new List<string>());
+			}
+			private set
+			{
+				_terminologyCodes = value;
+			}
+		}
 
 		/// <summary>
 		/// List of all term codes in the ontology. These correspond to the “ac” codes in an ADL archetype, or equivalently, the CONSTRAINT_REF.reference values in the archetype definition.
 		/// </summary>
 		[OpenEhrName("constraint_codes")]
-		public IList<string> ConstraintCodes { get { return _constraintCodes ?? (_constraintCodes = new List<string>()); } }
+		public IList<string> ConstraintCodes
+		{
+			get
+			{
+				return _constraintCodes ?? (_constraintCodes = new List<string>());
+			}
+			private set
+			{
+				_constraintCodes = value;
+			}
+		}
 
 		/// <summary>
 		/// List of ‘attribute’ names in ontology terms, typically includes ‘text’, ‘description’, ‘provenance’ etc.
 		/// </summary>
 		[OpenEhrName("term_attribute_names")]
-		public IList<string> TerminologyAttributeNames { get { return _terminologyAttributeNames ?? (_terminologyAttributeNames = new List<string>()); } }
+		public IList<string> TerminologyAttributeNames
+		{
+			get
+			{
+				return _terminologyAttributeNames ?? (_terminologyAttributeNames = new List<string>());
+			}
+			private set
+			{
+				_terminologyAttributeNames = value;
+			}
+		}
 
 		/// <summary>
 		/// Archetype which owns this ontology.

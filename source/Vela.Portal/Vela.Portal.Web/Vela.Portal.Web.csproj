@@ -64,6 +64,10 @@
       <HintPath>..\..\..\lib\Castle.Windsor\loggingFacility\log4net.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Newtonsoft.Json, Version=4.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\lib\RavenDB\Client\Newtonsoft.Json.dll</HintPath>
+    </Reference>
     <Reference Include="Raven.Client.Lightweight">
       <HintPath>..\..\..\lib\RavenDB\Client\Raven.Client.Lightweight.dll</HintPath>
     </Reference>
@@ -202,6 +206,7 @@
     <Content Include="Views\Ehr\Details.cshtml" />
     <Content Include="Views\Archetype\Index.cshtml" />
     <Content Include="Views\Archetype\Create.cshtml" />
+    <Content Include="Views\Archetype\Details.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Vela.Portal.PatientEhrLink.Contracts\Vela.Portal.PatientEhrLink.Contracts.csproj">

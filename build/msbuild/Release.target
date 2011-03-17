@@ -1,9 +1,8 @@
 <Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="4.0">
 	
-	<Target Name="Release" DependsOnTargets="CleanRelease;ReleaseVelaCommon;ReleaseVelaVirtualEhr" Condition="$(DoRelease)" />			
+	<Target Name="Release" DependsOnTargets="CleanRelease;ReleaseVelaVirtualEhr" Condition="$(DoRelease)" />			
 	
 	<PropertyGroup>
-		<ReleaseVelaCommonDirectory>$(ReleaseDirectory)\Vela.Common</ReleaseVelaCommonDirectory>
 		<ReleaseVelaVirtualEhrDirectory>$(ReleaseDirectory)\Vela.VirtualEhr</ReleaseVelaVirtualEhrDirectory>
 	</PropertyGroup>
 	
@@ -14,17 +13,11 @@
 		<MakeDir Directories="$(ReleaseVelaCommonDirectory)" />
 	</Target>
 	
-	<Target Name="ReleaseVelaCommon">
-		<ItemGroup>
-			<VelaCommonFiles Include="$(SourceDirectory)\Vela.VirtualEhr\bin\Vela.Common.*" />
-		</ItemGroup>
-		<Exec Command='xcopy "%(VelaCommonFiles.FullPath)" "$(ReleaseVelaCommonDirectory)"' />
-	</Target>
-	
 	<Target Name="ReleaseVelaVirtualEhr">
 		<ItemGroup>
 			<VelaVirtualEhrFiles Include="$(SourceDirectory)\Vela.VirtualEhr\bin\Vela.VirtualEhr.*" />			
-			<VelaVirtualEhrFiles Include="$(SourceDirectory)\Vela.VirtualEhr\bin\Xml.Schema.Linq.*" />
+			<VelaVirtualEhrFiles Include="$(SourceDirectory)\Vela.VirtualEhr\bin\Xml.Schema.Linq.*" />			
+			<VelaVirtualEhrFiles Include="$(SourceDirectory)\Vela.VirtualEhr\bin\Newtonsoft.Json.*" />
 		</ItemGroup>
 		<Exec Command='xcopy "%(VelaVirtualEhrFiles.FullPath)" "$(ReleaseVelaVirtualEhrDirectory)"' />
 	</Target>
