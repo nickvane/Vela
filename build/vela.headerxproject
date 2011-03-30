@@ -1,0 +1,22 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<HeaderProject Version="2.0.0.0">
+  <Name>Vela</Name>
+  <VisualStudioItemLocation>G:\vela\source\Vela.Common.sln</VisualStudioItemLocation>
+  <SyncWithVisualStudioItem>true</SyncWithVisualStudioItem>
+  <IgnoreSourceOutSideSolutionRoot>false</IgnoreSourceOutSideSolutionRoot>
+  <MakeReadOnlyWritable>false</MakeReadOnlyWritable>
+  <Directories />
+  <Files>
+    <File File="G:\vela\source\Global\GlobalAssemblyInfo.cs" Include="true" />
+    <File File="G:\vela\source\Common\Vela.Common\IBaseRepository.cs" Include="true" />
+    <File File="G:\vela\source\Common\Vela.Common\IDocument.cs" Include="true" />
+    <File File="G:\vela\source\Common\Vela.Common\GlobalSuppressions.cs" Include="true" />
+    <File File="G:\vela\source\Common\Vela.Common\Helper\Assertion.cs" Include="true" />
+    <File File="G:\vela\source\Common\Vela.Common\Helper\Attributes.cs" Include="true" />
+    <File File="G:\vela\source\Common\Vela.Common\Properties\AssemblyInfo.cs" Include="true" />
+    <File File="G:\vela\source\Common\Vela.Common.UnitTests\Helper\AssertionTests.cs" Include="true" />
+    <File File="G:\vela\source\Common\Vela.Common.UnitTests\Helper\AttributesTests.cs" Include="true" />
+    <File File="G:\vela\source\Common\Vela.Common.UnitTests\Properties\AssemblyInfo.cs" Include="true" />
+  </Files>
+  <UserFields />
+</HeaderProject>

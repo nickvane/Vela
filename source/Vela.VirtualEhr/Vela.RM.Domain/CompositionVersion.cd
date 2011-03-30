@@ -1,0 +1,54 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1" MembersFormat="NameAndType">
+  <Class Name="Vela.RM.Domain.Entities.CompositionVersion">
+    <Position X="6.75" Y="5.25" Width="3.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Domain\Entities\CompositionVersion.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Vela.RM.Patterns.Common.ChangeControlPackage.Version&lt;T&gt;">
+    <Position X="3.5" Y="3" Width="2.5" />
+    <TypeIdentifier>
+      <HashCode>AAgAAAAAAAAAAIAAIBAIAAAAAAAIABBAAAAAAAABAAE=</HashCode>
+      <FileName>Patterns\Common\ChangeControlPackage\Version.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Vela.RM.Patterns.Common.ChangeControlPackage.ImportedVersion&lt;T&gt;">
+    <Position X="2" Y="7" Width="2.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAIAAABAAAAAEAAAAABBAAAAAAAAAAAA=</HashCode>
+      <FileName>Patterns\Common\ChangeControlPackage\ImportedVersion.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Vela.RM.Patterns.Common.ChangeControlPackage.OriginalVersion&lt;T&gt;">
+    <Position X="5" Y="7" Width="3.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAIACABAAAAAAAAAAABBAAAAAAAAACAA=</HashCode>
+      <FileName>Patterns\Common\ChangeControlPackage\OriginalVersion.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Vela.RM.Domain.Compositions.CompositionPackage.Composition">
+    <Position X="9" Y="7" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAACgAAAAAAAAAAAAQgAAAAAAAAAAAAAEAACAA=</HashCode>
+      <FileName>Domain\Compositions\CompositionPackage\Composition.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Vela.RM.Patterns.Common.GenericPackage.AuditDetails">
+    <Position X="0.5" Y="3" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAgAAAAgAAAAAAEAAAAAAAAQAAAAAACAAAAAAAA=</HashCode>
+      <FileName>Patterns\Common\GenericPackage\AuditDetails.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Vela.RM.Domain.Entities.GenericVersion&lt;T&gt;">
+    <Position X="6.75" Y="3" Width="3.25" />
+    <TypeIdentifier>
+      <HashCode>IAACAAAIAAAAAAAAQBAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Domain\Entities\GenericVersion.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

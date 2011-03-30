@@ -1,0 +1,3036 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<archetype xmlns="http://schemas.openehr.org/v1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <archetype_id>
+    <value>openEHR-EHR-OBSERVATION.blood_pressure.v1</value>
+  </archetype_id>
+  <concept>at0000</concept>
+  <original_language>
+    <code_string>en</code_string>
+    <terminology_id>
+      <value>ISO_639-1</value>
+    </terminology_id>
+  </original_language>
+  <is_controlled>false</is_controlled>
+  <description>
+    <original_author id="email">sam.heard@oceaninformatics.com</original_author>
+    <original_author id="date">22/03/2006</original_author>
+    <original_author id="name">Sam Heard</original_author>
+    <original_author id="organisation">Ocean Informatics</original_author>
+    <other_contributors>Koray Atalag, University of Auckland, New Zealand</other_contributors>
+    <other_contributors>Knut Bernstein, MEDIQ, Denmark</other_contributors>
+    <other_contributors>Marja Buur, Medisch Centrum Alkmaar, Netherlands</other_contributors>
+    <other_contributors>Rong Chen, Cambio Healthcare Systems, Sweden</other_contributors>
+    <other_contributors>Beatriz de Faria Leão, Zilics, Brazil</other_contributors>
+    <other_contributors>Paul Donaldson, Nursing Informatics Australia, Australia</other_contributors>
+    <other_contributors>Jose Florez Arango, Universidad de Antioquia, Colombia</other_contributors>
+    <other_contributors>Gerard Freriks, ERC, Netherlands</other_contributors>
+    <other_contributors>Sebastian Garde, Ocean Informatics, Germany</other_contributors>
+    <other_contributors>Anneke Goossen, Results 4 Care, Netherlands</other_contributors>
+    <other_contributors>Sam Heard, Ocean Informatics, Australia</other_contributors>
+    <other_contributors>Karsten Heusser, Hannover Medical School, Germany</other_contributors>
+    <other_contributors>Omer Hotomaroglu, Turkey</other_contributors>
+    <other_contributors>Evelyn Hovenga, EJSH Consulting, Australia</other_contributors>
+    <other_contributors>Derek Hoy, United Kingdom</other_contributors>
+    <other_contributors>Pieter Hummel, Medisch Centrum Alkmaar, Netherlands</other_contributors>
+    <other_contributors>Eugene Igras, IRIS Systems, Inc., Canada</other_contributors>
+    <other_contributors>Sundaresan Jagannathan, Scottish NHS, United Kingdom</other_contributors>
+    <other_contributors>Andrew James, University of Toronto, Canada</other_contributors>
+    <other_contributors>Heather Leslie, Ocean Informatics, Australia (Editor)</other_contributors>
+    <other_contributors>Rikard Lovstrom, Swedish Medical Association, Sweden</other_contributors>
+    <other_contributors>Rohan Martin, Ambulance Victoria, Australia</other_contributors>
+    <other_contributors>Ian McNicoll, Ocean Informatics, United Kingdom</other_contributors>
+    <other_contributors>Jeroen Meintjens, Medisch Centrum Alkmaar, Netherlands</other_contributors>
+    <other_contributors>Udo Müller-Oest, CompuGROUP Software, Germany</other_contributors>
+    <other_contributors>Melvin Reynolds, United Kingdom</other_contributors>
+    <other_contributors>Tony Shannon, NHS, United Kingdom</other_contributors>
+    <other_contributors>Hwei-Yee Tai, Tan Tock Seng Hospital, Singapore</other_contributors>
+    <other_contributors>Stef Verlinden, Vivici, Netherlands</other_contributors>
+    <other_contributors>Soon Ghee Yap, Singapore Health Services Pte Ltd, Singapore</other_contributors>
+    <lifecycle_state>AuthorDraft</lifecycle_state>
+    <details>
+      <language>
+        <code_string>en</code_string>
+        <terminology_id>
+          <value>ISO_639-1</value>
+        </terminology_id>
+      </language>
+      <purpose>To record the systemic arterial blood pressure of an individual.</purpose>
+      <keywords>observations</keywords>
+      <keywords>measurement</keywords>
+      <keywords>bp</keywords>
+      <keywords>vital signs</keywords>
+      <keywords>mean arterial pressure</keywords>
+      <keywords>pulse pressure</keywords>
+      <keywords>systolic</keywords>
+      <keywords>diastolic</keywords>
+      <keywords>RR</keywords>
+      <keywords>NIBP</keywords>
+      <use>Use to record all representations of systemic arterial blood pressure measurement, no matter which method or body location is used to record it. The archetype is intended to capture blood pressure measurements in all clinical scenarios - for example, self-measurement with a home blood pressure machine; an emergency assessment of systolic using palpation and a sphygmomanometer; measurements taken in clinical consultations or during exercise stress testing; and a series of measurements made by a machine in Intensive Care.   
+There is a rich state model that supports interpretation of measurements through identifying patient position, exercise, confounding factors and angle of a tilt table in research. 
+Named events have been limited to average over a 24 hour period, however templates can further constrain the default 'any event' to cater for specific requirements for blood pressure measurements such as recording Blood Pressure against specific points in time, or over a range of intervals (+/- mathematical functions).</use>
+      <misuse>Not to be used for intravenous pressure.
+Not to be used for the measurement of arterial blood pressure which is NOT a surrogate for arterial pressure in the systemic circulation eg specific measurement of right Pulmonary artery pressure.  
+Use OBSERVATION.intravascular_pressure and related specialisations in both of these situations.</misuse>
+      <copyright>copyright (c) 2011 openEHR Foundation</copyright>
+    </details>
+    <details>
+      <language>
+        <code_string>ja</code_string>
+        <terminology_id>
+          <value>ISO_639-1</value>
+        </terminology_id>
+      </language>
+      <purpose>ヒトの全身血圧を記録するためのもの。全身の血圧を測定する代用として適切な方法により測定された縮期圧と拡張期についての記録</purpose>
+      <keywords>観察</keywords>
+      <keywords>血圧</keywords>
+      <keywords>測定</keywords>
+      <use>このアーキタイプを使って測定されるすべての血圧が記録される。運動負荷心電図やティルト台での測定にも利用できる豊かなステートモデルがある。</use>
+      <misuse>血管内圧のためには使用されない</misuse>
+      <copyright>copyright (c) 2011 openEHR Foundation</copyright>
+    </details>
+    <details>
+      <language>
+        <code_string>de</code_string>
+        <terminology_id>
+          <value>ISO_639-1</value>
+        </terminology_id>
+      </language>
+      <purpose>Dient der Dokumentation des systemischen arteriellen Blutdrucks einer Person.</purpose>
+      <keywords>Beobachtungen</keywords>
+      <keywords>Messungen</keywords>
+      <keywords>Vitalparameter</keywords>
+      <keywords>Mittlerer arterieller Druck</keywords>
+      <keywords>Pulsdruck</keywords>
+      <keywords>systolisch</keywords>
+      <keywords>diastolisch</keywords>
+      <keywords>RR</keywords>
+      <keywords>Riva-Rocci</keywords>
+      <keywords>NIBP</keywords>
+      <use>Alle Blutdruckmessungen werden unter Zuhilfenahme dieses Archetypen dokumentiert, unabhängig davon, welche Methode oder Körperstelle zur Messung benutzt wurden. Der Archetyp dient der Dokumentation des Blutdrucks in alle klinischen Szenarien - z.B. durch eine Blutdruckmaschine zuhause; eine Notfallmessung durch Palpation und ein Sphygmomanometer; Messungen beim Hausarzt oder im Rahmen von Belastungstests; sowie einer Serie von Messungen durch eine Maschine auf der Intensivstation.
+Der Archetyp beinhaltet ein umfassendes Status-Modell, das die Interpretation der Messung unterstützt, indem Position, Anstrengung, Einflussfaktoren, Neigungswinkel angegeben werden können.
+Benannte Ereignisse wurden auf den 24-stündigen Durchschnitt beschränkt, jedoch können Templates jederzeit das standardmäßig vorhandene Ereignis ('any event') weiter einschränken, um spezifischen Anforderungen gerecht zu werden, wie z.B. der Messung zu bestimmten Zeitpunkten, oder über eine Anzahl von Intervallen (+/- mathematische Funktionen).</use>
+      <misuse>Nicht benutzen zur Dokumentation des intravenösen Drucks.
+Nicht benutzen zur Dokumentation des arteriellen Blutdrucks, welcher KEIN Surrogat für den arteriellen Druck in der systemischen Zirkluation ist, z.B. die spezifische Messung des rechten pulmonaren Arteriendrucks.
+In diesem Fall sollte der OBSERVATION.intravascular_pressure Archetyp bzw. dessen Spezialisierungen verwendet werden.</misuse>
+      <copyright>copyright (c) 2011 openEHR Foundation</copyright>
+    </details>
+    <details>
+      <language>
+        <code_string>zh-cn</code_string>
+        <terminology_id>
+          <value>ISO_639-1</value>
+        </terminology_id>
+      </language>
+      <purpose>*To record the systemic blood pressure of a person. The measurement records the systolic and the diastolic pressure by some means suitable for the result to be seen as a surrogate for the general and systemic blood pressure.(en)</purpose>
+      <keywords>*observations(en)</keywords>
+      <keywords>*blood pressure(en)</keywords>
+      <keywords>*measurement(en)</keywords>
+      <use>*All blood pressure measurements are recorded using this archetype. There is a rich state model for use with exercise ECGs and Tilt Table measurements.(en)</use>
+      <misuse>*Not to be used for intravascular pressure.(en)</misuse>
+      <copyright>copyright (c) 2011 openEHR Foundation</copyright>
+    </details>
+    <details>
+      <language>
+        <code_string>nl</code_string>
+        <terminology_id>
+          <value>ISO_639-1</value>
+        </terminology_id>
+      </language>
+      <purpose>Het registreren van de systemische arteriele bloeddruk van een individu.</purpose>
+      <keywords>observaties</keywords>
+      <keywords>meting</keywords>
+      <keywords>blddr</keywords>
+      <keywords>vitale functies</keywords>
+      <keywords>gemiddelde arteriele druk</keywords>
+      <keywords>polsdruk</keywords>
+      <keywords>systolisch</keywords>
+      <keywords>diastolisch</keywords>
+      <keywords>RR</keywords>
+      <keywords>NIBP</keywords>
+      <keywords>tensie</keywords>
+      <use>Wordt gebruikt om alle weergaven van de systemische bloeddruk te registreren, ongeacht welke methode of welke lichaamslocatie is gebruikt om de meting te doen. Het archetype is bedoeld om bloeddruk metingen in alle klinische scenario's vast te leggen - bijvoorbeeld, zelf-meting met een thuis bloeddrukmeter; een nood beoordeling van de systolische bloeddruk met behulp van palpatie en een drukmanchet; metingen tijdens consulten, overleg of tijdens inspannings stress testen, en een reeks van metingen die door een apparaat zijn gedaan in de intensieve zorg.
+Er is een uitgebreid status model dat interpretatie van metingen ondersteunt, door patiënt positie, inspanning, beïnvloedende factoren en de hoek/het aantal graden waarin de onderzoekstafel staat, te specificeren.
+Genoemde gebeurtenissen zijn gelimiteerd tot een gemiddelde over een periode van 24 uur, maar templates kunnen de standaard 'iedere gebeurtenis' verder vernauwen om specifieke eisen voor de bloeddrukmeting, zoals registreren van de bloeddruk op een specifiek tijdsmoment, of over een reeks van intervallen (+/- statistisch gebruik) te faciliteren.</use>
+      <misuse>Niet te gebruiken voor intraveneuze druk.
+Niet te gebruiken voor de meting van de arteriele bloeddruk welke geen surrogaat is voor de arteriele druk in de systemische circulatie, bv de specifieke meting van de rechter arterie pulmonalis druk.
+Gebruik OBSERVATION.intravascular_pressure en gerelateerde specialisaties in beide situaties.</misuse>
+      <copyright>copyright (c) 2011 openEHR Foundation</copyright>
+    </details>
+    <details>
+      <language>
+        <code_string>ru</code_string>
+        <terminology_id>
+          <value>ISO_639-1</value>
+        </terminology_id>
+      </language>
+      <purpose>Для записи системного артериального давления крови человека.</purpose>
+      <keywords>обследование</keywords>
+      <keywords>измерение</keywords>
+      <keywords>артериальное давление</keywords>
+      <keywords>диастолическое</keywords>
+      <keywords>систолическое</keywords>
+      <use>Используется для записи всех представлений измерения системного артериального  кровяного давления, независимо от используемого метода или расположения тела пациента. Архетип предназначен для записи измерений давления во всех клинических сценариях - например, самостоятельное измерение давления крови домашним автоматическим манометром, в чрезвычайной  ситуации использование  пальпации пульсовой волны и сфигмоманометр; измерений в ходе клинических консультаций или в ходе осуществления стресс-тестирования, а также серии измерений, выполненных аппаратом в реанимации.
+Поддерживает интерпретацию измерений путем определения позиции пациента, физические упражнения, осложняющих факторов и угла наклона стола в научных исследованиях.
+Предполаагется интервал между измерениями 24 часа, однако может быть дополнено событиями (по умолчанию "любое событие") для удовлетворения специфических требований для измерения кровяного давления, такие как записи в отношении кровяного давления конкретные моменты времени, или в диапазоне интервалов.</use>
+      <misuse>Не следует использовать для внутривенного давления.
+Не следует использовать для измерения артериального давления, которое не является суррогатом артериального давления в системном кровотоке, например, конкретные измерения давления в легочной артерии.
+Использовать OBSERVATION.intravascular_pressure и смежных специальностей в обоих этих ситуациях.</misuse>
+      <copyright>copyright (c) 2011 openEHR Foundation</copyright>
+    </details>
+    <details>
+      <language>
+        <code_string>fa</code_string>
+        <terminology_id>
+          <value>ISO_639-1</value>
+        </terminology_id>
+      </language>
+      <purpose>ثبت نمودن فشار خون وریدی کل یک فرد</purpose>
+      <keywords>مشاهدات</keywords>
+      <keywords>اندازه گیری</keywords>
+      <keywords>فشار خون</keywords>
+      <keywords>علایم حیاتی</keywords>
+      <keywords>میانگین فشار وریدی</keywords>
+      <keywords>فشار نبض</keywords>
+      <keywords>سیستولیک</keywords>
+      <keywords>دیاستولیک</keywords>
+      <keywords>تنفسهای سریع</keywords>
+      <keywords>فشار خون غیر تهاجمی</keywords>
+      <use>برای ثبت هر چیز نشاندهنده اندازه گیری فشاره خون وریدی کل، جدا از ابنکه برای ثبت آن از چه شیوه ای یا کدام بخش از بدن استفاده شده باشد، بکار می رود. این الگوساز برای گردآوری اندازه گیری فشار خون در همه سناریوهای بالینی طراحی شده است، مانند اندازه گیری توسط خود فرد بوسیله دستگاه فشار خون خانگی، ارزیابی اورژانسی سیستولیک با لمس نبض و یک "فشارسنج خون"، اندازه گیریهای انجام گرفته در مشاوره بالینی یا حین تست ورزشی، و یا یک رشته از اندازه گیریهای دستگاه مراقبت های ویژه.
+مدل حالت توانمندی وجود دارد که تفسیر اندازه گیری ها را از طریق شناسایی موقعیت بیمار، ورزش، فاکتورهای مبهم و تست تخت شیبدار، پشتیبانی می کند.
+رویدادهای نام گذاری شده بگونه ای محدود شده اند که روی یک دوره 24 ساعته میانگین گیری کنند هر چند که الگو ها می توانند پیش فرض -هر گونه  رویداد- را برای فراهم کردن خواسته های خاص از اندازه گیری فشار خون، با محدودیتهایی نظیر ثبت فشار خون سر وقت یا روی رنجی از فاصله های زمانی (با عمل جمع یا منها)، بیشتر محدود کنند</use>
+      <misuse>برای فشار داخل وریدی استفاده نشود.
+برای اندازه گیری فشار خون وریدی نباید استفاده شود که جایگزینی برای فشار وریدی در گردش خون کلی نیست، بعنوان مثال اندازه گیری خاص فشار وریدی ریه راست.
+
+ و تخصص های مربوطه برای موارد بالا بکار رود"OBSERVATION.intravascular_pressure"</misuse>
+      <copyright>copyright (c) 2011 openEHR Foundation</copyright>
+    </details>
+    <resource_package_uri />
+    <other_details id="MD5-CAM-1.0.1">D2C5F2928F1B4D9D717A6BA03CE968DF</other_details>
+    <other_details id="references">O'Brien E, Asmar R, Beilin L, et al. European Society of Hypertension recommendations for conventional, ambulatory and home blood pressure measurement. Journal of Hypertension [Internet]. 2003 [cited 2009 Jul 30] ; 21(5):821-848. Available from http://www.bhsoc.org/bp_monitors/ESH_BP_rec.pdf
+
+Perloff D, Grim C, Flack J, Frohlich ED, Hill M, McDonald M, Morgenstern BZ. Human blood pressure determination by sphygmomanometry. Circulation [Internet]. 1993 [cited 2009 Jul 29] 88 (5): 2460.  Available from: http://circ.ahajournals.org/cgi/reprint/88/5/2460</other_details>
+  </description>
+  <definition>
+    <rm_type_name>OBSERVATION</rm_type_name>
+    <occurrences>
+      <upper_included>true</upper_included>
+      <lower_included>true</lower_included>
+      <upper_unbounded>false</upper_unbounded>
+      <lower_unbounded>false</lower_unbounded>
+      <upper>1</upper>
+      <lower>1</lower>
+    </occurrences>
+    <node_id>at0000</node_id>
+    <attributes xsi:type="C_SINGLE_ATTRIBUTE">
+      <existence>
+        <lower_unbounded>false</lower_unbounded>
+        <upper_unbounded>false</upper_unbounded>
+        <lower>1</lower>
+        <upper>1</upper>
+      </existence>
+      <rm_attribute_name>data</rm_attribute_name>
+      <children xsi:type="C_COMPLEX_OBJECT">
+        <rm_type_name>HISTORY</rm_type_name>
+        <occurrences>
+          <upper_included>true</upper_included>
+          <lower_included>true</lower_included>
+          <upper_unbounded>false</upper_unbounded>
+          <lower_unbounded>false</lower_unbounded>
+          <upper>1</upper>
+          <lower>1</lower>
+        </occurrences>
+        <node_id>at0001</node_id>
+        <attributes xsi:type="C_MULTIPLE_ATTRIBUTE">
+          <existence>
+            <lower_unbounded>false</lower_unbounded>
+            <upper_unbounded>false</upper_unbounded>
+            <lower>1</lower>
+            <upper>1</upper>
+          </existence>
+          <rm_attribute_name>events</rm_attribute_name>
+          <children xsi:type="C_COMPLEX_OBJECT">
+            <rm_type_name>EVENT</rm_type_name>
+            <occurrences>
+              <upper_included>false</upper_included>
+              <lower_included>true</lower_included>
+              <upper_unbounded>true</upper_unbounded>
+              <lower_unbounded>false</lower_unbounded>
+              <lower>0</lower>
+            </occurrences>
+            <node_id>at0006</node_id>
+            <attributes xsi:type="C_SINGLE_ATTRIBUTE">
+              <existence>
+                <lower_unbounded>false</lower_unbounded>
+                <upper_unbounded>false</upper_unbounded>
+                <lower>1</lower>
+                <upper>1</upper>
+              </existence>
+              <rm_attribute_name>data</rm_attribute_name>
+              <children xsi:type="C_COMPLEX_OBJECT">
+                <rm_type_name>ITEM_TREE</rm_type_name>
+                <occurrences>
+                  <upper_included>true</upper_included>
+                  <lower_included>true</lower_included>
+                  <upper_unbounded>false</upper_unbounded>
+                  <lower_unbounded>false</lower_unbounded>
+                  <upper>1</upper>
+                  <lower>1</lower>
+                </occurrences>
+                <node_id>at0003</node_id>
+                <attributes xsi:type="C_MULTIPLE_ATTRIBUTE">
+                  <existence>
+                    <lower_unbounded>false</lower_unbounded>
+                    <upper_unbounded>false</upper_unbounded>
+                    <lower>1</lower>
+                    <upper>1</upper>
+                  </existence>
+                  <rm_attribute_name>items</rm_attribute_name>
+                  <children xsi:type="C_COMPLEX_OBJECT">
+                    <rm_type_name>ELEMENT</rm_type_name>
+                    <occurrences>
+                      <upper_included>true</upper_included>
+                      <lower_included>true</lower_included>
+                      <upper_unbounded>false</upper_unbounded>
+                      <lower_unbounded>false</lower_unbounded>
+                      <upper>1</upper>
+                      <lower>0</lower>
+                    </occurrences>
+                    <node_id>at0004</node_id>
+                    <attributes xsi:type="C_SINGLE_ATTRIBUTE">
+                      <existence>
+                        <lower_unbounded>false</lower_unbounded>
+                        <upper_unbounded>false</upper_unbounded>
+                        <lower>1</lower>
+                        <upper>1</upper>
+                      </existence>
+                      <rm_attribute_name>value</rm_attribute_name>
+                      <children xsi:type="C_DV_QUANTITY">
+                        <rm_type_name>DV_QUANTITY</rm_type_name>
+                        <occurrences>
+                          <upper_included>true</upper_included>
+                          <lower_included>true</lower_included>
+                          <upper_unbounded>false</upper_unbounded>
+                          <lower_unbounded>false</lower_unbounded>
+                          <upper>1</upper>
+                          <lower>1</lower>
+                        </occurrences>
+                        <node_id />
+                        <property>
+                          <code_string>125</code_string>
+                          <terminology_id>
+                            <value>openehr</value>
+                          </terminology_id>
+                        </property>
+                        <list>
+                          <magnitude>
+                            <upper_included>false</upper_included>
+                            <lower_included>true</lower_included>
+                            <upper_unbounded>false</upper_unbounded>
+                            <lower_unbounded>false</lower_unbounded>
+                            <upper>1000.0</upper>
+                            <lower>0.0</lower>
+                          </magnitude>
+                          <units>mm[Hg]</units>
+                        </list>
+                      </children>
+                    </attributes>
+                  </children>
+                  <children xsi:type="C_COMPLEX_OBJECT">
+                    <rm_type_name>ELEMENT</rm_type_name>
+                    <occurrences>
+                      <upper_included>true</upper_included>
+                      <lower_included>true</lower_included>
+                      <upper_unbounded>false</upper_unbounded>
+                      <lower_unbounded>false</lower_unbounded>
+                      <upper>1</upper>
+                      <lower>0</lower>
+                    </occurrences>
+                    <node_id>at0005</node_id>
+                    <attributes xsi:type="C_SINGLE_ATTRIBUTE">
+                      <existence>
+                        <lower_unbounded>false</lower_unbounded>
+                        <upper_unbounded>false</upper_unbounded>
+                        <lower>1</lower>
+                        <upper>1</upper>
+                      </existence>
+                      <rm_attribute_name>value</rm_attribute_name>
+                      <children xsi:type="C_DV_QUANTITY">
+                        <rm_type_name>DV_QUANTITY</rm_type_name>
+                        <occurrences>
+                          <upper_included>true</upper_included>
+                          <lower_included>true</lower_included>
+                          <upper_unbounded>false</upper_unbounded>
+                          <lower_unbounded>false</lower_unbounded>
+                          <upper>1</upper>
+                          <lower>1</lower>
+                        </occurrences>
+                        <node_id />
+                        <property>
+                          <code_string>125</code_string>
+                          <terminology_id>
+                            <value>openehr</value>
+                          </terminology_id>
+                        </property>
+                        <list>
+                          <magnitude>
+                            <upper_included>false</upper_included>
+                            <lower_included>true</lower_included>
+                            <upper_unbounded>false</upper_unbounded>
+                            <lower_unbounded>false</lower_unbounded>
+                            <upper>1000.0</upper>
+                            <lower>0.0</lower>
+                          </magnitude>
+                          <units>mm[Hg]</units>
+                        </list>
+                      </children>
+                    </attributes>
+                  </children>
+                  <children xsi:type="C_COMPLEX_OBJECT">
+                    <rm_type_name>ELEMENT</rm_type_name>
+                    <occurrences>
+                      <upper_included>true</upper_included>
+                      <lower_included>true</lower_included>
+                      <upper_unbounded>false</upper_unbounded>
+                      <lower_unbounded>false</lower_unbounded>
+                      <upper>1</upper>
+                      <lower>0</lower>
+                    </occurrences>
+                    <node_id>at1006</node_id>
+                    <attributes xsi:type="C_SINGLE_ATTRIBUTE">
+                      <existence>
+                        <lower_unbounded>false</lower_unbounded>
+                        <upper_unbounded>false</upper_unbounded>
+                        <lower>1</lower>
+                        <upper>1</upper>
+                      </existence>
+                      <rm_attribute_name>value</rm_attribute_name>
+                      <children xsi:type="C_DV_QUANTITY">
+                        <rm_type_name>DV_QUANTITY</rm_type_name>
+                        <occurrences>
+                          <upper_included>true</upper_included>
+                          <lower_included>true</lower_included>
+                          <upper_unbounded>false</upper_unbounded>
+                          <lower_unbounded>false</lower_unbounded>
+                          <upper>1</upper>
+                          <lower>1</lower>
+                        </occurrences>
+                        <node_id />
+                        <property>
+                          <code_string>125</code_string>
+                          <terminology_id>
+                            <value>openehr</value>
+                          </terminology_id>
+                        </property>
+                        <list>
+                          <magnitude>
+                            <upper_included>false</upper_included>
+                            <lower_included>true</lower_included>
+                            <upper_unbounded>false</upper_unbounded>
+                            <lower_unbounded>false</lower_unbounded>
+                            <upper>1000.0</upper>
+                            <lower>0.0</lower>
+                          </magnitude>
+                          <units>mm[Hg]</units>
+                        </list>
+                      </children>
+                    </attributes>
+                  </children>
+                  <children xsi:type="C_COMPLEX_OBJECT">
+                    <rm_type_name>ELEMENT</rm_type_name>
+                    <occurrences>
+                      <upper_included>true</upper_included>
+                      <lower_included>true</lower_included>
+                      <upper_unbounded>false</upper_unbounded>
+                      <lower_unbounded>false</lower_unbounded>
+                      <upper>1</upper>
+                      <lower>0</lower>
+                    </occurrences>
+                    <node_id>at1007</node_id>
+                    <attributes xsi:type="C_SINGLE_ATTRIBUTE">
+                      <existence>
+                        <lower_unbounded>false</lower_unbounded>
+                        <upper_unbounded>false</upper_unbounded>
+                        <lower>1</lower>
+                        <upper>1</upper>
+                      </existence>
+                      <rm_attribute_name>value</rm_attribute_name>
+                      <children xsi:type="C_DV_QUANTITY">
+                        <rm_type_name>DV_QUANTITY</rm_type_name>
+                        <occurrences>
+                          <upper_included>true</upper_included>
+                          <lower_included>true</lower_included>
+                          <upper_unbounded>false</upper_unbounded>
+                          <lower_unbounded>false</lower_unbounded>
+                          <upper>1</upper>
+                          <lower>1</lower>
+                        </occurrences>
+                        <node_id />
+                        <property>
+                          <code_string>125</code_string>
+                          <terminology_id>
+                            <value>openehr</value>
+                          </terminology_id>
+                        </property>
+                        <list>
+                          <magnitude>
+                            <upper_included>false</upper_included>
+                            <lower_included>true</lower_included>
+                            <upper_unbounded>false</upper_unbounded>
+                            <lower_unbounded>false</lower_unbounded>
+                            <upper>1000.0</upper>
+                            <lower>0.0</lower>
+                          </magnitude>
+                          <units>mm[Hg]</units>
+                        </list>
+                      </children>
+                    </attributes>
+                  </children>
+                  <children xsi:type="C_COMPLEX_OBJECT">
+                    <rm_type_name>ELEMENT</rm_type_name>
+                    <occurrences>
+                      <upper_included>true</upper_included>
+                      <lower_included>true</lower_included>
+                      <upper_unbounded>false</upper_unbounded>
+                      <lower_unbounded>false</lower_unbounded>
+                      <upper>1</upper>
+                      <lower>0</lower>
+                    </occurrences>
+                    <node_id>at0033</node_id>
+                    <attributes xsi:type="C_SINGLE_ATTRIBUTE">
+                      <existence>
+                        <lower_unbounded>false</lower_unbounded>
+                        <upper_unbounded>false</upper_unbounded>
+                        <lower>1</lower>
+                        <upper>1</upper>
+                      </existence>
+                      <rm_attribute_name>value</rm_attribute_name>
+                      <children xsi:type="C_COMPLEX_OBJECT">
+                        <any_allowed>true</any_allowed>
+                        <rm_type_name>DV_TEXT</rm_type_name>
+                        <occurrences>
+                          <upper_included>true</upper_included>
+                          <lower_included>true</lower_included>
+                          <upper_unbounded>false</upper_unbounded>
+                          <lower_unbounded>false</lower_unbounded>
+                          <upper>1</upper>
+                          <lower>1</lower>
+                        </occurrences>
+                        <node_id />
+                      </children>
+                    </attributes>
+                  </children>
+                  <cardinality>
+                    <is_ordered>false</is_ordered>
+                    <is_unique>false</is_unique>
+                    <interval>
+                      <upper_included>false</upper_included>
+                      <lower_included>true</lower_included>
+                      <upper_unbounded>true</upper_unbounded>
+                      <lower_unbounded>false</lower_unbounded>
+                      <lower>0</lower>
+                    </interval>
+                  </cardinality>
+                </attributes>
+              </children>
+            </attributes>
+            <attributes xsi:type="C_SINGLE_ATTRIBUTE">
+              <existence>
+                <lower_unbounded>false</lower_unbounded>
+                <upper_unbounded>false</upper_unbounded>
+                <lower>1</lower>
+                <upper>1</upper>
+              </existence>
+              <rm_attribute_name>state</rm_attribute_name>
+              <children xsi:type="C_COMPLEX_OBJECT">
+                <rm_type_name>ITEM_TREE</rm_type_name>
+                <occurrences>
+                  <upper_included>true</upper_included>
+                  <lower_included>true</lower_included>
+                  <upper_unbounded>false</upper_unbounded>
+                  <lower_unbounded>false</lower_unbounded>
+                  <upper>1</upper>
+                  <lower>1</lower>
+                </occurrences>
+                <node_id>at0007</node_id>
+                <attributes xsi:type="C_MULTIPLE_ATTRIBUTE">
+                  <existence>
+                    <lower_unbounded>false</lower_unbounded>
+                    <upper_unbounded>false</upper_unbounded>
+                    <lower>1</lower>
+                    <upper>1</upper>
+                  </existence>
+                  <rm_attribute_name>items</rm_attribute_name>
+                  <children xsi:type="C_COMPLEX_OBJECT">
+                    <rm_type_name>ELEMENT</rm_type_name>
+                    <occurrences>
+                      <upper_included>true</upper_included>
+                      <lower_included>true</lower_included>
+                      <upper_unbounded>false</upper_unbounded>
+                      <lower_unbounded>false</lower_unbounded>
+                      <upper>1</upper>
+                      <lower>0</lower>
+                    </occurrences>
+                    <node_id>at0008</node_id>
+                    <attributes xsi:type="C_SINGLE_ATTRIBUTE">
+                      <existence>
+                        <lower_unbounded>false</lower_unbounded>
+                        <upper_unbounded>false</upper_unbounded>
+                        <lower>1</lower>
+                        <upper>1</upper>
+                      </existence>
+                      <rm_attribute_name>value</rm_attribute_name>
+                      <children xsi:type="C_COMPLEX_OBJECT">
+                        <rm_type_name>DV_CODED_TEXT</rm_type_name>
+                        <occurrences>
+                          <upper_included>true</upper_included>
+                          <lower_included>true</lower_included>
+                          <upper_unbounded>false</upper_unbounded>
+                          <lower_unbounded>false</lower_unbounded>
+                          <upper>1</upper>
+                          <lower>1</lower>
+                        </occurrences>
+                        <node_id />
+                        <attributes xsi:type="C_SINGLE_ATTRIBUTE">
+                          <existence>
+                            <lower_unbounded>false</lower_unbounded>
+                            <upper_unbounded>false</upper_unbounded>
+                            <lower>1</lower>
+                            <upper>1</upper>
+                          </existence>
+                          <rm_attribute_name>defining_code</rm_attribute_name>
+                          <children xsi:type="C_CODE_PHRASE">
+                            <rm_type_name>CODE_PHRASE</rm_type_name>
+                            <occurrences>
+                              <upper_included>true</upper_included>
+                              <lower_included>true</lower_included>
+                              <upper_unbounded>false</upper_unbounded>
+                              <lower_unbounded>false</lower_unbounded>
+                              <upper>1</upper>
+                              <lower>1</lower>
+                            </occurrences>
+                            <node_id />
+                            <terminology_id>
+                              <value>local</value>
+                            </terminology_id>
+                            <code_list>at1000</code_list>
+                            <code_list>at1001</code_list>
+                            <code_list>at1002</code_list>
+                            <code_list>at1003</code_list>
+                            <code_list>at1014</code_list>
+                          </children>
+                        </attributes>
+                      </children>
+                    </attributes>
+                  </children>
+                  <children xsi:type="C_COMPLEX_OBJECT">
+                    <rm_type_name>ELEMENT</rm_type_name>
+                    <occurrences>
+                      <upper_included>true</upper_included>
+                      <lower_included>true</lower_included>
+                      <upper_unbounded>false</upper_unbounded>
+                      <lower_unbounded>false</lower_unbounded>
+                      <upper>1</upper>
+                      <lower>0</lower>
+                    </occurrences>
+                    <node_id>at1052</node_id>
+                    <attributes xsi:type="C_SINGLE_ATTRIBUTE">
+                      <existence>
+                        <lower_unbounded>false</lower_unbounded>
+                        <upper_unbounded>false</upper_unbounded>
+                        <lower>1</lower>
+                        <upper>1</upper>
+                      </existence>
+                      <rm_attribute_name>value</rm_attribute_name>
+                      <children xsi:type="C_COMPLEX_OBJECT">
+                        <any_allowed>true</any_allowed>
+                        <rm_type_name>DV_TEXT</rm_type_name>
+                        <occurrences>
+                          <upper_included>true</upper_included>
+                          <lower_included>true</lower_included>
+                          <upper_unbounded>false</upper_unbounded>
+                          <lower_unbounded>false</lower_unbounded>
+                          <upper>1</upper>
+                          <lower>1</lower>
+                        </occurrences>
+                        <node_id />
+                      </children>
+                    </attributes>
+                  </children>
+                  <children xsi:type="ARCHETYPE_SLOT">
+                    <rm_type_name>CLUSTER</rm_type_name>
+                    <occurrences>
+                      <upper_included>true</upper_included>
+                      <lower_included>true</lower_included>
+                      <upper_unbounded>false</upper_unbounded>
+                      <lower_unbounded>false</lower_unbounded>
+                      <upper>1</upper>
+                      <lower>0</lower>
+                    </occurrences>
+                    <node_id>at1030</node_id>
+                    <includes>
+                      <tag />
+                      <string_expression />
+                      <expression xsi:type="EXPR_BINARY_OPERATOR">
+                        <type>BOOLEAN</type>
+                        <operator>2007</operator>
+                        <precedence_overridden>false</precedence_overridden>
+                        <left_operand xsi:type="EXPR_LEAF">
+                          <type>STRING</type>
+                          <item xsi:type="xsd:string">archetype_id/value</item>
+                          <reference_type>CONSTANT</reference_type>
+                        </left_operand>
+                        <right_operand xsi:type="EXPR_LEAF">
+                          <type>String</type>
+                          <item xsi:type="C_STRING">
+                            <pattern>openEHR-EHR-CLUSTER\.level_of_exertion(-[a-zA-Z0-9_]+)*\.v1</pattern>
+                          </item>
+                          <reference_type>CONSTANT</reference_type>
+                        </right_operand>
+                      </expression>
+                    </includes>
+                  </children>
+                  <children xsi:type="C_COMPLEX_OBJECT">
+                    <rm_type_name>ELEMENT</rm_type_name>
+                    <occurrences>
+                      <upper_included>true</upper_included>
+                      <lower_included>true</lower_included>
+                      <upper_unbounded>false</upper_unbounded>
+                      <lower_unbounded>false</lower_unbounded>
+                      <upper>1</upper>
+                      <lower>0</lower>
+                    </occurrences>
+                    <node_id>at1043</node_id>
+                    <attributes xsi:type="C_SINGLE_ATTRIBUTE">
+                      <existence>
+                        <lower_unbounded>false</lower_unbounded>
+                        <upper_unbounded>false</upper_unbounded>
+                        <lower>1</lower>
+                        <upper>1</upper>
+                      </existence>
+                      <rm_attribute_name>value</rm_attribute_name>
+                      <children xsi:type="C_COMPLEX_OBJECT">
+                        <rm_type_name>DV_CODED_TEXT</rm_type_name>
+                        <occurrences>
+                          <upper_included>true</upper_included>
+                          <lower_included>true</lower_included>
+                          <upper_unbounded>false</upper_unbounded>
+                          <lower_unbounded>false</lower_unbounded>
+                          <upper>1</upper>
+                          <lower>1</lower>
+                        </occurrences>
+                        <node_id />
+                        <attributes xsi:type="C_SINGLE_ATTRIBUTE">
+                          <existence>
+                            <lower_unbounded>false</lower_unbounded>
+                            <upper_unbounded>false</upper_unbounded>
+                            <lower>1</lower>
+                            <upper>1</upper>
+                          </existence>
+                          <rm_attribute_name>defining_code</rm_attribute_name>
+                          <children xsi:type="C_CODE_PHRASE">
+                            <rm_type_name>CODE_PHRASE</rm_type_name>
+                            <occurrences>
+                              <upper_included>true</upper_included>
+                              <lower_included>true</lower_included>
+                              <upper_unbounded>false</upper_unbounded>
+                              <lower_unbounded>false</lower_unbounded>
+                              <upper>1</upper>
+                              <lower>1</lower>
+                            </occurrences>
+                            <node_id />
+                            <terminology_id>
+                              <value>local</value>
+                            </terminology_id>
+                            <code_list>at1044</code_list>
+                            <code_list>at1045</code_list>
+                          </children>
+                        </attributes>
+                      </children>
+                    </attributes>
+                  </children>
+                  <children xsi:type="C_COMPLEX_OBJECT">
+                    <rm_type_name>ELEMENT</rm_type_name>
+                    <occurrences>
+                      <upper_included>true</upper_included>
+                      <lower_included>true</lower_included>
+                      <upper_unbounded>false</upper_unbounded>
+                      <lower_unbounded>false</lower_unbounded>
+                      <upper>1</upper>
+                      <lower>0</lower>
+                    </occurrences>
+                    <node_id>at1005</node_id>
+                    <attributes xsi:type="C_SINGLE_ATTRIBUTE">
+                      <existence>
+                        <lower_unbounded>false</lower_unbounded>
+                        <upper_unbounded>false</upper_unbounded>
+                        <lower>1</lower>
+                        <upper>1</upper>
+                      </existence>
+                      <rm_attribute_name>value</rm_attribute_name>
+                      <children xsi:type="C_DV_QUANTITY">
+                        <rm_type_name>DV_QUANTITY</rm_type_name>
+                        <occurrences>
+                          <upper_included>true</upper_included>
+                          <lower_included>true</lower_included>
+                          <upper_unbounded>false</upper_unbounded>
+                          <lower_unbounded>false</lower_unbounded>
+                          <upper>1</upper>
+                          <lower>1</lower>
+                        </occurrences>
+                        <node_id />
+                        <property>
+                          <code_string>497</code_string>
+                          <terminology_id>
+                            <value>openehr</value>
+                          </terminology_id>
+                        </property>
+                        <list>
+                          <magnitude>
+                            <upper_included>true</upper_included>
+                            <lower_included>true</lower_included>
+                            <upper_unbounded>false</upper_unbounded>
+                            <lower_unbounded>false</lower_unbounded>
+                            <upper>90.0</upper>
+                            <lower>-90.0</lower>
+                          </magnitude>
+                          <units>°</units>
+                        </list>
+                      </children>
+                    </attributes>
+                  </children>
+                  <cardinality>
+                    <is_ordered>false</is_ordered>
+                    <is_unique>false</is_unique>
+                    <interval>
+                      <upper_included>false</upper_included>
+                      <lower_included>true</lower_included>
+                      <upper_unbounded>true</upper_unbounded>
+                      <lower_unbounded>false</lower_unbounded>
+                      <lower>0</lower>
+                    </interval>
+                  </cardinality>
+                </attributes>
+              </children>
+            </attributes>
+          </children>
+          <children xsi:type="C_COMPLEX_OBJECT">
+            <rm_type_name>INTERVAL_EVENT</rm_type_name>
+            <occurrences>
+              <upper_included>true</upper_included>
+              <lower_included>true</lower_included>
+              <upper_unbounded>false</upper_unbounded>
+              <lower_unbounded>false</lower_unbounded>
+              <upper>1</upper>
+              <lower>0</lower>
+            </occurrences>
+            <node_id>at1042</node_id>
+            <attributes xsi:type="C_SINGLE_ATTRIBUTE">
+              <existence>
+                <lower_unbounded>false</lower_unbounded>
+                <upper_unbounded>false</upper_unbounded>
+                <lower>1</lower>
+                <upper>1</upper>
+              </existence>
+              <rm_attribute_name>math_function</rm_attribute_name>
+              <children xsi:type="C_COMPLEX_OBJECT">
+                <rm_type_name>DV_CODED_TEXT</rm_type_name>
+                <occurrences>
+                  <upper_included>true</upper_included>
+                  <lower_included>true</lower_included>
+                  <upper_unbounded>false</upper_unbounded>
+                  <lower_unbounded>false</lower_unbounded>
+                  <upper>1</upper>
+                  <lower>1</lower>
+                </occurrences>
+                <node_id />
+                <attributes xsi:type="C_SINGLE_ATTRIBUTE">
+                  <existence>
+                    <lower_unbounded>false</lower_unbounded>
+                    <upper_unbounded>false</upper_unbounded>
+                    <lower>1</lower>
+                    <upper>1</upper>
+                  </existence>
+                  <rm_attribute_name>defining_code</rm_attribute_name>
+                  <children xsi:type="C_CODE_PHRASE">
+                    <rm_type_name>CODE_PHRASE</rm_type_name>
+                    <occurrences>
+                      <upper_included>true</upper_included>
+                      <lower_included>true</lower_included>
+                      <upper_unbounded>false</upper_unbounded>
+                      <lower_unbounded>false</lower_unbounded>
+                      <upper>1</upper>
+                      <lower>1</lower>
+                    </occurrences>
+                    <node_id />
+                    <terminology_id>
+                      <value>openehr</value>
+                    </terminology_id>
+                    <code_list>146</code_list>
+                  </children>
+                </attributes>
+              </children>
+            </attributes>
+            <attributes xsi:type="C_SINGLE_ATTRIBUTE">
+              <existence>
+                <lower_unbounded>false</lower_unbounded>
+                <upper_unbounded>false</upper_unbounded>
+                <lower>1</lower>
+                <upper>1</upper>
+              </existence>
+              <rm_attribute_name>width</rm_attribute_name>
+              <children xsi:type="C_COMPLEX_OBJECT">
+                <rm_type_name>DV_DURATION</rm_type_name>
+                <occurrences>
+                  <upper_included>true</upper_included>
+                  <lower_included>true</lower_included>
+                  <upper_unbounded>false</upper_unbounded>
+                  <lower_unbounded>false</lower_unbounded>
+                  <upper>1</upper>
+                  <lower>1</lower>
+                </occurrences>
+                <node_id />
+                <attributes xsi:type="C_SINGLE_ATTRIBUTE">
+                  <existence>
+                    <lower_unbounded>false</lower_unbounded>
+                    <upper_unbounded>false</upper_unbounded>
+                    <lower>1</lower>
+                    <upper>1</upper>
+                  </existence>
+                  <rm_attribute_name>value</rm_attribute_name>
+                  <children xsi:type="C_PRIMITIVE_OBJECT">
+                    <rm_type_name>DV_DURATION</rm_type_name>
+                    <occurrences>
+                      <upper_included>true</upper_included>
+                      <lower_included>true</lower_included>
+                      <upper_unbounded>false</upper_unbounded>
+                      <lower_unbounded>false</lower_unbounded>
+                      <upper>1</upper>
+                      <lower>1</lower>
+                    </occurrences>
+                    <node_id />
+                    <item xsi:type="C_DURATION">
+                      <range>
+                        <upper_included>true</upper_included>
+                        <lower_included>true</lower_included>
+                        <upper_unbounded>false</upper_unbounded>
+                        <lower_unbounded>false</lower_unbounded>
+                        <upper>PT24H</upper>
+                        <lower>PT24H</lower>
+                      </range>
+                    </item>
+                  </children>
+                </attributes>
+              </children>
+            </attributes>
+            <attributes xsi:type="C_SINGLE_ATTRIBUTE">
+              <existence>
+                <lower_unbounded>false</lower_unbounded>
+                <upper_unbounded>false</upper_unbounded>
+                <lower>1</lower>
+                <upper>1</upper>
+              </existence>
+              <rm_attribute_name>data</rm_attribute_name>
+              <children xsi:type="ARCHETYPE_INTERNAL_REF">
+                <rm_type_name>ITEM_TREE</rm_type_name>
+                <occurrences>
+                  <upper_included>true</upper_included>
+                  <lower_included>true</lower_included>
+                  <upper_unbounded>false</upper_unbounded>
+                  <lower_unbounded>false</lower_unbounded>
+                  <upper>1</upper>
+                  <lower>1</lower>
+                </occurrences>
+                <node_id />
+                <target_path>/data[at0001]/events[at0006]/data[at0003]</target_path>
+              </children>
+            </attributes>
+            <attributes xsi:type="C_SINGLE_ATTRIBUTE">
+              <existence>
+                <lower_unbounded>false</lower_unbounded>
+                <upper_unbounded>false</upper_unbounded>
+                <lower>1</lower>
+                <upper>1</upper>
+              </existence>
+              <rm_attribute_name>state</rm_attribute_name>
+              <children xsi:type="ARCHETYPE_INTERNAL_REF">
+                <rm_type_name>ITEM_TREE</rm_type_name>
+                <occurrences>
+                  <upper_included>true</upper_included>
+                  <lower_included>true</lower_included>
+                  <upper_unbounded>false</upper_unbounded>
+                  <lower_unbounded>false</lower_unbounded>
+                  <upper>1</upper>
+                  <lower>1</lower>
+                </occurrences>
+                <node_id />
+                <target_path>/data[at0001]/events[at0006]/state[at0007]</target_path>
+              </children>
+            </attributes>
+          </children>
+          <cardinality>
+            <is_ordered>false</is_ordered>
+            <is_unique>false</is_unique>
+            <interval>
+              <upper_included>false</upper_included>
+              <lower_included>true</lower_included>
+              <upper_unbounded>true</upper_unbounded>
+              <lower_unbounded>false</lower_unbounded>
+              <lower>1</lower>
+            </interval>
+          </cardinality>
+        </attributes>
+      </children>
+    </attributes>
+    <attributes xsi:type="C_SINGLE_ATTRIBUTE">
+      <existence>
+        <lower_unbounded>false</lower_unbounded>
+        <upper_unbounded>false</upper_unbounded>
+        <lower>1</lower>
+        <upper>1</upper>
+      </existence>
+      <rm_attribute_name>protocol</rm_attribute_name>
+      <children xsi:type="C_COMPLEX_OBJECT">
+        <rm_type_name>ITEM_TREE</rm_type_name>
+        <occurrences>
+          <upper_included>true</upper_included>
+          <lower_included>true</lower_included>
+          <upper_unbounded>false</upper_unbounded>
+          <lower_unbounded>false</lower_unbounded>
+          <upper>1</upper>
+          <lower>1</lower>
+        </occurrences>
+        <node_id>at0011</node_id>
+        <attributes xsi:type="C_MULTIPLE_ATTRIBUTE">
+          <existence>
+            <lower_unbounded>false</lower_unbounded>
+            <upper_unbounded>false</upper_unbounded>
+            <lower>1</lower>
+            <upper>1</upper>
+          </existence>
+          <rm_attribute_name>items</rm_attribute_name>
+          <children xsi:type="C_COMPLEX_OBJECT">
+            <rm_type_name>ELEMENT</rm_type_name>
+            <occurrences>
+              <upper_included>true</upper_included>
+              <lower_included>true</lower_included>
+              <upper_unbounded>false</upper_unbounded>
+              <lower_unbounded>false</lower_unbounded>
+              <upper>1</upper>
+              <lower>0</lower>
+            </occurrences>
+            <node_id>at0013</node_id>
+            <attributes xsi:type="C_SINGLE_ATTRIBUTE">
+              <existence>
+                <lower_unbounded>false</lower_unbounded>
+                <upper_unbounded>false</upper_unbounded>
+                <lower>1</lower>
+                <upper>1</upper>
+              </existence>
+              <rm_attribute_name>value</rm_attribute_name>
+              <children xsi:type="C_COMPLEX_OBJECT">
+                <rm_type_name>DV_CODED_TEXT</rm_type_name>
+                <occurrences>
+                  <upper_included>true</upper_included>
+                  <lower_included>true</lower_included>
+                  <upper_unbounded>false</upper_unbounded>
+                  <lower_unbounded>false</lower_unbounded>
+                  <upper>1</upper>
+                  <lower>1</lower>
+                </occurrences>
+                <node_id />
+                <attributes xsi:type="C_SINGLE_ATTRIBUTE">
+                  <existence>
+                    <lower_unbounded>false</lower_unbounded>
+                    <upper_unbounded>false</upper_unbounded>
+                    <lower>1</lower>
+                    <upper>1</upper>
+                  </existence>
+                  <rm_attribute_name>defining_code</rm_attribute_name>
+                  <children xsi:type="C_CODE_PHRASE">
+                    <rm_type_name>CODE_PHRASE</rm_type_name>
+                    <occurrences>
+                      <upper_included>true</upper_included>
+                      <lower_included>true</lower_included>
+                      <upper_unbounded>false</upper_unbounded>
+                      <lower_unbounded>false</lower_unbounded>
+                      <upper>1</upper>
+                      <lower>1</lower>
+                    </occurrences>
+                    <node_id />
+                    <terminology_id>
+                      <value>local</value>
+                    </terminology_id>
+                    <code_list>at0015</code_list>
+                    <code_list>at0016</code_list>
+                    <code_list>at0017</code_list>
+                    <code_list>at1008</code_list>
+                    <code_list>at1009</code_list>
+                    <code_list>at1018</code_list>
+                    <code_list>at1019</code_list>
+                  </children>
+                </attributes>
+              </children>
+            </attributes>
+          </children>
+          <children xsi:type="C_COMPLEX_OBJECT">
+            <rm_type_name>CLUSTER</rm_type_name>
+            <occurrences>
+              <upper_included>true</upper_included>
+              <lower_included>true</lower_included>
+              <upper_unbounded>false</upper_unbounded>
+              <lower_unbounded>false</lower_unbounded>
+              <upper>1</upper>
+              <lower>0</lower>
+            </occurrences>
+            <node_id>at1033</node_id>
+            <attributes xsi:type="C_MULTIPLE_ATTRIBUTE">
+              <existence>
+                <lower_unbounded>false</lower_unbounded>
+                <upper_unbounded>false</upper_unbounded>
+                <lower>1</lower>
+                <upper>1</upper>
+              </existence>
+              <rm_attribute_name>items</rm_attribute_name>
+              <children xsi:type="C_COMPLEX_OBJECT">
+                <rm_type_name>ELEMENT</rm_type_name>
+                <occurrences>
+                  <upper_included>true</upper_included>
+                  <lower_included>true</lower_included>
+                  <upper_unbounded>false</upper_unbounded>
+                  <lower_unbounded>false</lower_unbounded>
+                  <upper>1</upper>
+                  <lower>0</lower>
+                </occurrences>
+                <node_id>at0014</node_id>
+                <attributes xsi:type="C_SINGLE_ATTRIBUTE">
+                  <existence>
+                    <lower_unbounded>false</lower_unbounded>
+                    <upper_unbounded>false</upper_unbounded>
+                    <lower>1</lower>
+                    <upper>1</upper>
+                  </existence>
+                  <rm_attribute_name>value</rm_attribute_name>
+                  <children xsi:type="C_COMPLEX_OBJECT">
+                    <rm_type_name>DV_CODED_TEXT</rm_type_name>
+                    <occurrences>
+                      <upper_included>true</upper_included>
+                      <lower_included>true</lower_included>
+                      <upper_unbounded>false</upper_unbounded>
+                      <lower_unbounded>false</lower_unbounded>
+                      <upper>1</upper>
+                      <lower>1</lower>
+                    </occurrences>
+                    <node_id />
+                    <attributes xsi:type="C_SINGLE_ATTRIBUTE">
+                      <existence>
+                        <lower_unbounded>false</lower_unbounded>
+                        <upper_unbounded>false</upper_unbounded>
+                        <lower>1</lower>
+                        <upper>1</upper>
+                      </existence>
+                      <rm_attribute_name>defining_code</rm_attribute_name>
+                      <children xsi:type="C_CODE_PHRASE">
+                        <rm_type_name>CODE_PHRASE</rm_type_name>
+                        <occurrences>
+                          <upper_included>true</upper_included>
+                          <lower_included>true</lower_included>
+                          <upper_unbounded>false</upper_unbounded>
+                          <lower_unbounded>false</lower_unbounded>
+                          <upper>1</upper>
+                          <lower>1</lower>
+                        </occurrences>
+                        <node_id />
+                        <terminology_id>
+                          <value>local</value>
+                        </terminology_id>
+                        <code_list>at0025</code_list>
+                        <code_list>at0026</code_list>
+                        <code_list>at0027</code_list>
+                        <code_list>at0028</code_list>
+                        <code_list>at1020</code_list>
+                        <code_list>at1021</code_list>
+                        <code_list>at1026</code_list>
+                        <code_list>at1031</code_list>
+                        <code_list>at1032</code_list>
+                        <code_list>at1051</code_list>
+                        <code_list>at1053</code_list>
+                      </children>
+                    </attributes>
+                  </children>
+                </attributes>
+              </children>
+              <children xsi:type="C_COMPLEX_OBJECT">
+                <rm_type_name>ELEMENT</rm_type_name>
+                <occurrences>
+                  <upper_included>true</upper_included>
+                  <lower_included>true</lower_included>
+                  <upper_unbounded>false</upper_unbounded>
+                  <lower_unbounded>false</lower_unbounded>
+                  <upper>1</upper>
+                  <lower>0</lower>
+                </occurrences>
+                <node_id>at1034</node_id>
+                <attributes xsi:type="C_SINGLE_ATTRIBUTE">
+                  <existence>
+                    <lower_unbounded>false</lower_unbounded>
+                    <upper_unbounded>false</upper_unbounded>
+                    <lower>1</lower>
+                    <upper>1</upper>
+                  </existence>
+                  <rm_attribute_name>value</rm_attribute_name>
+                  <children xsi:type="C_COMPLEX_OBJECT">
+                    <any_allowed>true</any_allowed>
+                    <rm_type_name>DV_TEXT</rm_type_name>
+                    <occurrences>
+                      <upper_included>true</upper_included>
+                      <lower_included>true</lower_included>
+                      <upper_unbounded>false</upper_unbounded>
+                      <lower_unbounded>false</lower_unbounded>
+                      <upper>1</upper>
+                      <lower>1</lower>
+                    </occurrences>
+                    <node_id />
+                  </children>
+                </attributes>
+              </children>
+              <cardinality>
+                <is_ordered>false</is_ordered>
+                <is_unique>false</is_unique>
+                <interval>
+                  <upper_included>false</upper_included>
+                  <lower_included>true</lower_included>
+                  <upper_unbounded>true</upper_unbounded>
+                  <lower_unbounded>false</lower_unbounded>
+                  <lower>1</lower>
+                </interval>
+              </cardinality>
+            </attributes>
+          </children>
+          <children xsi:type="C_COMPLEX_OBJECT">
+            <rm_type_name>ELEMENT</rm_type_name>
+            <occurrences>
+              <upper_included>true</upper_included>
+              <lower_included>true</lower_included>
+              <upper_unbounded>false</upper_unbounded>
+              <lower_unbounded>false</lower_unbounded>
+              <upper>1</upper>
+              <lower>0</lower>
+            </occurrences>
+            <node_id>at1035</node_id>
+            <attributes xsi:type="C_SINGLE_ATTRIBUTE">
+              <existence>
+                <lower_unbounded>false</lower_unbounded>
+                <upper_unbounded>false</upper_unbounded>
+                <lower>1</lower>
+                <upper>1</upper>
+              </existence>
+              <rm_attribute_name>value</rm_attribute_name>
+              <children xsi:type="C_COMPLEX_OBJECT">
+                <rm_type_name>DV_CODED_TEXT</rm_type_name>
+                <occurrences>
+                  <upper_included>true</upper_included>
+                  <lower_included>true</lower_included>
+                  <upper_unbounded>false</upper_unbounded>
+                  <lower_unbounded>false</lower_unbounded>
+                  <upper>1</upper>
+                  <lower>1</lower>
+                </occurrences>
+                <node_id />
+                <attributes xsi:type="C_SINGLE_ATTRIBUTE">
+                  <existence>
+                    <lower_unbounded>false</lower_unbounded>
+                    <upper_unbounded>false</upper_unbounded>
+                    <lower>1</lower>
+                    <upper>1</upper>
+                  </existence>
+                  <rm_attribute_name>defining_code</rm_attribute_name>
+                  <children xsi:type="C_CODE_PHRASE">
+                    <rm_type_name>CODE_PHRASE</rm_type_name>
+                    <occurrences>
+                      <upper_included>true</upper_included>
+                      <lower_included>true</lower_included>
+                      <upper_unbounded>false</upper_unbounded>
+                      <lower_unbounded>false</lower_unbounded>
+                      <upper>1</upper>
+                      <lower>1</lower>
+                    </occurrences>
+                    <node_id />
+                    <terminology_id>
+                      <value>local</value>
+                    </terminology_id>
+                    <code_list>at1036</code_list>
+                    <code_list>at1037</code_list>
+                    <code_list>at1039</code_list>
+                    <code_list>at1040</code_list>
+                  </children>
+                </attributes>
+              </children>
+            </attributes>
+          </children>
+          <children xsi:type="C_COMPLEX_OBJECT">
+            <rm_type_name>ELEMENT</rm_type_name>
+            <occurrences>
+              <upper_included>true</upper_included>
+              <lower_included>true</lower_included>
+              <upper_unbounded>false</upper_unbounded>
+              <lower_unbounded>false</lower_unbounded>
+              <upper>1</upper>
+              <lower>0</lower>
+            </occurrences>
+            <node_id>at1038</node_id>
+            <attributes xsi:type="C_SINGLE_ATTRIBUTE">
+              <existence>
+                <lower_unbounded>false</lower_unbounded>
+                <upper_unbounded>false</upper_unbounded>
+                <lower>1</lower>
+                <upper>1</upper>
+              </existence>
+              <rm_attribute_name>value</rm_attribute_name>
+              <children xsi:type="C_COMPLEX_OBJECT">
+                <any_allowed>true</any_allowed>
+                <rm_type_name>DV_TEXT</rm_type_name>
+                <occurrences>
+                  <upper_included>true</upper_included>
+                  <lower_included>true</lower_included>
+                  <upper_unbounded>false</upper_unbounded>
+                  <lower_unbounded>false</lower_unbounded>
+                  <upper>1</upper>
+                  <lower>1</lower>
+                </occurrences>
+                <node_id />
+              </children>
+            </attributes>
+          </children>
+          <children xsi:type="C_COMPLEX_OBJECT">
+            <rm_type_name>ELEMENT</rm_type_name>
+            <occurrences>
+              <upper_included>true</upper_included>
+              <lower_included>true</lower_included>
+              <upper_unbounded>false</upper_unbounded>
+              <lower_unbounded>false</lower_unbounded>
+              <upper>1</upper>
+              <lower>0</lower>
+            </occurrences>
+            <node_id>at1010</node_id>
+            <attributes xsi:type="C_SINGLE_ATTRIBUTE">
+              <existence>
+                <lower_unbounded>false</lower_unbounded>
+                <upper_unbounded>false</upper_unbounded>
+                <lower>1</lower>
+                <upper>1</upper>
+              </existence>
+              <rm_attribute_name>value</rm_attribute_name>
+              <children xsi:type="C_COMPLEX_OBJECT">
+                <rm_type_name>DV_CODED_TEXT</rm_type_name>
+                <occurrences>
+                  <upper_included>true</upper_included>
+                  <lower_included>true</lower_included>
+                  <upper_unbounded>false</upper_unbounded>
+                  <lower_unbounded>false</lower_unbounded>
+                  <upper>1</upper>
+                  <lower>1</lower>
+                </occurrences>
+                <node_id />
+                <attributes xsi:type="C_SINGLE_ATTRIBUTE">
+                  <existence>
+                    <lower_unbounded>false</lower_unbounded>
+                    <upper_unbounded>false</upper_unbounded>
+                    <lower>1</lower>
+                    <upper>1</upper>
+                  </existence>
+                  <rm_attribute_name>defining_code</rm_attribute_name>
+                  <children xsi:type="C_CODE_PHRASE">
+                    <rm_type_name>CODE_PHRASE</rm_type_name>
+                    <occurrences>
+                      <upper_included>true</upper_included>
+                      <lower_included>true</lower_included>
+                      <upper_unbounded>false</upper_unbounded>
+                      <lower_unbounded>false</lower_unbounded>
+                      <upper>1</upper>
+                      <lower>1</lower>
+                    </occurrences>
+                    <node_id />
+                    <terminology_id>
+                      <value>local</value>
+                    </terminology_id>
+                    <code_list>at1011</code_list>
+                    <code_list>at1012</code_list>
+                  </children>
+                </attributes>
+              </children>
+            </attributes>
+          </children>
+          <children xsi:type="ARCHETYPE_SLOT">
+            <rm_type_name>CLUSTER</rm_type_name>
+            <occurrences>
+              <upper_included>true</upper_included>
+              <lower_included>true</lower_included>
+              <upper_unbounded>false</upper_unbounded>
+              <lower_unbounded>false</lower_unbounded>
+              <upper>1</upper>
+              <lower>0</lower>
+            </occurrences>
+            <node_id>at1025</node_id>
+            <includes>
+              <tag />
+              <string_expression />
+              <expression xsi:type="EXPR_BINARY_OPERATOR">
+                <type>BOOLEAN</type>
+                <operator>2007</operator>
+                <precedence_overridden>false</precedence_overridden>
+                <left_operand xsi:type="EXPR_LEAF">
+                  <type>STRING</type>
+                  <item xsi:type="xsd:string">archetype_id/value</item>
+                  <reference_type>CONSTANT</reference_type>
+                </left_operand>
+                <right_operand xsi:type="EXPR_LEAF">
+                  <type>String</type>
+                  <item xsi:type="C_STRING">
+                    <pattern>openEHR-EHR-CLUSTER\.device(-[a-zA-Z0-9_]+)*\.v1</pattern>
+                  </item>
+                  <reference_type>CONSTANT</reference_type>
+                </right_operand>
+              </expression>
+            </includes>
+          </children>
+          <cardinality>
+            <is_ordered>false</is_ordered>
+            <is_unique>false</is_unique>
+            <interval>
+              <upper_included>false</upper_included>
+              <lower_included>true</lower_included>
+              <upper_unbounded>true</upper_unbounded>
+              <lower_unbounded>false</lower_unbounded>
+              <lower>0</lower>
+            </interval>
+          </cardinality>
+        </attributes>
+      </children>
+    </attributes>
+  </definition>
+  <ontology>
+    <term_definitions language="en">
+      <items code="at0000">
+        <items id="text">Blood Pressure</items>
+        <items id="description">The local measurement of arterial blood pressure which is a surrogate for arterial. pressure in the systemic circulation.  Most commonly, use of the term 'blood pressure' refers to measurement of brachial artery pressure in the upper arm.</items>
+      </items>
+      <items code="at0001">
+        <items id="text">history</items>
+        <items id="description">history Structural node</items>
+      </items>
+      <items code="at0003">
+        <items id="text">blood pressure</items>
+        <items id="description">@ internal @</items>
+      </items>
+      <items code="at0004">
+        <items id="text">Systolic</items>
+        <items id="description">Peak systemic arterial blood pressure  - measured in systolic or contraction phase of the heart cycle.</items>
+      </items>
+      <items code="at0005">
+        <items id="text">Diastolic</items>
+        <items id="description">Minimum systemic arterial blood pressure - measured in the diastolic or relaxation phase of the heart cycle.</items>
+      </items>
+      <items code="at0006">
+        <items id="text">any event</items>
+        <items id="description">Default event</items>
+      </items>
+      <items code="at0007">
+        <items id="text">state structure</items>
+        <items id="description">@ internal @</items>
+      </items>
+      <items code="at0008">
+        <items id="text">Position</items>
+        <items id="description">The position of the subject at the time of measurement.</items>
+      </items>
+      <items code="at0011">
+        <items id="text">list structure</items>
+        <items id="description">list structure</items>
+      </items>
+      <items code="at0013">
+        <items id="text">Cuff size</items>
+        <items id="description">The size of the cuff used for blood pressure measurement.</items>
+        <items id="comment">Perloff D, Grim C, Flack J, Frohlich ED, Hill M, McDonald M, Morgenstern BZ. Human blood pressure determination by sphygmomanometry. Circulation 1993;88;2460-2470.</items>
+      </items>
+      <items code="at0014">
+        <items id="text">Location of measurement</items>
+        <items id="description">Common body sites where blood pressure is recorded.</items>
+      </items>
+      <items code="at0015">
+        <items id="text">Adult Thigh</items>
+        <items id="description">A cuff used for an adult thigh - bladder approx 20cm x 42cm.</items>
+      </items>
+      <items code="at0016">
+        <items id="text">Large Adult</items>
+        <items id="description">A cuff for adults with larger arms - bladder approx 16cm x 38cm.</items>
+      </items>
+      <items code="at0017">
+        <items id="text">Adult</items>
+        <items id="description">A cuff that is standard for an adult - bladder approx 13cm x 30cm.</items>
+      </items>
+      <items code="at0025">
+        <items id="text">Right arm</items>
+        <items id="description">The right arm of the person.</items>
+      </items>
+      <items code="at0026">
+        <items id="text">Left arm</items>
+        <items id="description">The left arm of the person.</items>
+      </items>
+      <items code="at0027">
+        <items id="text">Right thigh</items>
+        <items id="description">The right thigh of the person.</items>
+      </items>
+      <items code="at0028">
+        <items id="text">Left thigh</items>
+        <items id="description">The left thigh of the person.</items>
+      </items>
+      <items code="at0033">
+        <items id="text">Comment</items>
+        <items id="description">Comment on blood pressure measurement.</items>
+      </items>
+      <items code="at1000">
+        <items id="text">Standing</items>
+        <items id="description">Standing at the time of blood pressure measurement.</items>
+      </items>
+      <items code="at1001">
+        <items id="text">Sitting</items>
+        <items id="description">Sitting (for example on bed or chair) at the time of blood pressure measurement.</items>
+      </items>
+      <items code="at1002">
+        <items id="text">Reclining</items>
+        <items id="description">Reclining at the time of blood pressure measurement.</items>
+      </items>
+      <items code="at1003">
+        <items id="text">Lying</items>
+        <items id="description">Lying flat at the time of blood pressure measurement.</items>
+      </items>
+      <items code="at1005">
+        <items id="text">Tilt</items>
+        <items id="description">The craniocaudal tilt of the surface on which the person is lying at the time of measurement.</items>
+      </items>
+      <items code="at1006">
+        <items id="text">Mean Arterial Pressure</items>
+        <items id="description">The average arterial pressure that occurs over the entire course of the heart contraction and relaxation cycle.</items>
+      </items>
+      <items code="at1007">
+        <items id="text">Pulse Pressure</items>
+        <items id="description">The difference between the systolic and diastolic pressure.</items>
+      </items>
+      <items code="at1008">
+        <items id="text">Small Adult</items>
+        <items id="description">A cuff used for a small adult - bladder approx 10cm x 24cm.</items>
+      </items>
+      <items code="at1009">
+        <items id="text">Paediatric/Child</items>
+        <items id="description">A cuff that is appropriate for a child or adult with a thin arm - bladder approx 8cm x 21cm.</items>
+      </items>
+      <items code="at1010">
+        <items id="text">Diastolic endpoint</items>
+        <items id="description">Record which Korotkoff sound is used for determining diastolic pressure using auscultative method.</items>
+      </items>
+      <items code="at1011">
+        <items id="text">Phase IV</items>
+        <items id="description">The fourth Korotkoff sound is identified as an abrupt muffling of sounds.</items>
+      </items>
+      <items code="at1012">
+        <items id="text">Phase V</items>
+        <items id="description">The fifth Korotkoff sound is identified by absence of sounds as the cuff pressure drops below the diastolic blood pressure.</items>
+      </items>
+      <items code="at1014">
+        <items id="text">Lying with tilt to left</items>
+        <items id="description">Lying flat with some lateral tilt, usually angled towards the left side.   Commonly required in the last trimester of pregnancy to relieve aortocaval compression.</items>
+      </items>
+      <items code="at1018">
+        <items id="text">Infant</items>
+        <items id="description">A cuff used for infants - bladder approx 5cm x 15cm.</items>
+      </items>
+      <items code="at1019">
+        <items id="text">Neonatal</items>
+        <items id="description">A cuff used for a neonate, assuming cuff is the appropriate size for maturity and birthweight of the neonate.</items>
+      </items>
+      <items code="at1020">
+        <items id="text">Right wrist</items>
+        <items id="description">The right wrist of the subject.</items>
+      </items>
+      <items code="at1021">
+        <items id="text">Left wrist</items>
+        <items id="description">The left wrist of the subject.</items>
+      </items>
+      <items code="at1025">
+        <items id="text">Device</items>
+        <items id="description">Details about sphygmomanometer or other device used to measure the blood pressure.</items>
+      </items>
+      <items code="at1026">
+        <items id="text">Right ankle</items>
+        <items id="description">The right ankle of the subject.</items>
+      </items>
+      <items code="at1030">
+        <items id="text">Exertion</items>
+        <items id="description">Details about physical activity undertaken at the time of blood pressure.measurement.</items>
+      </items>
+      <items code="at1031">
+        <items id="text">Left ankle</items>
+        <items id="description">The left ankle of the subject.</items>
+      </items>
+      <items code="at1032">
+        <items id="text">Finger</items>
+        <items id="description">A finger of the subject.  Identification of the finger can be recorded in 'Specific Location' data element, if required.</items>
+      </items>
+      <items code="at1033">
+        <items id="text">Location</items>
+        <items id="description">Body location where blood pressure is measured.  Use 'Location of measurement' to select from common sites.  Use 'Specific location' to record more specific details or a site that is not in the common set or to refer to an external terminology.</items>
+      </items>
+      <items code="at1034">
+        <items id="text">Specific location</items>
+        <items id="description">Specific details about the body site where blood pressure is recorded.</items>
+      </items>
+      <items code="at1035">
+        <items id="text">Method</items>
+        <items id="description">Method of measurement of blood pressure.</items>
+      </items>
+      <items code="at1036">
+        <items id="text">Auscultation</items>
+        <items id="description">Method of measuring blood pressure externally, using a stethoscope and Korotkoff sounds.</items>
+      </items>
+      <items code="at1037">
+        <items id="text">Palpation</items>
+        <items id="description">Method of measuring blood pressure externally, using palpation (usually of the brachial or radial arteries).</items>
+      </items>
+      <items code="at1038">
+        <items id="text">Mean Arterial Pressure Formula</items>
+        <items id="description">Formula used to calculate the MAP (if recorded in data).</items>
+      </items>
+      <items code="at1039">
+        <items id="text">Machine</items>
+        <items id="description">Method of measuring blood pressure externally, using a blood pressure machine.</items>
+      </items>
+      <items code="at1040">
+        <items id="text">Invasive</items>
+        <items id="description">Method of measuring blood pressure internally ie involving penetration of the skin and measuring inside blood vessels.</items>
+      </items>
+      <items code="at1042">
+        <items id="text">24 hour average</items>
+        <items id="description">Estimate of the average blood pressure over a 24 hour period.</items>
+      </items>
+      <items code="at1043">
+        <items id="text">Sleep status</items>
+        <items id="description">Sleep status - supports interpretation of 24 hour ambulatory blood pressure records.</items>
+      </items>
+      <items code="at1044">
+        <items id="text">Alert &amp; awake</items>
+        <items id="description">Subject is fully conscious.</items>
+      </items>
+      <items code="at1045">
+        <items id="text">Sleeping</items>
+        <items id="description">Subject is in the natural state of bodily rest.</items>
+      </items>
+      <items code="at1051">
+        <items id="text">Toe</items>
+        <items id="description">A toe of the subject.   Identification of the toe can be recorded in 'Specific Location' data element, if required.</items>
+      </items>
+      <items code="at1052">
+        <items id="text">Confounding factors</items>
+        <items id="description">Comment on and record other incidental factors that may be contributing to the blood pressure measurement.  For example, level of anxiety or 'white coat syndrome'; pain or fever; changes in atmospheric pressure etc.</items>
+      </items>
+      <items code="at1053">
+        <items id="text">Intra-arterial</items>
+        <items id="description">Invasive measurement via transducer access line within an artery. Location of the transducer can be recorded in 'Specific Location' data element, if required.</items>
+      </items>
+    </term_definitions>
+    <term_definitions language="ja">
+      <items code="at0000">
+        <items id="text">血圧</items>
+        <items id="description">全身の循環での動脈圧の代用として，局所で測定される血圧。一般的には「血圧」とは上腕で上腕動脈を測定したものをさすことが多い。</items>
+      </items>
+      <items code="at0001">
+        <items id="text">*history(en)</items>
+        <items id="description">*history Structural node(en)</items>
+      </items>
+      <items code="at0003">
+        <items id="text">血圧</items>
+        <items id="description">*@ internal @(en)</items>
+      </items>
+      <items code="at0004">
+        <items id="text">収縮期</items>
+        <items id="description">1つ以上の脈の間で最高値を示す全身の動脈圧 - 心機図の収縮期で測定される</items>
+      </items>
+      <items code="at0005">
+        <items id="text">拡張期</items>
+        <items id="description">1つ以上の脈の間で最低値を示す全身の動脈圧 - 心機図の拡張期で測定される</items>
+      </items>
+      <items code="at0006">
+        <items id="text">血圧</items>
+        <items id="description">*Default event(en)</items>
+      </items>
+      <items code="at0007">
+        <items id="text">*state structure(en)</items>
+        <items id="description">*@ internal @(en)</items>
+      </items>
+      <items code="at0008">
+        <items id="text">体位</items>
+        <items id="description">計測のときの対象者の体位</items>
+      </items>
+      <items code="at0011">
+        <items id="text">*list structure(en)</items>
+        <items id="description">*list structure(en)</items>
+      </items>
+      <items code="at0013">
+        <items id="text">カフサイズ</items>
+        <items id="description">血圧測定のために使われるカフの大きさ.</items>
+        <items id="comment">Perloff D, Grim C, Flack J, Frohlich ED, Hill M, McDonald M, Morgenstern BZ. Human blood pressure determination by sphygmomanometry. Circulation 1993;88;2460-2470.</items>
+      </items>
+      <items code="at0014">
+        <items id="text">計測部位</items>
+        <items id="description">血圧が一般的に測定される身体の部位</items>
+      </items>
+      <items code="at0015">
+        <items id="text">成人大腿</items>
+        <items id="description">成人の大腿で血圧を測定するためのカフ。袋はおよそ 20cm x 42cm.</items>
+      </items>
+      <items code="at0016">
+        <items id="text">大柄な成人</items>
+        <items id="description">大柄な成人のためのカフ 袋はおよそ 16cm x 38cm.</items>
+      </items>
+      <items code="at0017">
+        <items id="text">成人</items>
+        <items id="description">一般的な成人のためのカフ - 袋はおよそ 13cm x 30cm.</items>
+      </items>
+      <items code="at0025">
+        <items id="text">右腕</items>
+        <items id="description">*The right arm of the person(en)</items>
+      </items>
+      <items code="at0026">
+        <items id="text">左腕</items>
+        <items id="description">*The left arm of the person(en)</items>
+      </items>
+      <items code="at0027">
+        <items id="text">右足</items>
+        <items id="description">*The right leg of the person(en)</items>
+      </items>
+      <items code="at0028">
+        <items id="text">左脚</items>
+        <items id="description">*The left leg of the person(en)</items>
+      </items>
+      <items code="at0033">
+        <items id="text">コメント</items>
+        <items id="description">血圧測定のコメント</items>
+      </items>
+      <items code="at1000">
+        <items id="text">立位</items>
+        <items id="description">*Standing at the time of blood pressure measurement(en)</items>
+      </items>
+      <items code="at1001">
+        <items id="text">座位</items>
+        <items id="description">*Sitting on bed or chair at the time of blood pressure measurement(en)</items>
+      </items>
+      <items code="at1002">
+        <items id="text">斜位</items>
+        <items id="description">*Person reclining at 45 degrees at the time of blood pressure measurement(en)</items>
+      </items>
+      <items code="at1003">
+        <items id="text">臥位</items>
+        <items id="description">臥位での測定血圧</items>
+      </items>
+      <items code="at1005">
+        <items id="text">ティルト</items>
+        <items id="description">*The craniocaudal tilt of the surface on which the person is lying at the time of measurement(en)</items>
+      </items>
+      <items code="at1006">
+        <items id="text">平均同脈圧</items>
+        <items id="description">縮拡張サイクルのすべての過程における動脈圧の平均値.</items>
+      </items>
+      <items code="at1007">
+        <items id="text">脈圧</items>
+        <items id="description">1回の収縮サイクルでの血圧の変動</items>
+      </items>
+      <items code="at1008">
+        <items id="text">小柄な成人</items>
+        <items id="description">小柄な成人のためのカフ - 袋はおよそ 10cm x 24cm.</items>
+      </items>
+      <items code="at1009">
+        <items id="text">幼児/省に</items>
+        <items id="description">小児あるいは痩せた成人のためのカフ - 袋はおよそ 8cm x 21cm.</items>
+      </items>
+      <items code="at1010">
+        <items id="text">拡張期終末</items>
+        <items id="description">拡張期圧を決めるためにどのコロトコフ音が使用されたかというを記録.</items>
+      </items>
+      <items code="at1011">
+        <items id="text">4期</items>
+        <items id="description">コロトコフの4音。急速に減弱する時期.</items>
+      </items>
+      <items code="at1012">
+        <items id="text">5期</items>
+        <items id="description">コロトコフの5音が聴取される時期。カフ圧が拡張期圧を下回り音が聴取されなくなる時期</items>
+      </items>
+      <items code="at1014">
+        <items id="text">左側臥位</items>
+        <items id="description">側臥位　通常は左側　通常は妊娠最終トリメスタで必要となる体位</items>
+      </items>
+      <items code="at1018">
+        <items id="text">幼児</items>
+        <items id="description">幼児のために使われるカフ - 袋はおよそ 5cm x 15cm.</items>
+      </items>
+      <items code="at1019">
+        <items id="text">新生児</items>
+        <items id="description">新生児用のカフ 想定されるカフは生下時体重と成熟度に応じて適切なものであること.</items>
+      </items>
+      <items code="at1020">
+        <items id="text">右手首</items>
+        <items id="description">対象の右手首</items>
+      </items>
+      <items code="at1021">
+        <items id="text">左手首</items>
+        <items id="description">対象の左手首</items>
+      </items>
+      <items code="at1025">
+        <items id="text">測定機器</items>
+        <items id="description">水銀血圧計あるいはそのほかの血圧を測定するために使われる機器.</items>
+      </items>
+      <items code="at1026">
+        <items id="text">右足首</items>
+        <items id="description">対象の右足首</items>
+      </items>
+      <items code="at1030">
+        <items id="text">労作</items>
+        <items id="description">*Details about physical activity undertaken at the time of blood pressure measurement(en)</items>
+      </items>
+      <items code="at1031">
+        <items id="text">左足首</items>
+        <items id="description">対象の左足首</items>
+      </items>
+      <items code="at1032">
+        <items id="text">指</items>
+        <items id="description">対象の指。指の識別は必要であれば｢特別な部位」エレメントで記録される</items>
+      </items>
+      <items code="at1033">
+        <items id="text">部位</items>
+        <items id="description">*Body location where blood pressure is measured.  Use 'Location of measurement' to select from common sites.  Use 'Specific location' to record more specific details or a site that is not in the common set or to refer to an external terminology. (en)</items>
+      </items>
+      <items code="at1034">
+        <items id="text">特別な部位</items>
+        <items id="description">血圧が測定される場所についての詳細な記録.</items>
+      </items>
+      <items code="at1035">
+        <items id="text">方法</items>
+        <items id="description">*Method of measurement of blood pressure.(en)</items>
+      </items>
+      <items code="at1036">
+        <items id="text">聴診</items>
+        <items id="description">聴診器を使いコロトコフ音で外部から血圧を測定する方法.</items>
+      </items>
+      <items code="at1037">
+        <items id="text">触診</items>
+        <items id="description">脈拍(通常は上腕動脈あるいは橈骨動脈）を触診することにより外部から血圧を測定する方法</items>
+      </items>
+      <items code="at1038">
+        <items id="text">平均同脈圧の計算式</items>
+        <items id="description">平均同脈圧を計算するために使われた士気（もしデータに記録されていれば）</items>
+      </items>
+      <items code="at1039">
+        <items id="text">機械</items>
+        <items id="description">血圧測定器を使って外部から血圧を測定する方法.</items>
+      </items>
+      <items code="at1040">
+        <items id="text">侵襲的</items>
+        <items id="description">径皮的に動脈を穿刺し，血管内部から血圧を測定する方法.</items>
+      </items>
+      <items code="at1042">
+        <items id="text">24時間平均</items>
+        <items id="description">24時間にわたる推定平均血圧</items>
+      </items>
+      <items code="at1043">
+        <items id="text">睡眠状況</items>
+        <items id="description">睡眠状況 24時間外来血圧記録の解釈を助けるため</items>
+      </items>
+      <items code="at1044">
+        <items id="text">覚醒</items>
+        <items id="description">対象は常に意識がある</items>
+      </items>
+      <items code="at1045">
+        <items id="text">睡眠中</items>
+        <items id="description">対象は自然な休養状態にある</items>
+      </items>
+      <items code="at1051">
+        <items id="text">足先</items>
+        <items id="description">対象の足尖部。足尖部の識別は必要であれば「特別な部位」エレメントに記録される</items>
+      </items>
+      <items code="at1052">
+        <items id="text">交絡因子</items>
+        <items id="description">*Comment on and record other incidental factors that may be contributing to the blood pressure measurement.  For example, level of anxiety or 'white coat syndrome'; pain or fever; changes in atmospheric pressure etc.(en)</items>
+      </items>
+      <items code="at1053">
+        <items id="text">動脈内</items>
+        <items id="description">動脈内のトランスデューサーに接続されたラインから侵襲的に測定する方法。動脈の部位は必要であれば「特別な部位」エレメントに記録される</items>
+      </items>
+    </term_definitions>
+    <term_definitions language="de">
+      <items code="at0000">
+        <items id="text">Blutdruck</items>
+        <items id="description">Die lokale Messung des arteriellen Blutdrucks als Surrogat für den arteriellen Druck in der systemischen Zirkulation. Häufig wird der Ausdruck 'Blutdruck' zur Bezeichung der Messung des brachialen Ateriendrucks im Oberarm verwendet.</items>
+      </items>
+      <items code="at0001">
+        <items id="text">Historie</items>
+        <items id="description">Historie</items>
+      </items>
+      <items code="at0003">
+        <items id="text">Blutdruck</items>
+        <items id="description">*@ internal @(en)</items>
+      </items>
+      <items code="at0004">
+        <items id="text">Systolisch</items>
+        <items id="description">Der höchste arterielle Blutdruck eines Zyklus - gemessen in der systolischen oder Kontraktionsphase des Herzens.</items>
+      </items>
+      <items code="at0005">
+        <items id="text">Diastolisch</items>
+        <items id="description">Der minimale systemische arterielle Blutdruck eines Zyklus - gemessen in der diastolischen oder Entspannungsphase des Herzens.</items>
+      </items>
+      <items code="at0006">
+        <items id="text">any event</items>
+        <items id="description">Default event</items>
+      </items>
+      <items code="at0007">
+        <items id="text">*state structure(en)</items>
+        <items id="description">*@ internal @(en)</items>
+      </items>
+      <items code="at0008">
+        <items id="text">Position</items>
+        <items id="description">Die Position der untersuchten Person während der Messung.</items>
+      </items>
+      <items code="at0011">
+        <items id="text">Listenstruktur</items>
+        <items id="description">Listenstruktur</items>
+      </items>
+      <items code="at0013">
+        <items id="text">Manschettengröße</items>
+        <items id="description">Die Größe der Manschette, die zur Blutdruckmessung benutzt wurde.</items>
+        <items id="comment">Perloff D, Grim C, Flack J, Frohlich ED, Hill M, McDonald M, Morgenstern BZ. Human blood pressure determination by sphygmomanometry. Circulation 1993;88;2460-2470.</items>
+      </items>
+      <items code="at0014">
+        <items id="text">Körperstelle der Messung</items>
+        <items id="description">Gewöhnliche Körperstellen, an denen der Blutdruck gemessen wird.</items>
+      </items>
+      <items code="at0015">
+        <items id="text">Oberschenkel eines Erwachsenen</items>
+        <items id="description">Eine Manschette für den Oberschenkel eines Erwachsenen - ca. 20cm x 42cm.</items>
+      </items>
+      <items code="at0016">
+        <items id="text">Großer Erwachsener</items>
+        <items id="description">Eine Manschette für Erwachsene mit größeren Armen - ca. 16cm x 38cm.</items>
+      </items>
+      <items code="at0017">
+        <items id="text">Erwachsener</items>
+        <items id="description">Eine Standard-Manschette für einen Erwachsenen - ca. 13cm x 30cm.</items>
+      </items>
+      <items code="at0025">
+        <items id="text">Rechter Arm</items>
+        <items id="description">Der rechte Arm der Person.</items>
+      </items>
+      <items code="at0026">
+        <items id="text">Linker Arm</items>
+        <items id="description">Der linke Arm der Person.</items>
+      </items>
+      <items code="at0027">
+        <items id="text">Rechter Oberschenkel</items>
+        <items id="description">Der rechte Oberschenkel der Person.</items>
+      </items>
+      <items code="at0028">
+        <items id="text">Linker Oberschenkel</items>
+        <items id="description">Der linke Oberschenkel der Person.</items>
+      </items>
+      <items code="at0033">
+        <items id="text">Kommentar</items>
+        <items id="description">Kommentar zur Blutdruckmessung.</items>
+      </items>
+      <items code="at1000">
+        <items id="text">Stehend</items>
+        <items id="description">Stehend zum Zeitpunkt der Blutdruckmessung.</items>
+      </items>
+      <items code="at1001">
+        <items id="text">Sitzend</items>
+        <items id="description">Sitzend zum Zeitpunkt der Blutdruckmessung (z.B. auf einem Bett oder Stuhl).</items>
+      </items>
+      <items code="at1002">
+        <items id="text">Zurückgelehnt</items>
+        <items id="description">Patient zurückgelehnt zum Zeitpunkt der Blutdruckmessung.</items>
+      </items>
+      <items code="at1003">
+        <items id="text">Liegend</items>
+        <items id="description">Flach liegend zum Zeitpunkt der Blutdruckmessung.</items>
+      </items>
+      <items code="at1005">
+        <items id="text">Neigung</items>
+        <items id="description">Die cranio-kaudale Neigung der Oberfläche auf der die Person zum Zeitpunkt der Messung liegt.</items>
+      </items>
+      <items code="at1006">
+        <items id="text">Mittlerer arterieller Druck</items>
+        <items id="description">Der mittlerer arterielle Druck über den gesamten Verlauf der Konktraktions- und Entspannungsphase des Herzens.</items>
+      </items>
+      <items code="at1007">
+        <items id="text">Pulsdruck</items>
+        <items id="description">Der Abstand zwischen dem systolischen und dem diastolischen Blutdruckwert.</items>
+      </items>
+      <items code="at1008">
+        <items id="text">Kleiner Erwachsener</items>
+        <items id="description">Eine Manschette für einen kleinen Erwachsenen - ca. 10cm x 24cm.</items>
+      </items>
+      <items code="at1009">
+        <items id="text">Pädiatrisch/Kind</items>
+        <items id="description">Eine Manschette für ein Kind oder auch einen Erwachsenen mit einem schmalen Arm - 8cm x 21cm.</items>
+      </items>
+      <items code="at1010">
+        <items id="text">Diastolischer Endpunkt</items>
+        <items id="description">Dient der Dokumentation des Korotkoff-Geräusches, das verwendet wird, um bei auskultarischer Messung den diastolischen Blutdruck zu bestimmen.</items>
+      </items>
+      <items code="at1011">
+        <items id="text">Phase IV</items>
+        <items id="description">Das 4. Korotkoff-Geräusch - Die Geräusche klingen plätzlich gedämpft.</items>
+      </items>
+      <items code="at1012">
+        <items id="text">Phase V</items>
+        <items id="description">Das 5. Korotkoff-Geräusch - die Geräusche verschwinden völlig während der Manschettendruck unter den diastolischen Blutdruck fällt.</items>
+      </items>
+      <items code="at1014">
+        <items id="text">Nach links geneigt liegend</items>
+        <items id="description">Flach liegend mit seitlicher Neigung, normalerweise zur linken Seite. Häufig verwendet im letzten Drittel eine Schwangerschaft, um aorto-cavale Kompression zu vermeiden.</items>
+      </items>
+      <items code="at1018">
+        <items id="text">Kleinkind</items>
+        <items id="description">Eine Manschette für Kleinkinder und Säuglinge - ca. 5cm x 15cm.</items>
+      </items>
+      <items code="at1019">
+        <items id="text">Neonatal</items>
+        <items id="description">Eine Manschette für Neugeborene mit passender Größe für die Reife und das Geburtsgewicht des Neugeborenen.</items>
+      </items>
+      <items code="at1020">
+        <items id="text">Rechtes Handgelenk</items>
+        <items id="description">Das rechte Handgelenk der Person.</items>
+      </items>
+      <items code="at1021">
+        <items id="text">Linkes Handgelenk</items>
+        <items id="description">Das linke Handgelenk der Person.</items>
+      </items>
+      <items code="at1025">
+        <items id="text">Gerät</items>
+        <items id="description">Details über das Sphygmomanometer oder ein anderes Gerät, dass zur Blutdruckmessung verwendet wird.</items>
+      </items>
+      <items code="at1026">
+        <items id="text">Rechtes Fußgelenk</items>
+        <items id="description">Das rechte Fußgelenk der Person.</items>
+      </items>
+      <items code="at1030">
+        <items id="text">Anstrengung</items>
+        <items id="description">Details über physische Aktivitäten zur Zeit der Blutdruckmessung.</items>
+      </items>
+      <items code="at1031">
+        <items id="text">Linkes Fußgelenk</items>
+        <items id="description">Das linke Fußgelenk der Person</items>
+      </items>
+      <items code="at1032">
+        <items id="text">Finger</items>
+        <items id="description">Ein Finger der Person. Der Finger kann, falls benötigt, als 'Spezifische Stelle' genauer identifiziert werden.</items>
+      </items>
+      <items code="at1033">
+        <items id="text">Körperstelle</items>
+        <items id="description">Körperstelle der Blutdruckmessung. 'Körperstelle der Messung' kann für die gewöhnlichen Stellen verwendet werden. 'Spezifische Stelle' wird für die Aufzeichnung spezifischer Details einer Körperstelle, die nicht in den gewöhnlichen Stellen enthalten ist, verwendet, Sie kann auch verwendet werden, um auf eine externe Teminologie zu verweisen.</items>
+      </items>
+      <items code="at1034">
+        <items id="text">Spezifische Stelle</items>
+        <items id="description">Spezifische Details über die Körperstelle, an der der Blutdruck gemessen wird.</items>
+      </items>
+      <items code="at1035">
+        <items id="text">Methode</items>
+        <items id="description">Methode der Messung des Blutdrucks.</items>
+      </items>
+      <items code="at1036">
+        <items id="text">Auskultation</items>
+        <items id="description">Auskulatorische Messung unter Benutzung eines Stethoskops und der Korotkoff-Geräusche.</items>
+      </items>
+      <items code="at1037">
+        <items id="text">Palpation</items>
+        <items id="description">Palpatorische Messung, normalerweise an den brachialen oder radialen Arterien.</items>
+      </items>
+      <items code="at1038">
+        <items id="text">Formel für mittleren arterieller Druck</items>
+        <items id="description">Die Formel die ggf. verwendet wurde, um den mittleren arteriellen Druck zu berechnen.</items>
+      </items>
+      <items code="at1039">
+        <items id="text">Machine</items>
+        <items id="description">Messung durch eine Blutdruckmaschine.</items>
+      </items>
+      <items code="at1040">
+        <items id="text">Invasiv</items>
+        <items id="description">Invasive Messung des Blutdrucks innerhalb eines Gefäßes.</items>
+      </items>
+      <items code="at1042">
+        <items id="text">24 Stunden Durchschnitt</items>
+        <items id="description">Schätzung des durchschnittlichen Blutdrucks über eine 24-stündigen Zeitraum.</items>
+      </items>
+      <items code="at1043">
+        <items id="text">Schlafzustand</items>
+        <items id="description">Schlafzustand  - unterstützt die Auswertung von 24-stündigen ambulanten Aufzeichnungen des Blutdrucks.</items>
+      </items>
+      <items code="at1044">
+        <items id="text">Aufmerksam und wach</items>
+        <items id="description">Die untersuchte Person ist bei vollem Bewusstsein.</items>
+      </items>
+      <items code="at1045">
+        <items id="text">Schlafend</items>
+        <items id="description">Die untersuchte Person schläft.</items>
+      </items>
+      <items code="at1051">
+        <items id="text">Zeh</items>
+        <items id="description">Ein Zeh der Person. Der Zeh kann, falls benötigt, als 'Spezifische Stelle' genauer identifiziert werden.</items>
+      </items>
+      <items code="at1052">
+        <items id="text">Einflussfaktoren</items>
+        <items id="description">Kommentar und Aufzeichung anderer Faktoren die ggf. zu dem Ergebnis der Blutdruckmessung beitragen können. Die kann z.B. bei belastenden Situationen der Fall sein (z.B. sog. Weißkittelhypertonie, Schmerzen, Fieber, Änderungen im atmosphärischen Druck).</items>
+      </items>
+      <items code="at1053">
+        <items id="text">Intra-arteriell</items>
+        <items id="description">Invasive Messung über einen arteriellen Drucksensor. Die genaue Stelle des Drucksensors kann, falls benötigt, als 'Spezifische Stelle' genauer identifiziert werden.</items>
+      </items>
+    </term_definitions>
+    <term_definitions language="zh-cn">
+      <items code="at0000">
+        <items id="text">*Blood Pressure(en)</items>
+        <items id="description">*The local measurement of arterial blood pressure which is a surrogate for arterial pressure in the systemic circulation.  Most commonly, use of the term 'blood pressure' refers to measurement of brachial artery pressure in the upper arm.(en)</items>
+      </items>
+      <items code="at0001">
+        <items id="text">*history(en)</items>
+        <items id="description">*history Structural node(en)</items>
+      </items>
+      <items code="at0003">
+        <items id="text">血压</items>
+        <items id="description">*@ internal @(en)</items>
+      </items>
+      <items code="at0004">
+        <items id="text">收缩压</items>
+        <items id="description">一个血液循环周期中，系统性动脉血压高峰值。 收缩期血压</items>
+      </items>
+      <items code="at0005">
+        <items id="text">舒张压</items>
+        <items id="description">一个血液循环周期中，系统性动脉血压最低值。 舒张期血压</items>
+      </items>
+      <items code="at0006">
+        <items id="text">*any event(en)</items>
+        <items id="description">*Default event(en)</items>
+      </items>
+      <items code="at0007">
+        <items id="text">*state structure(en)</items>
+        <items id="description">*@ internal @(en)</items>
+      </items>
+      <items code="at0008">
+        <items id="text">*Position(en)</items>
+        <items id="description">*The position of the subject at the time of measurement(en)</items>
+      </items>
+      <items code="at0011">
+        <items id="text">*list structure(en)</items>
+        <items id="description">*list structure(en)</items>
+      </items>
+      <items code="at0013">
+        <items id="text">*Cuff size(en)</items>
+        <items id="description">*The size of the cuff used for blood pressure measurement(en)</items>
+        <items id="comment">*Perloff D, Grim C, Flack J, Frohlich ED, Hill M, McDonald M, Morgenstern BZ. Human blood pressure determination by sphygmomanometry. Circulation 1993;88;2460-2470. (en)</items>
+      </items>
+      <items code="at0014">
+        <items id="text">*Location of measurement(en)</items>
+        <items id="description">*Common body locations where blood pressure is recorded(en)</items>
+      </items>
+      <items code="at0015">
+        <items id="text">*Adult Thigh(en)</items>
+        <items id="description">*A cuff used for an adult thigh - bladder approx 20cm x 42cm(en)</items>
+      </items>
+      <items code="at0016">
+        <items id="text">*Large Adult(en)</items>
+        <items id="description">*A cuff for adults with larger arms - bladder approx 16cm x 38cm(en)</items>
+      </items>
+      <items code="at0017">
+        <items id="text">*Adult(en)</items>
+        <items id="description">*A cuff that is standard for an adult - bladder approx 13cm x 30cm(en)</items>
+      </items>
+      <items code="at0025">
+        <items id="text">右臂</items>
+        <items id="description">被测试者右臂</items>
+      </items>
+      <items code="at0026">
+        <items id="text">左臂</items>
+        <items id="description">被测试者左臂</items>
+      </items>
+      <items code="at0027">
+        <items id="text">*Right leg(en)</items>
+        <items id="description">*The right leg of the person(en)</items>
+      </items>
+      <items code="at0028">
+        <items id="text">左腿</items>
+        <items id="description">被测试者左下肢</items>
+      </items>
+      <items code="at0033">
+        <items id="text">注释</items>
+        <items id="description">有关血压值的注释</items>
+      </items>
+      <items code="at1000">
+        <items id="text">立位</items>
+        <items id="description">测量血压时身体处于站立体位</items>
+      </items>
+      <items code="at1001">
+        <items id="text">坐位</items>
+        <items id="description">测量血压时身体处于坐位</items>
+      </items>
+      <items code="at1002">
+        <items id="text">侧卧位</items>
+        <items id="description">测量血压时身体处于45度角侧卧位</items>
+      </items>
+      <items code="at1003">
+        <items id="text">*Lying(en)</items>
+        <items id="description">*Lying flat at the time of blood pressure measurement.(en)</items>
+      </items>
+      <items code="at1005">
+        <items id="text">*Tilt(en)</items>
+        <items id="description">*The craniocaudal tilt of the surface on which the person is lying at the time of measurement(en)</items>
+      </items>
+      <items code="at1006">
+        <items id="text">*Mean Arterial Pressure(en)</items>
+        <items id="description">*The average arterial pressure that occurs over the entire course of the heart contraction and relaxation cycle.   (en)</items>
+      </items>
+      <items code="at1007">
+        <items id="text">脉压</items>
+        <items id="description">*The variation in pressure over one contraction cycle(en)</items>
+      </items>
+      <items code="at1008">
+        <items id="text">*Small Adult(en)</items>
+        <items id="description">*A cuff used for a small adult - bladder approx 10cm x 24cm(en)</items>
+      </items>
+      <items code="at1009">
+        <items id="text">*Paediatric/Child(en)</items>
+        <items id="description">*A cuff that is appropriate for a child or adult with a thin arm - bladder approx 8cm x 21cm.(en)</items>
+      </items>
+      <items code="at1010">
+        <items id="text">*Diastolic endpoint(en)</items>
+        <items id="description">*Record which Korotkoff sound is used for determining diastolic pressure using auscultative method(en)</items>
+      </items>
+      <items code="at1011">
+        <items id="text">*Phase IV(en)</items>
+        <items id="description">*The fourth Korotkoff sound is identified as an abrupt muffling of sounds(en)</items>
+      </items>
+      <items code="at1012">
+        <items id="text">*Phase V(en)</items>
+        <items id="description">*The fifth Korotkoff sound is identified by absence of sounds as the cuff pressure drops below the diastolic blood pressure(en)</items>
+      </items>
+      <items code="at1014">
+        <items id="text">*Lying with tilt to left(en)</items>
+        <items id="description">*Lying flat with some lateral tilt, usually angled towards the left side.   Commonly required in the last trimester of pregnancy to relieve aortocaval compression.(en)</items>
+      </items>
+      <items code="at1018">
+        <items id="text">*Infant(en)</items>
+        <items id="description">*A cuff used for infants - bladder approx 5cm x 15cm(en)</items>
+      </items>
+      <items code="at1019">
+        <items id="text">*Neonatal(en)</items>
+        <items id="description">*A cuff used for a neonate, assuming cuff is the appropriate size for maturity and birthweight of the neonate(en)</items>
+      </items>
+      <items code="at1020">
+        <items id="text">*Right wrist(en)</items>
+        <items id="description">*The right wrist of the subject(en)</items>
+      </items>
+      <items code="at1021">
+        <items id="text">*Left wrist(en)</items>
+        <items id="description">*The left wrist of the subject(en)</items>
+      </items>
+      <items code="at1025">
+        <items id="text">*Device(en)</items>
+        <items id="description">*Details about sphygmomanometer or other device used to measure the blood pressure(en)</items>
+      </items>
+      <items code="at1026">
+        <items id="text">*Right ankle(en)</items>
+        <items id="description">*The right ankle of the subject(en)</items>
+      </items>
+      <items code="at1030">
+        <items id="text">*Exertion  (en)</items>
+        <items id="description">*Details about physical activity undertaken at the time of blood pressure measurement(en)</items>
+      </items>
+      <items code="at1031">
+        <items id="text">*Left ankle(en)</items>
+        <items id="description">*The left ankle of the subject(en)</items>
+      </items>
+      <items code="at1032">
+        <items id="text">*Finger(en)</items>
+        <items id="description">*A finger of the subject.  Identification of the finger can be recorded in 'Specific Location' data element, if required.(en)</items>
+      </items>
+      <items code="at1033">
+        <items id="text">*New cluster(en)</items>
+        <items id="description">**(en)</items>
+      </items>
+      <items code="at1034">
+        <items id="text">*Specific location(en)</items>
+        <items id="description">*Detailed description about the site of the measurement of the blood pressure(en)</items>
+      </items>
+      <items code="at1035">
+        <items id="text">*New element(en)</items>
+        <items id="description">**(en)</items>
+      </items>
+      <items code="at1036">
+        <items id="text">*Auscultation(en)</items>
+        <items id="description">*Method of measuring blood pressure externally, using a stethoscope and Korotkoff sounds(en)</items>
+      </items>
+      <items code="at1037">
+        <items id="text">*Palpation(en)</items>
+        <items id="description">*Method of measuring blood pressure externally, using palpation (usually of the brachial or radial arteries)(en)</items>
+      </items>
+      <items code="at1038">
+        <items id="text">*Mean Arterial Pressure Formula(en)</items>
+        <items id="description">*Formula used to calculate the MAP (if recorded in data)(en)</items>
+      </items>
+      <items code="at1039">
+        <items id="text">*Machine(en)</items>
+        <items id="description">*Method of measuring blood pressure externally, using a blood pressure machine(en)</items>
+      </items>
+      <items code="at1040">
+        <items id="text">*Invasive(en)</items>
+        <items id="description">*Method of measuring blood pressure internally ie involving penetration of the skin and measuring inside blood vessels(en)</items>
+      </items>
+      <items code="at1042">
+        <items id="text">*24 hour average (en)</items>
+        <items id="description">*Estimate of the average blood pressure over a 24 hour period(en)</items>
+      </items>
+      <items code="at1043">
+        <items id="text">*Sleep status(en)</items>
+        <items id="description">*Sleep status - supports interpretation of 24 hour ambulatory blood pressure records. (en)</items>
+      </items>
+      <items code="at1044">
+        <items id="text">*Alert &amp; awake(en)</items>
+        <items id="description">*Subject is fully conscious(en)</items>
+      </items>
+      <items code="at1045">
+        <items id="text">*Sleeping(en)</items>
+        <items id="description">*Subject is in the natural state of bodily rest(en)</items>
+      </items>
+      <items code="at1051">
+        <items id="text">*Toe(en)</items>
+        <items id="description">*A toe of the subject.   Identification of the toe can be recorded in 'Specific Location' data element, if required.(en)</items>
+      </items>
+      <items code="at1052">
+        <items id="text">*Confounding factors(en)</items>
+        <items id="description">*Comment on and record other incidental factors that may be contributing to the blood pressure measurement.  For example, level of anxiety or 'white coat syndrome'; pain or fever; changes in atmospheric pressure etc.(en)</items>
+      </items>
+      <items code="at1053">
+        <items id="text">*Intra-arterial(en)</items>
+        <items id="description">*Invasive measurement via transducer access line within an artery. Location of the transducer can be recorded in 'Specific Location' data element, if required.(en)</items>
+      </items>
+    </term_definitions>
+    <term_definitions language="nl">
+      <items code="at0000">
+        <items id="text">Bloeddruk</items>
+        <items id="description">De lokale meting van de arteriële bloeddruk, welke surrogaat is voor de arteriële druk in de systemische circulatie. Meest gebruikelijk is dat de term 'bloeddruk'  refereert aan de meting van de bloeddruk van de arterie brachialis in de bovenarm.</items>
+      </items>
+      <items code="at0001">
+        <items id="text">Geschiedenis</items>
+        <items id="description">Gestructureerde geschiedenismap</items>
+      </items>
+      <items code="at0003">
+        <items id="text">*blood pressure(en)</items>
+        <items id="description">*@ internal @(en)</items>
+      </items>
+      <items code="at0004">
+        <items id="text">Systole</items>
+        <items id="description">De maximale (piek) systemische arteriele bloeddruk - gemeten in de systolische of samentrekkingsfase van de hartslag</items>
+      </items>
+      <items code="at0005">
+        <items id="text">Diastole</items>
+        <items id="description">Laagste systemische arteriele bloeddruk -  gemeten in de diastolische of ontspanningsfase van de hartslag</items>
+      </items>
+      <items code="at0006">
+        <items id="text">any event</items>
+        <items id="description">Default gebeurtenis</items>
+      </items>
+      <items code="at0007">
+        <items id="text">*state structure(en)</items>
+        <items id="description">*@ internal @(en)</items>
+      </items>
+      <items code="at0008">
+        <items id="text">Houding</items>
+        <items id="description">De houding van het individu op het moment van de meting</items>
+      </items>
+      <items code="at0011">
+        <items id="text">lijst structuur</items>
+        <items id="description">lijst structuur</items>
+      </items>
+      <items code="at0013">
+        <items id="text">Manchet grootte</items>
+        <items id="description">De grootte van de manchet gebruikt bij de meting</items>
+        <items id="comment">Perloff D, Grim C, Flack J, Frohlich ED, Hill M, McDonald M, Morgenstern BZ. Human blood pressure determination by sphygmomanometry. Circulation 1993;88;2460-2470.</items>
+      </items>
+      <items code="at0014">
+        <items id="text">Plaats van meting</items>
+        <items id="description">Gewoonlijke lichaamslocaties waar bloeddruk gemeten wordt.</items>
+      </items>
+      <items code="at0015">
+        <items id="text">Volwassen dijbeen</items>
+        <items id="description">Een manchet voor een volwassen dijbeen - manchet grootte ca. 20cm x 42cm.</items>
+      </items>
+      <items code="at0016">
+        <items id="text">Grote volwassene</items>
+        <items id="description">Een manchet voor volwassenen met langere armen, manchet grootte ca. 16cm x 38cm.</items>
+      </items>
+      <items code="at0017">
+        <items id="text">Volwassene</items>
+        <items id="description">De standaard manchet voor een volwassene - manchet grootte ca. 13cm x 30cm</items>
+      </items>
+      <items code="at0025">
+        <items id="text">Rechterarm</items>
+        <items id="description">De rechterarm van de persoon.</items>
+      </items>
+      <items code="at0026">
+        <items id="text">Linkerarm</items>
+        <items id="description">De linkerarm van de persoon.</items>
+      </items>
+      <items code="at0027">
+        <items id="text">Rechterdijbeen</items>
+        <items id="description">Het rechterdijbeen van de persoon.</items>
+      </items>
+      <items code="at0028">
+        <items id="text">Linkerdijbeen</items>
+        <items id="description">De linkerdijbeen van de persoon.</items>
+      </items>
+      <items code="at0033">
+        <items id="text">Opmerking</items>
+        <items id="description">Opmerking over de gemeten bloeddruk</items>
+      </items>
+      <items code="at1000">
+        <items id="text">Staand</items>
+        <items id="description">Bloeddrukmeting bij staand individu</items>
+      </items>
+      <items code="at1001">
+        <items id="text">Zittend</items>
+        <items id="description">Bloeddrukmeting bij zittend (b.v. op bed of in stoel) individu</items>
+      </items>
+      <items code="at1002">
+        <items id="text">Halfzittend</items>
+        <items id="description">Halfzittend op het moment van de bloeddrukmeting</items>
+      </items>
+      <items code="at1003">
+        <items id="text">Liggend</items>
+        <items id="description">Platliggend op het moment van de bloeddrukmeting</items>
+      </items>
+      <items code="at1005">
+        <items id="text">Schuinte</items>
+        <items id="description">De craniocaudale schuinte van het oppervlak waarop het individu ligt op het moment van de meting</items>
+      </items>
+      <items code="at1006">
+        <items id="text">Gemiddelde arteriële druk</items>
+        <items id="description">De gemiddelde bloeddruk gedurende 1 cyclus van samentrekken en ontspannen van het hart.</items>
+      </items>
+      <items code="at1007">
+        <items id="text">Polsdruk</items>
+        <items id="description">Het verschil tussen de systolische en diastolische bloeddruk</items>
+      </items>
+      <items code="at1008">
+        <items id="text">Kleine volwassene</items>
+        <items id="description">Een manchet voor een kleine volwassene - manchet maat ca. 10cm x 24cm.</items>
+      </items>
+      <items code="at1009">
+        <items id="text">Pediatrie/kinder</items>
+        <items id="description">Een manchet voor een kind of volwassene met een dunne arm - manchet grootte ca. 8cm x 21cm.</items>
+      </items>
+      <items code="at1010">
+        <items id="text">Diastolisch eindpunt</items>
+        <items id="description">Om te registreren welk Korotkoff geluid gebruikt is om de diastolische druk te meten door de auscultatieve methode.</items>
+      </items>
+      <items code="at1011">
+        <items id="text">Fase IV</items>
+        <items id="description">Het vierde Korotkoff geluid wordt gedefinieerd als een abrupte vermindering van geluid</items>
+      </items>
+      <items code="at1012">
+        <items id="text">Fase 5</items>
+        <items id="description">Het vijfde Korotkoff geluid is geïdentificeerd door afwezigheid van geluiden als de manchetdruk onder diastolische bloeddruk komt.</items>
+      </items>
+      <items code="at1014">
+        <items id="text">Liggend met kanteling naar linkerzijde</items>
+        <items id="description">Platliggend met enige laterale kanteling, meestal gekanteld naar de linkerzijde. Gebruikelijk benodigd in het laatste trimester van de zwangerschap om aortacavale compressie te verlichten.</items>
+      </items>
+      <items code="at1018">
+        <items id="text">Zuigeling</items>
+        <items id="description">Een manchet voor zuigelingen - manchet maat ca. 5cm x 15cm.</items>
+      </items>
+      <items code="at1019">
+        <items id="text">Neonaat</items>
+        <items id="description">Een manchet voor een neonaat, er van uitgaande dat de manchet de juiste maat is voor volgroeidheid en geboortegewicht van de neonaat</items>
+      </items>
+      <items code="at1020">
+        <items id="text">Rechterpols</items>
+        <items id="description">De rechterpols van de persoon</items>
+      </items>
+      <items code="at1021">
+        <items id="text">Linkerpols</items>
+        <items id="description">De linkerpols van de persoon.</items>
+      </items>
+      <items code="at1025">
+        <items id="text">Apparaat</items>
+        <items id="description">Details over sphygmomanometerof ander apparaat om de bloeddruk te meten.</items>
+      </items>
+      <items code="at1026">
+        <items id="text">Rechterenkel</items>
+        <items id="description">De rechterenkel van de persoon</items>
+      </items>
+      <items code="at1030">
+        <items id="text">Inspanning</items>
+        <items id="description">Details over de lichamelijke inspanning die ondernomen wordt op het moment van de bloeddrukmeting</items>
+      </items>
+      <items code="at1031">
+        <items id="text">Linkerenkel</items>
+        <items id="description">De linkerenkel van de persoon</items>
+      </items>
+      <items code="at1032">
+        <items id="text">Vinger</items>
+        <items id="description">Een vinger van de persoon. Identificatie van de vinger kan zo nodig worden opgeslagen  in 'specifieke locatie' data element.</items>
+      </items>
+      <items code="at1033">
+        <items id="text">Locatie</items>
+        <items id="description">Lichaamslocatie waar de bloeddrukmeting is gemeten. Gebruik 'locatie van meting' om gebruikelijke plaatsen te selecteren. Gebruik 'specifieke locatie' om meer specifieke details of locatie te registreren, die niet in de gebruikelijke set staan of om aan een externe terminologie te refereren.</items>
+      </items>
+      <items code="at1034">
+        <items id="text">Specifieke locatie</items>
+        <items id="description">Specifieke details over de lichaamsplaats waar de bloeddruk is gemeten.</items>
+      </items>
+      <items code="at1035">
+        <items id="text">Methodiek</items>
+        <items id="description">De methode van de meting van de bloeddruk</items>
+      </items>
+      <items code="at1036">
+        <items id="text">Auscultatie</items>
+        <items id="description">Uitwendige meting van de bloeddruk, met gebruikmaking van een stethoscoop en Korotkoff geluiden.</items>
+      </items>
+      <items code="at1037">
+        <items id="text">Palpatie</items>
+        <items id="description">Uitwendige meting van de bloeddruk, met gebruikmaking van palpatie (meestal de arterie brachialis of radialis)</items>
+      </items>
+      <items code="at1038">
+        <items id="text">Gemiddelde arteriële druk formule</items>
+        <items id="description">Formule om de MAP (mean arterial pressure=gemiddelde arteriële druk) te berekenen (als deze data opgeslagen wordt).</items>
+      </items>
+      <items code="at1039">
+        <items id="text">Machinaal</items>
+        <items id="description">Uitwendige meting van de bloeddruk, met gebruikmaking van een mechanische bloeddrukmeter</items>
+      </items>
+      <items code="at1040">
+        <items id="text">Invasief</items>
+        <items id="description">Inwendige meting van de bloeddruk, inclusief penetratie van de huid en meting in het bloedvat.</items>
+      </items>
+      <items code="at1042">
+        <items id="text">24 uur gemiddelde</items>
+        <items id="description">Inschatting van de gemiddelde bloeddruk over een periode van 24 uur</items>
+      </items>
+      <items code="at1043">
+        <items id="text">Slaap/waak toestand</items>
+        <items id="description">Slaap/waak toestand, ondersteunt de interpretatie van de 24-uurs bloeddrukmeting.</items>
+      </items>
+      <items code="at1044">
+        <items id="text">Alert en wakker</items>
+        <items id="description">Individu is volledig bij bewustzijn</items>
+      </items>
+      <items code="at1045">
+        <items id="text">Slapend</items>
+        <items id="description">Individu is in de natuurlijke slaap.</items>
+      </items>
+      <items code="at1051">
+        <items id="text">Teen</items>
+        <items id="description">Een teen van de persoon. Identificatie van de vinger kan zo nodig worden opgeslagen  in 'specifieke locatie' data element.</items>
+      </items>
+      <items code="at1052">
+        <items id="text">Beïnvloedende factoren</items>
+        <items id="description">Opmerking over en vastleggen van andere incidentele factoren die de bloeddrukmeting zouden kunnen beïnvloeden. Bijvoorbeeld, mate van angst, of 'witte jas syndroom'; pijn of koorts; veranderingen in atmosferische druk etc.</items>
+      </items>
+      <items code="at1053">
+        <items id="text">Intra-arterieel</items>
+        <items id="description">Invasieve meting via lijn met transducer in een arterie. Locatie van de transducer kan, zo nodig, opgeslagen worden in 'specifieke locatie' data element.</items>
+      </items>
+    </term_definitions>
+    <term_definitions language="ru">
+      <items code="at0000">
+        <items id="text">АД</items>
+        <items id="description">Локальное измерение артериального давления, которое является суррогатом артериального давления в системном кровотоке. Как правило, термин относится к давления плечевой артерии на предплечье.</items>
+      </items>
+      <items code="at0001">
+        <items id="text">*history(en)</items>
+        <items id="description">*history Structural node(en)</items>
+      </items>
+      <items code="at0003">
+        <items id="text">*blood pressure(en)</items>
+        <items id="description">*@ internal @(en)</items>
+      </items>
+      <items code="at0004">
+        <items id="text">Систолическое</items>
+        <items id="description">Пик системного артериального давления - измеряется в систолиу или в фазу сокращения сердца</items>
+      </items>
+      <items code="at0005">
+        <items id="text">Диастолическое</items>
+        <items id="description">Минимальное системное артериальное давление - измеряется в диастолу или в фазу релаксации сердца.</items>
+      </items>
+      <items code="at0006">
+        <items id="text">Любое событие</items>
+        <items id="description">*Default event(en)</items>
+      </items>
+      <items code="at0007">
+        <items id="text">*state structure(en)</items>
+        <items id="description">*@ internal @(en)</items>
+      </items>
+      <items code="at0008">
+        <items id="text">Поза</items>
+        <items id="description">Поза пациента во время измерения давления.</items>
+      </items>
+      <items code="at0011">
+        <items id="text">*list structure(en)</items>
+        <items id="description">*list structure(en)</items>
+      </items>
+      <items code="at0013">
+        <items id="text">Размер манжеты(ru)</items>
+        <items id="description">Размер манжеты для измерения кровяного давления.</items>
+      </items>
+      <items code="at0014">
+        <items id="text">Место измерения</items>
+        <items id="description">Обобщенное место тела, в которм производится измерение артериального давления.</items>
+      </items>
+      <items code="at0015">
+        <items id="text">Взрослая для бедра</items>
+        <items id="description">Манжеты для бедра  взрослого- пузырь приблизительно 20см х 42см.</items>
+      </items>
+      <items code="at0016">
+        <items id="text">Взрослая большая</items>
+        <items id="description">Манжета для руки взрослого, увеличенного объёма -  пузырь приблизительно 16cm x 38cm.</items>
+      </items>
+      <items code="at0017">
+        <items id="text">Взрослая</items>
+        <items id="description">Манжета стандартная для взрослого - пузырь приблизительно 13 х 30cm.</items>
+      </items>
+      <items code="at0025">
+        <items id="text">Правая рука</items>
+        <items id="description">Правая рука пациента.</items>
+      </items>
+      <items code="at0026">
+        <items id="text">Левая рука</items>
+        <items id="description">Левая рука пациента.</items>
+      </items>
+      <items code="at0027">
+        <items id="text">Правое бедро</items>
+        <items id="description">Правое бедро пациента.</items>
+      </items>
+      <items code="at0028">
+        <items id="text">Левое бедро</items>
+        <items id="description">Левое бедро пациента.</items>
+      </items>
+      <items code="at0033">
+        <items id="text">Комментарии</items>
+        <items id="description">Комментарии к измерению кровяного давления.</items>
+      </items>
+      <items code="at1000">
+        <items id="text">Стоя</items>
+        <items id="description">Пациент стоит во время измерения АД.</items>
+      </items>
+      <items code="at1001">
+        <items id="text">Сидя</items>
+        <items id="description">Пациент сидит во время измерения АД (на стуле, кровати или кресле).</items>
+      </items>
+      <items code="at1002">
+        <items id="text">Реклинация</items>
+        <items id="description">Пациент лежит в вынужденной неизменной позе (на реклинации)во время измерения АД.</items>
+      </items>
+      <items code="at1003">
+        <items id="text">Лёжа</items>
+        <items id="description">Пациент лежит во время измерения АД.</items>
+      </items>
+      <items code="at1005">
+        <items id="text">Наклонная поверхность</items>
+        <items id="description">краниокаудальный наклон поверхности, на которой лежит пациент во время измерения АД.</items>
+      </items>
+      <items code="at1006">
+        <items id="text">Среднего артериального давления крови</items>
+        <items id="description">Среднее артериальное давление на всём протяжении цикла сокращения и релаксации сердца.</items>
+      </items>
+      <items code="at1007">
+        <items id="text">Пульсовое давление</items>
+        <items id="description">Разница между систолическим и диастолическим давлением.</items>
+      </items>
+      <items code="at1008">
+        <items id="text">Взрослая малая</items>
+        <items id="description">Манжета взрослая малая - пузырь приблизительно 10 x 24cm.</items>
+      </items>
+      <items code="at1009">
+        <items id="text">Педиатрическая(детская)</items>
+        <items id="description">Манжета для детей или взрослых с тонкой рукой - пузырь примерно 8см x 21cm.</items>
+      </items>
+      <items code="at1010">
+        <items id="text">Диастолическая конечная точка</items>
+        <items id="description">Запись звука Короткова который используют для определения диастолического давления с помощью метода аускультации.</items>
+      </items>
+      <items code="at1011">
+        <items id="text">Фаза 4</items>
+        <items id="description">Четвёртый звук Короткова, определяющийся как резкое приглушение звуков.</items>
+      </items>
+      <items code="at1012">
+        <items id="text">Фаза 5</items>
+        <items id="description">Пятый звук Короткова определяется отсутствием звуков, так как давление в манжете падает ниже диастолического артериального давления.</items>
+      </items>
+      <items code="at1014">
+        <items id="text">Лёжа с наклоном влево</items>
+        <items id="description">Лёжа на плоской поверхности с боковым наклоном, как правило, под углом по направлению с левой стороны. Обычно требуется в последнем триместре беременности, чтобы облегчить сдавление нижней полой вены.</items>
+      </items>
+      <items code="at1018">
+        <items id="text">Для младенцев</items>
+        <items id="description">Манжета для младенцев - пузырь приблизительно 5см x 15cm.</items>
+      </items>
+      <items code="at1019">
+        <items id="text">Для новорожденных</items>
+        <items id="description">Манжета для новорожденных, используется в соответствии с весом новорожденного.</items>
+      </items>
+      <items code="at1020">
+        <items id="text">Правое запястье</items>
+        <items id="description">Правое запястье пациента.</items>
+      </items>
+      <items code="at1021">
+        <items id="text">Левое запястье</items>
+        <items id="description">Левое запястье пациента.</items>
+      </items>
+      <items code="at1025">
+        <items id="text">Устройство</items>
+        <items id="description">Информация о сфигмоманометре или другом устройстве, используемом для измерения АД.</items>
+      </items>
+      <items code="at1026">
+        <items id="text">Правая лодыжка</items>
+        <items id="description">Правая лодыжка пациента.</items>
+      </items>
+      <items code="at1030">
+        <items id="text">Нагрузка</items>
+        <items id="description">Подробная информация о физической деятельности, осуществляемой во время измерения АД.</items>
+      </items>
+      <items code="at1031">
+        <items id="text">Левая лодыжка</items>
+        <items id="description">Левая лодыжка пациента</items>
+      </items>
+      <items code="at1032">
+        <items id="text">Палец руки</items>
+        <items id="description">Палец руки пациента. Уточнение может быть записано в элемент данных "Точное месторасположение", в случае необходимости.</items>
+      </items>
+      <items code="at1033">
+        <items id="text">*Location(en)</items>
+        <items id="description">Место тела, где измеряется АД. Используйте "Место измерения", чтобы выбрать из обобщённых мест. Используйте "Точное местограсположение", чтобы записать более конкретную информацию или место, которое не входит в обобщённый список или обратиться к внешней терминологии.</items>
+      </items>
+      <items code="at1034">
+        <items id="text">Точное месторасположение</items>
+        <items id="description">Конкретные сведения о месте тела, где  регистрируется АД.</items>
+      </items>
+      <items code="at1035">
+        <items id="text">Метод</items>
+        <items id="description">Метод измерения кровяного давления.</items>
+      </items>
+      <items code="at1036">
+        <items id="text">Аускультация</items>
+        <items id="description">Неинвазивный метод измерения АД с использованием стетоскопа и звуков Короткова.</items>
+      </items>
+      <items code="at1037">
+        <items id="text">Пальпация</items>
+        <items id="description">Неинвазивный метод измерения АД с использованием пальпации (обычно плечевой или лучевой артерии).</items>
+      </items>
+      <items code="at1038">
+        <items id="text">Формула среднего артериального давления</items>
+        <items id="description">Формула, используемая для вычисления СрАД (если требуется записывать).</items>
+      </items>
+      <items code="at1039">
+        <items id="text">Автоматический тонометр</items>
+        <items id="description">Неинвазивный метод измерения АД с помощью автоматического тонометра.</items>
+      </items>
+      <items code="at1040">
+        <items id="text">Инвазивный</items>
+        <items id="description">Инвазивный метод измерения АД, с помещением датчика внутри кровеносного сосуда.</items>
+      </items>
+      <items code="at1042">
+        <items id="text">Среднее за 24 часа</items>
+        <items id="description">Оценка среднего АД за период в 24 часа.</items>
+      </items>
+      <items code="at1043">
+        <items id="text">Стадия сна(ru)</items>
+        <items id="description">Стадия сна - для интерпретации записи амбулаторного измерения АД в течение 42 часов.</items>
+      </items>
+      <items code="at1044">
+        <items id="text">Пробуждение и подъём</items>
+        <items id="description">Пациент полностью в сознании.</items>
+      </items>
+      <items code="at1045">
+        <items id="text">Сон</items>
+        <items id="description">Пациент находится в состоянии естественного покоя, тело расслаблено.</items>
+      </items>
+      <items code="at1051">
+        <items id="text">Палец ноги</items>
+        <items id="description">Палец ноги пациента. Уточнение может быть записано в элемент данных "Точное месторасположение", в случае необходимости.</items>
+      </items>
+      <items code="at1052">
+        <items id="text">Стохастические факторы(ru)</items>
+        <items id="description">Комментарий и записи других случайных факторов, которые могут способствовать измерению артериального давления. Например,"боязнь белого халата" или боль и жар, изменения атмосферного давления т.д.</items>
+      </items>
+      <items code="at1053">
+        <items id="text">Внутриартериальное</items>
+        <items id="description">Инвазивное измерение с помощью датчика линии доступа в артерию. Расположение датчика могут быть записаны в элемент данных "Точное месторасположение", в случае необходимости.</items>
+      </items>
+    </term_definitions>
+    <term_definitions language="fa">
+      <items code="at0000">
+        <items id="text">فشار خون</items>
+        <items id="description">اندازه گیری موضعی فشار خون وریدی، که جایگزینی برای فشار وریدی در گردش خون کلی است.
+معمولا واژه "فشار خون" به اندازه گیری فشار ورید بازویی در روی بازو گفته می شود</items>
+      </items>
+      <items code="at0001">
+        <items id="text">تاریخچه</items>
+        <items id="description">گره ساختاری تاریخچه</items>
+      </items>
+      <items code="at0003">
+        <items id="text">*blood pressure(en)</items>
+        <items id="description">*@ internal @(en)</items>
+      </items>
+      <items code="at0004">
+        <items id="text">سیستولیک</items>
+        <items id="description">اوج فشار خون وریدی کلی که در سیستولیک یا فاز انقباضی چرخه گردش خون اندازه گیری می شود</items>
+      </items>
+      <items code="at0005">
+        <items id="text">دیاستولیک</items>
+        <items id="description">حداقل فشار خون وریدی کلی که در دیاستولیک یا فاز انبساطی چرخه گردش خون اندازه گیری می شود</items>
+      </items>
+      <items code="at0006">
+        <items id="text">هر رویداد</items>
+        <items id="description">رویداد پیش فرض</items>
+      </items>
+      <items code="at0007">
+        <items id="text">*state structure(en)</items>
+        <items id="description">*@ internal @(en)</items>
+      </items>
+      <items code="at0008">
+        <items id="text">موقعیت</items>
+        <items id="description">موقعیت فرد در زمان اندازه گیری</items>
+      </items>
+      <items code="at0011">
+        <items id="text">ساختار لیست</items>
+        <items id="description">ساختار لیست</items>
+      </items>
+      <items code="at0013">
+        <items id="text">اندازه کاف</items>
+        <items id="description">اندازه کاف استفاده شده برای اندازه گیری فشار خون</items>
+      </items>
+      <items code="at0014">
+        <items id="text">*Location of measurement(en)</items>
+        <items id="description">*Common body sites where blood pressure is recorded.(en)</items>
+      </items>
+      <items code="at0015">
+        <items id="text">ران بزرگسال</items>
+        <items id="description">کاف استفاده شده در ران بزرگسال -اندازه مثانه 20 سانتی متر در 42 سانتی متر</items>
+      </items>
+      <items code="at0016">
+        <items id="text">بزرگسال درشت</items>
+        <items id="description">کاف بزرگسالان با برآمدگی بازوی بزرگتر در حدود 16 در 38 سانتیمتر</items>
+      </items>
+      <items code="at0017">
+        <items id="text">*Adult(en)</items>
+        <items id="description">*A cuff that is standard for an adult - bladder approx 13cm x 30cm.(en)</items>
+      </items>
+      <items code="at0025">
+        <items id="text">*Right arm(en)</items>
+        <items id="description">*The right arm of the person.(en)</items>
+      </items>
+      <items code="at0026">
+        <items id="text">*Left arm(en)</items>
+        <items id="description">*The left arm of the person.(en)</items>
+      </items>
+      <items code="at0027">
+        <items id="text">*Right thigh(en)</items>
+        <items id="description">*The right thigh of the person.(en)</items>
+      </items>
+      <items code="at0028">
+        <items id="text">*Left thigh(en)</items>
+        <items id="description">*The left thigh of the person.(en)</items>
+      </items>
+      <items code="at0033">
+        <items id="text">نظر</items>
+        <items id="description">نظر در مورد اندازه گیری فشار خون</items>
+      </items>
+      <items code="at1000">
+        <items id="text">ایستاده</items>
+        <items id="description">ایستاده در زمان اندازه گیری فشار خون</items>
+      </items>
+      <items code="at1001">
+        <items id="text">نشسته</items>
+        <items id="description">نشسته ( به عنوان مثال روی تخت یا صندلی) در زمان اندازه گیری فشار خون</items>
+      </items>
+      <items code="at1002">
+        <items id="text">خمیده</items>
+        <items id="description">خمیده در زمان اندازه گیری فشار خون</items>
+      </items>
+      <items code="at1003">
+        <items id="text">خوابیده</items>
+        <items id="description">خوابیده در زمان اندازه گیری فشار خون</items>
+      </items>
+      <items code="at1005">
+        <items id="text">شیب</items>
+        <items id="description">شیب طولی سطحی که فرد در حین اندازه گیری رون آن دراز کشیده است</items>
+      </items>
+      <items code="at1006">
+        <items id="text">میانگین فشار وریدی</items>
+        <items id="description">متوسط فشار خون وریدی که در کل دوره انقباظ و انبساط قلبی رخ می دهد</items>
+      </items>
+      <items code="at1007">
+        <items id="text">فشار نبضی</items>
+        <items id="description">تفاوت بین فشار سیستولیک و دیاستولیک</items>
+      </items>
+      <items code="at1008">
+        <items id="text">*Small Adult(en)</items>
+        <items id="description">*A cuff used for a small adult - bladder approx 10cm x 24cm.(en)</items>
+      </items>
+      <items code="at1009">
+        <items id="text">*Paediatric/Child(en)</items>
+        <items id="description">*A cuff that is appropriate for a child or adult with a thin arm - bladder approx 8cm x 21cm.(en)</items>
+      </items>
+      <items code="at1010">
+        <items id="text">*Diastolic endpoint(en)</items>
+        <items id="description">*Record which Korotkoff sound is used for determining diastolic pressure using auscultative method.(en)</items>
+      </items>
+      <items code="at1011">
+        <items id="text">*Phase IV(en)</items>
+        <items id="description">*The fourth Korotkoff sound is identified as an abrupt muffling of sounds.(en)</items>
+      </items>
+      <items code="at1012">
+        <items id="text">*Phase V(en)</items>
+        <items id="description">*The fifth Korotkoff sound is identified by absence of sounds as the cuff pressure drops below the diastolic blood pressure.(en)</items>
+      </items>
+      <items code="at1014">
+        <items id="text">خوابیده  به چپ</items>
+        <items id="description">خوابیدن صاف با کمی تمایل به یک سمت، معمولا به جهت چپ میل کرده و عموما در سه ماهه آخر حاملگی برای تسکین فشار آئورت نیاز به آن است</items>
+      </items>
+      <items code="at1018">
+        <items id="text">*Infant(en)</items>
+        <items id="description">*A cuff used for infants - bladder approx 5cm x 15cm.(en)</items>
+      </items>
+      <items code="at1019">
+        <items id="text">*Neonatal(en)</items>
+        <items id="description">*A cuff used for a neonate, assuming cuff is the appropriate size for maturity and birthweight of the neonate.(en)</items>
+      </items>
+      <items code="at1020">
+        <items id="text">*Right wrist(en)</items>
+        <items id="description">*The right wrist of the subject.(en)</items>
+      </items>
+      <items code="at1021">
+        <items id="text">*Left wrist(en)</items>
+        <items id="description">*The left wrist of the subject.(en)</items>
+      </items>
+      <items code="at1025">
+        <items id="text">*Device(en)</items>
+        <items id="description">*Details about sphygmomanometer or other device used to measure the blood pressure.(en)</items>
+      </items>
+      <items code="at1026">
+        <items id="text">*Right ankle(en)</items>
+        <items id="description">*The right ankle of the subject.(en)</items>
+      </items>
+      <items code="at1030">
+        <items id="text">تقلا</items>
+        <items id="description">جزییاتی درباره فعالیت فیزیکی انجام شده در زمان اندازه گیری فشار خون</items>
+      </items>
+      <items code="at1031">
+        <items id="text">*Left ankle(en)</items>
+        <items id="description">*The left ankle of the subject.(en)</items>
+      </items>
+      <items code="at1032">
+        <items id="text">*Finger(en)</items>
+        <items id="description">*A finger of the subject.  Identification of the finger can be recorded in 'Specific Location' data element, if required.(en)</items>
+      </items>
+      <items code="at1033">
+        <items id="text">*Location(en)</items>
+        <items id="description">*Body location where blood pressure is measured.  Use 'Location of measurement' to select from common sites.  Use 'Specific location' to record more specific details or a site that is not in the common set or to refer to an external terminology.(en)</items>
+      </items>
+      <items code="at1034">
+        <items id="text">*Specific location(en)</items>
+        <items id="description">*Specific details about the body site where blood pressure is recorded.(en)</items>
+      </items>
+      <items code="at1035">
+        <items id="text">*Method(en)</items>
+        <items id="description">*Method of measurement of blood pressure.(en)</items>
+      </items>
+      <items code="at1036">
+        <items id="text">*Auscultation(en)</items>
+        <items id="description">*Method of measuring blood pressure externally, using a stethoscope and Korotkoff sounds.(en)</items>
+      </items>
+      <items code="at1037">
+        <items id="text">*Palpation(en)</items>
+        <items id="description">*Method of measuring blood pressure externally, using palpation (usually of the brachial or radial arteries).(en)</items>
+      </items>
+      <items code="at1038">
+        <items id="text">*Mean Arterial Pressure Formula(en)</items>
+        <items id="description">*Formula used to calculate the MAP (if recorded in data).(en)</items>
+      </items>
+      <items code="at1039">
+        <items id="text">*Machine(en)</items>
+        <items id="description">*Method of measuring blood pressure externally, using a blood pressure machine.(en)</items>
+      </items>
+      <items code="at1040">
+        <items id="text">*Invasive(en)</items>
+        <items id="description">*Method of measuring blood pressure internally ie involving penetration of the skin and measuring inside blood vessels.(en)</items>
+      </items>
+      <items code="at1042">
+        <items id="text">میانگین 24 ساعته</items>
+        <items id="description">برآورد میانگین فشار خون در دوره زمانی 24 ساعته</items>
+      </items>
+      <items code="at1043">
+        <items id="text">وضعیت خواب</items>
+        <items id="description">وضعیت خواب- به تفسیر ثبتهای صورت گرفته از فشار خون در خانه در طول 24 ساعت کمک می کند</items>
+      </items>
+      <items code="at1044">
+        <items id="text">هشیار و بیدار</items>
+        <items id="description">فرد کاملا به هوش است</items>
+      </items>
+      <items code="at1045">
+        <items id="text">خوابیده</items>
+        <items id="description">فرد در حالت طبیعی استراحت بدنی است</items>
+      </items>
+      <items code="at1051">
+        <items id="text">*Toe(en)</items>
+        <items id="description">*A toe of the subject.   Identification of the toe can be recorded in 'Specific Location' data element, if required.(en)</items>
+      </items>
+      <items code="at1052">
+        <items id="text">عوامل مبهم</items>
+        <items id="description">نظردهی و ثبت سایر عوامل ضمنی که ممکن است به اندازه گیری فشار خون کمک کنند . به عنوان مثال سطح اضطراب یا "سندرم روپوش سفید"، درد یا تب ، تغییرات فشار جوی و غیره</items>
+      </items>
+      <items code="at1053">
+        <items id="text">*Intra-arterial(en)</items>
+        <items id="description">*Invasive measurement via transducer access line within an artery. Location of the transducer can be recorded in 'Specific Location' data element, if required.(en)</items>
+      </items>
+    </term_definitions>
+    <term_bindings terminology="SNOMED-CT">
+      <items code="at0000">
+        <value>
+          <terminology_id>
+            <value>SNOMED-CT(2003)</value>
+          </terminology_id>
+          <code_string>163020007</code_string>
+        </value>
+      </items>
+      <items code="at0004">
+        <value>
+          <terminology_id>
+            <value>SNOMED-CT(2003)</value>
+          </terminology_id>
+          <code_string>163030003</code_string>
+        </value>
+      </items>
+      <items code="at0005">
+        <value>
+          <terminology_id>
+            <value>SNOMED-CT(2003)</value>
+          </terminology_id>
+          <code_string>163031004</code_string>
+        </value>
+      </items>
+      <items code="at0013">
+        <value>
+          <terminology_id>
+            <value>SNOMED-CT(2003)</value>
+          </terminology_id>
+          <code_string>246153002</code_string>
+        </value>
+      </items>
+    </term_bindings>
+  </ontology>
+</archetype>
+

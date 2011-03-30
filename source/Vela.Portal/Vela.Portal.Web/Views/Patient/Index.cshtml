@@ -1,0 +1,48 @@
+﻿@model IEnumerable<Vela.Portal.PatientStorage.Contracts.Patient>
+@{
+    ViewBag.Title = "Index";
+}
+<h2>
+    Index</h2>
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table>
+    <tr>
+        <th>
+            PatientNumber
+        </th>
+        <th>
+            FirstName
+        </th>
+        <th>
+            LastName
+        </th>
+        <th>
+            Gender
+        </th>
+        <th>
+            BirthDate
+        </th>
+    </tr>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                <a href="@Href("/Ehr/Details", @item.PatientNumber)">@item.PatientNumber</a>                
+            </td>
+            <td>
+                @item.FirstName
+            </td>
+            <td>
+                @item.LastName
+            </td>
+            <td>
+                @item.Gender
+            </td>
+            <td>
+                @String.Format("{0:d}", item.BirthDate)
+            </td>
+        </tr>
+    }
+</table>

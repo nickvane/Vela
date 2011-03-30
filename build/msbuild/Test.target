@@ -1,0 +1,41 @@
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="4.0">
+	<Target Name="Test" DependsOnTargets="UnitTests;IntegrationTests;AcceptanceTests;RegressionTests;" Condition="$(DoTest)" />
+	
+	<PropertyGroup>
+		<DoUnitTests>true</DoUnitTests>	
+		<DoIntegrationTests>false</DoIntegrationTests>
+		<DoAcceptanceTests>false</DoAcceptanceTests>
+		<DoRegressionTests>false</DoRegressionTests>
+	</PropertyGroup>
+	
+	<PropertyGroup>
+		<NUnitPath>$(UtilitiesDirectory)\NUnit</NUnitPath>
+	</PropertyGroup>
+		
+	<!-- UnitTests -->	
+	<Target Name="UnitTests" Condition="$(DoUnitTests)">
+		<ItemGroup>
+			<UnitTestAssemblies Include="$(SourceDirectory)\Vela.Common\bin\Vela.*.UnitTests.dll" />
+			<UnitTestAssemblies Include="$(SourceDirectory)\Vela.VirtualEhr\bin\Vela.*.UnitTests.dll" />
+			<UnitTestAssemblies Include="$(SourceDirectory)\Vela.Persistence\bin\Vela.*.UnitTests.dll" />
+		</ItemGroup>
+	
+		<Message Text="Running NUnit tests for @(UnitTestAssemblies)" />
+		<NUnit Assemblies="@(UnitTestAssemblies)"
+			   ToolPath="$(NUnitPath)" 
+			   OutputXmlFile="$(BuildDirectory)\results.nunit.xml" 
+			   DisableShadowCopy="True"
+			   ContinueOnError="false">
+			<Output TaskParameter="ExitCode" ItemName="NUnitExitCodes"/>
+		</NUnit>
+		
+		<Error Text="Test error(s) occured" Condition=" '%(NUnitExitCodes.Identity)' != '0'"/>
+		
+	</Target>
+	
+	<!-- Other Tests -->
+	<Target Name="IntegrationTests" Condition="$(DoIntegrationTests)" />
+	<Target Name="AcceptanceTests" Condition="$(DoAcceptanceTests)" />
+	<Target Name="RegressionTests" Condition="$(DoRegressionTests)" />
+	
+</Project>

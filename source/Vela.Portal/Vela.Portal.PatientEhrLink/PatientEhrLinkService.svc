@@ -1,0 +1,1 @@
+﻿<%@ ServiceHost Language="C#" Debug="true" Service="Vela.Portal.PatientEhrLink.PatientEhrLinkService" CodeBehind="PatientEhrLinkService.svc.cs" %>

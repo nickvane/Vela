@@ -1,0 +1,37 @@
+﻿@model Vela.AM.Aom.Archetypes.Archetype
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<fieldset>
+    <legend>Archetype</legend>
+
+    <div class="display-label">Id</div>
+    <div class="display-field">@Model.Id</div>
+
+    <div class="display-label">AdlVersion</div>
+    <div class="display-field">@Model.AdlVersion</div>
+
+    <div class="display-label">Concept</div>
+    <div class="display-field">@Model.Concept</div>
+
+    <div class="display-label">IsDeleted</div>
+    <div class="display-field">@Model.IsDeleted</div>
+
+    <div class="display-label">IsControlled</div>
+    <div class="display-field">@Model.IsControlled</div>
+
+    <div class="display-label">Definition</div>
+    <div class="display-field">
+    <p>@Model.Definition.ReferenceModelTypeName</p>
+    <p>@Model.Definition.Attributes.Count</p>
+    </div>
+</fieldset>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id=Model.Id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
+
