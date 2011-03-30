@@ -45,17 +45,11 @@
     <AssemblyOriginatorKeyFile>..\..\Global\key.snk</AssemblyOriginatorKeyFile>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Castle.Core">
-      <HintPath>..\..\..\lib\Castle.Windsor\Castle.Core.dll</HintPath>
+    <Reference Include="Autofac">
+      <HintPath>..\..\..\lib\Autofac\Autofac.dll</HintPath>
     </Reference>
-    <Reference Include="Castle.Facilities.Logging">
-      <HintPath>..\..\..\lib\Castle.Windsor\loggingFacility\Castle.Facilities.Logging.dll</HintPath>
-    </Reference>
-    <Reference Include="Castle.Services.Logging.Log4netIntegration">
-      <HintPath>..\..\..\lib\Castle.Windsor\loggingFacility\Castle.Services.Logging.Log4netIntegration.dll</HintPath>
-    </Reference>
-    <Reference Include="Castle.Windsor">
-      <HintPath>..\..\..\lib\Castle.Windsor\Castle.Windsor.dll</HintPath>
+    <Reference Include="Autofac.Integration.Mvc">
+      <HintPath>..\..\..\lib\Autofac\Autofac.Integration.Mvc.dll</HintPath>
     </Reference>
     <Reference Include="Elmah">
       <HintPath>..\..\..\lib\Elmah\x64\Elmah.dll</HintPath>
@@ -103,11 +97,17 @@
     <Reference Include="System.Configuration" />
     <Reference Include="System.Web.Services" />
     <Reference Include="System.EnterpriseServices" />
-    <Reference Include="Vela.Common.Dal">
-      <HintPath>..\..\Vela.Persistence\bin\Vela.Common.Dal.dll</HintPath>
-    </Reference>
     <Reference Include="Vela.VirtualEhr">
       <HintPath>..\..\Vela.VirtualEhr\bin\Vela.VirtualEhr.dll</HintPath>
+    </Reference>
+    <Reference Include="Vela.VirtualEhr.IoC.Autofac">
+      <HintPath>..\..\Vela.VirtualEhr\bin\Vela.VirtualEhr.IoC.Autofac.dll</HintPath>
+    </Reference>
+    <Reference Include="Vela.VirtualEhr.Persistence">
+      <HintPath>..\..\Vela.Persistence\bin\Vela.VirtualEhr.Persistence.dll</HintPath>
+    </Reference>
+    <Reference Include="Vela.VirtualEhr.Persistence.IoC.Autofac">
+      <HintPath>..\..\Vela.Persistence\bin\Vela.VirtualEhr.Persistence.IoC.Autofac.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
@@ -125,17 +125,9 @@
     <Compile Include="Models\AccountModels.cs" />
     <Compile Include="Models\ArchetypeModels.cs" />
     <Compile Include="Models\PatientModels.cs" />
-    <Compile Include="Plumbing\Installers\ControllerInstaller.cs" />
-    <Compile Include="Plumbing\Installers\ServiceInstaller.cs" />
-    <Compile Include="Plumbing\Installers\PatientEhrLinkInstaller.cs" />
-    <Compile Include="Plumbing\Installers\DalInstaller.cs" />
-    <Compile Include="Plumbing\Installers\LogInstaller.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="Plumbing\Installers\PatientStorageInstaller.cs" />
-    <Compile Include="Plumbing\Installers\RavenDbInstaller.cs" />
-    <Compile Include="Plumbing\UnitOfWorkAttribute.cs" />
-    <Compile Include="Plumbing\WindsorControllerFactory.cs" />
+    <Compile Include="Plumbing\Modules\PatientEhrLinkModule.cs" />
+    <Compile Include="Plumbing\Modules\PatientStorageModule.cs" />
+    <Compile Include="Plumbing\Modules\RavenModule.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -249,9 +241,7 @@
     </VisualStudio>
   </ProjectExtensions>
   <PropertyGroup>
-    <PostBuildEvent>copy "$(SolutionDir)Vela.Persistence\bin\Vela.AM.Dal.dll" "$(TargetDir)" /y
-copy "$(SolutionDir)Vela.Persistence\bin\Vela.AM.Dal.pdb" "$(TargetDir)" /y
-copy "$(SolutionDir)Vela.Persistence\bin\Vela.RM.Dal.dll" "$(TargetDir)" /y
-copy "$(SolutionDir)Vela.Persistence\bin\Vela.RM.Dal.pdb" "$(TargetDir)" /y</PostBuildEvent>
+    <PostBuildEvent>
+    </PostBuildEvent>
   </PropertyGroup>
 </Project>

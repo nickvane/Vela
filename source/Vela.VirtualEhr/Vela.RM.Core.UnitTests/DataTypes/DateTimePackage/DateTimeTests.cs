@@ -22,14 +22,6 @@ namespace Vela.RM.Core.UnitTests.DataTypes.DateTimePackage
 		}
 
 		[Test]
-		[ExpectedException(typeof(NotSupportedException))]
-		public void MagnitudeShouldThrowException()
-		{
-			var date = new DateTime();
-			date.Magnitude = 1;
-		}
-
-		[Test]
 		[ExpectedException(typeof(NotImplementedException))]
 		public void DiffShouldThrowException()
 		{

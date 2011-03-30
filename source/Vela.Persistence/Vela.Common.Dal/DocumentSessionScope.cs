@@ -17,11 +17,9 @@ namespace Vela.Common.Dal
 	/// <remarks>Reference: http://msdn.microsoft.com/en-us/magazine/cc300805.aspx</remarks>
 	public class DocumentSessionScope : IDisposable
 	{
-		private bool _disposed;
+		[ThreadStatic] private static DocumentSessionScope _head;
 		private readonly IDocumentSession _instance;
-		private readonly DocumentSessionScope _parent;
-		[ThreadStatic]
-		private static DocumentSessionScope _head;
+		private bool _disposed;
 
 		///<summary>
 		///</summary>
@@ -31,7 +29,6 @@ namespace Vela.Common.Dal
 			_instance = session;
 
 			Thread.BeginThreadAffinity();
-			_parent = _head;
 			_head = this;
 		}
 
@@ -39,20 +36,29 @@ namespace Vela.Common.Dal
 		///</summary>
 		public static IDocumentSession Current
 		{
-			get { return _head != null ? _head._instance : null; }
+			get
+			{
+				if (_head != null)
+				{
+					return _head._instance;
+				}
+				return null;
+			}
 		}
 
-
-		~DocumentSessionScope()
-		{
-			Dispose(false);
-		}
+		#region IDisposable Members
 
 		public void Dispose()
 		{
 			Dispose(true);
-			GC.SuppressFinalize(this);  // Finalization is now unnecessary
+			GC.SuppressFinalize(this); // Finalization is now unnecessary
+		}
 
+		#endregion
+
+		~DocumentSessionScope()
+		{
+			Dispose(false);
 		}
 
 		protected virtual void Dispose(bool disposing)
@@ -62,12 +68,12 @@ namespace Vela.Common.Dal
 				if (disposing)
 				{
 					_instance.SaveChanges();
+					_instance.Dispose();
 				}
 
 				// Dispose unmanaged resources
 
 				//WARNING: no dispose needed, but if needed, apparantly it is called in the incorrect order!!!
-				_head = _parent;
 				Thread.EndThreadAffinity();
 			}
 

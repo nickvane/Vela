@@ -12,6 +12,7 @@ using NUnit.Framework;
 using Raven.Client;
 using Rhino.Mocks;
 using Vela.Common;
+using Vela.Common.Dal;
 using Vela.RM.Core.Common.ChangeControlPackage;
 using Vela.RM.Core.Common.GenericPackage;
 using Vela.RM.Core.Support.IdentificationPackage;
@@ -30,6 +31,7 @@ namespace Vela.RM.Dal.UnitTests.Repositories
 		public void Setup()
 		{
 			_mocks = new MockRepository();
+			_session = _mocks.StrictMock<IDocumentSession>();
 
 			_collection = new List<VersionContainerTest>
 			              	{
@@ -94,12 +96,15 @@ namespace Vela.RM.Dal.UnitTests.Repositories
 			              				          	}
 			              			},
 			              	}.AsQueryable();
+			_repository = new GenericVersionRepository<VersionContainerTest, VersionTest>(_collection);
 		}
 
 		#endregion
 
 		private MockRepository _mocks;
+		private IDocumentSession _session;
 		private IQueryable<VersionContainerTest> _collection;
+		private GenericVersionRepository<VersionContainerTest, VersionTest> _repository;
 		private readonly string _id1 = Guid.NewGuid().ToString();
 		private readonly string _id2 = Guid.NewGuid().ToString();
 		private readonly string _id3 = Guid.NewGuid().ToString();
@@ -113,74 +118,85 @@ namespace Vela.RM.Dal.UnitTests.Repositories
 		[Test]
 		public void GetAllVersions()
 		{
-			var session = _mocks.StrictMock<IDocumentSession>();
-			var repository = new GenericVersionRepository<VersionContainerTest, VersionTest>(session, _collection);
+			using (new DocumentSessionScope(_session))
+			{
+				IQueryable<VersionContainerTest> res = from v in _repository.Collection where v.Id == Id7 select v;
+				List<VersionContainerTest> res2 = res.ToList();
 
-			IQueryable<VersionContainerTest> res = from v in repository.Collection where v.Id == Id7 select v;
-			List<VersionContainerTest> res2 = res.ToList();
+				IList<VersionContainerTest> result = _repository.GetAllVersions(_id2);
+				Assert.AreEqual(3, result.Count);
 
-			IList<VersionContainerTest> result = repository.GetAllVersions(_id2);
-			Assert.AreEqual(3, result.Count);
+				result = _repository.GetAllVersions(_id1);
+				Assert.AreEqual(1, result.Count);
 
-			result = repository.GetAllVersions(_id1);
-			Assert.AreEqual(1, result.Count);
-
-			result = repository.GetAllVersions(_id3);
-			Assert.AreEqual(1, result.Count);
+				result = _repository.GetAllVersions(_id3);
+				Assert.AreEqual(1, result.Count);
+			}
 		}
 
 		[Test]
 		public void GetLatestVersion()
 		{
-			var session = _mocks.StrictMock<IDocumentSession>();
-			var repository = new GenericVersionRepository<VersionContainerTest, VersionTest>(session, _collection);
+			using (new DocumentSessionScope(_session))
+			{
+				VersionContainerTest result = _repository.GetLatestVersion(_id2);
+				Assert.AreEqual(Id10, result.Id);
 
-			VersionContainerTest result = repository.GetLatestVersion(_id2);
-			Assert.AreEqual(Id10, result.Id);
+				result = _repository.GetLatestVersion(_id1);
+				Assert.AreEqual(Id6, result.Id);
 
-			result = repository.GetLatestVersion(_id1);
-			Assert.AreEqual(Id6, result.Id);
-
-			result = repository.GetLatestVersion("foo");
-			Assert.IsNull(result);
+				result = _repository.GetLatestVersion("foo");
+				Assert.IsNull(result);
+			}
 		}
 
 		[Test]
 		public void GetLatestVersionFromTrunk()
 		{
-			var session = _mocks.StrictMock<IDocumentSession>();
-			var repository = new GenericVersionRepository<VersionContainerTest, VersionTest>(session, _collection);
+			using (new DocumentSessionScope(_session))
+			{
+				VersionContainerTest result = _repository.GetLatestVersionFromTrunk(_id2);
+				Assert.AreEqual(Id7, result.Id);
 
-			VersionContainerTest result = repository.GetLatestVersionFromTrunk(_id2);
-			Assert.AreEqual(Id7, result.Id);
-
-			result = repository.GetLatestVersionFromTrunk("foo");
-			Assert.IsNull(result);
+				result = _repository.GetLatestVersionFromTrunk("foo");
+				Assert.IsNull(result);
+			}
 		}
 
 		[Test]
 		public void GetVersionAndHasVersion()
 		{
-			var session = _mocks.StrictMock<IDocumentSession>();
-			var repository = new GenericVersionRepository<VersionContainerTest, VersionTest>(session, _collection);
-
-			Expect.Call(session.Load<VersionContainerTest>(Id6)).Return(new VersionContainerTest());
+			Expect.Call(_session.Load<VersionContainerTest>(Id6)).Return(new VersionContainerTest());
+			Expect.Call(() => _session.SaveChanges());
+			Expect.Call(() => _session.Dispose());
 			_mocks.ReplayAll();
-			Assert.IsTrue(repository.HasVersion(Id6));
+
+			using (new DocumentSessionScope(_session))
+			{
+				Assert.IsTrue(_repository.HasVersion(Id6));
+			}
+			
 			_mocks.VerifyAll();
-			Assert.IsFalse(repository.HasVersion(string.Empty));
+
+			Assert.IsFalse(_repository.HasVersion(string.Empty));
 		}
 
 		[Test]
 		public void IsOriginalVersionTrue()
 		{
-			var session = _mocks.StrictMock<IDocumentSession>();
-			var repository = new GenericVersionRepository<VersionContainerTest, VersionTest>(session, _collection);
-
-			Expect.Call(session.Load<VersionContainerTest>(Id6)).Return(new VersionContainerTest
-			                                                            	{Version = new OriginalVersion<VersionTest>()});
+			Expect.Call(_session.Load<VersionContainerTest>(Id6)).Return(new VersionContainerTest
+			{
+				Version = new OriginalVersion<VersionTest>()
+			});
+			Expect.Call(() => _session.SaveChanges());
+			Expect.Call(() => _session.Dispose());
 			_mocks.ReplayAll();
-			Assert.IsTrue(repository.IsOriginalVersion(Id6));
+
+			using (new DocumentSessionScope(_session))
+			{
+				Assert.IsTrue(_repository.IsOriginalVersion(Id6));
+			}
+			
 			_mocks.VerifyAll();
 		}
 	}

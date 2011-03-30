@@ -7,6 +7,7 @@
 
 using System;
 using System.Linq;
+using System.Management.Instrumentation;
 using Raven.Client;
 using Vela.Common.Helper;
 
@@ -16,17 +17,19 @@ namespace Vela.Common.Dal
 	{
 		private readonly IQueryable<T> _collection;
 
-		public BaseRepository(IDocumentSession session, IQueryable<T> collection)
+		public BaseRepository(IQueryable<T> collection)
 		{
-			Assertion.WhenNull(session);
-			DocumentSession = session;
 			_collection = collection;
 		}
 
 		/// <summary>
 		/// 
 		/// </summary>
-		public IDocumentSession DocumentSession { get; set; }
+		public IDocumentSession DocumentSession { get
+		{
+			if (DocumentSessionScope.Current != null) return DocumentSessionScope.Current;
+			throw new InstanceNotFoundException("There is no DocumentSession present in DocumentSessionScope.");
+		} }
 
 		/// <summary>
 		/// 

@@ -6,6 +6,7 @@ using Raven.Client.Client;
 using Vela.AM.Adl;
 using Vela.AM.Aom.Archetypes;
 using Vela.AM.Dal.Repositories;
+using Vela.Common.Dal;
 
 namespace Vela.AM.Dal.UnitTests
 {
@@ -21,18 +22,17 @@ namespace Vela.AM.Dal.UnitTests
 			            	};
 			store.Initialize();
 			int count;
-			using (var session = store.OpenSession())
+			using (new DocumentSessionScope(store.OpenSession()))
 			{
-				var archetypeRepository = new ArchetypeRepository(session);
+				var archetypeRepository = new ArchetypeRepository();
 				count = Directory.GetFiles(@"Archetypes\xml\", "*.xml").ToList().Count;
 				foreach (var file in Directory.GetFiles(@"Archetypes\xml\", "*.xml"))
 				{
 					Debug.WriteLine(file);
 					var archetypeString = File.ReadAllText(file);
-					var archetype = new XmlParser().Parse(archetypeString);
+					var archetype = new ArchetypeXmlParser().Parse(archetypeString);
 					archetypeRepository.Save(archetype);
 				}
-				session.SaveChanges();
 			}
 
 			using (var session = store.OpenSession())

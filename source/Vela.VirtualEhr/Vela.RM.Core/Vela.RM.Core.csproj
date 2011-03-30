@@ -73,6 +73,7 @@
     <Compile Include="Common\GenericPackage\PartySelf.cs" />
     <Compile Include="Common\GenericPackage\RevisionHistory.cs" />
     <Compile Include="Common\GenericPackage\RevisionHistoryItem.cs" />
+    <Compile Include="Common\ResourcePackage\Annotation.cs" />
     <Compile Include="Common\ResourcePackage\AuthoredResource.cs" />
     <Compile Include="Common\ResourcePackage\ResourceDescription.cs" />
     <Compile Include="Common\ResourcePackage\ResourceDescriptionItem.cs" />
@@ -106,7 +107,6 @@
     <Compile Include="DataTypes\QuantityPackage\Amount.cs" />
     <Compile Include="DataTypes\QuantityPackage\Count.cs" />
     <Compile Include="DataTypes\QuantityPackage\Interval.cs" />
-    <Compile Include="DataTypes\QuantityPackage\MagnitudeStatus.cs" />
     <Compile Include="DataTypes\QuantityPackage\Ordered.cs" />
     <Compile Include="DataTypes\QuantityPackage\Ordinal.cs" />
     <Compile Include="DataTypes\QuantityPackage\Proportion.cs" />

@@ -10,7 +10,7 @@ namespace Vela.AM.Adl.UnitTests
 		[ExpectedException(typeof(NotImplementedException))]
 		public void ParseThrowsException()
 		{
-			var archetype = AdlParser.Parse(string.Empty);
+			var archetype = ArchetypeAdlParser.Parse(string.Empty);
 		}
 	}
 }

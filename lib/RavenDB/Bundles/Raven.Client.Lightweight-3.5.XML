@@ -1050,6 +1050,11 @@
             </summary>
             <value>The find identity property.</value>
         </member>
+        <member name="P:Raven.Client.Document.DocumentConvention.GetIdentityPropertyNameFromEntityName">
+            <summary>
+            Get or sets the function to get the identity property name from the entity name
+            </summary>
+        </member>
         <member name="P:Raven.Client.Document.DocumentConvention.DocumentKeyGenerator">
             <summary>
             Gets or sets the document key generator.
@@ -1960,6 +1965,11 @@
             <typeparam name="TProjection">The type of the projection.</typeparam>
             <param name="fields">The fields.</param>
         </member>
+        <member name="P:Raven.Client.IDocumentQuery`1.DocumentConvention">
+            <summary>
+            Gets the document convention from the query session
+            </summary>
+        </member>
         <member name="P:Raven.Client.IDocumentQuery`1.QueryResult">
             <summary>
             Gets the query result
@@ -2268,6 +2278,11 @@
             <returns>
               A <see cref="T:System.String"/> that represents this instance.
             </returns>
+        </member>
+        <member name="P:Raven.Client.Document.DocumentQuery`1.DocumentConvention">
+            <summary>
+            Gets the document convention from the query session
+            </summary>
         </member>
         <member name="P:Raven.Client.Document.DocumentQuery`1.Raven#Client#IDocumentQueryBase{T@Raven#Client#IDocumentQuery{T}}#Not">
             <summary>
@@ -3903,6 +3918,11 @@
         <member name="P:Raven.Client.Document.ShardedDocumentQuery`1.Not">
             <summary>
             Negate the next operation
+            </summary>
+        </member>
+        <member name="P:Raven.Client.Document.ShardedDocumentQuery`1.DocumentConvention">
+            <summary>
+            Gets the document convention from the query session
             </summary>
         </member>
         <member name="P:Raven.Client.Document.ShardedDocumentQuery`1.QueryResult">

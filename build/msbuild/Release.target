@@ -15,7 +15,9 @@
 	
 	<Target Name="ReleaseVelaVirtualEhr">
 		<ItemGroup>
-			<VelaVirtualEhrFiles Include="$(SourceDirectory)\Vela.VirtualEhr\bin\Vela.VirtualEhr.*" />			
+			<VelaVirtualEhrFiles Include="$(SourceDirectory)\Vela.VirtualEhr\bin\Vela.VirtualEhr.dll" />
+			<VelaVirtualEhrFiles Include="$(SourceDirectory)\Vela.VirtualEhr\bin\Vela.VirtualEhr.pdb" />
+			<VelaVirtualEhrFiles Include="$(SourceDirectory)\Vela.VirtualEhr\bin\Vela.VirtualEhr.IoC.Autofac.dll" />
 			<VelaVirtualEhrFiles Include="$(SourceDirectory)\Vela.VirtualEhr\bin\Xml.Schema.Linq.*" />			
 			<VelaVirtualEhrFiles Include="$(SourceDirectory)\Vela.VirtualEhr\bin\Newtonsoft.Json.*" />
 		</ItemGroup>

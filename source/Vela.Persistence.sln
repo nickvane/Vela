@@ -4,6 +4,9 @@ Microsoft Visual Studio Solution File, Format Version 11.00
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Vela.Common.Dal", "Vela.Persistence\Vela.Common.Dal\Vela.Common.Dal.csproj", "{E00E85D4-6EB7-4FF9-A91D-E6FD5E8B0199}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Vela.AM.Dal", "Vela.Persistence\Vela.AM.Dal\Vela.AM.Dal.csproj", "{06E1C01C-07B3-44CC-8522-6964910E16AA}"
+	ProjectSection(ProjectDependencies) = postProject
+		{8DA8DA12-B183-4038-A983-BB1C32705925} = {8DA8DA12-B183-4038-A983-BB1C32705925}
+	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Vela.RM.Dal", "Vela.Persistence\Vela.RM.Dal\Vela.RM.Dal.csproj", "{8DA8DA12-B183-4038-A983-BB1C32705925}"
 EndProject
@@ -14,6 +17,13 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Vela.Common.Dal.UnitTests", "Vela.Persistence\Vela.Common.Dal.UnitTests\Vela.Common.Dal.UnitTests.csproj", "{F9173D72-BF33-437A-A5C0-DBD01D07AA25}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Vela.RM.Dal.UnitTests", "Vela.Persistence\Vela.RM.Dal.UnitTests\Vela.RM.Dal.UnitTests.csproj", "{D8B61F1C-7406-4D75-8DEB-016BEFDE1B02}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Vela.VirtualEhr.Persistence.IoC.Autofac", "Vela.Persistence\Vela.VirtualEhr.Persistence.IoC.Autofac\Vela.VirtualEhr.Persistence.IoC.Autofac.csproj", "{E4B122DF-C0AC-4E90-B301-C697085D88D8}"
+	ProjectSection(ProjectDependencies) = postProject
+		{8DA8DA12-B183-4038-A983-BB1C32705925} = {8DA8DA12-B183-4038-A983-BB1C32705925}
+		{06E1C01C-07B3-44CC-8522-6964910E16AA} = {06E1C01C-07B3-44CC-8522-6964910E16AA}
+		{E00E85D4-6EB7-4FF9-A91D-E6FD5E8B0199} = {E00E85D4-6EB7-4FF9-A91D-E6FD5E8B0199}
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -45,6 +55,10 @@ Global
 		{D8B61F1C-7406-4D75-8DEB-016BEFDE1B02}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D8B61F1C-7406-4D75-8DEB-016BEFDE1B02}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D8B61F1C-7406-4D75-8DEB-016BEFDE1B02}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E4B122DF-C0AC-4E90-B301-C697085D88D8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E4B122DF-C0AC-4E90-B301-C697085D88D8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E4B122DF-C0AC-4E90-B301-C697085D88D8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E4B122DF-C0AC-4E90-B301-C697085D88D8}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -181,6 +181,14 @@
             <param name="key">The key.</param>
             <param name="etag">The etag.</param>
         </member>
+        <member name="M:Raven.Client.Client.Async.IAsyncDatabaseCommands.GetTermsAsync(System.String,System.String,System.String,System.Int32)">
+            <summary>
+             Get the possible terms for the specified field in the index asynchronously
+             You can page through the results by use fromValue parameter as the 
+             starting point for the next query
+            </summary>
+            <returns></returns>
+        </member>
         <member name="P:Raven.Client.Client.Async.IAsyncDatabaseCommands.OperationsHeaders">
             <summary>
             Gets or sets the operations headers.
@@ -374,6 +382,14 @@
             </summary>
             <param name="key">The key.</param>
             <param name="etag">The etag.</param>
+        </member>
+        <member name="M:Raven.Client.Client.Async.AsyncServerClient.GetTermsAsync(System.String,System.String,System.String,System.Int32)">
+            <summary>
+             Get the possible terms for the specified field in the index asynchronously
+             You can page through the results by use fromValue parameter as the 
+             starting point for the next query
+            </summary>
+            <returns></returns>
         </member>
         <member name="P:Raven.Client.Client.Async.AsyncServerClient.OperationsHeaders">
             <summary>
@@ -3364,6 +3380,11 @@
             </summary>
             <value>The find identity property.</value>
         </member>
+        <member name="P:Raven.Client.Document.DocumentConvention.GetIdentityPropertyNameFromEntityName">
+            <summary>
+            Get or sets the function to get the identity property name from the entity name
+            </summary>
+        </member>
         <member name="P:Raven.Client.Document.DocumentConvention.DocumentKeyGenerator">
             <summary>
             Gets or sets the document key generator.
@@ -3392,6 +3413,11 @@
             Gets the query result
             </summary>
             <value>The query result.</value>
+        </member>
+        <member name="P:Raven.Client.IDocumentQuery`1.DocumentConvention">
+            <summary>
+            Gets the document convention from the query session
+            </summary>
         </member>
         <member name="P:Raven.Client.IDocumentQuery`1.QueryResult">
             <summary>
@@ -3701,6 +3727,11 @@
             <returns>
               A <see cref="T:System.String"/> that represents this instance.
             </returns>
+        </member>
+        <member name="P:Raven.Client.Document.DocumentQuery`1.DocumentConvention">
+            <summary>
+            Gets the document convention from the query session
+            </summary>
         </member>
         <member name="P:Raven.Client.Document.DocumentQuery`1.Raven#Client#IDocumentQueryBase{T@Raven#Client#IDocumentQuery{T}}#Not">
             <summary>
@@ -4903,6 +4934,11 @@
             Negate the next operation
             </summary>
         </member>
+        <member name="P:Raven.Client.Document.ShardedDocumentQuery`1.DocumentConvention">
+            <summary>
+            Gets the document convention from the query session
+            </summary>
+        </member>
         <member name="P:Raven.Client.Document.ShardedDocumentQuery`1.QueryResult">
             <summary>
             Gets the query result
@@ -5088,6 +5124,20 @@
             <param name="context">The <see cref="T:System.Runtime.Serialization.StreamingContext"/> that contains contextual information about the source or destination.</param>
             <exception cref="T:System.ArgumentNullException">The <paramref name="info"/> parameter is null. </exception>
             <exception cref="T:System.Runtime.Serialization.SerializationException">The class name is null or <see cref="P:System.Exception.HResult"/> is zero (0). </exception>
+        </member>
+        <member name="T:Raven.Client.Extensions.DatabaseCommandsExtensions">
+            <summary>
+             Extension methods that make certain database command operations more convenient to use
+            </summary>
+        </member>
+        <member name="M:Raven.Client.Extensions.DatabaseCommandsExtensions.PutIndexAsync``1(Raven.Client.Client.Async.IAsyncDatabaseCommands,System.Boolean)">
+            <summary>
+            Asynchronously creates an index
+            </summary>
+            <typeparam name="T">The type that defines the index to be create.</typeparam>
+            <param name="commands">The hook to the database commands.</param>
+            <param name="overwrite">Should the index be overwritten if it already exists.</param>
+            <returns></returns>
         </member>
         <member name="T:Raven.Client.Extensions.ExceptionExtensions">
             <summary>

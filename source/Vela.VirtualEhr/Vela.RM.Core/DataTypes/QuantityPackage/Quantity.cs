@@ -25,6 +25,11 @@ namespace Vela.RM.Core.DataTypes.QuantityPackage
 			_measurementService = measurementService;
 		}
 
+		public Quantity()
+		{
+			
+		}
+
 		/// <summary>
 		/// Numeric magnitude of the quantity.
 		/// </summary>

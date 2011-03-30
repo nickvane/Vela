@@ -1,10 +1,13 @@
-﻿using System.Web;
+﻿using System;
+using System.Web;
 using System.Web.Mvc;
 using System.Web.Routing;
-using Castle.Core.Logging;
-using Castle.Windsor;
-using Vela.Portal.Web.Plumbing;
-using Vela.Portal.Web.Plumbing.Installers;
+using Autofac;
+using Autofac.Integration.Mvc;
+using Vela.Common.Dal;
+using Vela.Portal.Web.Plumbing.Modules;
+using Vela.VirtualEhr.IoC.Autofac;
+using Vela.VirtualEhr.Persistence.IoC.Autofac;
 
 namespace Vela.Portal.Web
 {
@@ -14,19 +17,19 @@ namespace Vela.Portal.Web
 	///<summary>
 	///</summary>
 	// ReSharper disable InconsistentNaming
-	public class MvcApplication : HttpApplication, IContainerAccessor
+	public class MvcApplication : HttpApplication
 	{
 		// Register Resolve Release Pattern
 		// http://blog.ploeh.dk/2010/09/29/TheRegisterResolveReleasePattern.aspx
 
-		private static IWindsorContainer _container;
+		private static IContainer _container;
 
-		#region IContainerAccessor Members
+		#region IContainer Members
 
 		/// <summary>
 		/// Gets the container.
 		/// </summary>
-		public IWindsorContainer Container
+		public IContainer Container
 		{
 			get { return _container; }
 		}
@@ -64,15 +67,25 @@ namespace Vela.Portal.Web
 			// Register: create and configure the container
 			_container = BootstrapContainer();
 
-			// Resolve: pull the root component from the container
-			// WindsorControllerFactory
-			ControllerBuilder.Current.SetControllerFactory(new WindsorControllerFactory(_container));
+			DependencyResolver.SetResolver(new AutofacDependencyResolver(_container));
 
 			// MVC Stuff
 			AreaRegistration.RegisterAllAreas();
 
 			RegisterGlobalFilters(GlobalFilters.Filters);
 			RegisterRoutes(RouteTable.Routes);
+		}
+
+		public void Application_BeginRequest()
+		{
+			// Make sure there is an instance of DocumentSessionScope at the beginning of each request.
+			// Autofac will dispose this instance of DocumentSessionScope at the end of the request.
+			DependencyResolver.Current.GetService(typeof(DocumentSessionScope));
+		}
+
+		public void Application_EndRequest()
+		{
+			
 		}
 
 		/// <summary>
@@ -90,27 +103,26 @@ namespace Vela.Portal.Web
 		public void Application_Error()
 		{
 			// Resolve: pull the logger out of the container (= root component in case of exceptions on this level)
-			ILogger logger = Container.Resolve<ILogger>() ?? NullLogger.Instance;
-			logger.Error("An error occured in the website.", Server.GetLastError().GetBaseException());
+			//ILogger logger = Container.Resolve<ILogger>() ?? NullLogger.Instance;
+			//logger.Error("An error occured in the website.", Server.GetLastError().GetBaseException());
 		}
 
 		/// <summary>
 		/// Bootstrapper is the place where you create and configure your container
 		/// </summary>
-		/// <returns>A WindsorContainer</returns>
-		private IWindsorContainer BootstrapContainer()
+		/// <returns>An Autofac container</returns>
+		private IContainer BootstrapContainer()
 		{
-			return new WindsorContainer()
-				.Install(
-					// Call the installers
-				new RavenDbInstaller(),
-				new LogInstaller(Server),
-				new DalInstaller(),
-				new ServiceInstaller(),
-				new ControllerInstaller(),
-				new PatientStorageInstaller(),
-				new PatientEhrLinkInstaller()
-				);
+			var builder = new ContainerBuilder();
+			builder.RegisterModule(new ServiceModule());
+			builder.RegisterModule(new DalModule());
+			// You can make property injection available to your MVC views by adding the ViewRegistrationSource to your ContainerBuilder before building the application container.
+			builder.RegisterSource(new ViewRegistrationSource());
+			builder.RegisterModule(new PatientEhrLinkModule());
+			builder.RegisterModule(new PatientStorageModule());
+			builder.RegisterModule(new RavenModule());
+			builder.RegisterControllers(typeof(MvcApplication).Assembly);
+			return builder.Build();
 		}
 	}
 

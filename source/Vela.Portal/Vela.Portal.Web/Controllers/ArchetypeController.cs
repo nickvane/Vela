@@ -2,21 +2,25 @@
 using System.IO;
 using System.Web.Mvc;
 using Vela.AM.Aom.Archetypes;
-using Vela.Portal.Web.Plumbing;
 using Vela.SM.ArchetypeService;
 
 namespace Vela.Portal.Web.Controllers
 {
 	public class ArchetypeController : Controller
 	{
-		public IArchetypeService ArchetypeService { get; set; }
+		private readonly IArchetypeService _archetypeService;
+
+		public ArchetypeController(IArchetypeService archetypeService)
+		{
+			_archetypeService = archetypeService;
+		}
 
 		//
 		// GET: /Archetype/
 
 		public ActionResult Index()
 		{
-			IList<Archetype> archetypes = ArchetypeService.GetAllArchetypes();
+			IList<Archetype> archetypes = _archetypeService.GetAllArchetypes();
 			return View(archetypes);
 		}
 
@@ -25,7 +29,7 @@ namespace Vela.Portal.Web.Controllers
 
 		public ActionResult Details(string id)
 		{
-			var archetype = ArchetypeService.GetArchetype(id);
+			var archetype = _archetypeService.GetArchetype(id);
 			return View(archetype);
 		}
 
@@ -41,7 +45,6 @@ namespace Vela.Portal.Web.Controllers
 		// POST: /Archetype/Create
 
 		[HttpPost]
-		[UnitOfWork]
 		public ActionResult Create(FormCollection collection)
 		{
 			try
@@ -52,8 +55,8 @@ namespace Vela.Portal.Web.Controllers
 				{
 					archetype = textReader.ReadToEnd();
 				}
-				
-				ArchetypeService.Save(archetype);
+
+				_archetypeService.Save(archetype);
 
 				return RedirectToAction("Index");
 			}

@@ -1,23 +1,21 @@
 ﻿using System.Web.Mvc;
-using Castle.Windsor;
-using Raven.Client;
+using Vela.Common.Dal;
 
 namespace Vela.Portal.Web.Plumbing
 {
 	public class UnitOfWorkAttribute : ActionFilterAttribute
 	{
+		private DocumentSessionScope _scope	;
+
+		public DocumentSessionScope Scope
+		{
+			get { return _scope; }
+			set { _scope = value; }
+		}
+
 		public override void OnActionExecuted(ActionExecutedContext filterContext)
 		{
-			if (filterContext.Exception == null)
-			{
-				if (filterContext.HttpContext != null)
-				{
-					var container = ((IContainerAccessor)filterContext.HttpContext.ApplicationInstance).Container;
-					var session = container.Resolve<IDocumentSession>();
-					session.SaveChanges();
-				}
-			}
-
+			Scope.Dispose();
 			base.OnActionExecuted(filterContext);
 		}
 	}

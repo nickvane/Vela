@@ -18,9 +18,7 @@ namespace Vela.RM.Dal.UnitTests.Repositories
 		[Test]
 		public void TestConstructor()
 		{
-			var mocks = new MockRepository();
-			var session = mocks.StrictMock<IDocumentSession>();
-			var repository = new EhrRootRepository(session, null);
+			var repository = new EhrRootRepository(null);
 		}
 	}
 }

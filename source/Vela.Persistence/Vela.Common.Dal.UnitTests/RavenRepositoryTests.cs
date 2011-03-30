@@ -29,7 +29,7 @@ namespace Vela.Common.Dal.UnitTests
 			_document3 = _mocks.StrictMock<IDocument>();
 
 			_collection = new List<IDocument> {_document1, _document2, _document3}.AsQueryable();
-			_repository = new BaseRepository<IDocument>(_session, null);
+			_repository = new BaseRepository<IDocument>(null);
 		}
 
 		#endregion
@@ -46,20 +46,32 @@ namespace Vela.Common.Dal.UnitTests
 		public void AddStoresDocument()
 		{
 			Expect.Call(() => _session.Store(_document1));
+			Expect.Call(() => _session.SaveChanges());
+			Expect.Call(() => _session.Dispose());
 			_mocks.ReplayAll();
-			_repository.Save(_document1);
+				
+			using (new DocumentSessionScope(_session))
+			{
+				_repository.Save(_document1);
+			}
 			_mocks.VerifyAll();
 		}
 
 		[Test]
 		public void CollectionGetterAndSetter()
 		{
-			var repositoryWithCollection = new BaseRepository<IDocument>(_session, _collection);
+			var repositoryWithCollection = new BaseRepository<IDocument>(_collection);
 			Assert.AreEqual(_collection, repositoryWithCollection.Collection);
-			repositoryWithCollection = new BaseRepository<IDocument>(_session, null);
+			repositoryWithCollection = new BaseRepository<IDocument>(null);
 			Expect.Call(_session.Query<IDocument>()).Return(_mocks.StrictMock<IRavenQueryable<IDocument>>());
+			Expect.Call(() => _session.SaveChanges());
+			Expect.Call(() => _session.Dispose());
 			_mocks.ReplayAll();
-			Assert.IsNotNull(repositoryWithCollection.Collection);
+
+			using (new DocumentSessionScope(_session))
+			{
+				Assert.IsNotNull(repositoryWithCollection.Collection);
+			}
 			_mocks.VerifyAll();
 		}
 
@@ -70,16 +82,25 @@ namespace Vela.Common.Dal.UnitTests
 			const string s = "1";
 			Expect.Call(_document1.Id).Return(s);
 			Expect.Call(_session.Load<IDocument>(s)).Return(_mocks.StrictMock<IDocument>());
+			Expect.Call(() => _session.SaveChanges());
+			Expect.Call(() => _session.Dispose());
 			_mocks.ReplayAll();
-			Assert.IsTrue(_repository.Contains(_document1));
+
+			using (new DocumentSessionScope(_session))
+			{
+				Assert.IsTrue(_repository.Contains(_document1));
+			}
 			_mocks.VerifyAll();
 		}
 
 		[Test]
 		public void CountReturnsNumberOfDocuments()
 		{
-			var repositoryWithCollection = new BaseRepository<IDocument>(_session, _collection);
-			Assert.AreEqual(_collection.Count(), repositoryWithCollection.Count);
+			using (new DocumentSessionScope(_session))
+			{
+				var repositoryWithCollection = new BaseRepository<IDocument>(_collection);
+				Assert.AreEqual(_collection.Count(), repositoryWithCollection.Count);
+			}
 		}
 
 		[Test]
@@ -88,8 +109,14 @@ namespace Vela.Common.Dal.UnitTests
 			const string id = "1";
 
 			Expect.Call(_session.Load<IDocument>(id)).Return(_mocks.StrictMock<IDocument>());
+			Expect.Call(() => _session.SaveChanges());
+			Expect.Call(() => _session.Dispose());
 			_mocks.ReplayAll();
-			Assert.IsNotNull(_repository[id]);
+				
+			using (new DocumentSessionScope(_session))
+			{
+				Assert.IsNotNull(_repository[id]);
+			}
 			_mocks.VerifyAll();
 			Assert.IsNull(_repository[string.Empty]);
 		}
@@ -98,8 +125,14 @@ namespace Vela.Common.Dal.UnitTests
 		public void RemoveDeletesDocument()
 		{
 			Expect.Call(() => _session.Delete(_document1));
+			Expect.Call(() => _session.SaveChanges());
+			Expect.Call(() => _session.Dispose());
 			_mocks.ReplayAll();
-			Assert.IsTrue(_repository.Delete(_document1));
+			
+			using (new DocumentSessionScope(_session))
+			{
+				Assert.IsTrue(_repository.Delete(_document1));
+			}
 			_mocks.VerifyAll();
 		}
 	}

@@ -11,13 +11,13 @@ namespace Vela.SM.ArchetypeService
 	{
 		private readonly IArchetypeRepository _archetypeRepository;
 		private readonly ICompositionBuilder _compositionBuilder;
-		private readonly IArchetypeParserFactory _archetypeParserFactory;
+		private readonly IParserFactory _parserFactory;
 
-		public ArchetypeService(IArchetypeRepository archetypeRepository, ICompositionBuilder compositionBuilder, IArchetypeParserFactory archetypeParserFactory)
+		public ArchetypeService(IArchetypeRepository archetypeRepository, ICompositionBuilder compositionBuilder, IParserFactory parserFactory)
 		{
 			_archetypeRepository = archetypeRepository;
 			_compositionBuilder = compositionBuilder;
-			_archetypeParserFactory = archetypeParserFactory;
+			_parserFactory = parserFactory;
 		}
 
 		/// <summary>
@@ -61,7 +61,7 @@ namespace Vela.SM.ArchetypeService
 		/// <param name="archetype">The text form of the archetype. This can be in adl format or xml format.</param>
 		public void Save(string archetype)
 		{
-			var parser = _archetypeParserFactory.GetParser(archetype);
+			var parser = _parserFactory.GetArchetypeParser(archetype, null);
 			this.Save(parser.Parse(archetype));
 		}
 

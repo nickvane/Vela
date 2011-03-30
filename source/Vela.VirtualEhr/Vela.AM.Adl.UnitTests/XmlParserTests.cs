@@ -27,7 +27,7 @@ namespace Vela.AM.Adl.UnitTests
 			{
 				Debug.WriteLine(file);
 				var archetypeString = File.ReadAllText(file);
-				var archetype = new XmlParser().Parse(archetypeString);
+				var archetype = new ArchetypeXmlParser().Parse(archetypeString);
 				Assert.IsNotNull(archetype, file);
 			}
 		}
@@ -36,22 +36,22 @@ namespace Vela.AM.Adl.UnitTests
 		public void ArchetypeWithMissingMandatorySections()
 		{
 			string s1 = File.ReadAllText(@"Tests\ArchetypeWithNoArchetypeId.xml");
-			Assert.Throws<ParseException>(() => new XmlParser().Parse(s1));
+			Assert.Throws<ParseException>(() => new ArchetypeXmlParser().Parse(s1));
 			string s2 = File.ReadAllText(@"Tests\ArchetypeWithNoConcept.xml");
-			Assert.Throws<ParseException>(() => new XmlParser().Parse(s2));
+			Assert.Throws<ParseException>(() => new ArchetypeXmlParser().Parse(s2));
 			string s3 = File.ReadAllText(@"Tests\ArchetypeWithNoDefinition.xml");
-			Assert.Throws<ParseException>(() => new XmlParser().Parse(s3));
+			Assert.Throws<ParseException>(() => new ArchetypeXmlParser().Parse(s3));
 			string s4 = File.ReadAllText(@"Tests\ArchetypeWithNoOntology.xml");
-			Assert.Throws<ParseException>(() => new XmlParser().Parse(s4));
+			Assert.Throws<ParseException>(() => new ArchetypeXmlParser().Parse(s4));
 			string s5 = File.ReadAllText(@"Tests\ArchetypeWithNonConsistentTypeName.xml");
-			Assert.Throws<ParseException>(() => new XmlParser().Parse(s5));
+			Assert.Throws<ParseException>(() => new ArchetypeXmlParser().Parse(s5));
 		}
 
 		[Test]
 		public void ParseFullArchetype()
 		{
 			var archetypeString = File.ReadAllText(@"Tests\FullArchetype.xml");
-			var archetype = new XmlParser().Parse(archetypeString);
+			var archetype = new ArchetypeXmlParser().Parse(archetypeString);
 			
 			// header
 			Assert.AreEqual("2", archetype.AdlVersion);

@@ -1,7 +1,6 @@
 ﻿
 using System.Collections.Generic;
 using System.Linq;
-using Raven.Client;
 using Vela.AM.Aom.Archetypes;
 using Vela.AM.Aom.Repositories;
 using Vela.Common.Dal;
@@ -10,7 +9,7 @@ namespace Vela.AM.Dal.Repositories
 {
 	public class ArchetypeRepository : BaseRepository<Archetype>, IArchetypeRepository
 	{
-		public ArchetypeRepository(IDocumentSession session, IQueryable<Archetype> collection = null) : base(session, collection)
+		public ArchetypeRepository(IQueryable<Archetype> collection = null) : base(collection)
 		{
 		}
 
